@@ -8,5 +8,6 @@ class CreateUserGroups < ActiveRecord::Migration
       t.timestamps
     end
     add_index :user_groups, :group_id
+    add_index :user_groups, :user_id
   end
 end

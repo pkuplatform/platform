@@ -1,0 +1,42 @@
+.container
+  %h1 北大社团平台
+  %hr/
+  #slider.span-24
+    This is a Slider
+  = render "sidebar"
+  .span-15.push-1
+    #right-top
+      .header
+        %a.title 活动信息
+        %ul
+          %li
+            %a{:href => "#"} 最新
+          %li
+            %a{:href => "#"} 讲座
+          %li
+            %a{:href => "#"} 项目
+          %li
+            %a{:href => "#"} 演出
+          %li
+            %a{:href => "#"} 会议
+          %li
+            %a{:href => "#"} 展览
+          %li
+            %a{:href => "#"} 交流
+          %li
+            %a{:href => "#"} 聚会
+          %li
+            %a{:href => "#"} 其他
+      = render :partial => "activities/activities", :locals => {:activities => @group.activities}
+
+    #group_members
+      .header
+        %a.title 社团成员
+      .member_list.clearfix
+        %ul
+          - @group.members.each do |member|
+            %li
+              .amember
+                .memberpic
+                  = image_tag member.avatar
+                = link_to member.name, member

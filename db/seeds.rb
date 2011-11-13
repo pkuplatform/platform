@@ -5,4 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-FactoryGirl.create_list(:category, 25)
+
+require File.expand_path('../seeds/category', __FILE__)
+require File.expand_path('../seeds/user', __FILE__)
+require File.expand_path('../seeds/group', __FILE__)
+require File.expand_path('../seeds/activity', __FILE__)
+require File.expand_path('../seeds/profile', __FILE__)

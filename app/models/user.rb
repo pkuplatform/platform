@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :user_groups
   has_many :activities, :through => :user_activities
   has_many :albums, :as => :imageable
+
+  def name
+    profile.name
+  end
+
+  def avatar
+    profile.avatar.url(:thumb)
+  end
 end

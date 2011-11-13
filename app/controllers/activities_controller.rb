@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1.json
   def show
     @activity = Activity.find(params[:id])
+    @group = @activity.group
 
     respond_to do |format|
       format.html # show.html.erb

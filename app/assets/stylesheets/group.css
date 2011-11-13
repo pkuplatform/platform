@@ -1,0 +1,131 @@
+a
+{
+	color:#3e98a4;
+	text-decoration:none;
+}
+hr
+{
+	margin-top:0px;
+}
+#group_card
+{
+	padding:20px;
+	height:150px;
+	background-color:#fff7e2;
+	margin-bottom:50px;
+}
+#group_text
+{
+	float:right;
+	width:30%;
+}
+#group_text p {
+	margin: 0;
+}
+
+
+
+.header
+{
+	border-bottom:1px solid #ccc;
+}
+.header .title
+{
+	font-size:16px;
+}
+.header ul
+{
+	float:right;
+}
+.header li
+{
+	display:inline;
+	padding-left:10px;
+}
+.header li a {
+		color:#999966;
+}
+
+.header li a:hover
+{
+	background-color:#999966;
+	color:#ffffff;
+}
+
+.group_info_text {
+	padding:8px 20px 20px 20px;
+}
+
+.group_info_text p {
+	margin:0;
+	line-height:22px;
+}
+
+.about_group {
+	clear:both;
+	margin-bottom:40px;
+}
+
+.member_list {
+	margin-top:20px;
+}
+.member_list ul {
+	display:inline-block;
+	list-style-type:none;
+
+}
+.member_list ul li {
+	float:left;
+}
+.amember
+{
+	width:90px;
+	height:90px;
+	text-align:center;
+}
+.memberpic
+{
+	background-color:#ebebeb;
+	width:50px;
+	height:50px;
+	margin:0 auto;
+}
+
+#slider {
+	background:#eee;
+	height:200px;
+	margin-bottom: 20px;
+}
+
+.actvity_list li{
+	margin-bottom:10px;
+}
+.aactivty{
+	height:105px;
+}
+.activitypic{
+	width:90px;
+	height:90px;
+	background:#ebebeb;
+	float:left;
+}
+.activityinfo{
+	padding:8px;
+	float:right;
+	width:435px;
+}
+.activityinfo p{
+	margin:0;
+	line-height:20px;
+}
+.category_link {
+		color:#999966;
+		padding-left:5px;
+}
+.activity_time {
+	color:#7a7;
+}
+
+.activity_description {
+	color:#777;
+}

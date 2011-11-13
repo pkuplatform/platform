@@ -8,7 +8,7 @@ Profile.delete_all
   profile.student_id = Faker::PhoneNumber.phone_number
   profile.phone = Faker::PhoneNumber.phone_number
   profile.points = Random.rand(1..1000)
-  profile.description = Faker.Lorem.paragraph(10)
-  profile.avatar = File.open("../pics/#{Random.rand(1..52)}.jpg")
+  profile.description = Faker::Lorem.paragraph(10)
+  profile.avatar = File.open(File.expand_path("../../pics/#{Random.rand(1..52)}.jpg", __FILE__))
   profile.save!
 end

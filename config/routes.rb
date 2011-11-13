@@ -1,7 +1,8 @@
 Platform::Application.routes.draw do
+  resources :users
   resources :profiles
 
-  get "users/index"
+  # get "users/index"
 
   devise_for :users
   mailboxes_for :users
@@ -40,11 +41,19 @@ Platform::Application.routes.draw do
   resources :groups do
     resources :albums
     resources :comments
+    member do
+      get 'join'
+      get 'like'
+    end
   end
 
   resources :activities do
     resources :albums
     resources :comments
+    member do
+      get 'join'
+      get 'like'
+    end
   end
 
   resources :albums do

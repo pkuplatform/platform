@@ -1,0 +1,16 @@
+#wrap
+  = render(:partial => 'home/content_nav')
+  .m-navleft=image_tag ("navleft.png")
+  .m-derta.derta-g &nbsp
+  #category
+    %span 分类
+    %ul
+      - Category.all.each do |category|
+        %li= link_to category.name, :cid => category.id
+    %span.more 
+      %a= link_to  "查看所有#{Group.count}个社团", groups_url
+    %span.creat=link_to ("申请创建社团"), new_group_path
+  #group-list
+    - @groups && @groups.each do |group|
+      = render :partial => "group", :locals => {:group => group}
+    = will_paginate @groups
