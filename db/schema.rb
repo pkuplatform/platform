@@ -11,7 +11,75 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112190020) do
+ActiveRecord::Schema.define(:version => 20111113063738) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "group_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer  "location_id"
+    t.boolean  "public"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+    t.integer  "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["group_id"], :name => "index_activities_on_group_id"
+  add_index "activities", ["location_id"], :name => "index_activities_on_location_id"
+
+  create_table "albums", :force => true do |t|
+    t.string   "title"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "albums", ["imageable_id", "imageable_type"], :name => "index_albums_on_imageable_id_and_imageable_type"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "groups", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.string   "slogan"
+    t.text     "description"
+    t.text     "history"
+    t.text     "organization"
+    t.string   "email"
+    t.integer  "status"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.integer  "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
 
   create_table "message_copies", :force => true do |t|
     t.integer  "sent_messageable_id"
@@ -38,6 +106,71 @@ ActiveRecord::Schema.define(:version => 20111112190020) do
   end
 
   add_index "messages", ["received_messageable_id", "sender_id"], :name => "inbox_idx"
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "user_id"
+    t.string   "remark"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["album_id"], :name => "index_pictures_on_album_id"
+  add_index "pictures", ["user_id"], :name => "index_pictures_on_user_id"
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "nickname"
+    t.integer  "gender"
+    t.string   "student_id"
+    t.string   "phone"
+    t.integer  "points"
+    t.text     "description"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "tagable_id"
+    t.string   "tagable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["tagable_id", "tagable_type"], :name => "index_tags_on_tagable_id_and_tagable_type"
+
+  create_table "user_activities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_activities", ["activity_id"], :name => "index_user_activities_on_activity_id"
+  add_index "user_activities", ["user_id"], :name => "index_user_activities_on_user_id"
+
+  create_table "user_groups", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_groups", ["group_id"], :name => "index_user_groups_on_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -1,7 +1,7 @@
 class CreateUserGroups < ActiveRecord::Migration
   def change
     create_table :user_groups do |t|
-      t.refereces :user
+      t.references :user
       t.references :group
       t.integer :status
 
