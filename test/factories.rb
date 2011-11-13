@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :category do
-    name 'culture'
+    name Faker::Name.name
   end
 end

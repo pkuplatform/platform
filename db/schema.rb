@@ -51,7 +51,8 @@ ActiveRecord::Schema.define(:version => 20111113063738) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
-    t.text     "content"
+    t.string   "title"
+    t.text     "body"
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.datetime "created_at"
