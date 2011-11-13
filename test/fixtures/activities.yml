@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  group: 
+  title: MyString
+  description: MyText
+  start_at: 2011-11-13 13:47:52
+  end_at: 2011-11-13 13:47:52
+  location: 
+  public: false
+  poster_file_name: MyString
+  poster_content_type: MyString
+  poster_file_size: 1
+  poster_updated_at: 2011-11-13 13:47:52
+
+two:
+  group: 
+  title: MyString
+  description: MyText
+  start_at: 2011-11-13 13:47:52
+  end_at: 2011-11-13 13:47:52
+  location: 
+  public: false
+  poster_file_name: MyString
+  poster_content_type: MyString
+  poster_file_size: 1
+  poster_updated_at: 2011-11-13 13:47:52

@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Slogan:</b>
+  <%= @group.slogan %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @group.description %>
+</p>
+
+<p>
+  <b>History:</b>
+  <%= @group.history %>
+</p>
+
+<p>
+  <b>Organization:</b>
+  <%= @group.organization %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @group.email %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @group.status %>
+</p>
+
+<p>
+  <b>Logo file name:</b>
+  <%= @group.logo_file_name %>
+</p>
+
+<p>
+  <b>Logo content type:</b>
+  <%= @group.logo_content_type %>
+</p>
+
+<p>
+  <b>Logo file size:</b>
+  <%= @group.logo_file_size %>
+</p>
+
+<p>
+  <b>Logo updated at:</b>
+  <%= @group.logo_updated_at %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%= @group.points %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

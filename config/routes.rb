@@ -1,4 +1,11 @@
 Platform::Application.routes.draw do
+  resources :profiles
+
+  get "users/index"
+
+  devise_for :users
+  mailboxes_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

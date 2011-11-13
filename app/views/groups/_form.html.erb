@@ -1,0 +1,65 @@
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :slogan %><br />
+    <%= f.text_field :slogan %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :history %><br />
+    <%= f.text_area :history %>
+  </div>
+  <div class="field">
+    <%= f.label :organization %><br />
+    <%= f.text_area :organization %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :logo_file_name %><br />
+    <%= f.text_field :logo_file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :logo_content_type %><br />
+    <%= f.text_field :logo_content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :logo_file_size %><br />
+    <%= f.number_field :logo_file_size %>
+  </div>
+  <div class="field">
+    <%= f.label :logo_updated_at %><br />
+    <%= f.datetime_select :logo_updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :points %><br />
+    <%= f.number_field :points %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

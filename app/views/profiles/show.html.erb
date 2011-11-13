@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @profile.user %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <b>Nickname:</b>
+  <%= @profile.nickname %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @profile.gender %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%= @profile.student_id %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @profile.phone %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%= @profile.points %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @profile.description %>
+</p>
+
+<p>
+  <b>Avatar file name:</b>
+  <%= @profile.avatar_file_name %>
+</p>
+
+<p>
+  <b>Avatar content type:</b>
+  <%= @profile.avatar_content_type %>
+</p>
+
+<p>
+  <b>Avatar file size:</b>
+  <%= @profile.avatar_file_size %>
+</p>
+
+<p>
+  <b>Avatar updated at:</b>
+  <%= @profile.avatar_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

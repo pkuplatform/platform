@@ -1,0 +1,65 @@
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.number_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :student_id %><br />
+    <%= f.text_field :student_id %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :points %><br />
+    <%= f.number_field :points %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar_file_name %><br />
+    <%= f.text_field :avatar_file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar_content_type %><br />
+    <%= f.text_field :avatar_content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar_file_size %><br />
+    <%= f.number_field :avatar_file_size %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar_updated_at %><br />
+    <%= f.datetime_select :avatar_updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
