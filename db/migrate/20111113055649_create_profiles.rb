@@ -2,6 +2,7 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.references :user
+      t.integer :status
       t.string :name
       t.string :nickname
       t.integer :gender

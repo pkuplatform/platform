@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20111113063738) do
     t.datetime "end_at"
     t.integer  "location_id"
     t.boolean  "public"
+    t.integer  "status"
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -125,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20111113063738) do
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "status"
     t.string   "name"
     t.string   "nickname"
     t.integer  "gender"
@@ -172,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20111113063738) do
   end
 
   add_index "user_groups", ["group_id"], :name => "index_user_groups_on_group_id"
+  add_index "user_groups", ["user_id"], :name => "index_user_groups_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

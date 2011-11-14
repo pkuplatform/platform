@@ -6,19 +6,19 @@ User.delete_all
   user.password_confirmation = '123456'
   user.save!
 
-  Random.rand(1..10).times do |j|
+  Random.rand(10..50).times do |j|
     user_group = UserGroup.new
     user_group.user_id = user.id
     user_group.group_id = Random.rand(1..100)
-    user_group.status = Random.rand(1..3)
-    user_group.save!
+    user_group.status = Random.rand(0..15)
+    user_group.save
   end
 
   Random.rand(10..100).times do |k|
     user_activity = UserActivity.new
     user_activity.user_id = user.id
     user_activity.activity_id = Random.rand(1..500)
-    user_activity.status = Random.rand(1..3)
-    user_activity.save!
+    user_activity.status = Random.rand(0..31)
+    user_activity.save
   end
 end

@@ -8,6 +8,7 @@ class CreateActivities < ActiveRecord::Migration
       t.datetime :end_at
       t.references :location
       t.boolean :public
+      t.integer :status
       t.string :poster_file_name
       t.string :poster_content_type
       t.integer :poster_file_size

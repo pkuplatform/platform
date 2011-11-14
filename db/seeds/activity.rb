@@ -8,6 +8,7 @@ Activity.delete_all
   activity.end_at = Random.rand(2..99).hours.ago
   activity.location_id = Random.rand(1..100)
   activity.public = Random.rand(1..2).odd?
+  activity.status = Random.rand(0..3)
   activity.poster = File.open(File.expand_path("../../pics/#{Random.rand(1..52)}.jpg", __FILE__))
   activity.points = Random.rand(1..100)
   activity.save!
