@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111113063738) do
+ActiveRecord::Schema.define(:version => 20111114084933) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -62,6 +62,54 @@ ActiveRecord::Schema.define(:version => 20111113063738) do
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "form_booth_application_forms", :force => true do |t|
+    t.string   "app_name"
+    t.integer  "app_gender"
+    t.string   "app_title"
+    t.string   "app_email"
+    t.string   "app_phone"
+    t.string   "app_institution"
+    t.string   "person_in_charge"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.integer  "booth_count"
+    t.string   "app_reason"
+    t.string   "display_form"
+    t.boolean  "app_confirm"
+    t.date     "app_confirm_date"
+    t.string   "boss_advice"
+    t.boolean  "boss_confirm"
+    t.date     "boss_confirm_date"
+    t.string   "sd_advice"
+    t.boolean  "sd_confirm"
+    t.date     "sd_confirm_date"
+    t.string   "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "form_second_building_application_forms", :force => true do |t|
+    t.string   "organizer"
+    t.string   "person_in_charge"
+    t.string   "contacter_name"
+    t.string   "contacter_school"
+    t.string   "contact_way"
+    t.string   "speaker"
+    t.string   "institution"
+    t.string   "speaker_title"
+    t.string   "speech_title"
+    t.string   "video_content"
+    t.string   "other_type"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer  "attend_count"
+    t.string   "boss_reply"
+    t.string   "provost_reply"
+    t.string   "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "groups", :force => true do |t|
     t.integer  "category_id"
