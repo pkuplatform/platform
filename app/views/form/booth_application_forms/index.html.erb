@@ -1,0 +1,63 @@
+<h1>Listing form_booth_application_forms</h1>
+
+<table>
+  <tr>
+    <th>App name</th>
+    <th>App gender</th>
+    <th>App title</th>
+    <th>App email</th>
+    <th>App phone</th>
+    <th>App institution</th>
+    <th>Person in charge</th>
+    <th>Start at</th>
+    <th>End at</th>
+    <th>Booth count</th>
+    <th>App reason</th>
+    <th>Display form</th>
+    <th>App confirm</th>
+    <th>App confirm date</th>
+    <th>Boss advice</th>
+    <th>Boss confirm</th>
+    <th>Boss confirm date</th>
+    <th>Sd advice</th>
+    <th>Sd confirm</th>
+    <th>Sd confirm date</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @form_booth_application_forms.each do |form_booth_application_form| %>
+  <tr>
+    <td><%= form_booth_application_form.app_name %></td>
+    <td><%= form_booth_application_form.app_gender %></td>
+    <td><%= form_booth_application_form.app_title %></td>
+    <td><%= form_booth_application_form.app_email %></td>
+    <td><%= form_booth_application_form.app_phone %></td>
+    <td><%= form_booth_application_form.app_institution %></td>
+    <td><%= form_booth_application_form.person_in_charge %></td>
+    <td><%= form_booth_application_form.start_at %></td>
+    <td><%= form_booth_application_form.end_at %></td>
+    <td><%= form_booth_application_form.booth_count %></td>
+    <td><%= form_booth_application_form.app_reason %></td>
+    <td><%= form_booth_application_form.display_form %></td>
+    <td><%= form_booth_application_form.app_confirm %></td>
+    <td><%= form_booth_application_form.app_confirm_date %></td>
+    <td><%= form_booth_application_form.boss_advice %></td>
+    <td><%= form_booth_application_form.boss_confirm %></td>
+    <td><%= form_booth_application_form.boss_confirm_date %></td>
+    <td><%= form_booth_application_form.sd_advice %></td>
+    <td><%= form_booth_application_form.sd_confirm %></td>
+    <td><%= form_booth_application_form.sd_confirm_date %></td>
+    <td><%= form_booth_application_form.remark %></td>
+    <td><%= link_to 'Show', form_booth_application_form %></td>
+    <td><%= link_to 'Edit', edit_form_booth_application_form_path(form_booth_application_form) %></td>
+    <td><%= link_to 'Destroy', form_booth_application_form, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Booth application form', new_form_booth_application_form_path %>
