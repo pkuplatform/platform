@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114084933) do
+ActiveRecord::Schema.define(:version => 20111117163203) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -130,6 +130,13 @@ ActiveRecord::Schema.define(:version => 20111114084933) do
   end
 
   add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.integer  "capacity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "message_copies", :force => true do |t|
     t.integer  "sent_messageable_id"

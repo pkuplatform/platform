@@ -10,9 +10,17 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_one :profile
+  has_many :user_groups
   has_many :groups, :through => :user_groups
+  has_many :user_activities
   has_many :activities, :through => :user_activities
   has_many :albums, :as => :imageable
+
+
+  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status | 16 = 0"]
+  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["status | 16 = 0"]
+
+  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["status | 16 = 16"]
 
   def name
     profile.name

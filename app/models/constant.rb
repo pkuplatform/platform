@@ -11,4 +11,7 @@ class Constant
   Planner = 7
   Manager = 11
   Admin = 15
+  
+  Like = 16
+  
 end
