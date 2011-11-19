@@ -1,0 +1,85 @@
+<%= form_for(@form_second_building_application_form) do |f| %>
+  <% if @form_second_building_application_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form_second_building_application_form.errors.count, "error") %> prohibited this form_second_building_application_form from being saved:</h2>
+
+      <ul>
+      <% @form_second_building_application_form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :organizer %><br />
+    <%= f.text_field :organizer %>
+  </div>
+  <div class="field">
+    <%= f.label :person_in_charge %><br />
+    <%= f.text_field :person_in_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :contacter_name %><br />
+    <%= f.text_field :contacter_name %>
+  </div>
+  <div class="field">
+    <%= f.label :contacter_school %><br />
+    <%= f.text_field :contacter_school %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_way %><br />
+    <%= f.text_field :contact_way %>
+  </div>
+  <div class="field">
+    <%= f.label :speaker %><br />
+    <%= f.text_field :speaker %>
+  </div>
+  <div class="field">
+    <%= f.label :institution %><br />
+    <%= f.text_field :institution %>
+  </div>
+  <div class="field">
+    <%= f.label :speaker_title %><br />
+    <%= f.text_field :speaker_title %>
+  </div>
+  <div class="field">
+    <%= f.label :speech_title %><br />
+    <%= f.text_field :speech_title %>
+  </div>
+  <div class="field">
+    <%= f.label :video_content %><br />
+    <%= f.text_field :video_content %>
+  </div>
+  <div class="field">
+    <%= f.label :other_type %><br />
+    <%= f.text_field :other_type %>
+  </div>
+  <div class="field">
+    <%= f.label :start_at %><br />
+    <%= f.datetime_select :start_at %>
+  </div>
+  <div class="field">
+    <%= f.label :end_at %><br />
+    <%= f.datetime_select :end_at %>
+  </div>
+  <div class="field">
+    <%= f.label :attend_count %><br />
+    <%= f.number_field :attend_count %>
+  </div>
+  <div class="field">
+    <%= f.label :boss_reply %><br />
+    <%= f.text_field :boss_reply %>
+  </div>
+  <div class="field">
+    <%= f.label :provost_reply %><br />
+    <%= f.text_field :provost_reply %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_field :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,11 +1,40 @@
 Platform::Application.routes.draw do
-  resources :users
-  resources :profiles
-
-  # get "users/index"
 
   devise_for :users
   mailboxes_for :users
+  resources :users
+  resources :profiles
+
+  resources :groups do
+    resources :albums
+    resources :comments
+    member do
+      get 'join'
+      get 'like'
+    end
+  end
+
+  resources :activities do
+    resources :albums
+    resources :comments
+    member do
+      get 'join'
+      get 'like'
+    end
+  end
+
+  resources :albums do
+    resources :pictures
+  end
+
+  resources :pictures do
+    resources :comments
+  end
+
+  namespace :form do 
+    resources :booth_application_forms 
+    resources :second_building_application_forms
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -38,31 +67,6 @@ Platform::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-  resources :groups do
-    resources :albums
-    resources :comments
-    member do
-      get 'join'
-      get 'like'
-    end
-  end
-
-  resources :activities do
-    resources :albums
-    resources :comments
-    member do
-      get 'join'
-      get 'like'
-    end
-  end
-
-  resources :albums do
-    resources :pictures
-  end
-
-  resources :pictures do
-    resources :comments
-  end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do

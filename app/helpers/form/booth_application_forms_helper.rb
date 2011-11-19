@@ -1,0 +1,2 @@
+module Form::BoothApplicationFormsHelper
+end
