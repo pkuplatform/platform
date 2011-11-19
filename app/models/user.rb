@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   has_many :albums, :as => :imageable
 
 
-  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status | 16 = 0"]
-  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["status | 16 = 0"]
+  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 65536 = 0"]
+  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & 65536 = 0"]
 
-  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["status | 16 = 16"]
+  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 65536 = 65536"]
 
   def name
     profile.name
