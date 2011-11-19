@@ -3,9 +3,11 @@
 <%= image_tag @user.avatar %>
 <hr />
 <p>My activities</p>
-<%= render :partial => "activities/activities_list_without_description", :locals => {:activities => @my_activities} %>
+<%= render :partial => "activities/activities_list_without_description", :locals => {:activities => @my_activities.limit(5)} %>
 <hr />
 <p>Like groups</p>
-<%= render :partial => "groups/group_list", :locals => {:groups => @user.like_groups} %>
-
-
+<%= render :partial => "groups/group_list", :locals => {:groups => @like_groups.limit(5)} %>
+<hr />
+<p>Like activities</p>
+<%= render :partial => "activities/activities_list_without_description", :locals => {:activities => @like_activities.limit(5)} %>
+<hr />
