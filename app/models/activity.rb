@@ -1,6 +1,7 @@
 class Activity < ActiveRecord::Base
 
   acts_as_taggable
+  acts_as_commentable
 
   belongs_to :group
   belongs_to :location

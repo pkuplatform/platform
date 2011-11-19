@@ -1,4 +1,8 @@
 class Group < ActiveRecord::Base
+
+  acts_as_taggable
+  acts_as_commentable
+
   belongs_to :category
   has_many :activities
   has_many :user_groups
