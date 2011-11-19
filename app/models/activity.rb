@@ -1,4 +1,7 @@
 class Activity < ActiveRecord::Base
+
+  acts_as_taggable
+
   belongs_to :group
   belongs_to :location
   has_many :user_activities
