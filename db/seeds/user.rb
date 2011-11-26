@@ -1,7 +1,7 @@
 User.delete_all
 100.times do |i|
   user = User.new
-  user.email = Faker::Internet.free_email
+  user.email = i.to_s+Faker::Internet.free_email
   user.password = '123456'
   user.password_confirmation = '123456'
   user.save!
