@@ -1,0 +1,4 @@
+.clear.actvity_list
+  %ul
+    - activities.each do |activity|
+      %p= render :partial => "activities/single_activity_without_description", :locals => {:activity => activity}
