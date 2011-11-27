@@ -1,0 +1,16 @@
+%p User Info
+= @user.name
+= image_tag @user.avatar
+%hr/
+%p My activities
+.activities
+  = render :partial => "activities/activity", :collection => @my_activities.limit(5)
+%hr/
+%p Like groups
+.groups
+  = render :partial => "groups/group", :collection => @like_groups.limit(5)
+%hr/
+%p Like activities
+.activities
+  = render :partial => "activities/activity", :collection => @like_activities.limit(5)
+%hr/

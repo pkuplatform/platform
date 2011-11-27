@@ -8,8 +8,9 @@ class Group < ActiveRecord::Base
   has_many :user_groups
   has_many :albums, :as => :imageable
   has_many :tags, :as => :tagable
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :logo, :styles => { :medium => "300x300>", :small => "128x128>", :thumb => "100x100>" }
 
+  has_many :test, :through => :user_groups, :source => :user
   has_many :members,     :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 768 = 768"]
   has_many :planners,    :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 512 = 512"]
   has_many :managers,    :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 256 = 256"]

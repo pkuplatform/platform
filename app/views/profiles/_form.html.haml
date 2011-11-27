@@ -1,0 +1,39 @@
+= form_for @profile, :html => { :multipart => true } do |f|
+  - if @profile.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@profile.errors.count, "error")
+        prohibited this profile from being saved:
+      %ul
+        - @profile.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname
+  .field
+    = f.label :gender
+    %br/
+    = f.number_field :gender
+  .field
+    = f.label :student_id
+    %br/
+    = f.text_field :student_id
+  .field
+    = f.label :phone
+    %br/
+    = f.text_field :phone
+  .field
+    = f.label :description
+    %br/
+    = f.text_area :description
+  .field
+    = f.label :avatar
+    %br/
+    = f.file_field :avatar
+  .actions
+    = f.submit

@@ -1,10 +1,10 @@
 Album.delete_all
-200.times do |i|
+20.times do |i|
   album = Album.new
   album.imageable = Activity.find(rand_range(1..50))
   album.title = Faker::Lorem.sentence(5)
   album.save
-  30.times do |j|
+  10.times do |j|
     picture = Picture.new
     picture.photo = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
     picture.album = album

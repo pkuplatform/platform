@@ -1,0 +1,26 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @profile.name
+%p
+  %b Nickname:
+  = @profile.nickname
+%p
+  %b Gender:
+  = @profile.gender
+%p
+  %b Student:
+  = @profile.student_id
+%p
+  %b Phone:
+  = @profile.phone
+%p
+  %b Points:
+  = @profile.points
+%p
+  %b Description:
+  = @profile.description
+%p
+  %b Avatar:
+  = @profile.avatar.url(:thumb)
+= link_to 'Edit', edit_user_profile_path(@profile.user, @profile)

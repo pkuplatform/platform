@@ -3,7 +3,6 @@ Platform::Application.routes.draw do
   devise_for :users
   mailboxes_for :users
   resources :users
-  resources :profiles
 
   resources :groups do
     resources :albums

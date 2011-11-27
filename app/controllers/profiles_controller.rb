@@ -1,19 +1,8 @@
 class ProfilesController < ApplicationController
-  # GET /profiles
-  # GET /profiles.json
-  def index
-    @profiles = Profile.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @profiles }
-    end
-  end
-
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(params[:user_id])
 
     respond_to do |format|
       format.html # show.html.erb

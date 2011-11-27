@@ -1,0 +1,29 @@
+%h1 Listing profiles
+%table
+  %tr
+    %th Name
+    %th Nickname
+    %th Gender
+    %th Student
+    %th Phone
+    %th Points
+    %th Description
+    %th Avatar
+    %th
+    %th
+    %th
+  - @profiles.each do |profile|
+    %tr
+      %td= profile.name
+      %td= profile.nickname
+      %td= profile.gender
+      %td= profile.student_id
+      %td= profile.phone
+      %td= profile.points
+      %td= profile.description
+      %td= profile.avatar.url(:thumb)
+      %td= link_to 'Show', user_profile_path(profile.user)
+      %td= link_to 'Edit', edit_user_profile_path(profile.user, profile)
+      %td= link_to 'Destroy', user_profile_path(profile.user), confirm: 'Are you sure?', method: :delete
+%br/
+= link_to 'New Profile', new_user_profile_path(profile.user)
