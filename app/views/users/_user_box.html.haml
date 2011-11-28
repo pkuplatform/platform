@@ -5,7 +5,7 @@
     = current_user.profile.name
     %hr
     .mailbox
-      = link_to "Mail Box", show_mailboxes_path(current_user)
+      = link_to "Mail Box", mailboxes_path
     .settins
       = link_to "Settings", edit_profile_path(current_user.profile)
     .sign-out

@@ -1,6 +1,9 @@
 .favors.box
   .box-header
     = "My favors"
+    = link_to "groups", "#"
+    = link_to "activities", "#"
+    = link_to "users", "#"
   .box-body
     %ul
       = render :partial => "groups/thumb", :collection => @like_groups

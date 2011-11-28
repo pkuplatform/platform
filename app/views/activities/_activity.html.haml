@@ -1,4 +1,5 @@
 .activity
+
   .span-2.avatar
     = link_to (image_tag activity.poster.url(:thumb)), activity 
   .span-11.content
@@ -11,8 +12,7 @@
         = "时间：#{format_datetime activity.start_at} 至 #{format_datetime activity.end_at}"
     .location
       = "地点：#{activity.location}"
-    .more
-      = link_to '详情', activity
+
   .span-2.last.poster
     = link_to (image_tag activity.poster.url(:thumb)), activity 
   .clear

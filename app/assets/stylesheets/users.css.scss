@@ -13,6 +13,17 @@ body {
   height: 175px; 
   background: url(logo.png); 
   background-position: -130px 0px;
+  .links {
+    color:#885d7a;
+    a {
+      color:#885d7a;
+      &:focus,&:hover {
+        color:#f99b15;
+      }
+    }
+    .left  { float: left; }
+    .right { float: right; }
+  }
 }
 
 .tools  { 
@@ -20,10 +31,7 @@ body {
   margin-top: 75px; 
 }
 
-.links {
-  .left  { float: left; }
-  .right { float: right; }
-}
+
 
 .favors {
   .box-body { margin: 0px -9px; }
@@ -35,11 +43,14 @@ body {
 
 .search { 
   padding: 5px 10px; 
-  background-color: #502F45; 
+  background-color: rgba(136,93,122,0.4); 
   margin-top: 10px;
-  opacity: 0.5;
   @include box-radius(10px);
-  input[type=text] { width: 370px; height: 15px; }
+  input[type=text] {
+   width: 370px; 
+   height: 15px; 
+   border:1px solid #c94b66;
+ }
 }
 
 .user-box { 
@@ -59,16 +70,22 @@ body {
     height: 30px;
     line-height: 30px;
     margin-top: -10px;
+    color:#400c22;
+    font-size:1.5em;
+    @include orange-link;
   }
 }
 
 .logo { width: 64px; height: 64px; }
-.more a { float: right; }
+.more {     @include orange-link; }
 
 .activity {
   padding: 10px 0px;
   margin: 10px 0px;
   border-bottom: 1px solid #BBB;
+  .title a{
+    font-size:1.1em;
+  }
 }
 
 .user {
