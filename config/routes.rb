@@ -1,8 +1,9 @@
 Platform::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :path_prefix => 'd'
   mailboxes_for :users
   resources :users
+  resources :profiles
 
   resources :groups do
     resources :albums

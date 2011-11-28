@@ -1,0 +1,13 @@
+.user.box
+  .span-4.avatar.last
+    = image_tag current_user.profile.avatar.url(:small)
+  .span-2
+    = current_user.profile.name
+    %hr
+    .mailbox
+      = link_to "Mail Box", show_mailboxes_path(current_user)
+    .settins
+      = link_to "Settings", edit_profile_path(current_user.profile)
+    .sign-out
+      = link_to "Sign out", destroy_user_session_path
+  .clear

@@ -1,0 +1,17 @@
+.header
+  .span-12.tools
+    .links
+      .left
+        = link_to "Index", current_user
+        = link_to "Groups", groups_path
+        = link_to "Activities", activities_path
+      .right
+        = current_user.profile.name
+        = link_to "Mail Box", show_mailboxes_path(current_user)
+        = link_to "Settings", edit_profile_path(current_user)
+        = link_to "Sign out", destroy_user_session_path
+      .clear
+    .search
+      = search_form_for @q do |f|
+        = f.text_field :name_cont
+        = f.submit
