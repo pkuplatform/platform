@@ -53,6 +53,7 @@ body {
  }
 }
 
+
 .user-box { 
   margin-bottom: 20px;
   margin-top: 20px;
@@ -79,10 +80,18 @@ body {
 .logo { width: 64px; height: 64px; }
 .more {     @include orange-link; }
 
+.newsfeed {
+  padding-left:40px;
+  .box-header{
+    margin-left:-20px;
+  }
+}
 .activity {
   padding: 10px 0px;
   margin: 10px 0px;
-  border-bottom: 1px solid #BBB;
+  .content {
+    border-bottom: 1px solid #BBB;
+  }
   .title a{
     font-size:1.1em;
   }
@@ -91,3 +100,32 @@ body {
 .user {
   background-image: none !important ;
 }
+
+.sign_in{
+  background-image: none !important ;
+  width:370px;
+  margin:0 auto;
+  padding:10px;
+  label {
+    width:80px;
+    display:inline-block;
+  }
+  .options {
+    margin:10px;
+    label{
+      width: auto;
+      font-weight:300;
+    }
+  }
+}
+.sign_logo { 
+  height: 160px;
+  width:370px;
+  margin: 0 auto; 
+  margin-top:150px;
+  img {
+    height: 175px;
+    width: 1000px;
+    margin-left:-100px;
+  }
+} 
