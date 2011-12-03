@@ -14,9 +14,9 @@
         |
         = link_to "Settings", edit_profile_path(current_user)
         |
-        = link_to "Sign out", destroy_user_session_path
+        = link_to "Sign out", destroy_user_session_path, :method => :delete
       .clear
     .search
-      = search_form_for @q do |f|
+      = search_form_for Group.search() do |f|
         = f.text_field :name_cont,:placeholder=>"Search..."
         = f.submit

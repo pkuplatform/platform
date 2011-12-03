@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :user_groups
   has_many :user_activities
   has_many :activities, :through => :user_activities
+  has_many :newsfeeds
   has_many :albums, :as => :imageable
 
 

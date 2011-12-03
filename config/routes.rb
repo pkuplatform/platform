@@ -1,6 +1,6 @@
 Platform::Application.routes.draw do
 
-  devise_for :users, :path_prefix => 'd'
+  devise_for :users, :controllers => { :sessions => "sessions" }
   mailboxes_for :users
   resources :users
   resources :profiles

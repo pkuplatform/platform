@@ -1,0 +1,21 @@
+.index.box
+  .box-header
+    = "Group index"
+  .box-body
+    .labels
+      = link_to "#", "#"
+      |
+      = link_to "A", "#"
+      |
+      = link_to "B", "#"
+      |
+      = link_to "C", "#"
+      |
+      = link_to "D", "#"
+      |
+      = link_to "E", "#"
+      |
+      = link_to "F", "#"
+      |
+    .categories
+      = render 'category', :collection => Category.all

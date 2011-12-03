@@ -1,0 +1,6 @@
+.category
+  .header
+    = category.name
+  %ul.body
+    - category.groups.each do |group|
+      %li= group.name
