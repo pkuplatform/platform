@@ -1,12 +1,12 @@
 .container
   %h1 北大社团平台
   %hr/
-  #slider.span-24
-    This is a Slider
+  #slider This is a Slider
   = render "sidebar"
-  .span-15.push-1
+  .span-16.last
     #right-top
       .header
+<<<<<<< HEAD
         %a.title 活动信息
         %ul
           %li
@@ -40,3 +40,7 @@
                 .memberpic
                   = image_tag member.avatar
                 = link_to member.name, member
+=======
+        .title 活动信息
+      = render :partial => "activity", :collection => @group.activities
+>>>>>>> 41c3b31073fd6d7a8884d0e37f4c4945698cbb17

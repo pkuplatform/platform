@@ -1,39 +1,28 @@
-.span-8
+.span-7.append-1
   #group_card
-    =image_tag @group.logo.url(:medium)
+    =image_tag @group.logo.url(:small)
     #group_text.span-3
       %p= @group.name
-      成长值图标
-      = # image_tag current_user.avatar
       %hr/
       %p
         - if @group.members.include?(current_user)
-          = # link_to t(:i_quit),join_group_url
+          = link_to t(:i_quit),join_group_url
         - else
-          = # link_to t(:i_join),join_group_url
-      %p
-        %a{:href => ""} 留言
+          = link_to t(:i_join),join_group_url
   #group_infos.about_group
     / 社团信息
     .header
       %a.title 社团信息
-      %ul
-        %li
-          %a{:href => "#"} 社团简介
-        %li
-          %a{:href => "#"} 组织框架
     .clear.group_info_text
       = simple_format @group.description
     %a.moretoread 浏览更多
-  #group_infos.about_group
-    / 社团信息
+    
+  #group_members
     .header
-      %a.title 社团历史
+      %a.title 社团成员
+    .members
       %ul
-        %li
-          %a{:href => "#"} 社团大事记
-        %li
-          %a{:href => "#"} 历任骨干
-    .clear.group_info_text
-      = simple_format @group.history
-    %a.moretoread 浏览更多
+        - @group.test.each do |member|
+          %li.member
+            = image_tag member.avatar
+            = link_to member.name, member

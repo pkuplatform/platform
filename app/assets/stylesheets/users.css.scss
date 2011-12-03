@@ -1,3 +1,131 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'css3';
+
+body { 
+  background: url(bg.png) repeat #CEF; 
+  background-position: -200px 0px;
+}
+
+.header { 
+  height: 175px; 
+  background: url(logo.png); 
+  background-position: -130px 0px;
+  .links {
+    color:#885d7a;
+    a {
+      color:#885d7a;
+      &:focus,&:hover {
+        color:#f99b15;
+      }
+    }
+    .left  { float: left; }
+    .right { float: right; }
+  }
+}
+
+.tools  { 
+  float: right; 
+  margin-top: 75px; 
+}
+
+
+
+.favors {
+  .box-body { margin: 0px -9px; }
+  border: 1px solid #666;
+  li { list-style: none; float: left; margin: 9px; }
+  ul{ margin: 0; padding: 0; }
+  li .name { width: 64px; }
+}
+
+.search { 
+  padding: 5px 10px; 
+  background-color: rgba(136,93,122,0.4); 
+  margin-top: 10px;
+  @include box-radius(10px);
+  input[type=text] {
+   width: 370px; 
+   height: 15px; 
+   border:1px solid #c94b66;
+ }
+}
+
+
+.user-box { 
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.box {
+  @include box-radius;
+  @include box-shadow;
+  margin: 35px 0px;
+  padding: 20px;
+  background: url(circle.png) no-repeat white;
+  background-position: left top;
+  .box-header { 
+    border-bottom: 1px solid #666; 
+    height: 30px;
+    line-height: 30px;
+    margin-top: -10px;
+    color:#400c22;
+    font-size:1.5em;
+    @include orange-link;
+  }
+}
+
+.logo { width: 64px; height: 64px; }
+.more {     @include orange-link; }
+
+.newsfeed {
+  padding-left:40px;
+  .box-header{
+    margin-left:-20px;
+  }
+}
+.activity {
+  padding: 10px 0px;
+  margin: 10px 0px;
+  .content {
+    border-bottom: 1px solid #BBB;
+  }
+  .title a{
+    font-size:1.1em;
+  }
+}
+
+.user {
+  background-image: none !important ;
+}
+
+.sign_in{
+  background-image: none !important ;
+  width:370px;
+  margin:0 auto;
+  padding:10px;
+  label {
+    width:80px;
+    display:inline-block;
+  }
+  .options {
+    margin:10px;
+    label{
+      width: auto;
+      font-weight:300;
+    }
+  }
+}
+.sign_logo { 
+  height: 160px;
+  width:370px;
+  margin: 0 auto; 
+  margin-top:150px;
+  img {
+    height: 175px;
+    width: 1000px;
+    margin-left:-100px;
+  }
+} 

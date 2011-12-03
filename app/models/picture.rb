@@ -1,5 +1,9 @@
 class Picture < ActiveRecord::Base
+
+  acts_as_taggable
+  acts_as_commentable
+  
   belongs_to :album
   belongs_to :user
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :photo, :styles => { :medium => "300x300>", :small => "128x128>", :thumb => "64x64>" }
 end

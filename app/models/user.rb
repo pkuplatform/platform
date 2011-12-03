@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  acts_as_taggable
+
   has_mailbox
 
   # Include default devise modules. Others available are: :confirmable,
@@ -29,6 +32,10 @@ class User < ActiveRecord::Base
 
   def name
     profile.name
+  end
+
+  def after_initialize
+    profile = Profile.new
   end
 
   def avatar

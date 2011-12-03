@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+
   belongs_to :user
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :small => "128x128>", :thumb => "64x64>" }
 end

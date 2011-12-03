@@ -1,0 +1,27 @@
+= form_for @group, :html => { :multipart => true } do |f|
+  - if @group.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@group.errors.count, "error")
+        prohibited this group from being saved:
+      %ul
+        - @group.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :slogan
+    %br/
+    = f.text_field :slogan
+  .field
+    = f.label :email
+    %br/
+    = f.text_field :email
+  .field
+    = f.label :logo
+    %br/
+    = f.file_field :logo
+  .actions
+    = f.submit
