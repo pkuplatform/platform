@@ -1,0 +1,12 @@
+%ul.comments
+  %li.new-comment
+    .span-2
+      = image_tag current_user.avatar
+    .span-12.last
+      = form_tag  url_for(:action=>"comment"),:remote=>true  do
+        .span-10
+          = text_area_tag "comment-content"
+        .span-2.last
+          = submit_tag t(:new_comment)
+    .clear
+  = render :partial => 'share/comment', :collection => object.comments.recent

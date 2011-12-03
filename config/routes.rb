@@ -18,15 +18,16 @@ Platform::Application.routes.draw do
     member do
       get 'join'
       get 'like'
+      get 'activities/new' => 'activities#new'
     end
   end
 
   resources :activities do
     resources :albums
-    resources :comments
     member do
       get 'join'
       get 'like'
+      post 'comment'
     end
   end
 

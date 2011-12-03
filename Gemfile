@@ -19,6 +19,7 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
 
+#gem 'therubyracer'
 gem 'rufus-scheduler'
 gem 'annotate'
 gem 'therubyracer'
