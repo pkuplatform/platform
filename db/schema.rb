@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111117163203) do
+ActiveRecord::Schema.define(:version => 20111119153112) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -230,6 +230,17 @@ ActiveRecord::Schema.define(:version => 20111117163203) do
 
   add_index "user_groups", ["group_id"], :name => "index_user_groups_on_group_id"
   add_index "user_groups", ["user_id"], :name => "index_user_groups_on_user_id"
+
+  create_table "user_relations", :force => true do |t|
+    t.integer  "subject"
+    t.integer  "object"
+    t.integer  "relation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_relations", ["object"], :name => "index_user_relations_on_object"
+  add_index "user_relations", ["subject"], :name => "index_user_relations_on_subject"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -29,10 +29,10 @@
             = link_to admin.name, admin
           %br/
           开始时间：
-          = l @activity.start_at
+          = format_datetime @activity.start_at
           %br/
           结束时间：
-          = l @activity.end_at
+          = format_datetime @activity.end_at
           %br/
           地点：
           = # @activity.place

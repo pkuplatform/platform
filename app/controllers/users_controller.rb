@@ -8,7 +8,10 @@ class UsersController < ApplicationController
     @my_activities = @user.activities
     @like_groups = @user.like_groups
     @like_activities = @user.like_activities
+  end
 
+  def edit
+    @user = User.find(params[:id])
   end
 
 end

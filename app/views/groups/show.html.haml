@@ -27,7 +27,7 @@
             %a{:href => "#"} 聚会
           %li
             %a{:href => "#"} 其他
-      = render :partial => "activities/activities", :locals => {:activities => @group.activities}
+      = render :partial => "activities/activities_list_without_description", :locals => {:activities => @group.activities.limit(10)}
 
     #group_members
       .header

@@ -1,0 +1,2 @@
+= form_for current_user.user_relations.find_by_liked_id(@user), :html => { :method => :delete } do |f|
+  %div.actions= f.submit "dislike"

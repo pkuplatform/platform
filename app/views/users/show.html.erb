@@ -1,7 +1,13 @@
 <p>User Info</p>
 <%= @user.name %>
 <%= image_tag @user.avatar %>
-<hr />
+<% if not is_current_user %>
+  <% if not liking?(@user) %>
+    <%= render 'like' %>
+  <% else %>
+    <%= render 'dislike' %>
+  <% end %>
+<% end %>
 <p>My activities</p>
 <%= render :partial => "activities/activities_list_without_description", :locals => {:activities => @my_activities.limit(5)} %>
 <hr />

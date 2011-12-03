@@ -2,7 +2,12 @@ Platform::Application.routes.draw do
 
   devise_for :users
   mailboxes_for :users
-  resources :users
+  resources :users do
+    member do
+    #users/1/liking  他喜欢的人列表
+      get :liking, :liked
+    end
+  end
   resources :profiles
 
   resources :groups do
