@@ -1,13 +1,22 @@
 .user.box
   .span-4.avatar.last
-    = image_tag current_user.profile.avatar.url(:small)
+    = image_tag @user.profile.avatar.url(:small)
   .span-2.last
-    = current_user.profile.name
+    = @user.profile.name
     %hr
-    .mailbox
-      = link_to "Mail Box", mailboxes_path
-    .settins
-      = link_to "Settings", edit_profile_path(current_user.profile)
-    .sign-out
-      = link_to "Sign out", destroy_user_session_path, :method => :delete
+    - if is_current_user
+      .mailbox
+        = link_to "Mail Box", mailboxes_path
+      .settins
+        = link_to "Settings", edit_profile_path(@user.profile)
+    - else
+      .like_button
+      - if liking?(@user)
+        = form_for current_user.user_relations.find_by_liked_id(@user), :html => { :method => :delete } do |f|
+          %div.actions= f.submit "dislike"
+      - else
+        = form_for current_user.user_relations.build(:liked_id => @user.id) do |f|
+          %div= f.hidden_field :liked_id
+          %div.actions= f.submit "iLike"
+
   .clear

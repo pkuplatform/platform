@@ -2,8 +2,15 @@ Platform::Application.routes.draw do
 
   devise_for :users, :controllers => { :sessions => "sessions" }
   mailboxes_for :users
-  resources :users
+  resources :users do
+    member do
+    #users/1/liking  他喜欢的人列表
+      get :liking, :liked
+    end
+  end
   resources :profiles
+
+  resources :user_relations, :only => [:create, :destroy]
 
   resources :groups do
     resources :albums

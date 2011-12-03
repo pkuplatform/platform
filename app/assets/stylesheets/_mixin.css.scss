@@ -1,0 +1,8 @@
+@mixin box-thumb {
+  .box-body { margin: 0px -9px; }
+  border: 1px solid #666;
+  li { list-style: none; float: left; margin: 9px; }
+  ul { margin: 0; padding: 0; }
+  li .name { width: 64px; }
+  .logo { width: 64px; height: 64px; }
+}

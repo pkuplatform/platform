@@ -7,10 +7,10 @@
     .span-5.colborder
       .group
         = "Group: "
-        = link_to @activity.group.name,@activity.group
+        = link_to @activity.group.name, @activity.group
       .person_in_charge
         = "Admin: "
-        = link_to @activity.admins.first.name,@activity.admins.first
+        = link_to @activity.admins.first.name, @activity.admins.first
       .start_time
         = "Start at: "
         = @activity.start_at

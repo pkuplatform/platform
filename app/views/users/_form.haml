@@ -1,0 +1,35 @@
+= form_for @user, :html => { :multipart => true} do |f|
+  #reg
+    %h3 用户信息修改
+    - if @user.errors.any?
+      #errorExplanation
+        %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+    .infor
+      .field
+        = f.label :email
+        = @user.email
+      .field
+        = f.label :pswd
+        = f.password_field :pswd, :size => 0
+      .field
+        = f.label :pswd_confirmation
+        = f.password_field :pswd_confirmation, :size => 0
+    .infor
+      .field
+        = f.label :name
+        = f.text_field :name, :size => 0
+      .field
+        = f.label '上传头像'
+        = f.fields_for :picture do |p|
+          = p.file_field :photo
+        %p 上传头像请不要超过2M大小
+      .field
+        = f.label :phone
+        = f.phone_field :phone, :size => 0
+      .field
+        = f.label :descript, :class => "left"
+        = f.text_area :descript
+      .config
+        %button 确认修改

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'css3';
+@import 'mixin';
 
 body { 
   background: url(bg.png) repeat #CEF; 
@@ -30,6 +31,7 @@ body {
   float: right; 
   margin-top: 75px; 
 }
+
 
 
 
