@@ -4,4 +4,4 @@
     .new
       = link_to "Create New Activity!", activities_new_group_path(@group)
   .box-body
-    = render :partial => "activities/activity", :collection => @group.activities
+    = render :partial => "activities/activity", :collection => @group.activities.order("created_at DESC")

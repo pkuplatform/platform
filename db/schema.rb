@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20111203051531) do
     t.text     "description"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.integer  "location_id"
+    t.string   "location"
     t.boolean  "public"
     t.integer  "status"
     t.string   "poster_file_name"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20111203051531) do
   end
 
   add_index "activities", ["group_id"], :name => "index_activities_on_group_id"
-  add_index "activities", ["location_id"], :name => "index_activities_on_location_id"
 
   create_table "albums", :force => true do |t|
     t.string   "title"

@@ -1,7 +1,7 @@
 .activity
 
   .span-2.avatar
-    = link_to (image_tag activity.poster.url(:thumb)), activity 
+    = link_to (image_tag activity.poster.url(:thumb)), activity.poster.url(:big), :rel => "avatars"
   .span-12.content
     .span-10
       .title

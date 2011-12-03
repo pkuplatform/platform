@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
-    @activity = Activity.new
+    @activity = Group.find(params[:id]).activities.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,10 +51,10 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(params[:activity])
-    @activity.group_id = params[:id]
 
     respond_to do |format|
       if @activity.save
+        UserActivity.create(:user => current_user, :activity => @activity, :status => (1 << 8))
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else

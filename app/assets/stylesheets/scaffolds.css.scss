@@ -42,3 +42,5 @@ div {
 .tricol-list {
   @include box-thumb;
 }
+
+.box-header { white-space: nowrap; }
