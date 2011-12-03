@@ -3,7 +3,7 @@ require 'rufus/scheduler'
 
 scheduler = Rufus::Scheduler.start_new
 
-scheduler.every('1h') do
+scheduler.every('30s') do
   RankList.get_rank
   puts "----------get rank-----------\n"
 end

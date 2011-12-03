@@ -12,11 +12,18 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  has_one :profile
+  has_one  :profile
+
   has_many :user_groups
   has_many :groups, :through => :user_groups
+  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 131072 = 131072"]
+  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 65536 = 65536"]
+
   has_many :user_activities
   has_many :activities, :through => :user_activities
+  has_many :join_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & 131072 = 131072"]
+  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & 65536 = 65536"]
+
   has_many :newsfeeds
   has_many :albums, :as => :imageable
 
@@ -24,13 +31,6 @@ class User < ActiveRecord::Base
   has_many :users_i_like, :through => :user_relations, :source => :liked
   has_many :reverse_user_relations, :foreign_key => "liked_id", :class_name => "UserRelation", :dependent => :destroy
   has_many :users_like_me, :through => :reverse_user_relations,:source => :liking
-
-  has_many :subscribers, :through => :user_relations, :source => :liked
-
-  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 65536 = 0"]
-  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & 65536 = 0"]
-
-  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 65536 = 65536"]
 
   def name
     profile.name
@@ -46,5 +46,14 @@ class User < ActiveRecord::Base
 
   def dislike!(disliked)
     user_relations.find_by_liked_id(disliked).destroy
+  end
+
+  def subscribers
+    ret = Set.new()
+    users_like_me.each do |user|
+      ret.add user
+    end
+
+    ret.to_a
   end
 end
