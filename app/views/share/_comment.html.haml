@@ -1,17 +1,10 @@
-%ul.comments
-  %li.new-comment
-    .span-2
-      = image_tag current_user.avatar
-    .span-12.last
-
-    .clear
-  - object.comments.each do |comment|
-    %li
-      .span-2
-        = image_tag comment.user.avatar
-      .span-12.last
-        .comment-title  
-          = comment.title
-        .comment-body
-          = comment.body
-      .clear
+%li
+  .span-2
+    = image_tag comment.user.avatar
+  .span-12.last
+    .comment-title  
+      = link_to comment.user.name, comment.user
+      = " / #{comment.created_at}"
+    .comment-body
+      = comment.body
+  .clear
