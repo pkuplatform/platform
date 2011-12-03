@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20111203051531) do
-=======
 ActiveRecord::Schema.define(:version => 20111203094702) do
->>>>>>> 3100bd1298081e6e99ae60734084dc2136b56411
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
