@@ -7,10 +7,10 @@
     .span-4
       .group
         = "Group: "
-        = @activity.group
+        = @activity.group.name
       .person_in_charge
         = "Admin: "
-        = @activity.admins.first
+        = @activity.admins.first.name
       .start_time
         = "Start at: "
         = @activity.start_at
