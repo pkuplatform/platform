@@ -34,9 +34,6 @@ body {
 
 
 
-.favors {
-  @include box-thumb;
-}
 
 .search { 
   padding: 5px 10px; 
@@ -73,8 +70,6 @@ body {
     @include orange-link;
   }
 }
-
-.more {     @include orange-link; }
 
 .newsfeed {
   padding-left:40px;

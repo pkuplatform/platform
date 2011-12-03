@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+
   def index
+    redirect_to current_user
   end
 
   def show
+    if current_user.profile.nil?
+      redirect_to new_profile_path
+    end
     @user = User.find(params[:id])
     @q = Group.search(params[:q])
-    if @user.profile.nil?
-      profile = Profile.new
-      @user.profile = profile
-      profile.save
-    end
+    @my_activities = @user.activities
     @like_users = @user.users_i_like
     @like_activities = @user.activities
     @like_groups = @user.like_groups

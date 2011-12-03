@@ -5,12 +5,12 @@
   .box-header
     = "Contact"
   .box-body
-.attendant.box
+.attendant.tricol-list.box
   .box-header
     = "Attendants"
   .box-body
     %ul
-      = render :partial => "users/thumb", :collection => @likes
+      = render :partial => "users/thumb", :collection => @activity.users
     .clear
   .more
     = link_to "more", "#"
