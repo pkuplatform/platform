@@ -5,6 +5,13 @@
   .box-header
     = "Contact"
   .box-body
+    .phone
+      = "Phone: "
+      = @activity.admins.first.profile.phone
+    .email
+      = "Email: "
+      = @activity.admins.first.email
+    = @activity.description
 .attendant.tricol-list.box
   .box-header
     = "Attendants"
