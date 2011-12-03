@@ -42,6 +42,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(params[:activity])
+    @activity.group_id = params[:id]
 
     respond_to do |format|
       if @activity.save

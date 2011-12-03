@@ -6,7 +6,7 @@ Activity.delete_all
   activity.description = Faker::Lorem.paragraph(10)
   activity.start_at = rand_range(100..200).hours.ago
   activity.end_at = rand_range(2..99).hours.ago
-  activity.location_id = rand_range(1..100)
+  activity.location = Faker::Lorem.sentence(2)
   activity.public = rand_range(1..2).odd?
   activity.status = rand_range(0..3)
   activity.poster = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))

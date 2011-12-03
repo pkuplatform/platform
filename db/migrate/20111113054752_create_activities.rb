@@ -6,7 +6,7 @@ class CreateActivities < ActiveRecord::Migration
       t.text :description
       t.datetime :start_at
       t.datetime :end_at
-      t.references :location
+      t.string :location
       t.boolean :public
       t.integer :status
       t.string :poster_file_name
@@ -18,6 +18,5 @@ class CreateActivities < ActiveRecord::Migration
       t.timestamps
     end
     add_index :activities, :group_id
-    add_index :activities, :location_id
   end
 end

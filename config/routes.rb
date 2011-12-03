@@ -18,6 +18,7 @@ Platform::Application.routes.draw do
     member do
       get 'join'
       get 'like'
+      get 'activities/new' => 'activities#new'
     end
   end
 
