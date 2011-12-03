@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+
   # GET /pictures
   # GET /pictures.json
   def index
