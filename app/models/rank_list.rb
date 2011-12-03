@@ -54,7 +54,7 @@ private
     max = -1
     max_group = Group.first
     Group.all.each do |group|
-      previous_num = group.activities.where("activity.updated_at < ?", days_ago.days.ago).count
+      previous_num = group.activities.where("activities.updated_at < ?", days_ago.days.ago).count
       num = group.activities.count - previous_num
       if num > max then
         max = num

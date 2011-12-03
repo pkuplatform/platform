@@ -2,15 +2,13 @@ require 'rubygems'
 require 'rufus/scheduler'
 
 scheduler = Rufus::Scheduler.start_new
-=begin
 
-scheduler.every('24h') do
+scheduler.every('30s') do
   RankList.get_daily_rank
   puts "----------get daily rank-----------\n"
 end
 
-scheduler.every('7d') do
+scheduler.every('30s') do
   RankList.get_weekly_rank
-  puts "----------get daily rank-----------\n"
+  puts "----------get weekly rank-----------\n"
 end
-=end

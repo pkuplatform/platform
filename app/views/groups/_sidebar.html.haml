@@ -2,23 +2,14 @@
   .box-header
     = "24h Ranking"
   .box-body
-    -@weekly_ranks && @daily_ranks.each do |rank|
-      .rank
-        = rank.award
-        = rank.name
+    = render :partial => "share/rank", :locals => { :ranks => @daily_ranks }
 .month-ranking.box
   .box-header
     = "Month Ranking"
   .box-body
-    -@weekly_ranks && @weekly_ranks.each do |rank|
-      .rank
-        = rank.award
-        = rank.name
+    = render :partial => "share/rank", :locals => { :ranks => @weekly_ranks }
 .semester-ranking.box
   .box-header
     = "Semester Ranking"
   .box-body
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
+    = render :partial => "share/rank", :locals => { :ranks => @weekly_ranks }
