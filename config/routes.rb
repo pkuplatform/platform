@@ -10,6 +10,8 @@ Platform::Application.routes.draw do
   end
   resources :profiles
 
+  resources :user_relations, :only => [:create, :destroy]
+
   resources :groups do
     resources :albums
     resources :comments

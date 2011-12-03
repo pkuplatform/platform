@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129142043) do
+ActiveRecord::Schema.define(:version => 20111203094702) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(:version => 20111129142043) do
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.string   "subject_type"
+    t.integer  "subject_id"
+    t.string   "action"
+    t.string   "object_type"
+    t.integer  "object_id"
+    t.boolean  "processed",    :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "form_booth_application_forms", :force => true do |t|
     t.string   "app_name"
@@ -164,6 +175,17 @@ ActiveRecord::Schema.define(:version => 20111129142043) do
 
   add_index "messages", ["received_messageable_id", "sender_id"], :name => "inbox_idx"
 
+  create_table "newsfeeds", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "times",      :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "newsfeeds", ["event_id"], :name => "index_newsfeeds_on_event_id"
+  add_index "newsfeeds", ["user_id"], :name => "index_newsfeeds_on_user_id"
+
   create_table "pictures", :force => true do |t|
     t.integer  "album_id"
     t.integer  "user_id"
@@ -204,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20111129142043) do
     t.string   "award"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "identify_id"
   end
 
   create_table "taggings", :force => true do |t|
