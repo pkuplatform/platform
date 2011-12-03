@@ -11,7 +11,8 @@ class UsersController < ApplicationController
       @user.profile = profile
       profile.save
     end
-    @my_activities = @user.activities
+    @like_users = @user.users_i_like
+    @like_activities = @user.activities
     @like_groups = @user.like_groups
     @like_activities = @user.like_activities
   end
