@@ -3,6 +3,8 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.paginate(:page => params[:page])
+    @daily_ranks = Group.daily_ranks
+    @weekly_ranks = Group.weekly_ranks
 
     respond_to do |format|
       format.html # index.html.erb

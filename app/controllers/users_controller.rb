@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     @like_activities = @user.activities
     @like_groups = @user.like_groups
     @like_activities = @user.like_activities
-    @ranks = RankList.all
+    @join_activities = @user.join_activities
+    @daily_ranks = User.daily_ranks
   end
 
   def edit

@@ -3,6 +3,8 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.first(50)
+    @daily_ranks = Activity.daily_ranks
+    @weekly_ranks = Activity.weekly_ranks
 
     respond_to do |format|
       format.html # index.html.erb
