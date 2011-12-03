@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'css3';
+@import 'mixin';
 
 body { 
   background: url(bg.png) repeat #CEF; 
@@ -34,11 +35,7 @@ body {
 
 
 .favors {
-  .box-body { margin: 0px -9px; }
-  border: 1px solid #666;
-  li { list-style: none; float: left; margin: 9px; }
-  ul{ margin: 0; padding: 0; }
-  li .name { width: 64px; }
+  @include box-thumb;
 }
 
 .search { 
@@ -77,7 +74,6 @@ body {
   }
 }
 
-.logo { width: 64px; height: 64px; }
 .more {     @include orange-link; }
 
 .newsfeed {

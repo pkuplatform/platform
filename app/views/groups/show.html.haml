@@ -1,10 +1,9 @@
 .container
-  %h1 北大社团平台
-  %hr/
-  #slider This is a Slider
-  = render "sidebar"
-  .span-16.last
-    #right-top
-      .header
-        .title 活动信息
-      = render :partial => "activity", :collection => @group.activities
+  = render 'share/header'
+  = render 'slider'
+  .content
+    .span-7.append-1
+      = render "infobar"
+    .span-16.last
+      = render "center"
+  = render 'share/footer'
