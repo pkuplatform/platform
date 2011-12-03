@@ -104,7 +104,7 @@ body {
 .sign_box{
   background-image: none !important ;
   width:320px;
-  height:140px;
+  height:165px;
   margin:0 auto;
   margin-top:250px;
   z-index:1;
@@ -113,25 +113,46 @@ body {
   width:340px;
   height:180px;
   margin:0 auto;
-  margin-top:-210px;
+  margin-top:-235px;
   z-index:100;
+  font-size:16px;
+
   label {
-    width:60px;
+    width:50px;
     display:inline-block;
     text-align:right;
     margin-right:10px;
+    vertical-align:-4px;
   }
   input[type=email],input[type=password] {
     width:240px;
     height:20px;
-    font-size:16px;
+  }
+  span {
+    display:inline-block;
+    &.lefto {
+      text-align:right;
+    }
+    &.centero {
+      width: 40px;
+      text-align:center;
+    }
+    &.righto {
+    }
   }
   .options {
-    margin:10px;
+    margin:0 auto;
+    margin-top:15px;
+    width:300px;
     label{
-      width: auto;
-      font-weight:300;
+      font-weight:100;
+      margin:0;
+      width:auto !important;
     }
+  }
+  .bottons {
+    margin:0 auto;
+    margin-top:10px;
   }
 }
 .sign_bg { 
