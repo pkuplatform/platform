@@ -2,7 +2,7 @@
   .box-header
     = "24h Rankings"
   .box-body
-    - @ranks.each do |rank|
+    - @daily_ranks.each do |rank|
       .rank
         = rank.award
         = rank.name

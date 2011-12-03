@@ -10,10 +10,11 @@ User.delete_all
     user_group = UserGroup.new
     user_group.user_id = user.id
     user_group.group_id = rand_range(1..100)
-    status = 3
-    privilege = rand_range(0..3)
+    status = 1 << 2
+    privilege = rand_range(1..4)
+    like = rand_range(0..1)
     join = rand_range(0..1)
-    user_group.status = status + (privilege << 8) + (join << 16)
+    user_group.status = status + (1 << (7 + privilege)) + (like << 16) + (join << 17)
     user_group.save
   end
 
@@ -21,10 +22,11 @@ User.delete_all
     user_activity = UserActivity.new
     user_activity.user_id = user.id
     user_activity.activity_id = rand_range(1..500)
-    status = 3
-    privilege = rand_range(0..3)
+    status = 1 << 2
+    privilege = rand_range(1..4)
+    like = rand_range(0..1)
     join = rand_range(0..1)
-    user_activity.status = status + (privilege << 8) + (join << 16)
+    user_activity.status = status + (1 << (7 + privilege)) + (like << 16) + (join << 17)
     user_activity.save
   end
 end

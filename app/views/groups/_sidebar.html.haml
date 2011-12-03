@@ -2,18 +2,18 @@
   .box-header
     = "24h Ranking"
   .box-body
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
+    -@weekly_ranks && @daily_ranks.each do |rank|
+      .rank
+        = rank.award
+        = rank.name
 .month-ranking.box
   .box-header
     = "Month Ranking"
   .box-body
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
+    -@weekly_ranks && @weekly_ranks.each do |rank|
+      .rank
+        = rank.award
+        = rank.name
 .semester-ranking.box
   .box-header
     = "Semester Ranking"
