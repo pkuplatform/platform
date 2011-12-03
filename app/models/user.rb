@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :reverse_user_relations, :foreign_key => "liked_id", :class_name => "UserRelation", :dependent => :destroy
   has_many :users_like_me, :through => :reverse_user_relations,:source => :liking
 
+  has_many :subscribers, :through => :user_relations, :source => :liked
 
   has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 65536 = 0"]
   has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & 65536 = 0"]
@@ -33,10 +34,6 @@ class User < ActiveRecord::Base
 
   def name
     profile.name
-  end
-
-  def after_initialize
-    profile = Profile.new
   end
 
   def avatar
