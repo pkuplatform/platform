@@ -1,0 +1,17 @@
+.poster.box
+  .box-body
+    = image_tag @activity.poster.url(:medium)
+.contact.box
+  .box-header
+    = "Contact"
+  .box-body
+.attendant.box
+  .box-header
+    = "Attendants"
+  .box-body
+    %ul
+      = render :partial => "users/thumb", :collection => @likes
+    .clear
+  .more
+    = link_to "more", "#"
+    .clear

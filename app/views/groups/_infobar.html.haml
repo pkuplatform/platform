@@ -1,0 +1,17 @@
+.logo.box
+  .box-body
+    = image_tag @group.logo.url(:medium)
+.info.box
+  .box-header
+    = "Info"
+  .box-body
+.members.box
+  .box-header
+    = "Members"
+  .box-body
+    %ul
+      = render :partial => "users/thumb", :collection => @group.members
+    .clear
+  .more
+    = link_to "more", "#"
+    .clear

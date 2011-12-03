@@ -1,0 +1,25 @@
+.info.box
+  .box-header
+    = @activity.title
+  .box-body
+    .span-8.description.colborder
+      = simple_format(@activity.description)
+    .span-4
+      .group
+        = "Group: "
+        = @activity.group.name
+      .person_in_charge
+        = "Admin: "
+        = @activity.admins.first.name
+      .start_time
+        = "Start at: "
+        = @activity.start_at
+      .end_time
+        = "End at: "
+        = @activity.end_at
+      .location
+        = "Location: "
+      .tags
+        = "Tags"
+        = @activity.tag_list
+    .clear
