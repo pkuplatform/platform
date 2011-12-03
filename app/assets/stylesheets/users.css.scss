@@ -101,31 +101,67 @@ body {
   background-image: none !important ;
 }
 
-.sign_in{
+.sign_box{
   background-image: none !important ;
-  width:370px;
+  width:320px;
+  height:165px;
   margin:0 auto;
-  padding:10px;
+  margin-top:250px;
+  z-index:1;
+}
+.sign_form{
+  width:340px;
+  height:180px;
+  margin:0 auto;
+  margin-top:-235px;
+  z-index:100;
+  font-size:16px;
+
   label {
-    width:80px;
+    width:50px;
     display:inline-block;
+    text-align:right;
+    margin-right:10px;
+    vertical-align:-4px;
   }
-  .options {
-    margin:10px;
-    label{
-      width: auto;
-      font-weight:300;
+  input[type=email],input[type=password] {
+    width:240px;
+    height:20px;
+  }
+  span {
+    display:inline-block;
+    &.lefto {
+      text-align:right;
+    }
+    &.centero {
+      width: 40px;
+      text-align:center;
+    }
+    &.righto {
     }
   }
-}
-.sign_logo { 
-  height: 160px;
-  width:370px;
-  margin: 0 auto; 
-  margin-top:150px;
-  img {
-    height: 175px;
-    width: 1000px;
-    margin-left:-100px;
+  .options {
+    margin:0 auto;
+    margin-top:15px;
+    width:300px;
+    label{
+      font-weight:100;
+      margin:0;
+      width:auto !important;
+    }
   }
+  .bottons {
+    margin:0 auto;
+    margin-top:10px;
+  }
+}
+.sign_bg { 
+  width:710px;
+  height:450px;
+  z-index:10;
+  margin: 0 auto; 
+  margin-top:-400px;
+  background-image:url(sign_in.png);
+  background-position:50px 0;
+  background-repeat:no-repeat;
 } 
