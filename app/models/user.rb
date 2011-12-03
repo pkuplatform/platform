@@ -30,11 +30,8 @@ class User < ActiveRecord::Base
     profile.name
   end
 
-  def after_initialize
-    profile = Profile.new
-  end
 
-  def avatar
-    profile.avatar.url(:thumb)
+  def avatar(size=:thumb)
+    profile.avatar.url(size)
   end
 end

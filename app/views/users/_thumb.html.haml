@@ -1,5 +1,5 @@
 %li
   .logo
-    = image_tag thumb.avatar.url(:thumb)
+    = image_tag thumb.profile.avatar.url(:thumb)
   .name
-    = truncate thumb.name, :length => 10
+    = truncate thumb.profile.name, :length => 10

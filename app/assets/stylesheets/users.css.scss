@@ -33,14 +33,6 @@ body {
 
 
 
-.favors {
-  .box-body { margin: 0px -9px; }
-  border: 1px solid #666;
-  li { list-style: none; float: left; margin: 9px; }
-  ul{ margin: 0; padding: 0; }
-  li .name { width: 64px; }
-}
-
 .search { 
   padding: 5px 10px; 
   background-color: rgba(136,93,122,0.4); 
@@ -76,9 +68,6 @@ body {
     @include orange-link;
   }
 }
-
-.logo { width: 64px; height: 64px; }
-.more {     @include orange-link; }
 
 .newsfeed {
   padding-left:40px;

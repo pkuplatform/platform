@@ -5,3 +5,7 @@
  *= require_self
  *= require_tree . 
 */
+.truncate_more_link {
+  float:right;
+}
+

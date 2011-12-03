@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /profiles/1
   # GET /profiles/1.json
   def show
@@ -30,6 +32,7 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
+    @profile.user = current_user
 
     respond_to do |format|
       if @profile.save

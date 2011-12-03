@@ -1,16 +1,16 @@
-.info.box
+.box.detail
   .box-header
     = @activity.title
   .box-body
-    .span-8.description.colborder
+    .span-8.description
       = simple_format(@activity.description)
-    .span-4
+    .span-5.colborder
       .group
         = "Group: "
-        = @activity.group
+        = link_to @activity.group.name,@activity.group
       .person_in_charge
         = "Admin: "
-        = @activity.admins.first
+        = link_to @activity.admins.first.name,@activity.admins.first
       .start_time
         = "Start at: "
         = @activity.start_at
@@ -19,7 +19,29 @@
         = @activity.end_at
       .location
         = "Location: "
+        = @activity.location
       .tags
-        = "Tags"
+        = "Tags: "
         = @activity.tag_list
+      .members
+        = "Joined: "
+        = @activity.members.count
+      .followers
+        = "Followed: "
+        = @activity.followers.count
     .clear
+.box.detail
+  .box-header
+    = t(:activity_blogs)
+  .box-body
+    .clear
+.box.detail
+  .box-header
+    = t(:activity_albums)
+  .box-body
+    .clear
+.box.detail
+  .box-header
+    = t(:activity_comments)
+  .box-body
+    = render :partial => "share/comment", :locals => {:object => @activity}
