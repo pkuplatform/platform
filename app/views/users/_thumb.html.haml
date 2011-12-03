@@ -2,4 +2,4 @@
   .logo
     = image_tag thumb.avatar
   .name
-    = truncate thumb.profile.name, :length => 10
+    = link_to (truncate thumb.profile.name), thumb

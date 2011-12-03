@@ -42,6 +42,3 @@ div {
 .tricol-list {
   @include box-thumb;
 }
-
-.logo { width: 64px; height: 64px; }
-.more {     @include orange-link; }

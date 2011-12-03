@@ -3,6 +3,7 @@ class CreateRankLists < ActiveRecord::Migration
     create_table :rank_lists do |t|
       t.string :name
       t.string :award
+      t.integer :identify_id, :unique => true
 
       t.timestamps
     end

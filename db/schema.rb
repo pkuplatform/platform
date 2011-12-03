@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203094702) do
+ActiveRecord::Schema.define(:version => 20111203051531) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -224,9 +224,9 @@ ActiveRecord::Schema.define(:version => 20111203094702) do
   create_table "rank_lists", :force => true do |t|
     t.string   "name"
     t.string   "award"
+    t.integer  "identify_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "identify_id"
   end
 
   create_table "taggings", :force => true do |t|
