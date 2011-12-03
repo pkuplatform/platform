@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111119154814) do
+ActiveRecord::Schema.define(:version => 20111129142043) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -199,6 +199,13 @@ ActiveRecord::Schema.define(:version => 20111119154814) do
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
+  create_table "rank_lists", :force => true do |t|
+    t.string   "name"
+    t.string   "award"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -239,15 +246,15 @@ ActiveRecord::Schema.define(:version => 20111119154814) do
   add_index "user_groups", ["user_id"], :name => "index_user_groups_on_user_id"
 
   create_table "user_relations", :force => true do |t|
-    t.integer  "subject"
-    t.integer  "object"
-    t.integer  "relation"
+    t.integer  "liking_id"
+    t.integer  "liked_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "user_relations", ["object"], :name => "index_user_relations_on_object"
-  add_index "user_relations", ["subject"], :name => "index_user_relations_on_subject"
+  add_index "user_relations", ["liked_id"], :name => "index_user_relations_on_liked_id"
+  add_index "user_relations", ["liking_id", "liked_id"], :name => "index_user_relations_on_liking_id_and_liked_id", :unique => true
+  add_index "user_relations", ["liking_id"], :name => "index_user_relations_on_liking_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

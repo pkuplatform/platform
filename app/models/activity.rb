@@ -13,4 +13,5 @@ class Activity < ActiveRecord::Base
   has_many :admins,      :through => :user_activities, :source => :user, :conditions => ["user_activities.status & 256 = 0"]
   has_many :members,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & 768 = 768"]
   has_many :followers,   :through => :user_activities, :source => :user, :conditions => ["user_activities.status & 1024 = 1024"]
+  has_many :subscribers, :through => :user_activities, :source => :user, :conditions => ["user_activities.status & 0 = 0"]
 end

@@ -15,4 +15,5 @@ class Group < ActiveRecord::Base
   has_many :managers,    :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 256 = 256"]
   has_many :admins,      :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 256 = 0"]
   has_many :followers,   :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 65536 = 0"]
+  has_many :subscribers,  :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 0 = 0"]
 end

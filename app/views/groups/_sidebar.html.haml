@@ -1,28 +1,24 @@
-.span-7.append-1
-  #group_card
-    =image_tag @group.logo.url(:small)
-    #group_text.span-3
-      %p= @group.name
-      %hr/
-      %p
-        - if @group.members.include?(current_user)
-          = link_to t(:i_quit),join_group_url
-        - else
-          = link_to t(:i_join),join_group_url
-  #group_infos.about_group
-    / 社团信息
-    .header
-      %a.title 社团信息
-    .clear.group_info_text
-      = simple_format @group.description
-    %a.moretoread 浏览更多
-    
-  #group_members
-    .header
-      %a.title 社团成员
-    .members
-      %ul
-        - @group.test.each do |member|
-          %li.member
-            = image_tag member.avatar
-            = link_to member.name, member
+.day-ranking.box
+  .box-header
+    = "24h Ranking"
+  .box-body
+    = "XXXX"
+    = "XXXX"
+    = "XXXX"
+    = "XXXX"
+.month-ranking.box
+  .box-header
+    = "Month Ranking"
+  .box-body
+    = "XXXX"
+    = "XXXX"
+    = "XXXX"
+    = "XXXX"
+.semester-ranking.box
+  .box-header
+    = "Semester Ranking"
+  .box-body
+    = "XXXX"
+    = "XXXX"
+    = "XXXX"
+    = "XXXX"
