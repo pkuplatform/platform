@@ -101,14 +101,30 @@ body {
   background-image: none !important ;
 }
 
-.sign_in{
+.sign_box{
   background-image: none !important ;
-  width:370px;
+  width:320px;
+  height:140px;
   margin:0 auto;
-  padding:10px;
+  margin-top:250px;
+  z-index:1;
+}
+.sign_form{
+  width:340px;
+  height:180px;
+  margin:0 auto;
+  margin-top:-210px;
+  z-index:100;
   label {
-    width:80px;
+    width:60px;
     display:inline-block;
+    text-align:right;
+    margin-right:10px;
+  }
+  input[type=email],input[type=password] {
+    width:240px;
+    height:20px;
+    font-size:16px;
   }
   .options {
     margin:10px;
@@ -118,14 +134,13 @@ body {
     }
   }
 }
-.sign_logo { 
-  height: 160px;
-  width:370px;
+.sign_bg { 
+  width:710px;
+  height:450px;
+  z-index:10;
   margin: 0 auto; 
-  margin-top:150px;
-  img {
-    height: 175px;
-    width: 1000px;
-    margin-left:-100px;
-  }
+  margin-top:-400px;
+  background-image:url(sign_in.png);
+  background-position:50px 0;
+  background-repeat:no-repeat;
 } 
