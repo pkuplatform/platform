@@ -9,5 +9,5 @@
     .settins
       = link_to "Settings", edit_profile_path(current_user.profile)
     .sign-out
-      = link_to "Sign out", destroy_user_session_path
+      = link_to "Sign out", destroy_user_session_path, :method => :delete
   .clear

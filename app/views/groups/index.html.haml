@@ -1,13 +1,8 @@
-#wrap
-  .categories
-    %span 分类
-    %ul
-      - Category.all.each do |category|
-        %li.category
-          = link_to category.name, :cid => category.id
-    %span.more 
-      %a= link_to  "查看所有#{Group.count}个社团", groups_url
-    %span.creat=link_to ("申请创建社团"), new_group_path
-  .groups
-    = render :partial => "group", :collection => @groups
-    = will_paginate @groups
+.container
+  = render 'share/header'
+  .content
+    .span-7.append-1
+      = render 'sidebar'
+    .span-16.last
+      = render 'index'
+  = render 'share/footer'
