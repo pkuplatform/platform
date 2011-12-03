@@ -23,10 +23,10 @@ Platform::Application.routes.draw do
 
   resources :activities do
     resources :albums
-    resources :comments
     member do
       get 'join'
       get 'like'
+      post 'comment'
     end
   end
 

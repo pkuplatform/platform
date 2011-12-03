@@ -19,7 +19,7 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 gem 'rufus-scheduler'
 gem 'annotate'
 # Gems used only for assets and not required
