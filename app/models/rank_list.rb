@@ -163,7 +163,7 @@ private
     if not activity then
       self.create!(:name => 'no activity', :award => 'most members activity', :identify_id => 7)
     elsif max_activity then
-      activity.update_attributes!(:name => max_activity.name, :award => 'most members activity')
+      activity.update_attributes!(:name => max_activity.title, :award => 'most members activity')
     else 
       activity.update_attributes!(:name => 'no activity', :award => 'most members activity')
     end
@@ -185,7 +185,7 @@ private
     if not activity then
       self.create!(:name => 'no activity', :award => 'most subscribers activity', :identify_id => 8)
     elsif max_activity then
-      activity.update_attributes!(:name => max_activity.name, :award => 'most subscribers activity')
+      activity.update_attributes!(:name => max_activity.title, :award => 'most subscribers activity')
     else 
       activity.update_attributes!(:name => 'no activity', :award => 'most subscribers activity')
     end
