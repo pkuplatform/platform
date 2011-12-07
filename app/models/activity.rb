@@ -44,4 +44,11 @@ class Activity < ActiveRecord::Base
     return I18n.l(end_at, :format=>format)
   end
 
+  def url
+    poster.url(:small)
+  end
+
+  def name
+    title
+  end
 end

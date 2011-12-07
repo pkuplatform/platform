@@ -3,7 +3,9 @@
   new_comment: "+评论"
 
   index: "首页"
+  group: "社团"
   groups: "社团"
+  activity: "活动"
   activities: "活动"
   mail_box: "站内信"
   inbox: "收件箱"
@@ -65,6 +67,8 @@
   "time:": "时间：%{start_time} 至 %{end_time}"
   "location:": "地点：%{location}"
 
+  "newsfeed name and time": "在 %{time} 前"
+  create: "创建了"
 
   sign_in: "登录"
   sign_out: "登出"

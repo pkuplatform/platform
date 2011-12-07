@@ -56,14 +56,12 @@ class User < ActiveRecord::Base
   def self.weekly_ranks
     RankList.where("identify_id > ? && identify_id < ?", 9, 19)
   end
-=begin
-  def subscribers
-    ret = Set.new()
-    users_like_me.each do |user|
-      ret.add user
-    end
 
-    ret.to_a
+  def url
+    profile.avatar.url(:thumb)
   end
-=end
+
+  def name
+    profile.nickname
+  end
 end

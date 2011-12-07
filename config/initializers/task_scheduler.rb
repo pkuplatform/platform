@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'rufus/scheduler'
 
-scheduler = Rufus::Scheduler.start_new
 =begin
+scheduler = Rufus::Scheduler.start_new
 scheduler.every('30s') do
   RankList.get_daily_rank
   puts "----------get daily rank-----------\n"

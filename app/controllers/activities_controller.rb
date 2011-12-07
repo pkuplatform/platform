@@ -57,6 +57,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
         UserActivity.create(:user => current_user, :activity => @activity, :status => (1 << 8))
+        Event.create(:subject_type => "group", :subject_id => params[:activity][:group_id], :action => "create", :object_type => "activity", :object_id => @activity.id, :processed => false)
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else

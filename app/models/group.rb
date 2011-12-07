@@ -15,7 +15,7 @@ class Group < ActiveRecord::Base
   has_many :managers,    :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 512 = 512"]
   has_many :admins,      :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 256 = 256"]
   has_many :followers,   :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 65536 = 65536"]
-  has_many :subscribers,   :through => :user_groups, :source => :user, :conditions => ["user_groups.status & 65536 = 65536 || user_groups.status & 2048 = 2048"]
+  has_many :subscribers,   :through => :user_groups, :source => :user, :conditions => ["(user_groups.status & 65536 = 65536) || (user_groups.status & 2048 = 2048)"]
 
   def self.daily_ranks
     ret = []
@@ -49,19 +49,9 @@ class Group < ActiveRecord::Base
 
     ret
   end
-=begin
 
-  def subscribers
-    ret = Set.new()
-    members.each do |member|
-      ret.add member
-    end
-
-    followers.each do |follower|
-      ret.add follower
-    end
-
-    ret.to_a
+  def url
+    logo.url(:thumb)
   end
-=end
+
 end
