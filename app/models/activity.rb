@@ -36,4 +36,12 @@ class Activity < ActiveRecord::Base
     ret
   end
 
+  def lstart_at(format=:short_w)
+    return I18n.l(start_at, :format=>format)
+  end
+
+  def lend_at(format=:short_w)
+    return I18n.l(end_at, :format=>format)
+  end
+
 end

@@ -1,7 +1,14 @@
-# Chinese (China) translations for Ruby on Rails
-# by tsechingho (http://github.com/tsechingho)
+"zh-CN":
+  time:
+    formats:
+      default: "%Y年%b%d日 %A %H:%M "
+      short_w: "%b%d日 %A %H:%M"
+      only_time: "当天%H:%M"
+      short: "%b%d日 %H:%M"
+      long: "%Y年%b%d日 %H:%M"
+    am: "上午"
+    pm: "下午"
 
-zh-CN:
   date:
     formats:
       default: "%Y-%m-%d"
@@ -55,14 +62,6 @@ zh-CN:
       - :year
       - :month
       - :day
-
-  time:
-    formats:
-      default: "%Y年%b%d日 %A %H:%M:%S %Z"
-      short: "%b%d日 %H:%M"
-      long: "%Y年%b%d日 %H:%M"
-    am: "上午"
-    pm: "下午"
 
   datetime:
     distance_in_words:
@@ -149,20 +148,7 @@ zh-CN:
       decimal_units:
         format: "%n %u"
         units:
-          # 10^-21 zepto, 10^-24 yocto
-          atto: "渺"  # 10^-18
-          femto: "飞" # 10^-15 毫微微
-          pico: "漠"  # 10^-12 微微
-          nano: "奈"  # 10^-9 毫微
-          micro: "微" # 10^-6
-          mili: "毫"  # 10^-3 milli
-          centi: "厘" # 10^-2
-          deci: "分"  # 10^-1
           unit: ""
-          ten:
-            one: "十"
-            other: "十"  # 10^1
-          hundred: "百"  # 10^2
           thousand: "千" # 10^3 kilo
           million: "百万" # 10^6 mega
           billion: "十亿" # 10^9 giga
@@ -224,4 +210,4 @@ zh-CN:
       create: "新增%{model}"
       update: "更新%{model}"
       submit: "储存%{model}"
-  new_comment: "+评论"
+

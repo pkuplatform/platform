@@ -6,9 +6,9 @@
     %hr
     - if is_current_user
       .mailbox
-        = link_to "Mail Box", mailboxes_path
+        = link_to (t "mail_box"), mailboxes_path
       .settins
-        = link_to "Settings", edit_profile_path(@user.profile)
+        = link_to (t "settings"), edit_profile_path(@user.profile)
     - else
       .like_button
       - if liking?(@user)

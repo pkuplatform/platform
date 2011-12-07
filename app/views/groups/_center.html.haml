@@ -1,7 +1,7 @@
 .activities.box
   .box-header
-    = "Activities"
+    = (t "groups") + (t "activities")
     .new
-      = link_to "Create New Activity!", activities_new_group_path(@group)
+      = link_to t("create_new_activity!"), activities_new_group_path(@group)
   .box-body
     = render :partial => "activities/activity", :collection => @group.activities.order("created_at DESC")
