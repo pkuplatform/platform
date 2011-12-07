@@ -1,40 +1,23 @@
+<div class="picture">
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Album:</b>
-  <%= @picture.album %>
+  <%= @picture.album.title %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @picture.user %>
+  <%= @picture.user.name %>
 </p>
 
 <p>
-  <b>Remark:</b>
-  <%= @picture.remark %>
+  <%= image_tag(@picture.photo.url) %>
 </p>
 
-<p>
-  <b>Photo file name:</b>
-  <%= @picture.photo_file_name %>
-</p>
-
-<p>
-  <b>Photo content type:</b>
-  <%= @picture.photo_content_type %>
-</p>
-
-<p>
-  <b>Photo file size:</b>
-  <%= @picture.photo_file_size %>
-</p>
-
-<p>
-  <b>Photo updated at:</b>
-  <%= @picture.photo_updated_at %>
-</p>
+<%= render :partial => "share/comments", :locals => {:object => @picture} %>
 
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
 <%= link_to 'Back', pictures_path %>
+</div>

@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 
   has_many :newsfeeds
   has_many :albums, :as => :imageable
+  has_many :blogs, :foreign_key=>"author_id"
 
   has_many :user_relations, :foreign_key => "liking_id", :dependent => :destroy
   has_many :users_i_like, :through => :user_relations, :source => :liked

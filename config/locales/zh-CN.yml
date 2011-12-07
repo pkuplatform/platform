@@ -1,11 +1,11 @@
 "zh-CN":
   time:
     formats:
-      default: "%Y年%b%d日 %A %H:%M "
-      short_w: "%b%d日 %A %H:%M"
+      default: "%Y-%m-%d %A %H:%M "
+      short_w: "%m-%d %A %H:%M"
       only_time: "当天%H:%M"
-      short: "%b%d日 %H:%M"
-      long: "%Y年%b%d日 %H:%M"
+      short: "%m-%d %H:%M"
+      long: "%Y-%m-%d %H:%M"
     am: "上午"
     pm: "下午"
 

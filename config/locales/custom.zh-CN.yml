@@ -1,13 +1,17 @@
 "zh-CN":
-
+  comment: "评论"
   new_comment: "+评论"
 
   index: "首页"
   group: "社团"
   groups: "社团"
-  activity: "活动"
   activities: "活动"
+  activity: "活动"
+  mailbox: "站内信"
   mail_box: "站内信"
+
+
+
   inbox: "收件箱"
   outbox: "发件箱"
   trash: "垃圾箱"
@@ -15,14 +19,18 @@
   unread: "未读"
   delete: "删除"
   undelete: "未删除"
-  apply_to_selected: "选择"
+  apply_to_selected: "应用于选项"
   from: "来自"
-  date: "日期"
+  to: "寄往"
+  message_time: "时间"
   compose_new_message: "写站内信"
-  user: "收件人"
+  receiver: "收件人"
   subject: "主题"
   messages: "内容"
   send: "发送"
+  reply_message: "回复消息"
+  reply: "回复"
+
   settings: "设置"
   name: "姓名"
   nickname: "昵称"
@@ -61,11 +69,22 @@
   region_culture: "地域 文化"
   political_theory: "政治 党派"
   create_new_activity!: "创建新活动！"
+  admin: "管理者"
+  start_at: "开始时间"
+  end_at: "结束时间"
 
 
   latest_activities: "最近活动"
   "time:": "时间：%{start_time} 至 %{end_time}"
   "location:": "地点：%{location}"
+  location: "地点"
+  tags: "Tags"
+  joined: "参加的人"
+  followed: "喜欢的人"
+  activity_blogs: "活动日志"
+  activity_albums: "活动相册"
+  activity_comments: "活动评论"
+  posted_new_blog: "发表了日志"
 
   "newsfeed name and time": "在 %{time} 前"
   create: "创建了"

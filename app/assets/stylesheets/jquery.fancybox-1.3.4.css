@@ -131,6 +131,7 @@
 }
 
 #fancybox-left, #fancybox-right {
+	/*
 	position: absolute;
 	bottom: 0px;
 	height: 100%;
@@ -139,6 +140,7 @@
 	outline: none;
 	background: transparent url('blank.gif');
 	z-index: 1102;
+	*/
 	display: none;
 }
 

@@ -5,3 +5,31 @@
 .important { height: 150px; }
 .detail p { color:#400c22; }
 .new { float:right; }
+.blogs {
+  li {
+    list-style:none;
+    margin-top:15px;
+  }
+  .blog-content {
+    padding:5px;
+    border-bottom:1px solid #ccc;
+    min-height:30px;
+  }
+  p,h4{margin:0;}
+}
+.carousel-control {
+  margin:10px;
+  button {
+    top:55px;
+  }
+}
+.carousel {
+  margin:10px;
+  img{
+  height:110px;
+  width:110px;
+  margin:2px;
+  }
+}
+#picture-preview {
+}
