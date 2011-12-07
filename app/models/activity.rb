@@ -5,6 +5,8 @@ class Activity < ActiveRecord::Base
 
   belongs_to :group
   has_many :albums, :as => :imageable
+  has_many :pictures, :through => :albums
+  has_many :blogs, :dependent => :destroy
   has_many :user_activities
   has_many :users, :through => :user_activities
   has_attached_file :poster, :styles => { :big => "256x360#",:medium => "192x270#", :small => "64x90#", :thumb => "64x64#" }

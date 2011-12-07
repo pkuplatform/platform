@@ -36,7 +36,9 @@ Platform::Application.routes.draw do
   end
 
   resources :pictures do
-    resources :comments
+    member do
+      post 'comment'
+    end
   end
 
   namespace :form do 

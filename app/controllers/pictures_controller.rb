@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  layout false
 
   # GET /pictures
   # GET /pictures.json
@@ -81,4 +82,14 @@ class PicturesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def comment
+    @picture = Picture.find(params[:id])
+    @comment = @picture.comments.create(:user=>current_user,:body=>params["comment-content"])
+ 
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

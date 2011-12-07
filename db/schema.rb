@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203051531) do
+ActiveRecord::Schema.define(:version => 20111207111357) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(:version => 20111203051531) do
   end
 
   add_index "albums", ["imageable_id", "imageable_type"], :name => "index_albums_on_imageable_id_and_imageable_type"
+
+  create_table "blogs", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "author_id"
+    t.integer  "activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"

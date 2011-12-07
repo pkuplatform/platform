@@ -1,9 +1,10 @@
 .favors.tricol-list.box
   .box-header
     = t "my_favors"
-    = link_to (t "activities"), "#"
     = link_to (t "users"), "#"
     = link_to (t "groups"), "#"
+    = link_to (t "activities"), "#"
+
   .box-body
     %ul
       = render :partial => "activities/thumb", :collection => @join_activities.limit(5)
