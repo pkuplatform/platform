@@ -1,0 +1,22 @@
+= render "head"
+.mailbox
+  = render :partial => "tabs_panel"
+  .mails
+    = form_tag create_mailboxes_path, :method => :post do
+      %h3= @message.subject
+      .message.ui-widget-content.ui-corner-all
+        %h5
+          = "#{t :from} "
+          = link_to(@message.from.name,@message.from)
+          = ", "
+          = l @message.created_at,:format=>:long
+        %p= @message.body
+      - unless params[:mailbox] == "outbox"
+        %p
+          = label_tag :body, "#{t :reply_message} :"
+          %br/
+          = text_area_tag :body, "", :class => "medium"
+        %p
+          = submit_tag (t "reply"), :class => "submit"
+        = hidden_field_tag :user_tokens, @user_tokens
+        = hidden_field_tag :subject, @message.subject
