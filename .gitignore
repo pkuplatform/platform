@@ -6,3 +6,6 @@ tmp/
 public/system
 .DS_Store
 Gemfile
+test/*
+test.rb
+vendor/*

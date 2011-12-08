@@ -82,4 +82,8 @@ class GroupsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def manage_forms
+    @group = Group.find(params[:id])
+  end
 end
