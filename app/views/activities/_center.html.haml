@@ -6,42 +6,49 @@
       = simple_format(@activity.description)
     .span-5.colborder
       .group
-        = "Group: "
+        = "#{t :group}: "
         = link_to @activity.group.name, @activity.group
       .person_in_charge
-        = "Admin: "
+        = "#{t :admin} "
         = link_to @activity.admins.first.name, @activity.admins.first
       .start_time
-        = "Start at: "
-        = @activity.start_at
+        = "#{t :start_at}: "
+        = @activity.lstart_at(:default)
       .end_time
-        = "End at: "
-        = @activity.end_at
+        = "#{t :end_at}: "
+        = @activity.lend_at(:default)
       .location
-        = "Location: "
+        = "#{t :location}: "
         = @activity.location
       .tags
-        = "Tags: "
+        = "#{t :tags}: "
         = @activity.tag_list
-      .members
-        = "Joined: "
+      .members_count
+        = "#{t :joined}: "
         = @activity.members.count
-      .followers
-        = "Followed: "
+      .followers_count
+        = "#{t :followed}: "
         = @activity.followers.count
     .clear
-.box.detail
-  .box-header
-    = t(:activity_blogs)
-  .box-body
-    .clear
-.box.detail
-  .box-header
-    = t(:activity_albums)
-  .box-body
-    .clear
+-if not @activity.blogs.empty?
+  .box.detail
+    .box-header
+      = t(:activity_blogs)
+      = link_to (t :new_blog),blogs_new_activity_path
+    .box-body
+      %ul.blogs
+        = render :partial => "blog", :collection => @activity.blogs
+      .clear
+-if not @activity.pictures.empty?
+  .box.detail
+    .box-header
+      = t(:activity_albums)
+      = link_to (t :new_picture),pictures_new_activity_path
+    .box-body
+      = render :partial => "picture_gallery", :locals => {:pictures => @activity.pictures}
+      .clear
 .box.detail
   .box-header
     = t(:activity_comments)
-  .box-body
+  .box-body.activity
     = render :partial => "share/comments", :locals => {:object => @activity}

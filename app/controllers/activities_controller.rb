@@ -12,11 +12,18 @@ class ActivitiesController < ApplicationController
     end
   end
 
+
+  def picture
+    @picture = Picture.find(params[:pic_id])
+  end
   # GET /activities/1
   # GET /activities/1.json
   def show
     @activity = Activity.find(params[:id])
     @group = @activity.group
+    if @activity.admins.include?(current_user)
+      @is_admin = true
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +34,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
-    @activity = Activity.new
+    @activity = Group.find(params[:id]).activities.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,10 +60,11 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(params[:activity])
-    @activity.group_id = params[:id]
 
     respond_to do |format|
       if @activity.save
+        UserActivity.create(:user => current_user, :activity => @activity, :status => (1 << 8))
+        Event.create(:subject_type => "group", :subject_id => params[:activity][:group_id], :action => "create", :object_type => "activity", :object_id => @activity.id, :processed => false)
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else

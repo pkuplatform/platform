@@ -7,4 +7,12 @@ $(document).ready(function() {
         ellipsisText: " ...",
         moreAni: "fast",
     });
+    $(".carousel").jCarouselLite({
+      btnNext: ".carousel-control .next",
+      btnPrev: ".carousel-control .prev",
+      visible: 4
+    });
+    $("a.gallery_pics").fancybox({
+    });
 });
+

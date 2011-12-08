@@ -12,7 +12,10 @@ div {
     margin-bottom: 10px; } }
 
 #notice {
-  color: green; }
+  color: green;
+  height:1px;
+  overflow:hidden;
+ }
 
 .field_with_errors {
   padding: 2px;
@@ -42,3 +45,7 @@ div {
 .tricol-list {
   @include box-thumb;
 }
+
+.box-header { white-space: nowrap; }
+
+.rank .name { float: right; }

@@ -2,19 +2,19 @@
   .span-12.tools
     .links
       .left
-        = link_to "Index", current_user
+        = link_to (t "index"), current_user
         |
-        = link_to "Groups", groups_path
+        = link_to (t "groups"), groups_path
         |
-        = link_to "Activities", activities_path
+        = link_to (t "activities"), activities_path
       .right
-        = link_to  ("Test"||current_user.profile.name), user_path(current_user)
+        = link_to  (current_user.profile.name), user_path(current_user)
         |
-        = link_to "Mail Box", mailboxes_path
+        = link_to (t "mail_box"), mailboxes_path
         |
-        = link_to "Settings", edit_profile_path(current_user)
+        = link_to (t "settings"), edit_profile_path(current_user)
         |
-        = link_to "Sign out", destroy_user_session_path, :method => :delete
+        = link_to (t "sign_out"), destroy_user_session_path, :method => :delete
       .clear
     .search
       = search_form_for Group.search() do |f|

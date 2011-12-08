@@ -1,25 +1,15 @@
 .day-ranking.box
   .box-header
-    = "24h Ranking"
+    = t "24h_ranking"
   .box-body
-    -@daily_rank && @daily_ranks.each do |rank|
-      .rank
-        = rank.award
-        = rank.name
+    = render :partial => "share/rank", :locals => { :ranks => @daily_ranks }
 .month-ranking.box
   .box-header
-    = "Month Ranking"
+    = t "month_ranking"
   .box-body
-    -@weekly_ranks && @weekly_ranks.each do |rank|
-      .rank
-        = rank.award
-        = rank.name
+    = render :partial => "share/rank", :locals => { :ranks => @weekly_ranks }
 .semester-ranking.box
   .box-header
-    = "Semester Ranking"
+    = t "semester_ranking"
   .box-body
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
-    = "XXXX"
+    = render :partial => "share/rank", :locals => { :ranks => @weekly_ranks }

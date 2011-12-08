@@ -50,19 +50,9 @@ class Group < ActiveRecord::Base
 
     ret
   end
-=begin
 
-  def subscribers
-    ret = Set.new()
-    members.each do |member|
-      ret.add member
-    end
-
-    followers.each do |follower|
-      ret.add follower
-    end
-
-    ret.to_a
+  def url
+    logo.url(:thumb)
   end
-=end
+
 end

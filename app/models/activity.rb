@@ -4,8 +4,9 @@ class Activity < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :group
-  belongs_to :location
   has_many :albums, :as => :imageable
+  has_many :pictures, :through => :albums
+  has_many :blogs, :dependent => :destroy
   has_many :user_activities
   has_many :users, :through => :user_activities
   has_attached_file :poster, :styles => { :big => "256x360#",:medium => "192x270#", :small => "64x90#", :thumb => "64x64#" }
@@ -37,19 +38,19 @@ class Activity < ActiveRecord::Base
     ret
   end
 
-=begin
-  def subscribers
-    ret = Set.new()
-    members.each do |member|
-      ret.add member
-    end
-
-    followers.each do |follower|
-      ret.add follower
-    end
-
-    ret.to_a
+  def lstart_at(format=:short_w)
+    return I18n.l(start_at, :format=>format)
   end
-=end
 
+  def lend_at(format=:short_w)
+    return I18n.l(end_at, :format=>format)
+  end
+
+  def url
+    poster.url(:small)
+  end
+
+  def name
+    title
+  end
 end

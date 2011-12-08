@@ -1,0 +1,19 @@
+.mailbox {
+  td {
+    background-color:#fff;
+  }
+  li {
+    display: inline-block;
+    font-size:1.3em;
+    float:right;
+    margin:10px;
+  }
+  .unread td{
+    font-weight:800;
+    background-color:#3EB;
+  }
+  label {
+    width:60px;
+    display:inline-block;
+  }
+}

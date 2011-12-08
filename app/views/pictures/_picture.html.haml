@@ -1,0 +1,16 @@
+.picture
+  %p#notice= notice
+  %p
+    %b Album:
+    = @picture.album.title
+  %p
+    %b User:
+    = @picture.user.name
+  %p
+    = image_tag(@picture.photo.url(:medium))
+  %p
+    = @picture.remark
+  = render :partial => "share/comments", :locals => {:object => @picture}
+  = link_to 'Edit', edit_picture_path(@picture)
+  |
+  \#{link_to 'Back', pictures_path}

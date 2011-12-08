@@ -8,6 +8,8 @@
         - @activity.errors.full_messages.each do |msg|
           %li= msg
   .field
+    = f.hidden_field :group_id
+  .field
     = f.label :title
     %br/
     = f.text_field :title

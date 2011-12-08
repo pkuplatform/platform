@@ -3,15 +3,22 @@
     = image_tag @activity.poster.url(:medium)
 .contact.box
   .box-header
-    = "Contact"
+    = t "contact"
   .box-body
+    .phone
+      = "#{t :phone}: "
+      = @activity.admins.first.profile.phone
+    .email
+      = "#{t :email}: "
+      = @activity.admins.first.email
+    = @activity.description
 .attendant.tricol-list.box
   .box-header
-    = "Attendants"
+    = t "attendants"
   .box-body
     %ul
       = render :partial => "users/thumb", :collection => @activity.users
     .clear
   .more
-    = link_to "more", "#"
+    = link_to (t "more"), "#"
     .clear

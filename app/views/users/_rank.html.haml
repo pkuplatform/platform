@@ -1,8 +1,5 @@
 .ranks.box
   .box-header
-    = "24h Rankings"
+    = t "24h_ranking"
   .box-body
-    - @daily_ranks.each do |rank|
-      .rank
-        = rank.award
-        = rank.name
+    = render :partial => "share/rank", :locals => { :ranks => @daily_ranks }

@@ -2,7 +2,7 @@
   = render 'share/header'
   .content
     .span-7.append-1
-      = render 'user_box'
+      = render :partial=>'user_box',:locals=>{:user=>@user}
       = render 'rank'
       = render 'favor'
     .span-16.last

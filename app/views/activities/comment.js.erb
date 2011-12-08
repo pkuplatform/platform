@@ -1,1 +1,3 @@
-$(".new-comment").after("<%= escape_javascript(render :partial=>'share/comment',:locals => {:comment => @comment }) %>");
+$(".activity .new-comment").after("<%= escape_javascript(render :partial=>'share/comment',:locals => {:comment => @comment }) %>");
+$("#comment-<%= @comment.id%>").hide();
+$("#comment-<%= @comment.id%>").slideDown('slow');
