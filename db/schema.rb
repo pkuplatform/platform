@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207111357) do
+ActiveRecord::Schema.define(:version => 20111208100640) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20111207111357) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "blogs", ["activity_id", "author_id"], :name => "index_blogs_on_activity_id_and_author_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"

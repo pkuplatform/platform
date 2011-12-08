@@ -24,7 +24,8 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   # GET /form/second_building_applications/new
   # GET /form/second_building_applications/new.json
   def new
-    @form_second_building_application = Form::SecondBuildingApplication.new
+    g = Group.find(params[:id])
+    @form_second_building_application = g.second_building_applications.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,8 +43,6 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   def create
     @form_second_building_application = Form::SecondBuildingApplication.new(params[:form_second_building_application])
 
-    puts "-----------the para id i #{params[:id]}------------"
-    @form_second_building_application.group_id = params[:id]
 #    @form_second_building_application.approving
     @form_second_building_application.status = Constant::Approving
 

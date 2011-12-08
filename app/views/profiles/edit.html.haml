@@ -7,7 +7,7 @@
       = render 'users/favor'
     .box.detail.span-14
       .box-header
-        = @profile.name + t("'s card")
+        = @profile.name && @profile.name + t("'s card")
       .box-body
         = render 'form'
     .clear

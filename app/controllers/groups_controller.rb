@@ -83,7 +83,8 @@ class GroupsController < ApplicationController
     end
   end
 
-  def manage_forms
+  def show_forms
     @group = Group.find(params[:id])
+    @second_buildings = @group.second_building_applications
   end
 end

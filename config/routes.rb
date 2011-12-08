@@ -54,6 +54,7 @@ Platform::Application.routes.draw do
       get 'like'
       get 'activities/new' => 'activities#new'
       get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
+      get 'show_forms'
     end
   end
 

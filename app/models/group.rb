@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
 
   belongs_to :category
   has_many :activities
-  has_many :form_second_building_applications
+  has_many :second_building_applications, :class_name => "Form::SecondBuildingApplication"
   has_many :albums, :as => :imageable
   has_many :tags, :as => :tagable
   has_attached_file :logo, :styles => { :medium => "300x300#", :small => "128x128#", :thumb => "64x64#" }
