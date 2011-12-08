@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20111207111357) do
     t.datetime "updated_at"
   end
 
+  add_index "blogs", ["activity_id", "author_id"], :name => "index_blogs_on_activity_id_and_author_id"
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
