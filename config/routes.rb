@@ -1,4 +1,20 @@
 Platform::Application.routes.draw do
+  namespace :form do resources :second_building_applications end
+
+  namespace :admin do
+    get "forms/index"
+  end
+
+  namespace :form do 
+    resources :second_building_applications do 
+      member do
+        #.../1/approv
+        post :approve
+        #.../1/reject
+        post :reject
+      end
+    end
+  end
 
   resources :blogs do
     member do
@@ -37,8 +53,11 @@ Platform::Application.routes.draw do
       get 'join'
       get 'like'
       get 'activities/new' => 'activities#new'
+      get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
+      get 'show_forms'
     end
   end
+
 
   resources :activities do
     resources :albums
@@ -63,10 +82,6 @@ Platform::Application.routes.draw do
     end
   end
 
-  namespace :form do 
-    resources :booth_application_forms 
-    resources :second_building_application_forms
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

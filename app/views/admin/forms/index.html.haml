@@ -1,0 +1,11 @@
+- @second_buildings.each do |a|
+  %p= a.zhubanren
+  %p= a.fuzeren
+  %p= link_to "edit", edit_form_second_building_application_path(a) 
+  %p= link_to "destroy", a, confirm: "are you sure?", method: :delete
+  %p= a.group.name
+  - if approving?(a)
+    =button_to "approve", approve_form_second_building_application_path(a)
+    =button_to "reject",  reject_form_second_building_application_path(a)
+  -else
+    %p=show_status a

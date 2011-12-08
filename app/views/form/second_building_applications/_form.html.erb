@@ -1,0 +1,28 @@
+<%= form_for(@form_second_building_application) do |f| %>
+  <% if @form_second_building_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form_second_building_application.errors.count, "error") %> prohibited this form_second_building_application from being saved:</h2>
+
+      <ul>
+      <% @form_second_building_application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :group_id %>
+  </div>
+  <div class="field">
+    <%= f.label :zhubanren %><br />
+    <%= f.text_field :zhubanren %>
+  </div>
+  <div class="field">
+    <%= f.label :fuzeren %><br />
+    <%= f.text_field :fuzeren %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

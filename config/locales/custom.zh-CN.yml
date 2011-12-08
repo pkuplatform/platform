@@ -73,6 +73,7 @@
   region_culture: "地域 文化"
   political_theory: "政治 党派"
   create_new_activity!: "创建新活动！"
+  create_new_second_building_form!: "创建二教表单！"
   admin: "管理者"
   start_at: "开始时间"
   end_at: "结束时间"

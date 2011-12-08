@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user.profile.nil? or current_user.profile.student_id.nil?
+    if current_user.profile.nil?
       @profile=Profile.new
       @profile.user = current_user
       @profile.save

@@ -7,10 +7,10 @@
   .box-body
     .phone
       = "Phone: "
-      = @group.admins.first.profile.phone
+      = @group.admins.first && @group.admins.first.profile.phone
     .email
       = "Email: "
-      = @group.admins.first.email
+      = @group.admins.first && @group.admins.first.email
     .organization
       = @group.organization
 .members.box
