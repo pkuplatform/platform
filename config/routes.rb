@@ -1,6 +1,24 @@
 Platform::Application.routes.draw do
 
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  resources :blogs do
+    member do
+      post :comment
+    end
+  end
+
+  resources :users do
+    member do
+      get 'profile/edit' => 'profiles#edit'
+      get 'profile' => 'profiles#show'
+    end
+  end
+  
+  devise_for :users, :controllers => { 
+    :sessions => "sessions",
+    :registrations => "registrations"
+  }
+
+
   mailboxes_for :users
   resources :users do
     member do
@@ -8,13 +26,13 @@ Platform::Application.routes.draw do
       get :liking, :liked
     end
   end
+  
   resources :profiles
 
   resources :user_relations, :only => [:create, :destroy]
 
   resources :groups do
     resources :albums
-    resources :comments
     member do
       get 'join'
       get 'like'
@@ -28,6 +46,10 @@ Platform::Application.routes.draw do
       get 'join'
       get 'like'
       post 'comment'
+      get 'pictures/new' => 'pictures#new'
+      get 'pictures' => 'pictures#index'
+      get 'blogs/new' => 'blogs#new'
+      get 'blogs' => 'blogs#index'
     end
   end
 

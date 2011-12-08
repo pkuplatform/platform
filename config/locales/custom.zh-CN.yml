@@ -9,6 +9,7 @@
   activity: "活动"
   mailbox: "站内信"
   mail_box: "站内信"
+  return: "回到"
 
 
 
@@ -58,6 +59,8 @@
   users: "人"
   newsfeed: "新鲜事"
 
+  "'s card": "的名片"
+
 
   group_index: "社团索引"
   sports_and_fitness: "运动 体育"
@@ -91,7 +94,12 @@
 
   sign_in: "登录"
   sign_out: "登出"
+  sign_up: "注册"
   forget_password: "忘记密码？"
   remember_me: "勿忘我"
   email: "E-mail"
   password: "密  码"
+  password_confirmation: "确认密码"
+  "Forgot your password?": "忘记密码？"
+  "Didn't receive confirmation instructions?": "没有接收到确认邮件？"
+  "Didn't receive unlock instructions?": "没有接收到解锁邮件？"

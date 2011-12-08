@@ -1,10 +1,10 @@
 class PicturesController < ApplicationController
-  layout false
 
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all
+    @activity = Activity.find(params[:id])
+    @pictures = @activity.pictures
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,10 +15,11 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+
     @picture = Picture.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render 'show',:layout=>false }
       format.json { render json: @picture }
     end
   end
@@ -26,6 +27,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
+    @activity = Activity.find(params[:id])
     @picture = Picture.new
 
     respond_to do |format|
@@ -43,10 +45,12 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(params[:picture])
+    @picture.user = current_user
+    @activity = @picture.album.imageable
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to pictures_activity_path(@activity), notice: 'Picture was successfully created.' }
         format.json { render json: @picture, status: :created, location: @picture }
       else
         format.html { render action: "new" }

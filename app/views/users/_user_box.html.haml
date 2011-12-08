@@ -8,7 +8,7 @@
       .mailbox
         = link_to (t "mail_box"), mailboxes_path
       .settins
-        = link_to (t "settings"), edit_profile_path(user.profile)
+        = link_to (t "settings"), profile_edit_user_path(user)
     - else
       .like_button
       - if liking?(user)

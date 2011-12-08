@@ -1,1 +1,4 @@
 $(".picture .new-comment").after("<%= escape_javascript(render :partial=>'share/comment',:locals => {:comment => @comment }) %>");
+$("#comment-<%= @comment.id%>").hide();
+$("#comment-<%= @comment.id%>").slideDown('slow');
+$.fancybox.center();

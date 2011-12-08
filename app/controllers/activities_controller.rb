@@ -12,11 +12,18 @@ class ActivitiesController < ApplicationController
     end
   end
 
+
+  def picture
+    @picture = Picture.find(params[:pic_id])
+  end
   # GET /activities/1
   # GET /activities/1.json
   def show
     @activity = Activity.find(params[:id])
     @group = @activity.group
+    if @activity.admins.include?(current_user)
+      @is_admin = true
+    end
 
     respond_to do |format|
       format.html # show.html.erb
