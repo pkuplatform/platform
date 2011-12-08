@@ -30,19 +30,23 @@
         = "#{t :followed}: "
         = @activity.followers.count
     .clear
-.box.detail
-  .box-header
-    = t(:activity_blogs)
-  .box-body
-    %ul.blogs
-      = render :partial => "blog", :collection => @activity.blogs
-    .clear
-.box.detail
-  .box-header
-    = t(:activity_albums)
-  .box-body
-    = render :partial => "picture_gallery", :locals => {:pictures => @activity.pictures}
-    .clear
+-if not @activity.blogs.empty?
+  .box.detail
+    .box-header
+      = t(:activity_blogs)
+      = link_to (t :new_blog),blogs_new_activity_path
+    .box-body
+      %ul.blogs
+        = render :partial => "blog", :collection => @activity.blogs
+      .clear
+-if not @activity.pictures.empty?
+  .box.detail
+    .box-header
+      = t(:activity_albums)
+      = link_to (t :new_picture),pictures_new_activity_path
+    .box-body
+      = render :partial => "picture_gallery", :locals => {:pictures => @activity.pictures}
+      .clear
 .box.detail
   .box-header
     = t(:activity_comments)

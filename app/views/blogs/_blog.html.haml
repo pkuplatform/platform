@@ -1,0 +1,13 @@
+.box.detail.blog
+  .box-header
+    = "#{t :activity_blogs}: "+@blog.title
+    = link_to "#{t :return} "+@activity.title, @activity
+  .box-body
+    .blog-info
+      = "#{t :from} "
+      = link_to(@blog.author.name,@blog.author)
+      = ", "
+      = l @blog.created_at,:format=>:long
+    .blog-content
+      = @blog.content
+    = render :partial => "share/comments", :locals => {:object => @blog}

@@ -6,11 +6,11 @@
       %h4
         = link_to blog.author.name, blog.author
         = t :posted_new_blog
-        = link_to blog.title
+        = link_to blog.title,blog
       %p
         = l blog.created_at,:format=>:long
         = " / "
-        = link_to "#{blog.comments.count} #{t :comment}"
+        = link_to "#{blog.comments.count} #{t :comment}", blog_path(blog)
     .blog-content
       = truncate blog.content
   .clear
