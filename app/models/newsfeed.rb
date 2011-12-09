@@ -4,19 +4,22 @@ class Newsfeed < ActiveRecord::Base
 
   def self.update
     Event.where(:processed => false).each do |event|
-      if event.subject_type == "group"
-        Group.find(event.subject_id).subscribers.each do |user|
-          Newsfeed.create(:user => user, :event => event)
-        end
-      elsif event.subject_type == "activity"
-        Activity.find(event.subject_id).subscribers.each do |user|
-          Newsfeed.create(:user => user, :event => event)
-        end
-      elsif event.subject_type == "user"
-        User.find(event.subject_id).subscribers.each do |user|
-          Newsfeed.create(:user => user, :event => event)
-        end
+      begin
+        cl = class_eval(event.subject_type)
+      rescue
+        cl = nil
       end
+      if cl.nil? 
+        return nil
+      end
+      cl.find(event.subject_id).subscribers.each do |user|
+        Newsfeed.create(:user => user, :event => event)
+      end
+      if event.object_type == "User" 
+        Newsfeed.create(:user => User.find(event.object_id), :event => event)
+      end
+      event.processed = true
+      event.save
     end
   end
 end

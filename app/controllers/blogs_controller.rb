@@ -21,6 +21,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(params[:blog])
     @blog.author = current_user
+    @activity = @blog.activity
 
     respond_to do |format|
       if @blog.save

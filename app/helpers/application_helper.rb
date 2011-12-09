@@ -20,4 +20,7 @@ module ApplicationHelper
     (object.status & Constant::Approving) == Constant::Approving
   end
 
+  def comment_path(comment)
+    url_for(comment.commentable)+"#comment-#{comment.id}"
+  end
 end
