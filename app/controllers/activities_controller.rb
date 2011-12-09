@@ -101,4 +101,44 @@ class ActivitiesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def like
+    @activity = Activity.find(params[:id])
+    ua = @activity.user_activities.find_by_user_id(current_user)
+    
+    if @activity.followers.include?(current_user)
+      ua.status &= ~Constant::Like
+      ua.save
+    else
+      if ua
+        ua.status |= Constant::Like
+        ua.save
+      else
+        UserActivity.create!(:activity_id => @activity, :user_id => current_user, :status => Constant::Like)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def join
+    @activity = Activity.find(params[:id])
+    ua = @activity.user_activities.find_by_user_id(current_user)
+    
+    if @activity.members.include?(current_user)
+      ua.status &= ~Constant::Member
+      ua.save
+    else
+      if ua
+        ua.status |= Constant::Member
+        ua.save
+      else
+        UserActivity.create!(:activity_id => @activity, :user_id => current_user, :status => Constant::Member)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 end
