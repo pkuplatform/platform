@@ -1,4 +1,5 @@
 Platform::Application.routes.draw do
+
   namespace :form do resources :second_building_applications end
 
   namespace :admin do

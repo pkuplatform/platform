@@ -74,9 +74,8 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
-
+    @group = Group.find(params[:id]) 
+    @group.destroy 
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :ok }
@@ -86,5 +85,45 @@ class GroupsController < ApplicationController
   def show_forms
     @group = Group.find(params[:id])
     @second_buildings = @group.second_building_applications
+  end
+
+  def like
+    @group = Group.find(params[:id])
+    ug = @group.user_groups.find_by_user_id(current_user)
+    
+    if @group.followers.include?(current_user)
+      ug.status &= ~Constant::Like
+      ug.save
+    else
+      if ug
+        ug.status |= Constant::Like
+        ug.save
+      else
+        UserGroup.create!(:group_id => @group, :user_id => current_user, :status => Constant::Like)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def join
+    @group = Group.find(params[:id])
+    ug = @group.user_groups.find_by_user_id(current_user)
+    
+    if @group.members.include?(current_user)
+      ug.status &= ~Constant::Member
+      ug.save
+    else
+      if ug
+        ug.status |= Constant::Member
+        ug.save
+      else
+        UserGroup.create!(:group_id => @group, :user_id => current_user, :status => Constant::Member)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 end

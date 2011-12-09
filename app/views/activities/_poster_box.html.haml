@@ -1,0 +1,10 @@
+.box-body
+  = image_tag activity.poster.url(:medium)
+  - if activity.followers.include?(current_user)
+    = link_to (t "dislike"), like_activity_path, :remote => true
+  - else
+    = link_to (t "like"), like_activity_path, :remote => true
+  - if activity.members.include?(current_user)
+    = link_to ((t "quit") + (t "activity")), join_activity_path, :remote => true
+  - else
+    = link_to ((t "join") + (t "activity")), join_activity_path, :remote => true

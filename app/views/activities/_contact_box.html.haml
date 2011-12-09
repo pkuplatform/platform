@@ -1,0 +1,10 @@
+.box-header
+  = t "contact"
+.box-body
+  .phone
+    = "#{t :phone}: "
+    = activity.admins.first.profile.phone
+  .email
+    = "#{t :email}: "
+    = activity.admins.first.email
+  = activity.description
