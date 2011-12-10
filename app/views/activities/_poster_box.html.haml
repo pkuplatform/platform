@@ -6,5 +6,7 @@
     = link_to (t "like"), like_activity_path, :remote => true
   - if activity.members.include?(current_user)
     = link_to ((t "quit") + (t "activity")), join_activity_path, :remote => true
+  - elsif activity.tenders.include?(current_user)
+    = (t "approving")
   - else
     = link_to ((t "join") + (t "activity")), join_activity_path, :remote => true

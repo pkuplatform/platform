@@ -3,8 +3,8 @@
 .box-body
   .phone
     = "#{t :phone}: "
-    = activity.admins.first.profile.phone
+    = activity.admins.first && activity.admins.first.profile.phone
   .email
     = "#{t :email}: "
-    = activity.admins.first.email
+    = activity.admins.first && activity.admins.first.email
   = activity.description

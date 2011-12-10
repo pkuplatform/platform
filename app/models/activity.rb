@@ -14,6 +14,8 @@ class Activity < ActiveRecord::Base
   has_many :admins,      :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Admin, Constant::Admin]
   has_many :members,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Member, Constant::Member]
   has_many :followers,   :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Like, Constant::Like]
+#users tend to join
+  has_many :tenders,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Approving, Constant::Approving]
   has_many :subscribers, :through => :user_activities, :source => :user, :conditions => ["(user_activities.status & ? = ?) || (user_activities.status & ? = ?)", Constant::Member, Constant::Member, Constant::Like, Constant::Like]
 
   def self.daily_ranks
