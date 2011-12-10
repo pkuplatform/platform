@@ -30,12 +30,13 @@ class User < ActiveRecord::Base
 
   has_many :user_relations, :foreign_key => "liking_id", :dependent => :destroy
   has_many :users_i_like, :through => :user_relations, :source => :liked
-  has_many :hxh, :through => :user_relations, :source => :liked
+  has_many :subscribers_others, :through => :user_relations, :source => :liked
   has_many :reverse_user_relations, :foreign_key => "liked_id", :class_name => "UserRelation", :dependent => :destroy
   has_many :users_like_me, :through => :reverse_user_relations,:source => :liking
 
   def subscribers
-    hxh << self
+    a = subscribers_others.to_ary
+    a << self
   end
 
   def name

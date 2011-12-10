@@ -2,7 +2,7 @@
   = t "attendants"
 .box-body
   %ul
-    = render :partial => "users/thumb", :collection => activity.users
+    = render :partial => "users/thumb", :collection => activity.members
   .clear
 .more
   = link_to (t "more"), "#"
