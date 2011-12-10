@@ -32,11 +32,11 @@ UserNum.times do |i|
   end
 end
 
-2000.times do |i|
+(20*UserNum).times do |i|
     user_relation = UserRelation.new
-    liking_id = rand_range(1..UserNum)
-    liked_id  = rand_range(1..UserNum)
-    if liking_id != liked_id then
+    liking_id = i % UserNum + 1
+    liked_id = i / UserNum * 5 + liking_id % 5
+    if liking_id != liked_id
       user_relation.liking_id = liking_id
       user_relation.liked_id  = liked_id
       user_relation.save

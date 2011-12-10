@@ -11,11 +11,19 @@
       = " "
       = t("newsfeed name and time", :time => distance_of_time_in_words_to_now(event.created_at))
     .title
-      = t event.action
-      = " "
-      = t event.object_type
-      = " "
-      = link_to object.name, object
+      - if event.object_type=="Comment"
+        - comment = event.object
+        = t :in
+        = t comment.commentable_type
+        = link_to comment.commentable.name,comment.commentable
+        = t :post
+        = link_to (t :comment), comment
+      - else
+        = t event.action
+        = " "
+        = t event.object_type
+        = " "
+        = link_to object.name, object
   .span-2.last.poster
     = link_to (image_tag object.url), object 
   .clear

@@ -18,4 +18,14 @@ $(document).ready(function(){
           'transitionOut' : 'none',
     });
   }
+  $alert = $("#alert");
+  if ($alert.html()) {
+    $.fancybox(
+      $alert.html(),
+        {
+          'transitionIn'  : 'none',
+          'transitionOut' : 'none',
+          'overlayColor'  : '#A00' 
+    });
+  }
 });
