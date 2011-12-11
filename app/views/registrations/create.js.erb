@@ -1,1 +1,5 @@
+<% if devise_error_messages! != "" %>
 $(".devise_error").html("<%= escape_javascript(devise_error_messages!) %>");
+<% else %>
+window.location.href = "/";
+<% end %>
