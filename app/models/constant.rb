@@ -8,6 +8,7 @@ class Constant
   Blocked   = 1 << 1
   Approving = 1 << 2
   Approved  = 1 << 3
+  Destroy   = 1 << 4
 
   Admin    = 1 << 8
   Manager  = 1 << 9

@@ -24,8 +24,7 @@ $(document).ready(function(){
       $alert.html(),
         {
           'transitionIn'  : 'none',
-          'transitionOut' : 'none',
-          'overlayColor'  : '#A00' 
+          'transitionOut' : 'none'
     });
   }
 });

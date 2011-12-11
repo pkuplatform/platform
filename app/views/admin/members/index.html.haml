@@ -1,0 +1,17 @@
+= form_tag admin_members_edit_path do 
+  %table
+    %thead
+      %th= "id"
+      %th= t "name"
+      %th= t "nickname"
+      %th= t "student_id"
+      %th= t "user_platform_status"
+    %tbody
+      - @users && @users.each do |user|
+        %tr
+          %td
+          %td= user.profile.name
+          %td= user.name
+          %td= user.profile.student_id
+          %td= select "user", "#{user.id}", { (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
+  = submit_tag t 'confirm_change'
