@@ -43,6 +43,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
+    @group.status = Constant::Approving
 
     respond_to do |format|
       if @group.save
@@ -106,6 +107,7 @@ class GroupsController < ApplicationController
         puts "--------#{@group.id}-------"
         puts "--------#{current_user.id}-------"
         UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Like)
+        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:like,:object_type=>"Group",:object_id=>@group.id)
       end
     end
     respond_to do |format|
@@ -148,13 +150,13 @@ class GroupsController < ApplicationController
       case value.to_i
         when Constant::Approving
         when Constant::Member
-          ug.status |= ~Constant::Approving
-          ug.status |= ~Constant::Rejected
-          ug.status &=  Constant::Member
+          ug.status &= ~Constant::Approving
+          ug.status &= ~Constant::Rejected
+          ug.status |=  Constant::Member
         when Constant::Rejected
-          ug.status |= ~Constant::Approving
-          ug.status |= ~Constant::Member
-          ug.status &=  Constant::Rejected
+          ug.status &= ~Constant::Approving
+          ug.status &= ~Constant::Member
+          ug.status |=  Constant::Rejected
       end
       ug.save
     end

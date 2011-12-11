@@ -41,7 +41,7 @@ private
 
     group = self.find_by_identify_id(id)
     if not group then
-      self.create!(:name => 'no group', :award => 'most members group', :identify_id => id)
+      self.create!(:name => 'no group', :award => 'most_members_group', :identify_id => id)
     elsif max_group then
       group.update_attributes!(:name => max_group.name, :award => 'most members group')
     else 

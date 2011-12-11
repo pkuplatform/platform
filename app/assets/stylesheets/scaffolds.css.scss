@@ -49,4 +49,9 @@ div {
 
 .box-header { white-space: nowrap; }
 
-.rank .name { float: right; }
+.rank { 
+  margin: 5px 0px; 
+  font-size: 1.2em;
+  border-bottom: 1px solid #CCC;
+  .name { float: right; }
+}

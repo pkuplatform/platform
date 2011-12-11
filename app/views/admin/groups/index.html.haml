@@ -1,0 +1,39 @@
+= form_tag admin_groups_edit_path do 
+  %table
+    %thead
+      %th= "id"
+      %th= t "group_name"
+      %th= (t "group_admin")+(t "name")
+      %th= (t "group_admin")+(t "student_id")
+      %th= (t "group_admin")+(t "phone")
+      %th= (t "group")+(t "email")
+      %th= t "group_platform_status"
+    %tbody
+      - @approving_groups && @approving_groups.each do |group|
+        %tr
+          %td
+          %td= group.name
+          %td= group.admins.first && group.admins.first.name
+          %td= group.admins.first && group.admins.first.profile.student_id
+          %td= group.admins.first && group.admins.first.profile.phone
+          %td= group.email
+          %td= select "group", "#{group.id}", { (t "approving") => Constant::Approving, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
+      - @blocked_groups && @blocked_groups.each do |group|
+        %tr
+          %td
+          %td= group.name
+          %td= group.admins.first && group.admins.first.name
+          %td= group.admins.first && group.admins.first.profile.student_id
+          %td= group.admins.first && group.admins.first.profile.phone
+          %td= group.email
+          %td= select "group", "#{group.id}", { (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
+      - @approved_groups && @approved_groups.each do |group|
+        %tr
+          %td
+          %td= group.name
+          %td= group.admins.first && group.admins.first.name
+          %td= group.admins.first && group.admins.first.profile.student_id
+          %td= group.admins.first && group.admins.first.profile.phone
+          %td= group.email
+          %td= select "group", "#{group.id}", { (t "approved") => Constant::Approved, (t "blocked") => Constant::Blocked, (t "kick_ass") => Constant::Destroy }
+  = submit_tag t 'confirm_change'
