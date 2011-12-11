@@ -1,24 +1,3 @@
-.poster.box
-  .box-body
-    = image_tag @activity.poster.url(:medium)
-.contact.box
-  .box-header
-    = t "contact"
-  .box-body
-    .phone
-      = "#{t :phone}: "
-      = @activity.admins.first.profile.phone
-    .email
-      = "#{t :email}: "
-      = @activity.admins.first.email
-    = @activity.description
-.attendant.tricol-list.box
-  .box-header
-    = t "attendants"
-  .box-body
-    %ul
-      = render :partial => "users/thumb", :collection => @activity.users
-    .clear
-  .more
-    = link_to (t "more"), "#"
-    .clear
+.poster.box=                render :partial => 'activities/poster_box',                :locals => {:activity => @activity}
+.contact.box=               render :partial => 'activities/contact_box',               :locals => {:activity => @activity}
+.attendant.tricol-list.box= render :partial => 'activities/attendant_tricol_list_box', :locals => {:activity => @activity}

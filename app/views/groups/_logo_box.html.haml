@@ -1,0 +1,12 @@
+.box-body
+  = image_tag group.logo.url(:small)
+  - if group.followers.include?(current_user)
+    = link_to (t "dislike"), like_group_path, :remote => true
+  - else
+    = link_to (t "like"), like_group_path, :remote => true
+  - if group.members.include?(current_user)
+    = link_to ((t "quit") + (t "group")), join_group_path, :remote => true
+  - elsif group.tenders.include?(current_user)
+    = (t "approving")
+  - else
+    = link_to ((t "join") + (t "group")), join_group_path, :remote => true

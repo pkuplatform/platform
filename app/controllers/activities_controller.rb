@@ -64,7 +64,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
         UserActivity.create(:user => current_user, :activity => @activity, :status => (1 << 8))
-        Event.create(:subject_type => "group", :subject_id => params[:activity][:group_id], :action => "create", :object_type => "activity", :object_id => @activity.id, :processed => false)
+        Event.create(:subject_type => "Group", :subject_id => params[:activity][:group_id], :action => "create", :object_type => "Activity", :object_id => @activity.id, :processed => false)
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else
@@ -100,5 +100,74 @@ class ActivitiesController < ApplicationController
       format.html { redirect_to activities_url }
       format.json { head :ok }
     end
+  end
+
+  def like
+    @activity = Activity.find(params[:id])
+    ua = @activity.user_activities.find_by_user_id(current_user)
+    
+    if @activity.followers.include?(current_user)
+      ua.status &= ~Constant::Like
+      ua.save
+    else
+      if ua
+        ua.status |= Constant::Like
+        ua.save
+      else
+        UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Like)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def join
+    @activity = Activity.find(params[:id])
+    ua = @activity.user_activities.find_by_user_id(current_user)
+    
+    if @activity.members.include?(current_user)
+      ua.status &= ~Constant::Member
+      ua.save
+    else
+      if ua
+        ua.status |= Constant::Approving
+        ua.save
+      else
+        UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Approving)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_members
+    @activity = Activity.find(params[:id])
+    @tenders = @activity.tenders
+    @members = @activity.members
+  end
+
+  def edit_members
+    @activity = Activity.find(params[:id])
+
+    member_list = params[:member]
+    member_list && member_list.each do |key, value|
+      ua = UserActivity.find_by_activity_id_and_user_id(@activity, key)
+      case value.to_i
+        when Constant::Approving
+        when Constant::Member
+          ua.status |= ~Constant::Approving
+          ua.status |= ~Constant::Rejected
+          ua.status &=  Constant::Member
+        when Constant::Rejected
+          ua.status |= ~Constant::Approving
+          ua.status |= ~Constant::Member
+          ua.status &=  Constant::Rejected
+      end
+      ua.save
+    end
+      
+    redirect_to show_members_activity_path
   end
 end

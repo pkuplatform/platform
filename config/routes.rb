@@ -1,4 +1,5 @@
 Platform::Application.routes.draw do
+
   namespace :form do resources :second_building_applications end
 
   namespace :admin do
@@ -55,6 +56,8 @@ Platform::Application.routes.draw do
       get 'activities/new' => 'activities#new'
       get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
       get 'show_forms'
+      get 'show_members'
+      post 'members/edit' => 'groups#edit_members'
     end
   end
 
@@ -69,6 +72,8 @@ Platform::Application.routes.draw do
       get 'pictures' => 'pictures#index'
       get 'blogs/new' => 'blogs#new'
       get 'blogs' => 'blogs#index'
+      get 'show_members'
+      post 'members/edit' => 'activities#edit_members'
     end
   end
 

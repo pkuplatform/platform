@@ -10,7 +10,7 @@
         = link_to @activity.group.name, @activity.group
       .person_in_charge
         = "#{t :admin} "
-        = link_to @activity.admins.first.name, @activity.admins.first
+        = link_to @activity.admins.first && @activity.admins.first.name, @activity.admins.first
       .start_time
         = "#{t :start_at}: "
         = @activity.lstart_at(:default)
