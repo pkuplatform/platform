@@ -106,6 +106,7 @@ class GroupsController < ApplicationController
         puts "--------#{@group.id}-------"
         puts "--------#{current_user.id}-------"
         UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Like)
+        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:like,:object_type=>"Group",:object_id=>@group.id)
       end
     end
     respond_to do |format|
