@@ -43,6 +43,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
+    @group.status = Constant::Approving
 
     respond_to do |format|
       if @group.save
@@ -148,13 +149,13 @@ class GroupsController < ApplicationController
       case value.to_i
         when Constant::Approving
         when Constant::Member
-          ug.status |= ~Constant::Approving
-          ug.status |= ~Constant::Rejected
-          ug.status &=  Constant::Member
+          ug.status &= ~Constant::Approving
+          ug.status &= ~Constant::Rejected
+          ug.status |=  Constant::Member
         when Constant::Rejected
-          ug.status |= ~Constant::Approving
-          ug.status |= ~Constant::Member
-          ug.status &=  Constant::Rejected
+          ug.status &= ~Constant::Approving
+          ug.status &= ~Constant::Member
+          ug.status |=  Constant::Rejected
       end
       ug.save
     end

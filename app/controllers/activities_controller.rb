@@ -60,6 +60,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(params[:activity])
+    @activity.status = Constant::Approving
 
     respond_to do |format|
       if @activity.save
@@ -157,13 +158,13 @@ class ActivitiesController < ApplicationController
       case value.to_i
         when Constant::Approving
         when Constant::Member
-          ua.status |= ~Constant::Approving
-          ua.status |= ~Constant::Rejected
-          ua.status &=  Constant::Member
+          ua.status &= ~Constant::Approving
+          ua.status &= ~Constant::Rejected
+          ua.status |=  Constant::Member
         when Constant::Rejected
-          ua.status |= ~Constant::Approving
-          ua.status |= ~Constant::Member
-          ua.status &=  Constant::Rejected
+          ua.status &= ~Constant::Approving
+          ua.status &= ~Constant::Member
+          ua.status |=  Constant::Rejected
       end
       ua.save
     end

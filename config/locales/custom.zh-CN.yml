@@ -4,6 +4,8 @@
 
   index: "首页"
   group: "社团"
+  group_name: "社团名称"
+  group_admin: "社团管理员"
   groups: "社团"
   activities: "活动"
   activity: "活动"
@@ -81,6 +83,8 @@
 
   user_group_status: "和社团关系"
   user_activity_status: "与活动关系"
+  user_platform_status: "用户与平台关系"
+  group_platform_status: "社团与平台关系"
 
   latest_activities: "最近活动"
   "time:": "时间：%{start_time} 至 %{end_time}"
@@ -93,7 +97,9 @@
   join: "加入"
   quit: "退出"
   approving: "申请中"
+  approved: "允许"
   kick_ass: "踢出"
+  blocked: "锁定"
   reject: "拒绝"
   member: "成员"
   allow_join: "允许加入"
