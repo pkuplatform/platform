@@ -116,6 +116,7 @@ class ActivitiesController < ApplicationController
         ua.save
       else
         UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Like)
+        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:like,:object_type=>"Activity",:object_id=>@activity.id)
       end
     end
     respond_to do |format|
@@ -136,6 +137,7 @@ class ActivitiesController < ApplicationController
         ua.save
       else
         UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Approving)
+        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:join,:object_type=>"Activity",:object_id=>@activity.id)
       end
     end
     respond_to do |format|

@@ -128,6 +128,7 @@ class GroupsController < ApplicationController
         ug.save
       else
         UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Approving)
+        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:join,:object_type=>"Group",:object_id=>@group.id)
       end
     end
     respond_to do |format|
@@ -144,17 +145,28 @@ class GroupsController < ApplicationController
   def edit_members
     @group = Group.find(params[:id])
 
-    member_list = params[:member]
-    member_list && member_list.each do |key, value|
+    pre_tenders_list = params[:pre_tender]
+    pre_members_list = params[:pre_member]
+
+    pre_tenders_list && pre_tenders_list.each do |key, value|
       ug = UserGroup.find_by_group_id_and_user_id(@group, key)
       case value.to_i
         when Constant::Approving
         when Constant::Member
           ug.status &= ~Constant::Approving
-          ug.status &= ~Constant::Rejected
           ug.status |=  Constant::Member
+          Event.create(:subject_type=>"User",:subject_id => key, :action=>:join, :object_type=>"Group", :object_id => @group.id)
         when Constant::Rejected
           ug.status &= ~Constant::Approving
+          ug.status |=  Constant::Rejected
+      end
+      ug.save
+    end
+    pre_members_list && pre_members_list.each do |key, value|
+      ug = UserGroup.find_by_group_id_and_user_id(@group, key)
+      case value.to_i
+        when Constant::Member
+        when Constant::Rejected
           ug.status &= ~Constant::Member
           ug.status |=  Constant::Rejected
       end

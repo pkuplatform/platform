@@ -17,7 +17,7 @@
           %td= group.admins.first && group.admins.first.profile.student_id
           %td= group.admins.first && group.admins.first.profile.phone
           %td= group.email
-          %td= select "group", "#{group.id}", { (t "approving") => Constant::Approving, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
+          %td= select "group", "#{group.id}", { (t "approving") => Constant::Approving, (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
       - @blocked_groups && @blocked_groups.each do |group|
         %tr
           %td
