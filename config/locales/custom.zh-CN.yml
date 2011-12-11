@@ -11,7 +11,8 @@
   mail_box: "站内信"
   return: "回到"
 
-
+  is_group_member: "是社团成员"
+  not_group_member: "不是社团成员"
 
   inbox: "收件箱"
   outbox: "发件箱"
@@ -37,6 +38,7 @@
   nickname: "昵称"
   gender: "性别"
   student: "年级"
+  student_id: "学号"
   phone: "手机"
   description: "描述"
   avatar: "头像"
@@ -77,6 +79,8 @@
   start_at: "开始时间"
   end_at: "结束时间"
 
+  user_group_status: "和社团关系"
+  user_activity_status: "与活动关系"
 
   latest_activities: "最近活动"
   "time:": "时间：%{start_time} 至 %{end_time}"
@@ -88,11 +92,17 @@
   like: "我喜欢"
   join: "加入"
   quit: "退出"
+  approving: "申请中"
+  kick_ass: "踢出"
+  reject: "拒绝"
+  member: "成员"
+  allow_join: "允许加入"
   followed: "喜欢的人"
   activity_blogs: "活动日志"
   activity_albums: "活动相册"
   activity_comments: "活动评论"
   posted_new_blog: "发表了日志"
+  confirm_change: "确认修改"
 
   "newsfeed name and time": "在 %{time} 前"
   create: "创建了"

@@ -8,4 +8,12 @@ module ActivitiesHelper
       t("time:",:start_time=>activity.lstart_at(:default),:end_time=>activity.lend_at(:default))
     end
   end
+
+  def is_group_member(activity, user)
+    if activity.group.members.include?(user)
+      t "is_group_member"
+    else
+      t "not_group_member"
+    end
+  end
 end

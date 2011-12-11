@@ -114,7 +114,7 @@ class ActivitiesController < ApplicationController
         ua.status |= Constant::Like
         ua.save
       else
-        UserActivity.create!(:activity_id => @activity, :user_id => current_user, :status => Constant::Like)
+        UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Like)
       end
     end
     respond_to do |format|
@@ -131,14 +131,43 @@ class ActivitiesController < ApplicationController
       ua.save
     else
       if ua
-        ua.status |= Constant::Member
+        ua.status |= Constant::Approving
         ua.save
       else
-        UserActivity.create!(:activity_id => @activity, :user_id => current_user, :status => Constant::Member)
+        UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Approving)
       end
     end
     respond_to do |format|
       format.js
     end
+  end
+
+  def show_members
+    @activity = Activity.find(params[:id])
+    @tenders = @activity.tenders
+    @members = @activity.members
+  end
+
+  def edit_members
+    @activity = Activity.find(params[:id])
+
+    member_list = params[:member]
+    member_list && member_list.each do |key, value|
+      ua = UserActivity.find_by_activity_id_and_user_id(@activity, key)
+      case value.to_i
+        when Constant::Approving
+        when Constant::Member
+          ua.status |= ~Constant::Approving
+          ua.status |= ~Constant::Rejected
+          ua.status &=  Constant::Member
+        when Constant::Rejected
+          ua.status |= ~Constant::Approving
+          ua.status |= ~Constant::Member
+          ua.status &=  Constant::Rejected
+      end
+      ua.save
+    end
+      
+    redirect_to show_members_activity_path
   end
 end

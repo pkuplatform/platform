@@ -16,7 +16,9 @@ class Group < ActiveRecord::Base
   has_many :managers,    :through => :user_groups, :source => :user, :conditions => ["user_groups.status & ? = ?", Constant::Manager, Constant::Manager]
   has_many :admins,      :through => :user_groups, :source => :user, :conditions => ["user_groups.status & ? = ?", Constant::Admin, Constant::Admin]
   has_many :followers,   :through => :user_groups, :source => :user, :conditions => ["user_groups.status & ? = ?", Constant::Like, Constant::Like]
-  has_many :subscribers,   :through => :user_groups, :source => :user, :conditions => ["(user_groups.status & ? = ?) || (user_groups.status & ? = ?)", Constant::Member, Constant::Member, Constant::Like, Constant::Like]
+#users tend to join
+  has_many :tenders,     :through => :user_groups, :source => :user, :conditions => ["user_groups.status & ? = ?", Constant::Approving, Constant::Approving]
+  has_many :subscribers, :through => :user_groups, :source => :user, :conditions => ["(user_groups.status & ? = ?) || (user_groups.status & ? = ?)", Constant::Member, Constant::Member, Constant::Like, Constant::Like]
 
   def self.daily_ranks
     ret = []
