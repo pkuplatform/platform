@@ -1,0 +1,11 @@
+.box-header
+  = "Info"
+.box-body
+  .phone
+    = "Phone: "
+    = group.admins.first && @group.admins.first.profile.phone
+  .email
+    = "Email: "
+    = group.admins.first && @group.admins.first.email
+  .organization
+    = group.organization

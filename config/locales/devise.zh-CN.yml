@@ -1,10 +1,4 @@
 zh-CN:
-  sign_in: "登录"
-  sign_out: "登出"
-  forget_password: "忘记密码？"
-  remember_me: "勿忘我"
-  email: "E-mail"
-  password: "密  码"
   errors:
     messages:
       expired: "您已过期，请重新申请"

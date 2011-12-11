@@ -12,9 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title,(t :title) %><br />
     <%= f.text_field :title %>
   </div>
+  <%= f.hidden_field :activity_id,:value=>params[:activity_id] %>
   <div class="actions">
     <%= f.submit %>
   </div>

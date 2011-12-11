@@ -8,4 +8,19 @@ module ApplicationHelper
     current_user.id == params[:id].to_i
   end
 
+  def approved?(object)
+    (object.status & Constant::Approved) == Constant::Approved
+  end
+
+  def rejected?(object)
+    (object.status & Constant::Rejected) == Constant::Rejected
+  end
+
+  def approving?(object)
+    (object.status & Constant::Approving) == Constant::Approving
+  end
+
+  def comment_path(comment)
+    url_for(comment.commentable)+"#comment-#{comment.id}"
+  end
 end

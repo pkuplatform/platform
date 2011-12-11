@@ -7,12 +7,9 @@
       .title
         = link_to activity.title, activity
       .time
-        - if activity.start_at.to_date == activity.end_at.to_date
-          = "时间：#{format_datetime activity.start_at} - #{format_datetime activity.end_at}"
-        - else
-          = "时间：#{format_datetime activity.start_at} 至 #{format_datetime activity.end_at}"
+        = stime(activity)
       .location
-        = "地点：#{activity.location}"
+        = t("location:",:location=>activity.location)
 
     .span-2.last.poster
       = link_to (image_tag activity.poster.url(:thumb)), activity 

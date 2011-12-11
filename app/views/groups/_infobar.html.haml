@@ -1,25 +1,3 @@
-.logo.box
-  .box-body
-    = image_tag @group.logo.url(:small)
-.info.box
-  .box-header
-    = "Info"
-  .box-body
-    .phone
-      = "Phone: "
-      = @group.admins.first.profile.phone
-    .email
-      = "Email: "
-      = @group.admins.first.email
-    .organization
-      = @group.organization
-.members.box
-  .box-header
-    = "Members"
-  .box-body
-    %ul
-      = render :partial => "users/thumb", :collection => @group.members
-    .clear
-  .more
-    = link_to "more", "#"
-    .clear
+.logo.box=    render :partial => 'logo_box',    :locals => {:group => @group}
+.info.box=    render :partial => 'info_box',    :locals => {:group => @group}
+.members.box= render :partial => 'members_box', :locals => {:group => @group}

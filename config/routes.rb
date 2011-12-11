@@ -1,6 +1,41 @@
 Platform::Application.routes.draw do
 
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  namespace :form do resources :second_building_applications end
+
+  namespace :admin do
+    get "forms/index"
+  end
+
+  namespace :form do 
+    resources :second_building_applications do 
+      member do
+        #.../1/approv
+        post :approve
+        #.../1/reject
+        post :reject
+      end
+    end
+  end
+
+  resources :blogs do
+    member do
+      post :comment
+    end
+  end
+
+  devise_for :users, :controllers => { 
+    :sessions => "sessions",
+    :registrations => "registrations"
+  }
+
+  resources :users,:only=>[:show, :index] do
+    member do
+      get 'profile/edit' => 'profiles#edit'
+      get 'profile' => 'profiles#show'
+    end
+  end
+
+
   mailboxes_for :users
   resources :users do
     member do
@@ -8,19 +43,24 @@ Platform::Application.routes.draw do
       get :liking, :liked
     end
   end
+  
   resources :profiles
 
   resources :user_relations, :only => [:create, :destroy]
 
   resources :groups do
     resources :albums
-    resources :comments
     member do
       get 'join'
       get 'like'
       get 'activities/new' => 'activities#new'
+      get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
+      get 'show_forms'
+      get 'show_members'
+      post 'members/edit' => 'groups#edit_members'
     end
   end
+
 
   resources :activities do
     resources :albums
@@ -28,6 +68,12 @@ Platform::Application.routes.draw do
       get 'join'
       get 'like'
       post 'comment'
+      get 'pictures/new' => 'pictures#new'
+      get 'pictures' => 'pictures#index'
+      get 'blogs/new' => 'blogs#new'
+      get 'blogs' => 'blogs#index'
+      get 'show_members'
+      post 'members/edit' => 'activities#edit_members'
     end
   end
 
@@ -36,13 +82,11 @@ Platform::Application.routes.draw do
   end
 
   resources :pictures do
-    resources :comments
+    member do
+      post 'comment'
+    end
   end
 
-  namespace :form do 
-    resources :booth_application_forms 
-    resources :second_building_application_forms
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

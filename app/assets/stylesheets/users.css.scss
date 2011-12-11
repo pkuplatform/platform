@@ -72,7 +72,9 @@ body {
 }
 
 .newsfeed {
-  padding-left:40px;
+  margin-top: 10px;
+  .content { margin-top: 10px; }
+  font-size: 1.3em;
   .box-header{
     margin-left:-20px;
   }
@@ -160,3 +162,6 @@ body {
   background-position:50px 0;
   background-repeat:no-repeat;
 } 
+.sign_up {
+  width:300px;
+}

@@ -1,0 +1,13 @@
+.container
+  = render 'share/header'
+  .content
+    .span-7.append-1
+      = render :partial=>'users/user_box',:locals=>{:user=>current_user}
+      = render 'users/rank'
+    .box.span-14.last
+      .box-header
+        = t "mailbox"
+      .box-body
+        = render 'index'
+    .clear
+  = render 'share/footer'

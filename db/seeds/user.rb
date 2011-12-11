@@ -1,5 +1,6 @@
 User.delete_all
-100.times do |i|
+UserNum = 100
+UserNum.times do |i|
   user = User.new
   user.email = i.to_s+Faker::Internet.free_email
   user.password = '123456'
@@ -29,4 +30,15 @@ User.delete_all
     user_activity.status = status + (1 << (7 + privilege)) + (like << 16) + (join << 17)
     user_activity.save
   end
+end
+
+(20*UserNum).times do |i|
+    user_relation = UserRelation.new
+    liking_id = i % UserNum + 1
+    liked_id = i / UserNum * 5 + liking_id % 5
+    if liking_id != liked_id
+      user_relation.liking_id = liking_id
+      user_relation.liked_id  = liked_id
+      user_relation.save
+    end
 end

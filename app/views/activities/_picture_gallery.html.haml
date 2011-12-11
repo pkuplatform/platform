@@ -1,0 +1,12 @@
+.carousel-control
+  .span-1
+    %button.prev <<
+  .span-12
+    .carousel
+      %ul
+        - pictures.each do |picture|
+          %li=link_to(image_tag(picture.photo.url(:small)), picture, :class=>"gallery_pics",:rel=>"ga")
+  .span-1
+    %button.next >>
+.hide
+  #picture-preview

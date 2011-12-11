@@ -1,0 +1,27 @@
+<h1>Listing form_second_building_applications</h1>
+
+<table>
+  <tr>
+    <th>Zhubanren</th>
+    <th>Fuzeren</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @form_second_building_applications.each do |form_second_building_application| %>
+  <tr>
+    <td><%= form_second_building_application.zhubanren %></td>
+    <td><%= form_second_building_application.fuzeren %></td>
+    <td><%= show_status form_second_building_application %></td>
+    <td><%= link_to 'Show', form_second_building_application %></td>
+    <td><%= link_to 'Edit', edit_form_second_building_application_path(form_second_building_application) %></td>
+    <td><%= link_to 'Destroy', form_second_building_application, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Second building application', new_form_second_building_application_path %>

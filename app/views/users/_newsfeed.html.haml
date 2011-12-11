@@ -1,19 +1,29 @@
-.newsfeed
+- event = newsfeed.event
+- subject = event.subject
+- object = event.object
 
+.newsfeed
   .span-2.avatar
-    = link_to (image_tag activity.poster.url(:thumb)), activity 
-  .span-11.content
-    .title
-      = link_to activity.title, activity
+    = link_to (image_tag subject.url), subject
+  .span-11.content.last
     .time
-      - if activity.start_at.to_date == activity.end_at.to_date
-        = "时间：#{format_datetime activity.start_at} - #{format_datetime activity.end_at}"
+      = link_to subject.name, subject
+      = " "
+      = t("newsfeed name and time", :time => distance_of_time_in_words_to_now(event.created_at))
+    .title
+      - if event.object_type=="Comment"
+        - comment = event.object
+        = t :in
+        = t comment.commentable_type
+        = link_to comment.commentable.name,comment.commentable
+        = t :post
+        = link_to (t :comment), comment
       - else
-        = "时间：#{format_datetime activity.start_at} 至 #{format_datetime activity.end_at}"
-    .location
-      = "地点：#{activity.location}"
-    .more
-      = link_to '详情', activity
+        = t event.action
+        = " "
+        = t event.object_type
+        = " "
+        = link_to object.name, object
   .span-2.last.poster
-    = link_to (image_tag activity.poster.url(:thumb)), activity 
+    = link_to (image_tag object.url), object 
   .clear

@@ -7,3 +7,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  $notice = $("#notice");
+  if ($notice.html()) {
+    $.fancybox(
+      $notice.html(),
+        {
+          'transitionIn'  : 'none',
+          'transitionOut' : 'none',
+    });
+  }
+  $alert = $("#alert");
+  if ($alert.html()) {
+    $.fancybox(
+      $alert.html(),
+        {
+          'transitionIn'  : 'none',
+          'transitionOut' : 'none',
+          'overlayColor'  : '#A00' 
+    });
+  }
+});

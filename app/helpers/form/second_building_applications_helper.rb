@@ -1,0 +1,2 @@
+module Form::SecondBuildingApplicationsHelper
+end

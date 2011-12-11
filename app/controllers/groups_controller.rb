@@ -74,12 +74,92 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
-
+    @group = Group.find(params[:id]) 
+    @group.destroy 
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :ok }
     end
   end
+
+  def show_forms
+    @group = Group.find(params[:id])
+    @second_buildings = @group.second_building_applications
+  end
+
+  def like
+    @group = Group.find(params[:id])
+    ug = @group.user_groups.find_by_user_id(current_user)
+    puts "----------0000--------------"
+    
+    if @group.followers.include?(current_user)
+      puts "----------1111--------------"
+      ug.status &= ~Constant::Like
+      ug.save
+    else
+      if ug
+        puts "----------2222--------------"
+        ug.status |= Constant::Like
+        ug.save
+      else
+        puts "----------3333--------------"
+        puts "--------#{@group.id}-------"
+        puts "--------#{current_user.id}-------"
+        UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Like)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def join
+    @group = Group.find(params[:id])
+    ug = @group.user_groups.find_by_user_id(current_user)
+    
+    if @group.members.include?(current_user)
+      ug.status &= ~Constant::Member
+      ug.save
+    else
+      if ug
+        ug.status |= Constant::Approving
+        ug.save
+      else
+        UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Approving)
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_members
+    @group = Group.find(params[:id])
+    @tenders = @group.tenders
+    @members = @group.members
+  end
+
+  def edit_members
+    @group = Group.find(params[:id])
+
+    member_list = params[:member]
+    member_list && member_list.each do |key, value|
+      ug = UserGroup.find_by_group_id_and_user_id(@group, key)
+      case value.to_i
+        when Constant::Approving
+        when Constant::Member
+          ug.status |= ~Constant::Approving
+          ug.status |= ~Constant::Rejected
+          ug.status &=  Constant::Member
+        when Constant::Rejected
+          ug.status |= ~Constant::Approving
+          ug.status |= ~Constant::Member
+          ug.status &=  Constant::Rejected
+      end
+      ug.save
+    end
+      
+    redirect_to show_members_group_path
+  end
+
 end

@@ -11,8 +11,11 @@ div {
   &.field, &.actions {
     margin-bottom: 10px; } }
 
-#notice {
-  color: green; }
+#notice,#alert {
+  color: green;
+  height:1px;
+  overflow:hidden;
+ }
 
 .field_with_errors {
   padding: 2px;
@@ -20,10 +23,11 @@ div {
   display: table; }
 
 #error_explanation {
-  width: 450px;
+  width: 200px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
+  margin:0 auto;
   margin-bottom: 20px;
   background-color: #f0f0f0;
   h2 {
@@ -33,11 +37,11 @@ div {
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
+    background-color: orange;
     color: #fff; }
   ul li {
     font-size: 12px;
-    list-style: square; } }
+    list-style: none; } }
 
 .tricol-list {
   @include box-thumb;

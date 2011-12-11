@@ -16,22 +16,28 @@ class User < ActiveRecord::Base
 
   has_many :user_groups
   has_many :groups, :through => :user_groups
-  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 65536 = 65536"]
-  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & 32768 = 32768"]
+  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & ? = ?", Constant::Member, Constant::Member]
+  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & ? = ?", Constant::Like, Constant::Like]
 
   has_many :user_activities
   has_many :activities, :through => :user_activities
-  has_many :join_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & 65536 = 65536"]
-  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & 32768 = 32768"]
+  has_many :join_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & ? = ?", Constant::Member, Constant::Member]
+  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & ? = ?", Constant::Like, Constant::Like]
 
   has_many :newsfeeds
   has_many :albums, :as => :imageable
+  has_many :blogs, :foreign_key=>"author_id"
 
   has_many :user_relations, :foreign_key => "liking_id", :dependent => :destroy
   has_many :users_i_like, :through => :user_relations, :source => :liked
-  has_many :subscribers, :through => :user_relations, :source => :liked
+  has_many :subscribers_others, :through => :user_relations, :source => :liked
   has_many :reverse_user_relations, :foreign_key => "liked_id", :class_name => "UserRelation", :dependent => :destroy
   has_many :users_like_me, :through => :reverse_user_relations,:source => :liking
+
+  def subscribers
+    a = subscribers_others.to_ary
+    a << self
+  end
 
   def name
     profile.name
@@ -56,14 +62,12 @@ class User < ActiveRecord::Base
   def self.weekly_ranks
     RankList.where("identify_id > ? && identify_id < ?", 9, 19)
   end
-=begin
-  def subscribers
-    ret = Set.new()
-    users_like_me.each do |user|
-      ret.add user
-    end
 
-    ret.to_a
+  def url
+    profile.avatar.url(:thumb)
   end
-=end
+
+  def name
+    profile.nickname
+  end
 end
