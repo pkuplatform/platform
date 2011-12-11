@@ -13,12 +13,12 @@
           %td= tender.profile.name
           %td= tender.name
           %td= tender.profile.student_id
-          %td= select "member", "#{tender.id}", { (t "approving") => Constant::Approving, (t "member") => Constant::Member, (t "reject") => Constant::Rejected }
+          %td= select "pre_tender", "#{tender.id}", { (t "approving") => Constant::Approving, (t "member") => Constant::Member, (t "reject") => Constant::Rejected }
       -@members && @members.each do |member|
         %tr
           %td
           %td= member.profile.name
           %td= member.name
           %td= member.profile.student_id
-          %td= select "member", "#{member.id}", { (t "member") => Constant::Member, (t "kick_ass") => Constant::Rejected}
-  = submit_tag 'confirm_change'
+          %td= select "pre_member", "#{member.id}", { (t "member") => Constant::Member, (t "kick_ass") => Constant::Rejected}
+  = submit_tag t 'confirm_change'

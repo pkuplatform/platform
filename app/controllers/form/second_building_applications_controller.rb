@@ -24,8 +24,7 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   # GET /form/second_building_applications/new
   # GET /form/second_building_applications/new.json
   def new
-    g = Group.find(params[:id])
-    @form_second_building_application = g.second_building_applications.build
+    @form_second_building_application = Form::SecondBuildingApplication.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,17 +42,6 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   def create
     @form_second_building_application = Form::SecondBuildingApplication.new(params[:form_second_building_application])
 
-#    @form_second_building_application.approving
-    @form_second_building_application.status = Constant::Approving
-
-    if @form_second_building_application.save
-      redirect_to :back
-    else 
-      render action: "new"
-    end
-
-
-=begin
     respond_to do |format|
       if @form_second_building_application.save
         format.html { redirect_to @form_second_building_application, notice: 'Second building application was successfully created.' }
@@ -63,7 +51,6 @@ class Form::SecondBuildingApplicationsController < ApplicationController
         format.json { render json: @form_second_building_application.errors, status: :unprocessable_entity }
       end
     end
-=end
   end
 
   # PUT /form/second_building_applications/1
@@ -93,19 +80,4 @@ class Form::SecondBuildingApplicationsController < ApplicationController
       format.json { head :ok }
     end
   end
-
-  def approve
-    @form_second_building_application = Form::SecondBuildingApplication.find(params[:id])
-    @form_second_building_application.approve
-
-    redirect_to :back
-  end
-
-  def reject
-    @form_second_building_application = Form::SecondBuildingApplication.find(params[:id])
-    @form_second_building_application.reject
-
-    redirect_to :back
-  end
-
 end
