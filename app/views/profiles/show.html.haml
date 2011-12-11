@@ -10,8 +10,8 @@
         = @profile.name + t("'s card")
       .box-body
         %p
-          %b Avatar:
-          = image_tag @profile.avatar.url(:thumb)
+          %b 
+          = image_tag @profile.avatar.url(:small)
         %p
           %b Name:
           = @profile.name

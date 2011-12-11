@@ -7,6 +7,15 @@
 
   .box-body
     %ul.favor_list
+      %li
+        %ul
+          = render :partial => "users/thumb", :collection => @user.users_i_like
+      %li
+        %ul
+          = render :partial => "groups/thumb", :collection => @user.like_groups
+      %li
+        %ul
+          = render :partial => "activities/thumb", :collection => @user.like_activities
     .more
       = link_to "more", "#"
     .clear
