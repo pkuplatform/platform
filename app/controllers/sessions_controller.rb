@@ -8,6 +8,11 @@ class SessionsController < Devise::SessionsController
     end
     url
   end
+
+  def after_sign_out_path_for(resource_or_scope)
+    new_session_path(resource_or_scope)
+  end
+
   def create
     resource = warden.authenticate(:scope => resource_name, :recall => "#{controller_path}#new")
     if resource.nil?
