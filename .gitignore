@@ -7,3 +7,9 @@ public/system
 .DS_Store
 Gemfile
 Gemfile.lock
+libv8-3.3.10.4.gem
+therubyracer-0.9.9.gem
+platforms.zip
+Gemfile
+Gemfile.lock
+task_scheduler.rb
