@@ -1,11 +1,10 @@
-= form_tag members_edit_group_path do 
+= form_tag activities_edit_group_path do 
   %table
     %thead
       %th= "id"
-      %th= t "name"
-      %th= t "nickname"
-      %th= t "student_id"
-      %th= t "user_group_status"
+      %th= t "activity_title"
+      %th= t "is_public"
+      %th= t "activity_status"
     %tbody
       - @tenders && @tenders.each do |tender|
         %tr
