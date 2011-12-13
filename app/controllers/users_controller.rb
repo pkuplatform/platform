@@ -5,8 +5,18 @@ class UsersController < ApplicationController
     redirect_to current_user
   end
 
-  def favors
-    if params[:class]=='user'
+  def favor
+    @type = params[:type]
+    puts @type
+    @user = User.find(params[:id])
+    if @type=='users'
+      @favor_list =  @user.users_i_like
+    elsif @type=='groups'
+      @favor_list =  @user.like_groups
+    elsif @type=='activities'
+      @favor_list =  @user.like_activities
+    else
+      @favor_list = @user.users_i_like
     end
   end
 
@@ -19,6 +29,8 @@ class UsersController < ApplicationController
     end
     @user = User.find(params[:id])
     @q = Group.search(params[:q])
+    @type = "users"
+    @favor_list = @user.users_i_like
     @my_activities = @user.activities
     @like_users = @user.users_i_like
     @like_activities = @user.activities
@@ -36,7 +48,5 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-
-
 
 end

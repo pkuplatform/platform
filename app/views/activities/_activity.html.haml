@@ -3,15 +3,10 @@
   .span-2.avatar
     = link_to (image_tag activity.poster.url(:thumb)), activity.poster.url(:big), :rel => "avatars"
   .span-12.content
-    .span-10
-      .title
-        = link_to activity.title, activity
-      .time
-        = stime(activity)
-      .location
-        = t("location:",:location=>activity.location)
-
-    .span-2.last.poster
-      = link_to (image_tag activity.poster.url(:thumb)), activity 
-    .clear
+    .title
+      = link_to activity.title, activity
+    .time
+      = stime(activity)
+    .location
+      = t("location:",:location=>activity.location)
   .clear

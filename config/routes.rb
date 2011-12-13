@@ -31,18 +31,22 @@ Platform::Application.routes.draw do
     end
   end
 
+
+
+  resources :users,:only=>[:index] do
+    member do
+      get 'profile/edit' => 'profiles#edit'
+      get 'profile' => 'profiles#show'
+      get 'favor'
+    end
+  end
+
   devise_for :users, :controllers => { 
     :sessions => "sessions",
     :registrations => "registrations"
   }
 
-  resources :users,:only=>[:show, :index] do
-    member do
-      get 'profile/edit' => 'profiles#edit'
-      get 'profile' => 'profiles#show'
-    end
-  end
-
+  resources :users,:only=>[:show] 
 
   mailboxes_for :users
   resources :users do
