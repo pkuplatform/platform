@@ -2,6 +2,7 @@ class SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource_or_scope)
     if session[:post_auth_path]
       url = session[:post_auth_path]
+      if (url==new_session_path(resource_or_scope)) url = resource
       session[:post_auth_path] = nil
     else
       url = resource
