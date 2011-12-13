@@ -1,0 +1,18 @@
+.admin-panel.box
+  .box-header
+    = "Admin Panel"
+  .box-body
+    .follower
+      - if @activity.followers.include?(current_user)
+        = link_to (t "dislike"), like_activity_path(@activity), :remote => true
+      - else
+        = link_to (t "like"), like_activity_path(@activity), :remote => true
+    .join
+      - if @activity.members.include?(current_user)
+        = link_to ((t "quit") + (t "activity")), join_activity_path(@activity), :remote => true
+      - elsif @activity.tenders.include?(current_user)
+        = (t "approving")
+      - else
+        = link_to ((t "join") + (t "activity")), join_activity_path(@activity), :remote => true
+    .blog
+      = link_to (t :new_blog), blogs_new_activity_path
