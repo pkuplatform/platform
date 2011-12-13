@@ -177,18 +177,16 @@ class GroupsController < ApplicationController
 
   def show_activities
     @group = Group.find(params[:id])
-    @approving_groups = @group.activities.find_all_by_status(Constant::Approving)
-    @blocked_groups   = @group.activities.find_all_by_status(Constant::Blocked)
-    @approved_groups  = @group.activities.find_all_by_status(Constant::Approved)
+    @activities = @group.activities
   end
 
   def edit_activities
     @group = Group.find(params[:id])
 
-    activities_list = params[:activities]
-    activities_list && activities_list.each do |key, value|
-      activity = Activity.find(key)
-      if value.to_i == Constant::Destroy
+    del_list = params[:del]
+    del_list && del_list.each do |key, value|
+      if value.to_i == 1
+        activity = Activity.find(key)
         activity.destroy
       end
     end
