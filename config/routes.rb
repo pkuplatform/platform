@@ -37,6 +37,7 @@ Platform::Application.routes.draw do
     member do
       get 'profile/edit' => 'profiles#edit'
       get 'profile' => 'profiles#show'
+      get 'favor'
     end
   end
 
