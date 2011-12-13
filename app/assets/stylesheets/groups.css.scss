@@ -17,6 +17,8 @@
   .category li { float:left; width:170px; }
 }
 
+.group.logo img { width: 228px; }
+
 .members {
   @include box-thumb;
 }

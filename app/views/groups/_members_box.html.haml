@@ -1,9 +1,10 @@
-.box-header
-  = "Members"
-.box-body
-  %ul
-    = render :partial => "users/thumb", :collection => group.members
-  .clear
-.more
-  = link_to "more", "#"
-  .clear
+.members.box
+  .box-header
+    = "Members"
+  .box-body
+    %ul
+      = render :partial => "users/thumb", :collection => @group.members
+    .clear
+  .more
+    = link_to "more", "#"
+    .clear
