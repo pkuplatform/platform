@@ -61,6 +61,8 @@ Platform::Application.routes.draw do
     member do
       get 'join'
       get 'like'
+      get 'history'
+      get 'organization'
       get 'activities/new' => 'activities#new'
       get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
       get 'show_forms'

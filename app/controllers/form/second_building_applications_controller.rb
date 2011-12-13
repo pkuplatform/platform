@@ -24,6 +24,7 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   # GET /form/second_building_applications/new
   # GET /form/second_building_applications/new.json
   def new
+    @group = Group.find(params[:id])
     @form_second_building_application = Form::SecondBuildingApplication.new
 
     respond_to do |format|

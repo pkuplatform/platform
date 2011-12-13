@@ -194,4 +194,11 @@ class GroupsController < ApplicationController
     redirect_to show_activities_group_path
   end
 
+  def history
+    @group = Group.find(params[:id])
+  end
+
+  def organization 
+    @group = Group.find(params[:id])
+  end
 end
