@@ -140,3 +140,8 @@
   Picture: "图片"
   Activity: "活动"
   Group: "社团"
+  Album: "相册"
+
+  album: "相册"
+  uploader: "上传者"
+  list: "列表"

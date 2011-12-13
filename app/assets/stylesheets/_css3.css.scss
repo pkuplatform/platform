@@ -19,9 +19,20 @@
       font-size:$font-size;
       color:#f99b15;
       line-height:$font-size;
+      &:focus,&:hover {
+        background-color:#f99b15;
+        color:white;
+      }
     }
-  a:focus,a:hover {
-      background-color:#f99b15;
-      color:white;
+
+  a.title {
+    float:none;
+    margin:0;
+    font-size:1em;
+    color:#B48FA8;
+    &:focus,&:hover {
+      background:none;
+      color:#f99b15;
+    }
   }
 }

@@ -94,6 +94,7 @@ Platform::Application.routes.draw do
   resources :pictures do
     member do
       post 'comment'
+      get 'show_gallery'
     end
   end
 

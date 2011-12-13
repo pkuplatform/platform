@@ -1,16 +1,22 @@
-.picture
-  %p#notice= notice
-  %p
-    %b Album:
-    = @picture.album.title
-  %p
-    %b User:
-    = @picture.user.name
-  %p
-    = image_tag(@picture.photo.url(:medium))
-  %p
-    = @picture.remark
-  = render :partial => "share/comments", :locals => {:object => @picture}
-  = link_to 'Edit', edit_picture_path(@picture)
-  |
-  \#{link_to 'Back', pictures_path}
+.container
+  = render 'share/header'
+  .content
+    .span-7.append-1
+      = render 'activities/infobar'
+    .span-16.last
+      .box.detail
+        .box-header
+          = "#{t :activity_albums}: "
+          = link_to(@picture.album.title,@picture.album,:class=>"title")
+          = link_to "#{t :return} #{t :activity} "+@activity.title, @activity
+          .clear
+        .box-content
+          .picture
+            %p
+              %b= t :uploader
+              = link_to(@picture.user.name,@picture.user)
+            %p= image_tag(@picture.url(:medium))
+            %p= @picture.remark
+            = render :partial => "share/comments", :locals => {:object => @picture}
+    .clear
+  = render 'share/footer'

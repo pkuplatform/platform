@@ -1,7 +1,8 @@
 .box.detail.blog
   .box-header
     = "#{t :activity_blogs}: "+@blog.title
-    = link_to "#{t :return} "+@activity.title, @activity
+    = link_to "#{t :return} #{t :activity} "+@activity.title, @activity
+    .clear
   .box-body
     .blog-info
       = "#{t :from} "
