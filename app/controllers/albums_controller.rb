@@ -2,8 +2,8 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
-
+    @activity = Activity.find(params[:activity_id])
+    @albums = @activity.albums
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }
@@ -14,6 +14,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = Album.find(params[:id])
+    @activity = @album.imageable
 
     respond_to do |format|
       format.html # show.html.erb

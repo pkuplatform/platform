@@ -1,0 +1,21 @@
+.container
+  = render 'share/header'
+  .content
+    .span-7.append-1
+      = render 'activities/infobar'
+    .span-16.last
+      .box.detail
+        .box-header
+          = t(:activity_albums)+t(:list)
+          = link_to "#{t :return} "+@activity.title, @activity
+          .clear
+        .box-content
+          %ul.album-pictures
+            - @albums.each do |album|
+              %a{:href=>activity_album_path(@activity,album)}
+                %li
+                  %p.cover=image_tag(album.cover.url(:small))
+                  %p=album.title
+            .clear
+    .clear
+  = render 'share/footer'
