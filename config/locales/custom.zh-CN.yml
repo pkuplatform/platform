@@ -86,6 +86,12 @@
   user_activity_status: "与活动关系"
   user_platform_status: "用户与平台关系"
   group_platform_status: "社团与平台关系"
+  activity_status: "活动状态"
+  is_public: "是否公开"
+  public: "公开"
+  not_public: "不公开"
+  is_destroy: "是否删除"
+  activity_title: "活动名"
 
   latest_activities: "最近活动"
   "time:": "时间：%{start_time} 至 %{end_time}"
