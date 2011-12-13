@@ -17,9 +17,22 @@ class PicturesController < ApplicationController
   def show
 
     @picture = Picture.find(params[:id])
+    @album = @picture.album
+    @activity = @album.imageable
 
     respond_to do |format|
-      format.html { render 'show',:layout=>false }
+      format.html { render 'show' }
+      format.json { render json: @picture }
+    end
+  end
+
+  def show_gallery
+
+    @picture = Picture.find(params[:id])
+    @activity = @picture.album.imageable
+
+    respond_to do |format|
+      format.html { render 'show_gallery',:layout=>false }
       format.json { render json: @picture }
     end
   end
@@ -50,7 +63,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to pictures_activity_path(@activity), notice: 'Picture was successfully created.' }
+        format.html { redirect_to album_picture_path(@picture.album,@picture), notice: 'Picture was successfully created.' }
         format.json { render json: @picture, status: :created, location: @picture }
       else
         format.html { render action: "new" }

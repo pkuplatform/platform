@@ -23,4 +23,6 @@ module ApplicationHelper
   def comment_path(comment)
     url_for(comment.commentable)+"#comment-#{comment.id}"
   end
+
+
 end

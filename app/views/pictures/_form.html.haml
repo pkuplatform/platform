@@ -10,7 +10,7 @@
   .field
     = f.label :album
     = collection_select(:picture, :album_id, @activity.albums, :id, :title)
-    = link_to (t "new_album"), new_album_path(:activity_id=>@activity.id),:class=>"pop_fancy_box"
+    = link_to (t "new_album"), new_activity_album_path(:activity_id=>@activity.id),:class=>"pop_fancy_box"
   .field
     = f.label :remark
     %br/

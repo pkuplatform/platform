@@ -17,7 +17,7 @@
           %td= group.admins.first && group.admins.first.profile.student_id
           %td= group.admins.first && group.admins.first.profile.phone
           %td= group.email
-          %td= select "group", "#{group.id}", { (t "approving") => Constant::Approving, (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
+          %td= select "approving_group", "#{group.id}", { (t "approving") => Constant::Approving, (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
       - @blocked_groups && @blocked_groups.each do |group|
         %tr
           %td
@@ -26,7 +26,7 @@
           %td= group.admins.first && group.admins.first.profile.student_id
           %td= group.admins.first && group.admins.first.profile.phone
           %td= group.email
-          %td= select "group", "#{group.id}", { (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
+          %td= select "blocked_group", "#{group.id}", { (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
       - @approved_groups && @approved_groups.each do |group|
         %tr
           %td
@@ -35,5 +35,5 @@
           %td= group.admins.first && group.admins.first.profile.student_id
           %td= group.admins.first && group.admins.first.profile.phone
           %td= group.email
-          %td= select "group", "#{group.id}", { (t "approved") => Constant::Approved, (t "blocked") => Constant::Blocked, (t "kick_ass") => Constant::Destroy }
+          %td= select "approved_group", "#{group.id}", { (t "approved") => Constant::Approved, (t "blocked") => Constant::Blocked, (t "kick_ass") => Constant::Destroy }
   = submit_tag t 'confirm_change'

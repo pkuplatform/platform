@@ -132,13 +132,21 @@ class ActivitiesController < ApplicationController
       ua.status &= ~Constant::Member
       ua.save
     else
-      if ua
+      if @activity.public?
+        if ua
+          ua.status |= Constant::Member
+          ua.save
+        else
+          UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Member)
+        end
+        Event.create(:subject_type=>"User",:subject_id => current_user.id, :action=>:join, :object_type=>"Activity", :object_id => @activity.id)
+      elsif ua
         ua.status |= Constant::Approving
         ua.save
       else
         UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Approving)
-        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:join,:object_type=>"Activity",:object_id=>@activity.id)
       end
+
     end
     respond_to do |format|
       format.js
@@ -154,21 +162,32 @@ class ActivitiesController < ApplicationController
   def edit_members
     @activity = Activity.find(params[:id])
 
-    member_list = params[:member]
-    member_list && member_list.each do |key, value|
-      ua = UserActivity.find_by_activity_id_and_user_id(@activity, key)
+    pre_tenders_list = params[:pre_tender]
+    pre_members_list = params[:pre_member]
+
+    pre_tenders_list && pre_tenders_list.each do |key, value|
+      ug = UserActivity.find_by_activity_id_and_user_id(@activity, key)
       case value.to_i
         when Constant::Approving
         when Constant::Member
-          ua.status &= ~Constant::Approving
-          ua.status &= ~Constant::Rejected
-          ua.status |=  Constant::Member
+          ug.status &= ~Constant::Approving
+          ug.status |=  Constant::Member
+          Event.create(:subject_type=>"User",:subject_id => key, :action=>:join, :object_type=>"Activity", :object_id => @activity.id)
         when Constant::Rejected
-          ua.status &= ~Constant::Approving
-          ua.status &= ~Constant::Member
-          ua.status |=  Constant::Rejected
+          ug.status &= ~Constant::Approving
+          ug.status |=  Constant::Rejected
       end
-      ua.save
+      ug.save
+    end
+    pre_members_list && pre_members_list.each do |key, value|
+      ug = UserActivity.find_by_activity_id_and_user_id(@activity, key)
+      case value.to_i
+        when Constant::Member
+        when Constant::Rejected
+          ug.status &= ~Constant::Member
+          ug.status |=  Constant::Rejected
+      end
+      ug.save
     end
       
     redirect_to show_members_activity_path

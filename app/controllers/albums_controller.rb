@@ -2,8 +2,8 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
-
+    @activity = Activity.find(params[:activity_id])
+    @albums = @activity.albums
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }
@@ -14,6 +14,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = Album.find(params[:id])
+    @activity = @album.imageable
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new.json
   def new
     @album = Album.new
+    @activity = Activity.find(params[:activity_id])
 
     respond_to do |format|
       format.html { render "new",:layout=>false }
@@ -41,10 +43,11 @@ class AlbumsController < ApplicationController
   # POST /albums.json
   def create
     @album = Album.new(params[:album])
-
+    @activity = Activity.find(params[:activity_id])
+    @album.imageable = @activity
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to pictures_new_activity_path(@activity), notice: 'Album was successfully created.' }
         format.json { render json: @album, status: :created, location: @album }
       else
         format.html { render action: "new" }
