@@ -13,8 +13,8 @@
 #   rake "some:great:rake:task"
 # end
 #
-every 1.minute do
-  runner "Newsfeed.update"
+every 2.minutes do
+  runner "Newsfeed.update", environment => "development"
 end
 
 # Learn more: http://github.com/javan/whenever
