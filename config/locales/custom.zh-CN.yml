@@ -61,6 +61,8 @@
   "most subscribers activity": "最受关注的活动"
   "most subscribers group": "最受关注的社团"
   my_favors: "我喜欢"
+  :ta_favors: "Ta喜欢"
+
   users: "人"
   newsfeed: "新鲜事"
 
@@ -148,6 +150,7 @@
 
   "history": "社团大记事"
   "organization": "组织构架"
-  "contact": "联系方式（登陆用户可以不必填写）"
-  "content": "请尽量描述出现的问题，或者建议"
+  "contact_for_feedback": "联系方式（登陆用户可以不必填写）"
+  "content_for_feedback": "请尽量描述出现的问题，或者建议"
   "new_feedback": "反馈我们"
+

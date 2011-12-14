@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     @newsfeeds = @user.newsfeeds.order("id DESC")
     if @user!=current_user
       @profile = @user.profile
+      @others_page = true
       render "profiles/show"
     end
   end
