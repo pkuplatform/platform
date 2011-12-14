@@ -29,8 +29,6 @@ class UsersController < ApplicationController
     end
     @user = User.find(params[:id])
     @q = Group.search(params[:q])
-    @type = "users"
-    @favor_list = @user.users_i_like
     @my_activities = @user.activities
     @like_users = @user.users_i_like
     @like_activities = @user.activities
@@ -38,7 +36,7 @@ class UsersController < ApplicationController
     @like_activities = @user.like_activities
     @join_activities = @user.join_activities
     @daily_ranks = User.daily_ranks
-    @newsfeeds = @user.newsfeeds
+    @newsfeeds = @user.newsfeeds.order("id DESC")
     if @user!=current_user
       @profile = @user.profile
       render "profiles/show"
