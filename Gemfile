@@ -20,8 +20,9 @@ gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
 #gem 'therubyracer'
 
-gem 'rufus-scheduler'
 gem 'annotate'
+gem 'thinking-sphinx'
+gem 'mysql'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

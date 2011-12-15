@@ -1,5 +1,7 @@
 Platform::Application.routes.draw do
 
+  post "search" => "search#index"
+
   resources :feedbacks
 
   namespace :form do resources :second_building_applications end
