@@ -1,17 +1,19 @@
-= form_tag activities_edit_group_path do 
+= form_tag admin_activities_edit_path do 
   %table
     %thead
       %th= "id"
       %th= t "activity_title"
       %th= t "is_public"
       %th= t "activity_status"
-      %td= t "is_destroy"
+      %th= t "is_destroy"
     %tbody
-      - @activities && @activities.each do |activity|
+      - activities && activities.each do |activity|
         %tr
           %td
+          = hidden_field_tag :group, group.id
           %td=link_to activity.title, activity_path(activity)
           %td= activity_is_public(activity)
           %td= activity_status(activity)
           %td= check_box "del", "#{activity.id}" 
   = submit_tag t 'confirm_change'
+

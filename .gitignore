@@ -4,6 +4,7 @@ log/*.log
 tmp/
 .sass-cache/
 public/system
+Gemfile
 .DS_Store
 test/*
 test.rb

@@ -1,0 +1,2 @@
+= form_tag admin_activities_change_group_path, :remote => true, :id => :group_select do
+  = select "group", "id", groups.collect {|g| [g.name, g.id] }, :selected => selected_group_id
