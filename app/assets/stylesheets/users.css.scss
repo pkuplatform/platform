@@ -92,7 +92,6 @@ body {
 .user {
   background-image: none !important ;
 }
-
 .sign_box{
   background-image: none !important ;
   width:320px;
@@ -101,7 +100,7 @@ body {
   margin-top:250px;
   z-index:1;
 }
-.sign_form{
+.sign_form {
   width:340px;
   height:180px;
   margin:0 auto;
@@ -110,7 +109,7 @@ body {
   font-size:16px;
 
   label {
-    width:50px;
+    width:60px;
     display:inline-block;
     text-align:right;
     margin-right:10px;
@@ -152,7 +151,7 @@ body {
   }
 }
 .sign_bg { 
-  width:710px;
+  width:740px;
   height:450px;
   z-index:10;
   margin: 0 auto; 

@@ -1,0 +1,85 @@
+= form_for(@form_second_building_application) do |f|
+  - if @form_second_building_application.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@form_second_building_application.errors.count, "error")
+        prohibited this form_second_building_application from being saved:
+      %ul
+        - @form_second_building_application.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.hidden_field :group_id
+  .field
+    = f.label t "zhubandanwei"
+    %br/
+    = f.text_field :zhubandanwei
+  .field
+    = f.label t "fuzeren"
+    %br/
+    = f.text_field :fuzeren
+  .field
+    = f.label t "xingming"
+    %br/
+    = f.text_field :xingming
+  .field
+    = f.label t "yuanxi"
+    %br/
+    = f.text_field :yuanxi
+  .field
+    = f.label t "lianxifangshi"
+    %br/
+    = f.text_field :lianxifangshi
+  .field
+    = f.label t "zhujiangren"
+    %br/
+    = f.text_field :zhujiangren
+  .field
+    = f.label t "gongzuodanwei"
+    %br/
+    = f.text_field :gongzuodanwei
+  .field
+    = f.label t "zhicheng"
+    %br/
+    = f.text_field :zhicheng
+  .field
+    = f.label t "yanjiangtimu"
+    %br/
+    = f.text_field :yanjiangtimu
+  .field
+    = f.label t "fangyingneirong"
+    %br/
+    = f.text_field :fangyingneirong
+  .field
+    = f.label t "huodongxingshi"
+    %br/
+    = f.text_field :huodongxingshi
+  .field
+    = f.label t "huodongshijian"
+    %br/
+    = f.date_select :huodongshijian
+  .field
+    = f.label t "startclass"
+    %br/
+    = f.number_field :startclass
+  .field
+    = f.label t "endclass"
+    %br/
+    = f.number_field :endclass
+  .field
+    = f.label t "huodongrenshu"
+    %br/
+    = f.number_field :huodongrenshu
+  .field
+    = f.label t "zhidaozhongxin"
+    %br/
+    = f.text_field :zhidaozhongxin
+  .field
+    = f.label t "jiaowuzhang"
+    %br/
+    = f.text_field :jiaowuzhang
+  .field
+    = f.label t "beizhu"
+    %br/
+    = f.text_field :beizhu
+  .actions
+    = f.submit

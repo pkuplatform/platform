@@ -24,7 +24,8 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   # GET /form/second_building_applications/new
   # GET /form/second_building_applications/new.json
   def new
-    @form_second_building_application = Group.find(params[:id]).second_building_applications.build 
+    @group = Group.find(params[:id])
+    @form_second_building_application = @group.second_building_applications.build 
 
     respond_to do |format|
       format.html # new.html.erb

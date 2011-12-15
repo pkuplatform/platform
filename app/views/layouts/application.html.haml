@@ -8,4 +8,15 @@
   %body
     #notice=flash[:notice]
     #alert=flash[:alert]
+    .feedbacks
+      = link_to (t "feedback"), new_feedback_path, :class=>:handle
+      = form_for @feedback,:remote=>true do |f|
+        %p
+          %b= t "contact_for_feedback"
+          = f.text_field :contact
+        %p  
+          %b= t "content_for_feedback"
+          = f.text_area :content  
+        = f.hidden_field :params, :value=>@params
+        = f.submit t("new_feedback")
     = yield
