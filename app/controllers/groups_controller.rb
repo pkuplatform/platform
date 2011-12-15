@@ -94,18 +94,13 @@ class GroupsController < ApplicationController
     puts "----------0000--------------"
     
     if @group.followers.include?(current_user)
-      puts "----------1111--------------"
       ug.status &= ~Constant::Like
       ug.save
     else
       if ug
-        puts "----------2222--------------"
         ug.status |= Constant::Like
         ug.save
       else
-        puts "----------3333--------------"
-        puts "--------#{@group.id}-------"
-        puts "--------#{current_user.id}-------"
         UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Like)
         Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:like,:object_type=>"Group",:object_id=>@group.id)
       end

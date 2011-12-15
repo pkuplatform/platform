@@ -10,7 +10,7 @@
       - @activities && @activities.each do |activity|
         %tr
           %td
-          %td= activity.title
+          %td=link_to activity.title, activity_path(activity)
           %td= activity_is_public(activity)
           %td= activity_status(activity)
           %td= check_box "del", "#{activity.id}" 

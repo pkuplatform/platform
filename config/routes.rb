@@ -1,10 +1,7 @@
 Platform::Application.routes.draw do
 
+
   namespace :form do resources :second_building_applications end
-
-  get "groups/index"
-
-  get "groups/edit"
 
   namespace :admin do
     get "forms/index"
@@ -12,6 +9,9 @@ Platform::Application.routes.draw do
     post "members/edit"
     get "groups/index"
     post "groups/edit"
+    get "activities/index"
+    post "activities/edit"
+    post "activities/change_group"
   end
 
   namespace :form do 
