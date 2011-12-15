@@ -8,5 +8,6 @@ public/system
 test/*
 test.rb
 vendor/*
+Gemfile
 Gemfile.lock
 public/*.zip
