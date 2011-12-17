@@ -1,0 +1,20 @@
+// Place all the styles related to the feedbacks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.feedbacks {
+  padding: 20px;
+  width: 220px;
+  height: 220px;
+  background: #eff;
+  border: 1px solid #29216d;
+  textarea,input {
+    width: 200px;
+    padding: 0px;
+  }
+  textarea {
+    height: 150px;
+  }
+  p {
+    margin: 0;
+  }
+}

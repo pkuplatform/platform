@@ -94,18 +94,13 @@ class GroupsController < ApplicationController
     puts "----------0000--------------"
     
     if @group.followers.include?(current_user)
-      puts "----------1111--------------"
       ug.status &= ~Constant::Like
       ug.save
     else
       if ug
-        puts "----------2222--------------"
         ug.status |= Constant::Like
         ug.save
       else
-        puts "----------3333--------------"
-        puts "--------#{@group.id}-------"
-        puts "--------#{current_user.id}-------"
         UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Like)
         Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:like,:object_type=>"Group",:object_id=>@group.id)
       end
@@ -177,18 +172,16 @@ class GroupsController < ApplicationController
 
   def show_activities
     @group = Group.find(params[:id])
-    @approving_groups = @group.activities.find_all_by_status(Constant::Approving)
-    @blocked_groups   = @group.activities.find_all_by_status(Constant::Blocked)
-    @approved_groups  = @group.activities.find_all_by_status(Constant::Approved)
+    @activities = @group.activities
   end
 
   def edit_activities
     @group = Group.find(params[:id])
 
-    activities_list = params[:activities]
-    activities_list && activities_list.each do |key, value|
-      activity = Activity.find(key)
-      if value.to_i == Constant::Destroy
+    del_list = params[:del]
+    del_list && del_list.each do |key, value|
+      if value.to_i == 1
+        activity = Activity.find(key)
         activity.destroy
       end
     end
@@ -196,4 +189,11 @@ class GroupsController < ApplicationController
     redirect_to show_activities_group_path
   end
 
+  def history
+    @group = Group.find(params[:id])
+  end
+
+  def organization 
+    @group = Group.find(params[:id])
+  end
 end

@@ -18,10 +18,11 @@ gem 'faker'
 gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
-
-gem 'rufus-scheduler'
-gem 'annotate'
 gem 'therubyracer'
+
+gem 'annotate'
+gem 'thinking-sphinx'
+gem 'mysql2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

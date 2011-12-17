@@ -1,0 +1,4 @@
+.admin.group
+  = render :partial => 'group_list', :locals => { :groups => @groups, :selected_group_id => @selected_group.id }
+.admin.activity
+  = render :partial => 'activities_list', :locals => { :group => @selected_group, :activities => @activities }

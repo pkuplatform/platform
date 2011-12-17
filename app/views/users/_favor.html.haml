@@ -1,21 +1,17 @@
 .favors.tricol-list.box
   .box-header
-    = t "my_favors"
-    = link_to (t "users"), "#", :remote=>true
-    = link_to (t "groups"), "#", :remote=>true
-    = link_to (t "activities"), "#", :remote=>true
+    - if @others_page
+      = t "ta_favors",:gender=>@user.profile.gender
+    - else
+      = t "my_favors"
+    = link_to (t "users"), favor_user_path(:type=>'users'), :remote=>true
+    = link_to (t "groups"), favor_user_path(:type=>'groups'), :remote=>true
+    = link_to (t "activities"), favor_user_path(:type=>'activities'), :remote=>true
 
   .box-body
     %ul.favor_list
-      %li
-        %ul
-          = render :partial => "users/thumb", :collection => @user.users_i_like
-      %li
-        %ul
-          = render :partial => "groups/thumb", :collection => @user.like_groups
-      %li
-        %ul
-          = render :partial => "activities/thumb", :collection => @user.like_activities
+      = render :partial=>"users/favor_list"
+    .clear
     .more
-      = link_to "more", "#"
+      = link_to (t "more"), "#",:class=>:right
     .clear

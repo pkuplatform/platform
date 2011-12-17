@@ -16,4 +16,25 @@ module ActivitiesHelper
       t "not_group_member"
     end
   end
+
+  def activity_is_public(activity)
+    if activity.public?
+      t "public"
+    else
+      t "not_public"
+    end
+  end
+
+  def activity_status(activity)
+    case activity.status
+      when Constant::Approving
+        t "approving"
+      when Constant::Approved
+        t "approved"
+      when Constant::Blocked
+        t "blocked"
+      when Constant::Rejected
+        t"reject"
+    end
+  end
 end

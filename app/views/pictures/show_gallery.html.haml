@@ -1,0 +1,13 @@
+.picture
+  %p#notice= notice
+  %p
+    %b= t :album
+    = link_to(@picture.album.title,activity_album_path(@activity,@picture.album))
+  %p
+    %b= t :uploader
+    = link_to(@picture.user.name,@picture.user)
+  %p
+    = link_to(image_tag(@picture.photo.url(:medium)),album_picture_path(@picture.album,@picture))
+  %p
+    = @picture.remark
+  = render :partial => "share/comments", :locals => {:object => @picture}

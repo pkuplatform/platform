@@ -13,7 +13,9 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   # GET /form/second_building_applications/1
   # GET /form/second_building_applications/1.json
   def show
-    @form_second_building_application = Form::SecondBuildingApplication.find(params[:id])
+    @form = Form::SecondBuildingApplication.find(params[:id])
+
+    @group = @form.group
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +26,8 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   # GET /form/second_building_applications/new
   # GET /form/second_building_applications/new.json
   def new
-    @form_second_building_application = Form::SecondBuildingApplication.new
+    @group = Group.find(params[:id])
+    @form_second_building_application = @group.second_building_applications.build 
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +44,7 @@ class Form::SecondBuildingApplicationsController < ApplicationController
   # POST /form/second_building_applications.json
   def create
     @form_second_building_application = Form::SecondBuildingApplication.new(params[:form_second_building_application])
+    @form_second_building_application.status = Constant::Approving
 
     respond_to do |format|
       if @form_second_building_application.save
@@ -79,5 +83,22 @@ class Form::SecondBuildingApplicationsController < ApplicationController
       format.html { redirect_to form_second_building_applications_url }
       format.json { head :ok }
     end
+  end
+
+
+  def approve
+    @form_second_building_application = Form::SecondBuildingApplication.find(params[:id])
+    @form_second_building_application.status = Constant::Approved
+    @form_second_building_application.save
+
+    redirect_to :back
+  end
+
+  def reject
+    @form_second_building_application = Form::SecondBuildingApplication.find(params[:id])
+    @form_second_building_application.status = Constant::Rejected
+    @form_second_building_application.save
+
+    redirect_to :back
   end
 end

@@ -1,0 +1,5 @@
+- if @type.nil? 
+  - @type = "users"
+  - @favor_list = @user.users_i_like
+= render :partial => @type+"/thumb", :collection => @favor_list
+

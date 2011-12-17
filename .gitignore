@@ -4,10 +4,12 @@ log/*.log
 tmp/
 .sass-cache/
 public/system
+Gemfile
 .DS_Store
 test/*
 test.rb
 vendor/*
+Gemfile
 Gemfile.lock
 libv8-3.3.10.4.gem
 therubyracer-0.9.9.gem

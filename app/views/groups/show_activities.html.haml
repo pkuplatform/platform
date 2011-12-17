@@ -5,19 +5,13 @@
       %th= t "activity_title"
       %th= t "is_public"
       %th= t "activity_status"
+      %td= t "is_destroy"
     %tbody
-      - @tenders && @tenders.each do |tender|
+      - @activities && @activities.each do |activity|
         %tr
           %td
-          %td= tender.profile.name
-          %td= tender.name
-          %td= tender.profile.student_id
-          %td= select "pre_tender", "#{tender.id}", { (t "approving") => Constant::Approving, (t "member") => Constant::Member, (t "reject") => Constant::Rejected }
-      -@members && @members.each do |member|
-        %tr
-          %td
-          %td= member.profile.name
-          %td= member.name
-          %td= member.profile.student_id
-          %td= select "pre_member", "#{member.id}", { (t "member") => Constant::Member, (t "kick_ass") => Constant::Rejected}
+          %td=link_to activity.title, activity_path(activity)
+          %td= activity_is_public(activity)
+          %td= activity_status(activity)
+          %td= check_box "del", "#{activity.id}" 
   = submit_tag t 'confirm_change'

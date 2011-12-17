@@ -17,8 +17,8 @@ class Picture < ActiveRecord::Base
     album.title
   end
 
-  def url
-    photo.url(:thumb)
+  def url(size=:thumb)
+    photo.url(size)
   end
 
 

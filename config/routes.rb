@@ -1,10 +1,12 @@
 Platform::Application.routes.draw do
 
+  post "search" => "search#index"
+
+  resources :feedbacks
+
   namespace :form do resources :second_building_applications end
 
-  get "groups/index"
 
-  get "groups/edit"
 
   namespace :admin do
     get "forms/index"
@@ -12,6 +14,9 @@ Platform::Application.routes.draw do
     post "members/edit"
     get "groups/index"
     post "groups/edit"
+    get "activities/index"
+    post "activities/edit"
+    post "activities/change_group"
   end
 
   namespace :form do 
@@ -31,18 +36,22 @@ Platform::Application.routes.draw do
     end
   end
 
+
+
+  resources :users,:only=>[:index] do
+    member do
+      get 'profile/edit' => 'profiles#edit'
+      get 'profile' => 'profiles#show'
+      get 'favor'
+    end
+  end
+
   devise_for :users, :controllers => { 
     :sessions => "sessions",
     :registrations => "registrations"
   }
 
-  resources :users,:only=>[:show, :index] do
-    member do
-      get 'profile/edit' => 'profiles#edit'
-      get 'profile' => 'profiles#show'
-    end
-  end
-
+  resources :users,:only=>[:show] 
 
   mailboxes_for :users
   resources :users do
@@ -61,6 +70,8 @@ Platform::Application.routes.draw do
     member do
       get 'join'
       get 'like'
+      get 'history'
+      get 'organization'
       get 'activities/new' => 'activities#new'
       get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
       get 'show_forms'
@@ -94,6 +105,7 @@ Platform::Application.routes.draw do
   resources :pictures do
     member do
       post 'comment'
+      get 'show_gallery'
     end
   end
 

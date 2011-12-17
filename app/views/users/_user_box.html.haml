@@ -1,21 +1,22 @@
+- @user = user unless user.nil?
 .user.box
   .span-4.avatar.last
-    = image_tag user.avatar(:small)
+    = image_tag @user.avatar(:small)
   .span-2.last
-    = user.profile.name
+    = @user.profile.name
     %hr
-    - if user==current_user
+    - if @user == current_user
       .mailbox
         = link_to (t "mail_box"), mailboxes_path
       .settins
-        = link_to (t "settings"), profile_edit_user_path(user)
+        = link_to (t "settings"), profile_edit_user_path(@user)
     - else
       .like_button
-      - if liking?(user)
-        = form_for current_user.user_relations.find_by_liked_id(user), :html => { :method => :delete } do |f|
+      - if liking?(@user)
+        = form_for current_user.user_relations.find_by_liked_id(@user), :html => { :method => :delete } do |f|
           %div.actions= f.submit "dislike"
       - else
-        = form_for current_user.user_relations.build(:liked_id => user.id) do |f|
+        = form_for current_user.user_relations.build(:liked_id => @user.id) do |f|
           %div= f.hidden_field :liked_id
           %div.actions= f.submit "iLike"
 

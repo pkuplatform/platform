@@ -1,0 +1,14 @@
+.container
+  = render 'share/header'
+  = render 'groups/slider'
+  .content
+    .span-7.append-1
+      = render 'groups/infobar'
+    .span-16.last
+      .box
+        .box-header
+          = "Application"
+        .box-body
+          = render 'form'
+    .clear
+  = render 'share/footer'

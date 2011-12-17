@@ -1,6 +1,5 @@
 - @second_buildings.each do |a|
-  %p= a.zhubanren
-  %p= a.fuzeren
+  = render :partial => 'form/second_building_applications/form_show', :locals => { :form => a }
   %p= link_to "edit", edit_form_second_building_application_path(a) 
   %p= link_to "destroy", a, confirm: "are you sure?", method: :delete
   %p= a.group.name

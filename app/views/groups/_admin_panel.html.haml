@@ -1,0 +1,23 @@
+.box.admin-panel
+  .box-body
+    .new-activity
+      = link_to t("create_new_activity!"), activities_new_group_path(@group)
+    .new-form
+      = link_to t("create_new_second_building_form!"), second_building_applications_new_group_path(@group)
+    .follow
+      - if @group.followers.include?(current_user)
+        = link_to (t "dislike"), like_group_path, :remote => true
+      - else
+        = link_to (t "like"), like_group_path, :remote => true
+    .join
+      - if @group.members.include?(current_user)
+        = link_to ((t "quit") + (t "group")), join_group_path, :remote => true
+      - elsif @group.tenders.include?(current_user)
+        = (t "approving")
+      - else
+        = link_to ((t "join") + (t "group")), join_group_path, :remote => true
+    .manage
+      = link_to ((t "manage") + (t "member")), show_members_group_path
+      |
+      = link_to ((t "manage") + (t "activity")), show_activities_group_path
+
