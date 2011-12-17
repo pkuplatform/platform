@@ -4,8 +4,10 @@
   .box-body
     - if @newsfeeds.empty?
       - Event.last(50).each do |event|
-        = render :partial => "newsfeed", :locals => { :event => event }
+        - if event_exist?(event)
+          = render :partial => "newsfeed", :locals => { :event => event }
     - else
       - @newsfeeds.each do |newsfeed|
-        = render :partial => "newsfeed", :locals => { :event => newsfeed.event }
+        - if event_exist?(newsfeed)
+          = render :partial => "newsfeed", :locals => { :event => newsfeed.event }
   .more

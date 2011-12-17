@@ -28,7 +28,11 @@ class Event < ActiveRecord::Base
       nil
     end
     if not cl.nil?
-     cl.find(subject_id)
+      begin
+        cl.find(subject_id)
+      rescue
+        nil
+      end
     end
   end
 
@@ -39,7 +43,11 @@ class Event < ActiveRecord::Base
       nil
     end
     if not cl.nil?
-     cl.find(object_id)
+      begin
+        cl.find(object_id)
+      rescue
+        nil
+      end
     end
   end
 end

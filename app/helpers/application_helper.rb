@@ -24,5 +24,10 @@ module ApplicationHelper
     url_for(comment.commentable)+"#comment-#{comment.id}"
   end
 
+  def event_exist?(event)
+    not (event.subject.nil? || event.object.nil?)
+#    class_eval(event.object_type).all.include?(event.object) && class_eval(event.subject_type).all.include?(event.subject)
+  end
+
 
 end
