@@ -1,6 +1,4 @@
 .box.admin-panel
-  .box-header
-    = "Admin Panel"
   .box-body
     .new-activity
       = link_to t("create_new_activity!"), activities_new_group_path(@group)
@@ -18,3 +16,8 @@
         = (t "approving")
       - else
         = link_to ((t "join") + (t "group")), join_group_path, :remote => true
+    .manage
+      = link_to ((t "manage") + (t "member")), show_members_group_path
+      |
+      = link_to ((t "manage") + (t "activity")), show_activities_group_path
+
