@@ -34,7 +34,8 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
-    @activity = Group.find(params[:id]).activities.build
+    @group = Group.find(params[:id])
+    @activity = @group.activities.build
 
     respond_to do |format|
       format.html # new.html.erb
