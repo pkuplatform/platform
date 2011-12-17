@@ -17,6 +17,6 @@
         = link_to (t "sign_out"), destroy_user_session_path, :method => :delete
       .clear
     .search
-      = search_form_for Group.search() do |f|
-        = f.text_field :name_cont,:placeholder=>"Search..."
-        = f.submit
+      = form_tag search_path do
+        = text_field_tag :q, nil, :placeholder=>"Search..."
+        = submit_tag "Search"

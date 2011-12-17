@@ -1,0 +1,32 @@
+.box.card.profile
+  .box-header
+    = @profile.name + t("'s card")
+  .box-body
+    %p
+      %b 
+      = image_tag @profile.avatar.url(:small)
+    %p
+      %b Name:
+      = @profile.name
+    %p
+      %b Nickname:
+      = @profile.nickname
+    %p
+      %b Gender:
+      = @profile.gender
+    %p
+      %b Student:
+      = @profile.student_id
+    %p
+      %b Phone:
+      = @profile.phone
+    %p
+      %b Points:
+      = @profile.points
+    %p
+      %b Description:
+      = @profile.description
+    = link_to  (t "Edit"), edit_profile_path(@profile)
+
+
+.clear

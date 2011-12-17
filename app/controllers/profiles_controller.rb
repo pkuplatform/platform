@@ -52,6 +52,7 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
+    @user = @profile.user
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

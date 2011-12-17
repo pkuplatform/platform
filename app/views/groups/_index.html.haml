@@ -1,21 +1,7 @@
-.index.box
+.index.box.groups
   .box-header
-    = t("group")+t("index")
+    = t("group")+t("list")
   .box-body
     .labels
-      = link_to "#", "#"
-      |
-      = link_to "A", "#"
-      |
-      = link_to "B", "#"
-      |
-      = link_to "C", "#"
-      |
-      = link_to "D", "#"
-      |
-      = link_to "E", "#"
-      |
-      = link_to "F", "#"
-      |
     .categories
       = render :partial => 'category', :collection => Category.all

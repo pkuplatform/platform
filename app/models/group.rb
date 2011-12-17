@@ -42,19 +42,15 @@ class Group < ActiveRecord::Base
     ret
   end
 
-  def self.weekly_ranks
-    ret = []
-    id_arr = [10, 11, 15, 18]
-    id_arr.each do |id|
-      object = RankList.find_by_identify_id(id) 
-      ret << object unless object.nil?
-    end
-
-    ret
-  end
-
   def url
     logo.url(:thumb)
   end
 
+  define_index do
+    # fields
+    indexes :name
+    
+    # attributes
+    has :created_at, :updated_at
+  end
 end
