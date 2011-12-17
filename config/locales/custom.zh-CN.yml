@@ -3,6 +3,7 @@
   new_comment: "+评论"
 
   index: "首页"
+  list: "列表"
   group: "社团"
   group_name: "社团名称"
   group_admin: "社团管理员"
@@ -179,5 +180,14 @@
   "new_feedback": "反馈我们"
 
   "more": "更多"
-
   "Admin Panel": "管理面板"
+  "profile-notice": "完善您的个人信息"
+  "profile-submit": "更新个人信息"
+  name: "姓名:"
+  nickname: "昵称:"
+  gender: "性别:"
+  student_id: "学号:"
+  phone: "手机:"
+  description: "简介:"
+  avatar: "头像:"
+

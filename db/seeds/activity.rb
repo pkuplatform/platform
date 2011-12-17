@@ -11,5 +11,5 @@ Activity.delete_all
   activity.status = rand_range(0..3)
   activity.poster = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   activity.points = rand_range(1..100)
-  activity.save!
+  activity.save
 end

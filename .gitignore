@@ -9,5 +9,6 @@ Gemfile
 test/*
 test.rb
 vendor/*
+Gemfile
 Gemfile.lock
 public/*.zip

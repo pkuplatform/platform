@@ -2,40 +2,10 @@
   = render 'share/header'
   .content
     .span-7.append-1
-      = render :partial=>'users/user_box',:locals=>{:user=>@user}
-      = render 'users/rank'
+      = render 'users/user_box'
       = render 'users/favor'
-    .box.detail.profile.span-14
-      .box-header
-        = @profile.name + t("'s card")
-      .box-body
-        %p
-          %b 
-          = image_tag @profile.avatar.url(:small)
-        %p
-          %b Name:
-          = @profile.name
-        %p
-          %b Nickname:
-          = @profile.nickname
-        %p
-          %b Gender:
-          = @profile.gender
-        %p
-          %b Student:
-          = @profile.student_id
-        %p
-          %b Phone:
-          = @profile.phone
-        %p
-          %b Points:
-          = @profile.points
-        %p
-          %b Description:
-          = @profile.description
-        = link_to  (t "Edit"), edit_profile_path(@profile)
-
-
-    .clear
+    .span-16.last
+      = render 'profiles/card'
+      = render 'profiles/liked'
+      = render 'profiles/liking'
   = render 'share/footer'
-
