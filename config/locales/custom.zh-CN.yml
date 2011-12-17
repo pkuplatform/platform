@@ -4,6 +4,9 @@
 
   index: "首页"
   list: "列表"
+  edit: "编辑"
+  title: "标题"
+  content: "内容"
   group: "社团"
   group_name: "社团名称"
   group_admin: "社团管理员"
@@ -183,6 +186,8 @@
   "Admin Panel": "管理面板"
   "profile-notice": "完善您的个人信息"
   "profile-submit": "更新个人信息"
+  "People who like ": "喜欢%{username}的人"
+  "People liked by ": "%{username}喜欢的人"
   name: "姓名:"
   nickname: "昵称:"
   gender: "性别:"
