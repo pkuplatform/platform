@@ -1,3 +1,45 @@
 // Place all the styles related to the form/second_building_applications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.field label
+{
+	font-size:16px;
+	color:#B48FA8;
+}
+.field label
+{
+	width:140px;
+	display:inline-block;
+}
+.field input
+{
+	width:250px;
+	font-size:16px;
+	border: none;
+	outline: none;
+	border-top: 1px solid #BFCACA;
+	border-bottom: 1px solid white;
+	background: #F4F7F7;
+	height: 20px;
+	line-height: 20px;
+	padding: 5px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+.field input:focus
+{
+	background:#eeeeee;
+	width:250px;
+	font-size:16px;
+	border: none;
+	outline: none;
+	border-top: 1px solid #BFCACA;
+	border-bottom: 1px solid white;
+	height: 20px;
+	line-height: 20px;
+	padding: 5px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
