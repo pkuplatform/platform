@@ -1,18 +1,19 @@
-.admin-panel.box
+.admin-panel.box.activities
   .box-body
-    .follower
+    %span.follower
       - if @activity.followers.include?(current_user)
         = link_to (t "dislike"), like_activity_path(@activity), :remote => true
       - else
-        = link_to (t "like"), like_activity_path(@activity), :remote => true
-    .join
+        = link_to (image_tag 'like.png'), like_activity_path(@activity), :remote => true
+    %span.join
       - if @activity.members.include?(current_user)
-        = link_to ((t "quit") + (t "activity")), join_activity_path(@activity), :remote => true
+        = link_to (image_tag 'join.png'), join_activity_path(@activity), :remote => true
       - elsif @activity.tenders.include?(current_user)
         = (t "approving")
       - else
-        = link_to ((t "join") + (t "activity")), join_activity_path(@activity), :remote => true
-    .blog
-      = link_to (t :new_blog), blogs_new_activity_path
-    .picture
-      = link_to (t :new_picture), pictures_new_activity_path
+        = link_to (image_tag 'join.png'), join_activity_path(@activity), :remote => true
+    %span.blog
+      = link_to (image_tag 'new-blog.png'), blogs_new_activity_path
+    %span.picture
+      = link_to (image_tag 'new-pic.png'), pictures_new_activity_path
+    .clear
