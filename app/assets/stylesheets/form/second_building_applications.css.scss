@@ -43,3 +43,35 @@
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
 }
+.field textarea
+{
+	width:250px;
+	font-size:16px;
+	border: none;
+	outline: none;
+	border-top: 1px solid #BFCACA;
+	border-bottom: 1px solid white;
+	background: #F4F7F7;
+	height: 20px;
+	line-height: 20px;
+	padding: 5px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+.field textarea:focus
+{
+	background:#eeeeee;
+	width:250px;
+	font-size:16px;
+	border: none;
+	outline: none;
+	border-top: 1px solid #BFCACA;
+	border-bottom: 1px solid white;
+	height: 20px;
+	line-height: 20px;
+	padding: 5px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
