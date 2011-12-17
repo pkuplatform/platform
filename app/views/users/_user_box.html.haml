@@ -1,4 +1,4 @@
-- @user = user unless user.nil?
+- @user = user if @user.nil?
 .user.box
   .span-4.avatar.last
     = image_tag @user.avatar(:small)
