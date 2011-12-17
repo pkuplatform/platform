@@ -4,3 +4,22 @@
 .blog-content {
   margin:10px;
 }
+.new-blog {
+  .box-body {
+    padding:15px;
+  }
+  .blog-title {
+    margin:5px;
+    input {
+      width:500px;
+      font-size: 1.5em;
+      height: 30px;
+    }
+  }
+  .blog-content {
+    margin:5px;
+    textarea {
+      width:500px;
+    }
+  }
+}

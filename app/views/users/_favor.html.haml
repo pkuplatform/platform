@@ -11,6 +11,7 @@
   .box-body
     %ul.favor_list
       = render :partial=>"users/favor_list"
+    .clear
     .more
-      = # link_to "more", "#"
+      = link_to (t "more"), "#",:class=>:right
     .clear

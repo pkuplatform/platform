@@ -1,6 +1,4 @@
 .admin-panel.box
-  .box-header
-    = "Admin Panel"
   .box-body
     .follower
       - if @activity.followers.include?(current_user)
@@ -16,3 +14,5 @@
         = link_to ((t "join") + (t "activity")), join_activity_path(@activity), :remote => true
     .blog
       = link_to (t :new_blog), blogs_new_activity_path
+    .picture
+      = link_to (t :new_picture), pictures_new_activity_path

@@ -4,6 +4,9 @@
 
   index: "首页"
   list: "列表"
+  edit: "编辑"
+  title: "标题"
+  content: "内容"
   group: "社团"
   group_name: "社团名称"
   group_admin: "社团管理员"
@@ -137,6 +140,8 @@
   activity_albums: "活动相册"
   activity_comments: "活动评论"
   posted_new_blog: "发表了日志"
+  new_blog: "新日志"
+  new_picture: "新图片"
   confirm_change: "确认修改"
 
   "newsfeed name and time": "在 %{time} 前"
@@ -167,6 +172,9 @@
   album: "相册"
   uploader: "上传者"
   list: "列表"
+  "attendants": "参与者"
+  "contact": "联系方式"
+  "manage": "管理"
 
   "history": "社团大记事"
   "organization": "组织构架"
@@ -174,8 +182,12 @@
   "content_for_feedback": "请尽量描述出现的问题，或者建议"
   "new_feedback": "反馈我们"
 
+  "more": "更多"
+  "Admin Panel": "管理面板"
   "profile-notice": "完善您的个人信息"
   "profile-submit": "更新个人信息"
+  "People who like ": "喜欢%{username}的人"
+  "People liked by ": "%{username}喜欢的人"
   name: "姓名:"
   nickname: "昵称:"
   gender: "性别:"
