@@ -21,6 +21,7 @@ gem 'acts_as_commentable'
 gem 'therubyracer'
 
 gem 'annotate'
+gem 'mysql2'
 gem 'thinking-sphinx'
 # Gems used only for assets and not required
 # in production environments by default.

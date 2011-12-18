@@ -14,14 +14,14 @@
 # end
 #
 every 2.minutes do
-  runner "Newsfeed.update", environment => "development"
+  runner "Newsfeed.update"
 end
 
 every 10.hours do
-  runner "RankList.get_daily_rank", environment => "development" 
+  runner "RankList.get_daily_rank"
 end
 
 every 1.day do
-  runner "RankList.get_weekly_rank", environment => "development" 
+  runner "RankList.get_weekly_rank"
 end
 # Learn more: http://github.com/javan/whenever
