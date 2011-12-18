@@ -79,10 +79,8 @@ class Form::SecondBuildingApplicationsController < ApplicationController
     @form_second_building_application = Form::SecondBuildingApplication.find(params[:id])
     @form_second_building_application.destroy
 
-    respond_to do |format|
-      format.html { redirect_to form_second_building_applications_url }
-      format.json { head :ok }
-    end
+    redirect_to admin_forms_index_path
+
   end
 
 

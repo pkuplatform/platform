@@ -19,6 +19,8 @@
 
   is_group_member: "是社团成员"
   not_group_member: "不是社团成员"
+  jiaowuzhangyijian: "请填写教务长意见"
+  zhidaozhongxinyijian: "请填写指导中心意见"
 
   inbox: "收件箱"
   outbox: "发件箱"
