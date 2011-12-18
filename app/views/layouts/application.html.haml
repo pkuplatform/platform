@@ -6,8 +6,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #notice=flash[:notice]
-    #alert=flash[:alert]
+    #notice=t(flash[:notice]) if (flash[:notice])
+    #alert=t(flash[:alert]) if (flash[:alert])
     .feedbacks
       = link_to (t "feedback"), new_feedback_path, :class=>:handle
       = form_for @feedback,:remote=>true do |f|

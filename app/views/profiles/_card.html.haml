@@ -13,7 +13,10 @@
       = @profile.nickname
     %p
       %b= t :gender
-      = @profile.gender
+      - if @profile.gender == 1
+        = t :male
+      - else
+        = t :female
     %p
       %b= t :phone
       = @profile.phone

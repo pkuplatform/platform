@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to blogs_activity_path(@activity), notice: 'Blog was successfully created.' }
+        format.html { redirect_to activity_path(@activity), notice: 'Blog was successfully created.' }
       else
         format.html { render action: "new" }
       end

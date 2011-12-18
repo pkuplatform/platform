@@ -72,7 +72,6 @@ body {
 
 .newsfeed {
   margin-top: 10px;
-  .content { margin-top: 10px; }
   font-size: 1.3em;
   .box-header{
     margin-left:-20px;
@@ -89,12 +88,11 @@ body {
   }
 }
 
-.user {
-  background-image: none !important ;
+.user.box {
+  background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(217,217,217)), color-stop(0.5, rgb(244,244,244)) );
 }
 .sign_box{
-  background-image: none !important ;
-  width:320px;
+  background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(187,187,187)), color-stop(0.5, rgb(244,244,244)) );  width:320px;
   height:165px;
   margin:0 auto;
   margin-top:250px;

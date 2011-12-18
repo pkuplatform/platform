@@ -17,7 +17,10 @@
   .category li { float:left; width:170px; }
 }
 
-.group.logo img { width: 228px; }
+.group.box {
+  background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(217,217,217)), color-stop(0.5, rgb(244,244,244)) );
+  img { width: 228px; box-shadow:0 0 5px white;}
+}
 
 .members {
   @include box-thumb;
