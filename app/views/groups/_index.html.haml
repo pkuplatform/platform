@@ -1,6 +1,8 @@
 .index.box.groups
   .box-header
     = t("group")+t("list")
+    .links.groups
+      = link_to (t "Create New Group"), new_group_path
   .box-body
     .labels
     .categories

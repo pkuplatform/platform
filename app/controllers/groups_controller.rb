@@ -27,6 +27,8 @@ class GroupsController < ApplicationController
   # GET /groups/new.json
   def new
     @group = Group.new
+    @daily_ranks = Group.daily_ranks
+    @weekly_ranks = Group.weekly_ranks
 
     respond_to do |format|
       format.html # new.html.erb
