@@ -52,6 +52,7 @@
   show: "预览"
   back: "返回"
   sign_out: "登出"
+  sign_in_fail: "登录失败，密码用户名有误"
   "24h ranking": "24小时排行榜"
   "month ranking": "月排行榜"
   "semester ranking": "学期排行榜"
