@@ -1,0 +1,12 @@
+.container
+  = render 'share/header'
+  .content
+    .span-7.append-1
+      = render 'sidebar'
+    .span-16.last
+      .box
+        .box-header
+          = t "Create New Group"
+        .box-body
+          = render 'form'
+  = render 'share/footer'
