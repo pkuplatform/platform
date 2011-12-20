@@ -3,7 +3,7 @@
     = t "newsfeed"
   .box-body
     - if @newsfeeds.empty?
-      - Event.last(50).each do |event|
+      - Event.order('updated_at DESC').first(50).each do |event|
         - if event_exist?(event)
           = render :partial => "newsfeed", :locals => { :event => event }
     - else
