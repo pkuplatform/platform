@@ -12,3 +12,4 @@ vendor/*
 Gemfile
 Gemfile.lock
 public/*.zip
+config/database.yml
