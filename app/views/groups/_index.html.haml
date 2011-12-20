@@ -6,4 +6,4 @@
   .box-body
     .labels
     .categories
-      = render :partial => 'category', :collection => Category.sort('id DESC').all
+      = render :partial => 'category', :collection => Category.order('id DESC').all

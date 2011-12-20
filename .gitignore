@@ -18,3 +18,4 @@ Gemfile
 Gemfile.lock
 task_scheduler.rb
 public/*.zip
+config/database.yml
