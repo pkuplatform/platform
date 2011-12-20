@@ -9,7 +9,7 @@ class Activity < ActiveRecord::Base
   has_many :blogs, :dependent => :destroy
   has_many :user_activities
   has_many :users, :through => :user_activities
-  has_attached_file :poster, :styles => { :big => "256x360#",:medium => "192x270#", :small => "64x90#", :thumb => "64x64#" }
+  has_attached_file :poster, :styles => { :big => "256x360#",:medium => "192x270#", :small => "64x90#", :thumb => "64x64#" }, :default_url => "missing_:style.png"
 
   has_many :admins,      :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Admin, Constant::Admin]
   has_many :members,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Member, Constant::Member]
