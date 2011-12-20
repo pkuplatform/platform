@@ -10,6 +10,7 @@ Platform::Application.routes.draw do
 
   namespace :admin do
     get "forms/index"
+    post "forms/edit"
     get "members/index"
     post "members/edit"
     get "groups/index"
