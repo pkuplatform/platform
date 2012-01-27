@@ -1,0 +1,28 @@
+.activity.board.box
+  .left
+    .poster
+      = image_tag activity.poster.url(:medium)
+    .attention
+      = t :like_count, :count => activity.followers.count
+      = " "
+      = t :join_count, :count => activity.members.count
+    .attend
+      = link_to (t :join), join_activity_path(activity)
+  .info
+    .title= activity.title
+    .admin
+      %span= link_to activity.group.name, activity.group
+      %span= t :host
+      %span= link_to activity.admin.profile.name, activity.admin.profile
+      %span= t :organize
+    .time
+      = t "time:", :start_time => activity.start_at, :end_time => activity.end_at
+    .location
+      = t "locations:", :location => activity.location
+    .description
+      = activity.description
+    .blog
+      = t :blog_count, :count => activity.blogs.count
+      = " "
+      = t :picture_count, :count => activity.pictures.count
+  .clear

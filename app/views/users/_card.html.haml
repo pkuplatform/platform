@@ -1,0 +1,7 @@
+.card
+  .avatar
+    = image_tag current_user.profile.avatar.url(:small)
+  .name
+    = current_user.profile.name
+  .points
+    = t :level, :points => current_user.profile.points

@@ -1,0 +1,47 @@
+@import 'css3';
+@import 'mixin';
+
+body {
+  font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+
+#header { 
+  height:10px; 
+  width:100%; 
+  background-color:#CBA; 
+  position:fixed; 
+  top:0px; 
+  left:0px; 
+}
+
+table { 
+  width: 100%; 
+  margin-top: 10px !important; 
+  @include background-color;
+}
+
+td.right { width:200px; }
+
+.sidebar { 
+  position:fixed; 
+  right:0px; 
+  top:70px; 
+  width:200px; 
+}
+
+.box {
+  @include box-radius;
+  @include box-shadow;
+  margin: 30px 20px;
+  padding: 30px 20px; 
+  background-color: white;
+  overflow: hidden;
+}
+
+.content { 
+  @include background-color;
+  width: 900px; 
+  margin: 0 auto; 
+}
+
+.clear { clear: both; }

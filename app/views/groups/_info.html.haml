@@ -1,0 +1,13 @@
+.info
+  %span.name= link_to group.name, group
+  %span.category= t group.category.name
+  .admin
+    = t :group_admin
+    = group.admins.first.profile.name unless group.admins.first.nil?
+    = "/"
+    = l group.created_at.to_date, :format => :long
+    = t :create
+  .description
+    = group.description
+  .activity
+    = t :activities_count, :count => group.activities.count

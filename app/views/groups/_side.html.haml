@@ -1,0 +1,14 @@
+.side
+  .logo
+    = image_tag group.logo.url(:small)
+  .like-join
+    = t :like_count, :count => group.followers.count
+    = " "
+    = t :join_count, :count => group.members.count
+  - if board
+    .join
+      = link_to (t :join), join_group_path(group)
+    .organization
+      = t :organization 
+    .history
+      = t :history
