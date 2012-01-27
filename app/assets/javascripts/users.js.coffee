@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('.name a').widthTruncate({width:64})
   $('.category-body a').widthTruncate({width:140})
   $('.avatar a').fancybox();
   $('.pop_fancy_box').fancybox();

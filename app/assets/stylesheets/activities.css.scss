@@ -2,67 +2,83 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.important { height: 150px; }
-.detail p { color:#400c22; }
-.activity{
-  .content {
-    padding: 5px;
-  }
-}
-.blogs {
-  li {
-    list-style:none;
-    margin-top:15px;
-  }
-  .blog-content {
-    padding:5px;
-    border-bottom:1px solid #ccc;
-    min-height:30px;
-  }
-  p,h4{margin:0;}
-}
-.carousel-control {
-  margin:10px;
-  button {
-    top:55px;
-  }
-}
-.carousel {
-  margin:10px;
-  img{
-  height:110px;
-  width:110px;
-  margin:2px;
-  }
-}
-#picture-preview {
-}
+@import 'mixin';
 
-.poster.box {
-  background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(217,217,217)), color-stop(0.5, rgb(244,244,244)) );
-  img { width: 228px; box-shadow:0 0 5px white;}
-}
-.admin-panel.box.activities span { margin: 0px 10px; }
-
-
-.carousel {
-  .carousel-container {
-    width:460px;
-    float:left;
-  }
-  .prevb {
-    float:left;
-  }
-  .nextb {
-    float:right;
-  }
-}
-.carousel img {
-  display: block;
+.activities {
   float: left;
-}
-.carousel a {
-  display: block;
-  float: left;
+  width: 800px;
 }
 
+.activity.card {
+  .left {
+    width: 200px;
+    float: left;
+    .poster { text-align: center; }
+    .attention {
+      margin-top: 40px;
+      text-align: center;
+      color: #BBB;
+    }
+  }
+  .info {
+    width: 500px;
+    float: left;
+    .title {
+      @include orange;
+      font-size: 20px;
+      margin: 5px 0px;
+    }
+    .group {
+      @include green;
+      font-size: 18px;
+      margin: 5px 0px;
+    }
+    .description {
+      margin: 5px 0px;
+    }
+    .blog {
+      @include blue;
+      font-size: 18px;
+    }
+  }
+}
+
+.activity.board {
+  margin-top: 100px;
+  .left {
+    width: 200px;
+    float: left;
+    .poster { margin-top: -70px; text-align: center; }
+    .attention {
+      margin-top: 40px;
+      text-align: center;
+      color: #BBB;
+    }
+    .attend {
+      text-align: center;
+      color: #BBB;
+    }
+  }
+  .info {
+    width: 500px;
+    float: left;
+    .title {
+      @include orange;
+      font-size: 20px;
+      margin: 5px 0px;
+    }
+    .admin {
+      span { @include green; }
+      margin: 5px 0px;
+    }
+    .description {
+      margin: 5px 0px;
+    }
+    .blog {
+      @include blue;
+      font-size: 18px;
+    }
+  }
+}
+
+.main { width: 800px; float: left; }

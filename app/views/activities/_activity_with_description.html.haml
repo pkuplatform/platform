@@ -1,9 +1,0 @@
-= link_to (image_tag activity.poster.url(:thumb)), activity 
-= link_to activity.title, activity_path(activity)
-- if activity.start_at.to_date == activity.end_at.to_date
-  = "时间：#{l activity.start_at, :format => :onlydate } #{l activity.start_at, :format => :onlytime} - #{l activity.end_at, :format => :onlytime}"
-- else
-  = "时间：#{l activity.start_at } 至 #{l activity.end_at}"
-= "地点：#{activity.location}"
-= truncate activity.description, :length => 100 
-= link_to '详情', activity_path(activity)

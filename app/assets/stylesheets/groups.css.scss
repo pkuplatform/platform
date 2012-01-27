@@ -4,28 +4,62 @@
 
 @import 'mixin';
 
-.category-header {
-  background-color: #EEE;
+.groups {
+  float: left;
+  width: 800px;
 }
 
-.category-body { margin-top: 10px; }
-.category-body li a { white-space: nowrap; }
-
-.index .box-body {
-  margin: 0px 20px;
-  .labels { margin: 10px 0px; }
-  .category li { float:left; width:170px; }
+.sorts {
+  float: left;
+  width: 100px;
+  text-align: center;
+  margin-top: 30px;
+  li { list-style: none; }
+  @include blue-link;
 }
 
-.group.box {
-  background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(217,217,217)), color-stop(0.5, rgb(244,244,244)) );
-  img { width: 228px; box-shadow:0 0 5px white;}
+.group.card .like-join { margin-top: 40px; }
+.group.board { margin-top: 80px; overflow: visible; }
+.group.board .side {
+  text-align: center;
+  .logo { margin-top: -70px; }
+  .organization { @include blue; }
+  .history { @include blue; }
+  .join { @include gray-link; }
 }
 
-.members {
-  @include box-thumb;
+.group {
+  .side {
+    width: 200px; 
+    float: left;
+    .logo { text-align: center; }
+    .like-join { text-align: center; color: #BBB; }
+  }
+
+  .info { 
+    width: 500px; 
+    float: left;
+    .name { 
+      @include orange-link;
+      font-size: 20px; 
+      margin: 5px 0px;
+    }
+    .category { 
+      @include blue;
+      font-size: 18px;
+      margin: 5px 0px;
+    }
+    .admin {
+      @include green;
+      font-size: 18px;
+      margin: 5px 0px;
+    }
+    .description {
+      margin: 5px 0px;  
+    }
+    .activity {
+      @include blue;
+      font-size: 18px;
+    }
+  }
 }
-
-.groups.links { float: right; }
-
-.index.box.groups .box-body { margin-top: 20px; }

@@ -19,6 +19,7 @@ class CreateFormSecondBuildingApplications < ActiveRecord::Migration
       t.string :zhidaozhongxin
       t.string :jiaowuzhang
       t.string :beizhu
+      t.integer :status
       t.references :group
 
       t.timestamps

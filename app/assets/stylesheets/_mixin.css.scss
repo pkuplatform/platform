@@ -1,12 +1,31 @@
-@import 'css3';
+@mixin background-color {
+  background-color: rgb(255, 255, 204); 
+}
 
-@mixin box-thumb {
-  .box-body { margin: 0px -9px; }
-  border: 1px solid #666;
-  li { list-style: none; float: left; margin: 9px; }
-  ul { margin: 0; padding: 0; }
-  li .name { width: 64px; }
-  .logo { width: 64px; height: 64px; }
-  .name { white-space: nowrap; }
-  .more { @include orange-link; }
+@mixin blue {
+  color: rgb(153,204,204);
+}
+
+@mixin orange {
+  color: rgb(204,153,51);
+}
+
+@mixin green {
+  color: rgb(204,204,51);
+}
+
+@mixin orange-link {
+  a { @include orange; text-decoration: none; }
+}
+
+@mixin blue-link {
+  a { @include blue; text-decoration: none; }
+}
+
+@mixin green-link {
+  a { @include green; text-decoration: none; }
+}
+
+@mixin gray-link {
+  a { color: #BBB; text-decoration: none; text-align: center; }
 }

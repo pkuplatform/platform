@@ -1,27 +1,49 @@
-= form_for @group, :html => { :multipart => true } do |f|
-  - if @group.errors.any?
+= form_for @group do |f|
+  -if @group.errors.any?
     #error_explanation
-      %h2
-        = pluralize(@group.errors.count, "error")
-        prohibited this group from being saved:
+      %h2= "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
       %ul
         - @group.errors.full_messages.each do |msg|
           %li= msg
+
+  .field
+    = f.label :category
+    = f.text_field :category
   .field
     = f.label :name
-    %br/
     = f.text_field :name
   .field
     = f.label :slogan
-    %br/
     = f.text_field :slogan
   .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :history
+    = f.text_area :history
+  .field
+    = f.label :organization
+    = f.text_area :organization
+  .field
     = f.label :email
-    %br/
     = f.text_field :email
   .field
-    = f.label :logo
-    %br/
-    = f.file_field :logo
+    = f.label :point
+    = f.number_field :point
+  .field
+    = f.label :logo_file_name
+    = f.text_field :logo_file_name
+  .field
+    = f.label :logo_content_type
+    = f.text_field :logo_content_type
+  .field
+    = f.label :logo_file_size
+    = f.number_field :logo_file_size
+  .field
+    = f.label :logo_updated_at
+    = f.datetime_select :logo_updated_at
+  .field
+    = f.label :status
+    = f.number_field :status
   .actions
-    = f.submit
+    = f.submit 'Save'

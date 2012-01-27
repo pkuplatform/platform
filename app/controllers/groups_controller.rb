@@ -2,9 +2,11 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.paginate(:page => params[:page])
-    @daily_ranks = Group.daily_ranks
-    @weekly_ranks = Group.weekly_ranks
+    if params[:sort] == "category"
+      @groups = Category.find(params[:id]).groups
+    else
+      @groups = Group.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

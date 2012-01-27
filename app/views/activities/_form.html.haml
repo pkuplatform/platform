@@ -1,41 +1,49 @@
-= form_for @activity, :html => { :multipart => true } do |f|
-  - if @activity.errors.any?
+= form_for @activity do |f|
+  -if @activity.errors.any?
     #error_explanation
-      %h2
-        = pluralize(@activity.errors.count, "error")
-        prohibited this activity from being saved:
+      %h2= "#{pluralize(@activity.errors.count, "error")} prohibited this activity from being saved:"
       %ul
         - @activity.errors.full_messages.each do |msg|
           %li= msg
+
   .field
-    = f.hidden_field :group_id
+    = f.label :group
+    = f.text_field :group
   .field
     = f.label :title
-    %br/
     = f.text_field :title
   .field
     = f.label :description
-    %br/
     = f.text_area :description
   .field
     = f.label :start_at
-    %br/
     = f.datetime_select :start_at
   .field
     = f.label :end_at
-    %br/
     = f.datetime_select :end_at
   .field
     = f.label :location
-    %br/
     = f.text_field :location
   .field
     = f.label :public
-    %br/
     = f.check_box :public
   .field
-    = f.label :poster
-    %br/
-    = f.file_field :poster
+    = f.label :point
+    = f.number_field :point
+  .field
+    = f.label :poster_file_name
+    = f.text_field :poster_file_name
+  .field
+    = f.label :poster_content_type
+    = f.text_field :poster_content_type
+  .field
+    = f.label :poster_file_size
+    = f.number_field :poster_file_size
+  .field
+    = f.label :poster_updated_at
+    = f.datetime_select :poster_updated_at
+  .field
+    = f.label :status
+    = f.number_field :status
   .actions
-    = f.submit
+    = f.submit 'Save'

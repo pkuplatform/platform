@@ -3,8 +3,6 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.first(50)
-    @daily_ranks = Activity.daily_ranks
-    @weekly_ranks = Activity.weekly_ranks
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +14,7 @@ class ActivitiesController < ApplicationController
   def picture
     @picture = Picture.find(params[:pic_id])
   end
+
   # GET /activities/1
   # GET /activities/1.json
   def show

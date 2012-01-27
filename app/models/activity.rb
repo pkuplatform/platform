@@ -55,4 +55,8 @@ class Activity < ActiveRecord::Base
   def name
     title
   end
+
+  def admin
+    admins.first
+  end
 end
