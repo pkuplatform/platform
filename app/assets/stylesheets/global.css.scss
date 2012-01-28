@@ -5,6 +5,8 @@ body {
   font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
 }
 
+.main { width: 720px; float: left; }
+
 #header { 
   height:10px; 
   width:100%; 
@@ -35,7 +37,6 @@ td.right { width:200px; }
   margin: 30px 0px;
   padding: 30px 30px; 
   background-color: white;
-  overflow: hidden;
 }
 
 .content { 
@@ -65,3 +66,4 @@ td.right { width:200px; }
   @include gray-link;
   a { font-size: 18px; }
 }
+

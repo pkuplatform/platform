@@ -10,36 +10,31 @@
   width: 720px;
 }
 
-.activity.card {
-  .poster { overflow: hidden; }
+.activity {
+  .poster { overflow: hidden; text-align: center; }
   .poster img { width: 180px; @include box-radius; }
-  .left {
+  .side {
     width: 180px;
     float: left;
-    .poster { text-align: center; }
-    .attention {
-      margin-top: 20px;
-      text-align: center;
-      color: #BBB;
-    }
+    .join-like { text-align: center; color: #BBB; }
+    .join { @include gray-link; }
   }
   .info {
     margin-left: 15px;
     width: 463px;
     float: left;
     .title {
-      @include orange;
+      @include orange-link;
       font-size: 20px;
       margin: 5px 0px;
     }
-    .group {
-      @include green;
+    .admin { 
+      @include green; 
+      @include green-link; 
       font-size: 18px;
       margin: 5px 0px;
     }
-    .description {
-      margin: 5px 0px;
-    }
+    .description { margin: 5px 0px; }
     .blog {
       @include blue;
       font-size: 18px;
@@ -47,42 +42,20 @@
   }
 }
 
+.activity.card .join-like { margin-top: 20px; }
+
 .activity.board {
   margin-top: 100px;
-  .left {
-    width: 200px;
-    float: left;
-    .poster { margin-top: -70px; text-align: center; }
-    .attention {
-      margin-top: 40px;
-      text-align: center;
-      color: #BBB;
-    }
-    .attend {
+  .side {
+    .poster { margin-top: -70px; }
+    .join-like { margin-top: 40px; }
+    .join {
       text-align: center;
       color: #BBB;
     }
   }
   .info {
-    width: 500px;
-    float: left;
-    .title {
-      @include orange;
-      font-size: 20px;
-      margin: 5px 0px;
-    }
-    .admin {
-      span { @include green; }
-      margin: 5px 0px;
-    }
-    .description {
-      margin: 5px 0px;
-    }
-    .blog {
-      @include blue;
-      font-size: 18px;
-    }
+    .time { @include green; }
+    .location { @include green; }
   }
 }
-
-.main { width: 720px; float: left; }
