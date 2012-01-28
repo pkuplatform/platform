@@ -1,4 +1,9 @@
 .main
   = render :partial => 'board', :object => @group, :as => :group
-  = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
+  .activities
+    .header
+      %span= t :activity
+      = link_to (t :activity_more), '#'
+    .list
+      = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
 = render 'sorts'

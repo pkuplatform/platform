@@ -8,7 +8,7 @@ class Group < ActiveRecord::Base
   has_many :second_building_applications, :class_name => "Form::SecondBuildingApplication"
   has_many :albums, :as => :imageable
   has_many :tags, :as => :tagable
-  has_attached_file :logo, :styles => { :medium => "300x300#", :small => "128x128#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
+  has_attached_file :logo, :styles => { :medium => "300x300#", :card => "180x180#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
 
   has_many :user_groups
   has_many :members,     :through => :user_groups, :source => :user, :conditions => ["user_groups.status & ? = ?", Constant::Member, Constant::Member]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215164313) do
+ActiveRecord::Schema.define(:version => 20111214004541) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -114,10 +114,10 @@ ActiveRecord::Schema.define(:version => 20111215164313) do
     t.string   "zhidaozhongxin"
     t.string   "jiaowuzhang"
     t.string   "beizhu"
+    t.integer  "status"
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status"
   end
 
   add_index "form_second_building_applications", ["group_id"], :name => "index_form_second_building_applications_on_group_id"
