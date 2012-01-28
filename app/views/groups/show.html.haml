@@ -6,4 +6,10 @@
       = link_to (t :activity_more), '#'
     .list
       = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
+  .comments
+    .header
+      %span= t :comment
+      = link_to (t :comments_more), '#'
+    .list
+      = render :partial => "share/comments", :locals => { :object => @group }
 = render 'sorts'

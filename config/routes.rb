@@ -6,8 +6,6 @@ Platform::Application.routes.draw do
 
   namespace :form do resources :second_building_applications end
 
-
-
   namespace :admin do
     get "forms/index"
     post "forms/edit"
@@ -71,6 +69,7 @@ Platform::Application.routes.draw do
     member do
       get 'join'
       get 'like'
+      post 'comment'
       get 'history'
       get 'organization'
       get 'activities/new' => 'activities#new'

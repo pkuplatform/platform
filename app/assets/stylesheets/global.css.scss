@@ -45,3 +45,23 @@ td.right { width:200px; }
 }
 
 .clear { clear: both; }
+
+.main .header {
+  span { 
+    @include orange; 
+    @include box-radius(10px);
+    @include box-inset;
+    background-color: white; 
+    display: inline-block;
+    width: 90px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    margin-left: -30px;
+    margin-right: 20px;
+  }
+  line-height: 40px;
+  @include gray-link;
+  a { font-size: 18px; }
+}
