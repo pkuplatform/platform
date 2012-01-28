@@ -1,24 +1,46 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'css3';
+@import 'mixin';
+
 .comments {
-  li {
+  .comment.odd  { 
+    .avatar { float: left; } 
+    .body { 
+      float: right; 
+      margin: 20px 0px 20px 30px;
+    }
+  }
+  .comment.even, .new-comment { 
+    .avatar { float: right; } 
+    .body { 
+      float: left; 
+      margin: 20px 30px 20px 0px;
+    }
+  }
+  li { 
     list-style:none;
-    margin-top:15px;
+    .avatar { 
+      @include box-radius; 
+      overflow: hidden; 
+      width: 100px;
+      height: 100px;
+      img { width: 100px; }
+      margin: 20px 0px;
+    }
+    .body {
+      min-height: 60px;
+      width: 548px;
+      background-color: white;
+      padding: 20px;
+      @include box-radius;
+      @include box-shadow;
+      font-size: 18px;
+      .name { @include orange-link; }
+      .gray { color: #BBB; } 
+      .time { @include green; }
+    }
   }
-  #comment-content {
-    margin-top:-3px;
-    height:62px;
-    width: 380px;
-
-  }
-  .comment-title {
-    
-  }
-  .comment-body {
-    padding-bottom:10px;
-    border-bottom:1px solid #ccc;
-    min-height:44px;
-  }
-
 }

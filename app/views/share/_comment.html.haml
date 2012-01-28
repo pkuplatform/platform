@@ -1,10 +1,10 @@
-%li.comment{:id=>"comment-#{comment.id}"}
-  .span-2
+%li.comment{:id=>"comment-#{comment.id}", :class => "#{cycle('odd', 'even')}"}
+  .avatar
     = image_tag comment.user.avatar
-  .span-12.last
-    .comment-title  
-      = link_to comment.user.name, comment.user
-      = " / #{l comment.created_at}"
-    .comment-body
-      = comment.body
+  .body
+    %span.name= link_to comment.user.name, comment.user
+    %span.gray= t :at
+    %span.time= l comment.created_at
+    %span.gray= t :post_comment
+    = comment.body
   .clear

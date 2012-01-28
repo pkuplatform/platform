@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     profile.name
   end
 
-  def avatar(size=:thumb)
+  def avatar(size=:small)
     profile.avatar.url(size)
   end
 
