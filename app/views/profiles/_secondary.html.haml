@@ -1,3 +1,17 @@
 .secondary
-  = t :info
-
+  %ul
+    %li.first= t :info
+    %li= link_to (t :home), '#'
+    %li= link_to (t :edit_profile), edit_profile_path(profile)
+    %li= link_to (t :show_profile), profile_path(profile)
+  %div
+  %ul
+    %li.first= t :newsfeed
+    %li= link_to (t :my_activities), '#'
+    %li= link_to (t :my_groups), '#'
+    %li= link_to (t :my_blogs), '#'
+    %li= link_to (t :my_photos), '#'
+  %div
+  %ul
+    %li.first= t :administrate
+    %li= link_to (t :new_group), new_group_path

@@ -72,7 +72,6 @@
   :ta_favors: "Ta喜欢"
 
   users: "人"
-  newsfeed: "新鲜事"
 
   "'s card": "的名片"
 
@@ -220,3 +219,14 @@
   at: "在"
   post_comment: "发表评论"
   comments_more: "浏览更多评论>>"
+  info: "信息"
+  home: "个人首页"
+  edit_profile: "修改信息"
+  show_profile: "个人名片"
+  newsfeed: "动态"
+  my_activities: "我的活动"
+  my_groups: "我的社团"
+  my_blogs: "我的文章"
+  my_photos: "我的照片"
+  administrate: "管理"
+  new_group: "新建社团"
