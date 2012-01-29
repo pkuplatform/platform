@@ -46,6 +46,10 @@ class Group < ActiveRecord::Base
     logo.url(:thumb)
   end
 
+  def admin
+    admins.first || User.first
+  end
+
   define_index do
     # fields
     indexes :name

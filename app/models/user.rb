@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     profile.avatar.url(:thumb)
   end
 
-  def name
+  def nickname
     profile.nickname
   end
 end

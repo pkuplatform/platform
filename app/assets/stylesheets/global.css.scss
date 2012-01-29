@@ -37,6 +37,31 @@ td.right { width:200px; }
   margin: 30px 0px;
   padding: 30px 30px; 
   background-color: white;
+
+  .logo, .avatar, .poster { 
+    img { width: 180px; @include box-radius; }
+  } 
+
+  .side { width: 180px; float: left; }
+  .info { width: 463px; float: left; margin-left: 15px; }
+
+  .info .title, .info .name, .info .nickname { 
+    @include orange;
+    @include orange-link; 
+    font-size: 20px;
+    margin: 5px 0px;
+  }
+
+  .info .admin {
+    @include green;
+    @include green-link;
+    font-size: 18px;
+    margin: 5px 0px;
+  }
+
+  .info .description { margin: 5px 0px; }
+  .side .like-join, .side .like { text-align: center; color: #BBB; }
+  .side .join { @include gray-link; }
 }
 
 .content { 
@@ -67,3 +92,11 @@ td.right { width:200px; }
   a { font-size: 18px; }
 }
 
+.secondary {
+  float: left;
+  width: 180px;
+  text-align: center;
+  margin-top: 30px;
+  li { list-style: none; }
+  @include blue-link;
+}

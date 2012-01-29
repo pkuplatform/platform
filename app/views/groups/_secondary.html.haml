@@ -1,0 +1,6 @@
+.secondary
+  = link_to (t :groups_all), groups_path(:sort => "all")
+  %ul
+    - Category.all.each do |category|
+      %li
+        = link_to (t category.name), groups_path(:sort => "category", :id => category.id)

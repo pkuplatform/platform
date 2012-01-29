@@ -196,8 +196,6 @@
   name: "姓名:"
   nickname: "昵称:"
   gender: "性别:"
-  student_id: "学号:"
-  phone: "手机:"
   description: "简介:"
   avatar: "头像:"
 
@@ -208,11 +206,12 @@
 
   like_count: "%{count}人喜欢"
   join_count: "%{count}人参加"
+  blog_count: "%{count}篇文章"
+  picture_count: "%{count}张照片"
+  group_count: "%{count}个社团"
   activities_count: "%{count}个活动"
   group_admin: "社长"
   groups_all: "全部社团"
-  blog_count: "%{count}篇文章"
-  picture_count: "%{count}张照片"
   activities_all: "全部活动"
   level: "积分: %{points}"
   host: "主办 /"

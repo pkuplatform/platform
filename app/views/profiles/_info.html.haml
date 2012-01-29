@@ -1,0 +1,14 @@
+.info
+  .name= profile.name
+  .nickname= profile.nickname
+  .student-id
+    %span.label= t :student_id
+    %span.val= profile.student_id
+  .phone
+    %span.label= t :phone
+    %span.val= profile.phone
+  .description= profile.description
+  .group-activity
+    = t :group_count, :count => user.groups.count
+    = " "
+    = t :activities_count, :count => user.activities.count

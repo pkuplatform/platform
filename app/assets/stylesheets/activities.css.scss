@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'css3';
 @import 'mixin';
 
 .activities {
@@ -10,52 +9,12 @@
   width: 720px;
 }
 
-.activity {
-  .poster { overflow: hidden; text-align: center; }
-  .poster img { width: 180px; @include box-radius; }
-  .side {
-    width: 180px;
-    float: left;
-    .join-like { text-align: center; color: #BBB; }
-    .join { @include gray-link; }
-  }
-  .info {
-    margin-left: 15px;
-    width: 463px;
-    float: left;
-    .title {
-      @include orange-link;
-      font-size: 20px;
-      margin: 5px 0px;
-    }
-    .admin { 
-      @include green; 
-      @include green-link; 
-      font-size: 18px;
-      margin: 5px 0px;
-    }
-    .description { margin: 5px 0px; }
-    .blog {
-      @include blue;
-      font-size: 18px;
-    }
-  }
-}
-
+.activity .info .blog { @include blue; font-size: 18px; }
 .activity.card .join-like { margin-top: 20px; }
 
 .activity.board {
   margin-top: 100px;
-  .side {
-    .poster { margin-top: -70px; }
-    .join-like { margin-top: 40px; }
-    .join {
-      text-align: center;
-      color: #BBB;
-    }
-  }
-  .info {
-    .time { @include green; }
-    .location { @include green; }
-  }
+  .poster { margin-top: -70px; }
+  .join-like { margin-top: 40px; }
+  .info .time, .info .location { @include green; }
 }

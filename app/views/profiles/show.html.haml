@@ -1,11 +1,2 @@
-.container
-  = render 'share/header'
-  .content
-    .span-7.append-1
-      = render 'users/user_box'
-      = render 'users/favor'
-    .span-16.last
-      = render 'profiles/card'
-      = render 'profiles/liked'
-      = render 'profiles/liking'
-  = render 'share/footer'
+= render :partial => 'profiles/card', :locals => { :profile => @profile }
+= render :partial => 'profiles/secondary'

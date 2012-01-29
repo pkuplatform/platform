@@ -3,7 +3,7 @@
   %span.category= t group.category.name
   .admin
     = t :group_admin
-    = group.admins.first.profile.name unless group.admins.first.nil?
+    = link_to group.admin.name, group.admin
     = "/"
     = l group.created_at.to_date, :format => :long
     = t :create

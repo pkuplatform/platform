@@ -1,26 +1,4 @@
-.box.card.profile
-  .box-header
-    = @profile.name + t("'s card")
-  .box-body
-    %p
-      %b 
-      = image_tag @profile.avatar.url(:small)
-    %p
-      %b= t :name
-      = @profile.name
-    %p
-      %b= t :nickname
-      = @profile.nickname
-    %p
-      %b= t :gender
-      - if @profile.gender == 1
-        = t :male
-      - else
-        = t :female
-    %p
-      %b= t :phone
-      = @profile.phone
-    %p
-      %b= t :description
-      = @profile.description
-.clear
+.user.card.box
+  = render :partial => 'profiles/side', :locals => { :user => profile.user }
+  = render :partial => 'profiles/info', :locals => { :user => profile.user, :profile => profile }
+  .clear
