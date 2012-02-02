@@ -1,0 +1,3 @@
+rvm use jruby-1.6.6
+export JRUBY_OPTS=--1.9
+
