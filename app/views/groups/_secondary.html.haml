@@ -8,5 +8,5 @@
   %ul
     %li.first= t :administrate
     %li= link_to (t :new_group), new_group_path
-    - unless @group.nil?
+    - unless @group.nil? or @group.id.nil?
       %li= link_to (t :edit_group), edit_group_path(@group)

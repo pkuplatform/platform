@@ -108,6 +108,7 @@ td.right { width:200px; }
 .orange-link { @include orange-link; }
 
 .box.form {
+  float: left;
   margin-top: 100px;
   width: 660px;
   font-size: 14px;

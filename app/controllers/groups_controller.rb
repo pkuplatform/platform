@@ -175,11 +175,6 @@ class GroupsController < ApplicationController
     redirect_to show_members_group_path
   end
 
-  def show_activities
-    @group = Group.find(params[:id])
-    @activities = @group.activities
-  end
-
   def edit_activities
     @group = Group.find(params[:id])
 

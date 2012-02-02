@@ -227,9 +227,13 @@
   my_blogs: "我的文章"
   my_photos: "我的照片"
   administrate: "管理"
-  new_group: "新建社团"
-  groups_index: "社团中心"
-  activities_index: "活动中心"
   users_show: "个人中心"
   slogan: "标语"
+
+  new_group: "新建社团"
+  groups_index: "社团中心"
   edit_group: "编辑社团"
+
+  new_activity: "新建活动"
+  edit_activity: "编辑活动"
+  activities_index: "活动中心"
