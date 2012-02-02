@@ -5,6 +5,6 @@
   %ul
     %li.first= t :administrate
     - unless @group.nil?
-      %li= link_to (t :new_activity), new_group_activity_path(@group)
+      %li= link_to (t '.new'), new_group_activity_path(@group)
     - unless @activity.nil? or @activity.id.nil?
-      %li= link_to (t :edit_activity), edit_group_activity_path(@group, @activity)
+      %li= link_to (t '.edit'), edit_group_activity_path(@group, @activity)

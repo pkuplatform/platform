@@ -224,6 +224,10 @@
   groups:
     new:
       title: "新建社团"
+    show:
+      new: "新建活动>>"
+    info:
+      founded: "成立"
     secondary:
       new: "新建社团"
       edit: "编辑社团"
@@ -232,8 +236,22 @@
       slogan: "标语"
       email: "E-mail"
       logo: "Logo"
+      founded: "成立时间"
       category: "类别"
       introduction: "简介"
       description: "介绍"
       history: "社团大记事"
       organization: "组织构架"
+
+  activities:
+    new:
+      title: "新建活动"
+    edit:
+      title: "编辑活动"
+    info:
+      location: "地点"
+    secondary:
+      new: "新建活动"
+      edit: "编辑活动"
+    form:
+      poster: "海报"

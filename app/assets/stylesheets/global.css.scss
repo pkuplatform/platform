@@ -59,9 +59,10 @@ td.right { width:200px; }
     margin: 5px 0px;
   }
 
+  .info .label { color: #BBB; font-size: 18px; }
   .info .description { margin: 5px 0px; }
   .side .like-join, .side .like { text-align: center; color: #BBB; }
-  .side .join { @include gray-link; }
+  .side .join { @include gray-link; text-align: center; }
 }
 
 .content { 
@@ -89,7 +90,7 @@ td.right { width:200px; }
   }
   line-height: 40px;
   @include gray-link;
-  a { font-size: 18px; }
+  a { font-size: 18px; margin-right: 10px; }
 }
 
 .secondary {

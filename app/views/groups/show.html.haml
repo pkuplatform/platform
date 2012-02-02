@@ -4,6 +4,7 @@
     .header
       %span= t :activity
       = link_to (t :activity_more), '#'
+      = link_to (t '.new'), new_group_activity_path(@group)
     .list
       = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
   .comments

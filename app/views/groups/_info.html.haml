@@ -5,9 +5,9 @@
     = t :group_admin
     = link_to group.admin.name, group.admin
     = "/"
-    = l group.created_at.to_date, :format => :long
-    = t :create
+    = l group.founded_at, :format => :long
+    = t '.founded'
   .description
-    = group.description
+    = simple_format group.introduction
   .activity
     = t :activities_count, :count => group.activities.count
