@@ -76,14 +76,6 @@
 
 
   group_index: "社团索引"
-  "sports and fitness": "体育健身"
-  "culture and art": "文化艺术"
-  "public interest and volunteer": "公益志愿"
-  "academic and creation": "学术科创"
-  "practice and progress": "实践促进"
-  "cooperation and communication": "合作交流"
-  "region culture": "地域文化"
-  "political theory": "政治理论"
   create_new_activity!: "创建新活动！"
   create_new_second_building_form!: "申请二教教室！"
   admin: "管理者"
@@ -230,10 +222,7 @@
   users_show: "个人中心"
   slogan: "标语"
 
-  new_group: "新建社团"
   groups_index: "社团中心"
   edit_group: "编辑社团"
 
-  new_activity: "新建活动"
-  edit_activity: "编辑活动"
   activities_index: "活动中心"

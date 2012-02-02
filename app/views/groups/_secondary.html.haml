@@ -3,10 +3,10 @@
     %li.first= link_to (t :groups_all), groups_path(:sort => "all")
     - Category.all.each do |category|
       %li
-        = link_to (t category.name), groups_path(:sort => "category", :id => category.id)
+        = link_to category.translated_name, groups_path(:sort => "category", :id => category.id)
   %div
   %ul
     %li.first= t :administrate
-    %li= link_to (t :new_group), new_group_path
+    %li= link_to (t '.new'), new_group_path
     - unless @group.nil? or @group.id.nil?
-      %li= link_to (t :edit_group), edit_group_path(@group)
+      %li= link_to (t '.edit'), edit_group_path(@group)

@@ -1,6 +1,6 @@
 .info
   %span.name= link_to group.name, group
-  %span.category= t group.category.name
+  %span.category= t group.category.name, :scope => :category
   .admin
     = t :group_admin
     = link_to group.admin.name, group.admin

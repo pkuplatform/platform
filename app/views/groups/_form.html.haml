@@ -7,25 +7,31 @@
           %li= msg
 
   .field
-    = f.label :name, (t :name)
+    = f.label :name, (t '.name')
     = f.text_field :name
   .field
-    = f.label :slogan, (t :slogan)
+    = f.label :slogan, (t '.slogan')
     = f.text_field :slogan
   .field
-    = f.label :email, (t :email)
+    = f.label :email, (t '.email')
     = f.text_field :email
   .field
-    = f.label :logo, (t :logo)
+    = f.label :logo, (t '.logo')
     = f.file_field :logo
   .field
-    = f.label :description, (t :description)
+    = f.label :category, (t '.category')
+    = f.collection_select :category_id, Category.all, :id, :translated_name
+  .field
+    = f.label :introduction, (t '.introduction')
+    = f.text_area :introduction
+  .field
+    = f.label :description, (t '.description')
     = f.text_area :description
   .field
-    = f.label :history, (t :history)
+    = f.label :history, (t '.history')
     = f.text_area :history
   .field
-    = f.label :organization, (t :organization)
+    = f.label :organization, (t '.organization')
     = f.text_area :organization
   .actions
     = f.submit 'Save'

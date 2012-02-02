@@ -4,10 +4,12 @@ class CreateGroups < ActiveRecord::Migration
       t.references :category
       t.string :name
       t.string :slogan
+      t.text :introduction
       t.text :description
       t.text :history
       t.text :organization
       t.string :email
+      t.date :founded_at
       t.integer :status
       t.string :logo_file_name
       t.string :logo_content_type

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214004541) do
+ActiveRecord::Schema.define(:version => 20120131052107) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -126,10 +126,12 @@ ActiveRecord::Schema.define(:version => 20111214004541) do
     t.integer  "category_id"
     t.string   "name"
     t.string   "slogan"
+    t.text     "introduction"
     t.text     "description"
     t.text     "history"
     t.text     "organization"
     t.string   "email"
+    t.date     "founded_at"
     t.integer  "status"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -228,6 +230,15 @@ ActiveRecord::Schema.define(:version => 20111214004541) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sms", :force => true do |t|
+    t.integer  "group_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sms", ["group_id"], :name => "index_sms_on_group_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

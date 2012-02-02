@@ -1,4 +1,14 @@
 "zh-CN":
+  category:
+    "sports and fitness": "体育健身"
+    "culture and art": "文化艺术"
+    "public interest and volunteer": "公益志愿"
+    "academic and creation": "学术科创"
+    "practice and progress": "实践促进"
+    "cooperation and communication": "合作交流"
+    "region culture": "地域文化"
+    "political theory": "政治理论"
+
   time:
     formats:
       default: "%Y-%m-%d %A %H:%M "
@@ -210,4 +220,20 @@
       create: "新增%{model}"
       update: "更新%{model}"
       submit: "储存%{model}"
-
+  
+  groups:
+    new:
+      title: "新建社团"
+    secondary:
+      new: "新建社团"
+      edit: "编辑社团"
+    form:
+      name: "名称"
+      slogan: "标语"
+      email: "E-mail"
+      logo: "Logo"
+      category: "类别"
+      introduction: "简介"
+      description: "介绍"
+      history: "社团大记事"
+      organization: "组织构架"
