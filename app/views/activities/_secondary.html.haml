@@ -1,2 +1,10 @@
 .secondary
-  = link_to (t :activities_all), activities_path(:sort => "all")
+  %ul
+    %li.first= link_to (t :activities_all), activities_path(:sort => "all")
+  %div
+  %ul
+    %li.first= t :administrate
+    - unless @group.nil?
+      %li= link_to (t :new_activity), new_group_activity_path(@group)
+    - unless @activity.nil? or @activity.id.nil?
+      %li= link_to (t :edit_activity), edit_group_activity_path(@group, @activity)

@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  layout 'activities'
   # GET /activities
   # GET /activities.json
   def index
@@ -33,7 +34,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:group_id])
     @activity = @group.activities.build
 
     respond_to do |format|

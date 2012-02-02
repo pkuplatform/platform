@@ -7,40 +7,25 @@
           %li= msg
 
   .field
-    = f.label :name
+    = f.label :name, (t :name)
     = f.text_field :name
   .field
-    = f.label :slogan
+    = f.label :slogan, (t :slogan)
     = f.text_field :slogan
   .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :history
-    = f.text_area :history
-  .field
-    = f.label :organization
-    = f.text_area :organization
-  .field
-    = f.label :email
+    = f.label :email, (t :email)
     = f.text_field :email
   .field
-    = f.label :points
-    = f.number_field :points
+    = f.label :logo, (t :logo)
+    = f.file_field :logo
   .field
-    = f.label :logo_file_name
-    = f.text_field :logo_file_name
+    = f.label :description, (t :description)
+    = f.text_area :description
   .field
-    = f.label :logo_content_type
-    = f.text_field :logo_content_type
+    = f.label :history, (t :history)
+    = f.text_area :history
   .field
-    = f.label :logo_file_size
-    = f.number_field :logo_file_size
-  .field
-    = f.label :logo_updated_at
-    = f.datetime_select :logo_updated_at
-  .field
-    = f.label :status
-    = f.number_field :status
+    = f.label :organization, (t :organization)
+    = f.text_area :organization
   .actions
     = f.submit 'Save'

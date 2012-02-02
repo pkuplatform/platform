@@ -66,19 +66,18 @@ Platform::Application.routes.draw do
 
   resources :groups do
     resources :albums
+    resources :activities
     member do
       get 'join'
       get 'like'
       post 'comment'
       get 'history'
       get 'organization'
-      get 'activities/new' => 'activities#new'
       get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
       get 'show_forms'
       get 'show_members'
       post 'members/edit' => 'groups#edit_members'
-      get 'show_activities'
-      post 'activities/edit' => 'groups#edit_activities'
+      # post 'activities/edit' => 'groups#edit_activities'
     end
   end
 

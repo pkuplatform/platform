@@ -18,6 +18,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
+gem 'savon'
 
 gem 'annotate'
 gem 'mysql2'
