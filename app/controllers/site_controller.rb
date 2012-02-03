@@ -1,4 +1,6 @@
 class SiteController < ApplicationController
+  before_filter :authenticate_user!, :only => [:home]
+
   def index
     redirect_to home_path if user_signed_in?
     @activities = Activity.last(3)
