@@ -228,6 +228,9 @@
       new: "新建活动>>"
     info:
       founded: "成立"
+    join:
+      join: "参加>>"
+      exit: "退出>>"
     secondary:
       new: "新建社团"
       edit: "编辑社团"

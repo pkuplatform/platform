@@ -7,7 +7,7 @@
     = t :join_count, :count => group.members.count
   - if board
     .join
-      = link_to (t :join), join_group_path(group)
+      = render :partial => 'groups/join', :object => group, :as => :group
     .organization
       = t :organization 
     .history
