@@ -10,4 +10,8 @@
         = image_tag @activities.first.banner.url(:medium)
   .newsfeed
     = "js done"
-  .recommend
+  .activities
+    .header
+      %span= t '.new'
+    .list
+      = render :partial => 'activities/card', :collection => @activities, :as => :activity

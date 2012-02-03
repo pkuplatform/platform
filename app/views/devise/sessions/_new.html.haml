@@ -6,6 +6,6 @@
   - if devise_mapping.rememberable?
     %div
       = f.check_box :remember_me
-      = f.label :remember_me
+      = f.label t :remember_me
   %div= f.submit "Sign in"
 = render :partial => "devise/shared/links"

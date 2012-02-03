@@ -273,6 +273,7 @@
   site:
     index:
       hotspot: "热点"
+      new: "最新"
 
   share:
     links:
@@ -280,3 +281,8 @@
       group: "社团中心"
       activity: "活动中心"
       logout: "退出"
+
+  devise:
+    sessions:
+      new:
+        remember_me: "勿忘我"

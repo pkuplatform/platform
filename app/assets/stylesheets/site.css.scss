@@ -4,7 +4,10 @@
 
 @import 'css3';
 
-.site-index { margin-top: 50px; }
+.site-index { 
+  margin-top: 50px; 
+}
+
 .hotspot .box {
   img { 
     @include box-radius(10px); 
