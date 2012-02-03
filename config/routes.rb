@@ -1,5 +1,7 @@
 Platform::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   post "search" => "search#index"
 
   resources :feedbacks

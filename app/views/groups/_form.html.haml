@@ -26,7 +26,7 @@
     = f.collection_select :category_id, Category.all, :id, :translated_name
   .field
     = f.label :introduction, (t '.introduction')
-    = f.text_area :introduction
+    = f.cktext_area :introduction
   .field
     = f.label :description, (t '.description')
     = f.text_area :description
