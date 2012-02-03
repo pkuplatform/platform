@@ -3,9 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'css3';
+@import 'mixin';
 
 .site-index { 
   margin-top: 50px; 
+  .newsfeeds  { margin-top: 50px; }
+  .newsfeed   { margin-top: 10px; }
+  .activities { margin-top: 50px; }
 }
 
 .hotspot .box {
@@ -21,4 +25,13 @@
   }
   .medium { width: 576px; }
   width: 800px;
+}
+
+.newsfeed {
+  div { display: inline-block; }
+  .content { width: 500px; }
+  .name { @include orange-link; }
+  span { color: #BBB; }
+  .time { @include green; }
+  .object { @include orange-link; }
 }

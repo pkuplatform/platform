@@ -67,17 +67,8 @@
   "most members activity": "参与最多的活动"
   "most subscribers activity": "最受关注的活动"
   "most subscribers group": "最受关注的社团"
-  my_favors: "我喜欢"
-  :ta_favors: "Ta喜欢"
-
-  users: "人"
-
-  "'s card": "的名片"
-
 
   group_index: "社团索引"
-  create_new_activity!: "创建新活动！"
-  create_new_second_building_form!: "申请二教教室！"
   admin: "管理者"
   start_at: "开始时间"
   end_at: "结束时间"
@@ -121,7 +112,6 @@
   joined: "参加的人"
   dislike: "我不喜欢"
   like: "我喜欢"
-  join: "我要参加>>"
   quit: "退出"
   approving: "申请中"
   approved: "允许"
@@ -139,7 +129,6 @@
   new_picture: "新图片"
   confirm_change: "确认修改"
 
-  "newsfeed name and time": "在 %{time} 前"
   create: "创建"
 
   sign_in: "登录"

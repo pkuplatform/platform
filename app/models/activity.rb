@@ -50,7 +50,7 @@ class Activity < ActiveRecord::Base
   end
 
   def url
-    poster.url(:small)
+    poster.url(:thumb)
   end
 
   def name
