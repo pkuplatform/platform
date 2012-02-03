@@ -1,9 +1,13 @@
-.main
+.site-index.main
   .hotspot
     .header
       %span= t '.hotspot'
     .box
-      = "This is a jquery box"
+      .banner
+        - @activities.each do |activity|
+          = image_tag activity.banner.url(:banner)
+      .medium
+        = image_tag @activities.first.banner.url(:medium)
   .newsfeed
     = "js done"
   .recommend
