@@ -8,7 +8,7 @@ gem 'rails', '3.1.1'
 gem 'sqlite3'
 
 gem 'thin'
-gem 'haml'
+gem 'haml-rails'
 gem 'devise'
 gem 'has_mailbox'
 gem 'paperclip'

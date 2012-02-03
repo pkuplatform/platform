@@ -18,5 +18,6 @@
             - if user_signed_in?
               = render 'users/card' 
             - else
-              = render 'sessions/new'
-            = render 'share/links'
+              = render 'devise/sessions/new'
+            - if user_signed_in?
+              = render 'share/links'

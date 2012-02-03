@@ -255,3 +255,13 @@
       edit: "编辑活动"
     form:
       poster: "海报"
+
+  site:
+    index:
+      hotspot: "热点"
+
+  share:
+    links:
+      home: "个人中心"
+      group: "社团中心"
+      activity: "活动中心"

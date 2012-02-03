@@ -66,7 +66,12 @@ GEM
       i18n (~> 0.4)
     gyoku (0.4.4)
       builder (>= 2.1.2)
-    haml (3.1.3)
+    haml (3.1.4)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     has_mailbox (1.5.5)
       jquery-rails
       will_paginate
@@ -187,7 +192,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   devise
   faker
-  haml
+  haml-rails
   has_mailbox
   jquery-rails
   mysql2
