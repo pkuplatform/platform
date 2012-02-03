@@ -5,8 +5,8 @@
     - else
       = t "my_favors"
     = link_to (t "users"), favor_user_path(:type=>'users'), :remote=>true
-    = link_to (t "groups"), favor_user_path(:type=>'groups'), :remote=>true
-    = link_to (t "activities"), favor_user_path(:type=>'activities'), :remote=>true
+    = link_to (t "Group"), favor_user_path(:type=>'groups'), :remote=>true
+    = link_to (t "Activity"), favor_user_path(:type=>'activities'), :remote=>true
 
   .box-body
     %ul.favor_list

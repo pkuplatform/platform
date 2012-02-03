@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  layout 'activities'
+  #layout 'activities'
   # GET /activities
   # GET /activities.json
   def index

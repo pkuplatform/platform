@@ -8,6 +8,6 @@
           = render :partial => "newsfeed", :locals => { :event => event }
     - else
       - @newsfeeds.each do |newsfeed|
-        - if event_exist?(newsfeed)
+        - if event_exist?(newsfeed.event)
           = render :partial => "newsfeed", :locals => { :event => newsfeed.event }
   .more

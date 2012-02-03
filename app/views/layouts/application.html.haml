@@ -7,16 +7,20 @@
     = csrf_meta_tags
   %body
     #header
-    %table
-      %tr
-        %td
-          .content
-            = yield
-            .clear
-        %td.right
-          .sidebar
-            - if user_signed_in?
-              = render 'users/card' 
-            - else
-              = render 'sessions/new'
-            = render 'share/links'
+    #container
+      - if params[:controller]=='users' || params[:controller]=='profiles'
+        = render 'profiles/secondary'
+      - if params[:controller]=='groups'
+        = render 'groups/secondary'    
+      - if params[:controller]=='activities'
+        = render 'activities/secondary'
+      .content
+        = yield
+        .clear
+      .sidebar
+        - if user_signed_in?
+          = render 'users/card' 
+        - else
+          = render 'sessions/new'
+        = render 'share/links'
+        .clear

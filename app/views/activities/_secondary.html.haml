@@ -8,3 +8,4 @@
       %li= link_to (t '.new'), new_group_activity_path(@group)
     - unless @activity.nil? or @activity.id.nil?
       %li= link_to (t '.edit'), edit_group_activity_path(@group, @activity)
+  .clear

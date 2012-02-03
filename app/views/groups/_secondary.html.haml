@@ -10,3 +10,4 @@
     %li= link_to (t '.new'), new_group_path
     - unless @group.nil? or @group.id.nil?
       %li= link_to (t '.edit'), edit_group_path(@group)
+  .clear

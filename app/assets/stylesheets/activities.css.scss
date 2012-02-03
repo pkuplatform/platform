@@ -5,8 +5,7 @@
 @import 'mixin';
 
 .activities {
-  float: left;
-  width: 720px;
+
 }
 
 .activity .info .blog { @include blue; font-size: 18px; }
