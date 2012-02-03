@@ -10,6 +10,7 @@ class Activity < ActiveRecord::Base
   has_many :user_activities
   has_many :users, :through => :user_activities
   has_attached_file :poster, :styles => { :medium => "256x360#",:card => "180x250#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
+  has_attached_file :banner, :styles => { :medium => "576x320#", :banner => "180x100#" }
 
   has_many :admins,      :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Admin, Constant::Admin]
   has_many :members,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Member, Constant::Member]
@@ -49,7 +50,7 @@ class Activity < ActiveRecord::Base
   end
 
   def url
-    poster.url(:small)
+    poster.url(:thumb)
   end
 
   def name

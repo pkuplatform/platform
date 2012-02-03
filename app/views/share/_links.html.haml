@@ -1,8 +1,9 @@
 .links
   .orange-link
-    = link_to (t :users_show), current_user
+    = link_to (t '.home'), home_path
   .orange-link
-    = link_to (t :groups_index), groups_path
+    = link_to (t '.group'), groups_path
   .orange-link
-    = link_to (t :activities_index), activities_path
-
+    = link_to (t '.activity'), activities_path
+  .orange-link
+    = link_to (t '.logout'), destroy_user_session_path, :method => :delete

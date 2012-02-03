@@ -228,6 +228,13 @@
       new: "新建活动>>"
     info:
       founded: "成立"
+    join:
+      join: "参加>>"
+      exit: "退出>>"
+      wait: "审批中..."
+    like:
+      like: "关注"
+      unlike: "取消关注"
     secondary:
       new: "新建社团"
       edit: "编辑社团"
@@ -250,8 +257,40 @@
       title: "编辑活动"
     info:
       location: "地点"
+    join:
+      join: "参加"
+      exit: "退出"
+      wait: "审核中..."
+    like:
+      like: "关注"
+      unlike: "取消关注"
     secondary:
       new: "新建活动"
       edit: "编辑活动"
     form:
       poster: "海报"
+
+  site:
+    index:
+      hotspot: "热点"
+      new: "最新"
+    newsfeeds:
+      newsfeed: "动态"
+    newsfeed:
+      at: "在"
+      before: "前"
+      action: "%{action}了"
+
+  share:
+    links:
+      home: "个人中心"
+      group: "社团中心"
+      activity: "活动中心"
+      logout: "退出"
+
+  devise:
+    sessions:
+      new:
+        remember_me: "勿忘我"
+
+  join: "参加"

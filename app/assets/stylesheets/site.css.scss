@@ -1,0 +1,37 @@
+// Place all the styles related to the site controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'css3';
+@import 'mixin';
+
+.site-index { 
+  margin-top: 50px; 
+  .newsfeeds  { margin-top: 50px; }
+  .newsfeed   { margin-top: 10px; }
+  .activities { margin-top: 50px; }
+}
+
+.hotspot .box {
+  img { 
+    @include box-radius(10px); 
+    @include box-shadow(0px, 3px);
+  }
+  div { display: inline-block; }
+  .banner { 
+    width: 180px; 
+    margin-right: 20px;
+    img { margin: 5px 0px; }
+  }
+  .medium { width: 576px; }
+  width: 800px;
+}
+
+.newsfeed {
+  div { display: inline-block; }
+  .content { width: 500px; }
+  .name { @include orange-link; }
+  span { color: #BBB; }
+  .time { @include green; }
+  .object { @include orange-link; }
+}

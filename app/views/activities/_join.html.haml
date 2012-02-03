@@ -1,0 +1,7 @@
+.join
+  - if can? :join, activity
+    = link_to (t '.join'), join_activity_path(activity), :remote => true
+  - elsif can? :exit, activity
+    = link_to (t '.exit'), join_activity_path(activity), :remote => true
+  - else
+    = t '.wait'

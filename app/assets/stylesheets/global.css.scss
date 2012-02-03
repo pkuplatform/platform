@@ -66,7 +66,7 @@ table {
   .info .label { color: #BBB; font-size: 18px; }
   .info .description { margin: 5px 0px; }
   .side .like-join, .side .like { text-align: center; color: #BBB; }
-  .side .join { @include gray-link; text-align: center; }
+  .side .join, .like { @include gray-link; text-align: center; }
 }
 
 .content { 
