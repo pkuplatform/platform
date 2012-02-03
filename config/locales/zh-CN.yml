@@ -274,6 +274,12 @@
     index:
       hotspot: "热点"
       new: "最新"
+    newsfeeds:
+      newsfeed: "动态"
+    newsfeed:
+      at: "在"
+      before: "前"
+      action: "%{action}了"
 
   share:
     links:
@@ -286,3 +292,5 @@
     sessions:
       new:
         remember_me: "勿忘我"
+
+  join: "参加"
