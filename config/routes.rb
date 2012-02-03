@@ -59,10 +59,12 @@ Platform::Application.routes.draw do
       get 'history'
       get 'organization'
       get 'second_building_applications/new', :controller => 'form/second_building_applications', :action => 'new'
-      get 'show_forms'
-      get 'show_members'
       post 'members/edit' => 'groups#edit_members'
       post 'activities/edit' => 'groups#edit_activities'
+      namespace :admin do
+        get 'members'
+        get 'forms'
+      end
     end
   end
 

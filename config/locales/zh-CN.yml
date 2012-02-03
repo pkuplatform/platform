@@ -238,6 +238,9 @@
     secondary:
       new: "新建社团"
       edit: "编辑社团"
+      members: "管理成员"
+      activity: "新建活动"
+      forms: "管理申请表"
     form:
       name: "名称"
       slogan: "标语"

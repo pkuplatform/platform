@@ -15,6 +15,10 @@ class Ability
       not group.followers.include?(user)
     end
 
+    can :admin, Group do |group|
+      not group.nil? and not group.id.nil? and group.admins.include?(user)
+    end
+
     can :exit, Activity do |activity|
       activity.members.include?(user)
     end
@@ -25,6 +29,10 @@ class Ability
 
     can :like, Activity do |activity|
       not activity.followers.include?(user)
+    end
+
+    can :admin, Activity do |activity|
+      not activity.nil? and not activity.id.nil? and activity.admins.include?(user)
     end
 
     # Define abilities for the passed in user here. For example:

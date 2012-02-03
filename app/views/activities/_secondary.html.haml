@@ -4,8 +4,8 @@
   %div
   %ul
     %li.first= t :administrate
-    - unless @group.nil?
+    - if can? :admin, @group
       %li= link_to (t '.new'), new_group_activity_path(@group)
-    - unless @activity.nil? or @activity.id.nil?
+    - if can? :admin, @activity
       %li= link_to (t '.edit'), edit_group_activity_path(@group, @activity)
   .clear
