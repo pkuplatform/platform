@@ -15,6 +15,18 @@ class Ability
       not group.followers.include?(user)
     end
 
+    can :exit, Activity do |activity|
+      activity.members.include?(user)
+    end
+
+    can :join, Activity do |activity|
+      not activity.members.include?(user) and not activity.tenders.include?(user)
+    end
+
+    can :like, Activity do |activity|
+      not activity.followers.include?(user)
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

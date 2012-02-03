@@ -6,5 +6,5 @@
     = " "
     = t :join_count, :count => activity.members.count
   - if board
-    .join
-      = link_to (t :join), join_activity_path(activity)
+    = render :partial => 'activities/join', :object => activity, :as => :activity
+    = render :partial => 'activities/like', :object => activity, :as => :activity

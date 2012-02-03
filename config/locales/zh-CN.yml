@@ -257,6 +257,13 @@
       title: "编辑活动"
     info:
       location: "地点"
+    join:
+      join: "参加"
+      exit: "退出"
+      wait: "审核中..."
+    like:
+      like: "关注"
+      unlike: "取消关注"
     secondary:
       new: "新建活动"
       edit: "编辑活动"

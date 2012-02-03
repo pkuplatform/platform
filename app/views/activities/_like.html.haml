@@ -1,0 +1,5 @@
+.like
+  - if can? :like, activity
+    = link_to (t '.like'), like_activity_path(activity)
+  - else
+    = link_to (t '.unlike'), like_activity_path(activity)

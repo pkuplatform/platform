@@ -62,7 +62,7 @@ Platform::Application.routes.draw do
       get 'show_forms'
       get 'show_members'
       post 'members/edit' => 'groups#edit_members'
-      # post 'activities/edit' => 'groups#edit_activities'
+      post 'activities/edit' => 'groups#edit_activities'
     end
   end
 
