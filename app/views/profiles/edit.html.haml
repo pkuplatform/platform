@@ -1,12 +1,11 @@
 .container
   = render 'share/header'
-  .content
-    .span-16.prepend-4
-      .box.profile.new
-        .box-header
-          = t "profile-notice"
-        .box-body
-          = render 'form'
-    .clear
+  .main
+    .box.profile.new
+      .box-header
+        = t "profile-notice"
+      .box-body
+        = render 'form'
+  .clear
   = render 'share/footer'
 

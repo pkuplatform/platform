@@ -10,14 +10,14 @@
     .avatar { float: left; } 
     .body { 
       float: right; 
-      margin: 20px 0px 20px 20px;
+      margin: 20px 0px 20px 2%;
     }
   }
   .comment.even, .new-comment { 
     .avatar { float: right; } 
     .body { 
       float: left; 
-      margin: 20px 20px 20px 0px;
+      margin: 20px 2% 20px 0px;
     }
   }
   li { 
@@ -32,8 +32,8 @@
     }
     .body {
       min-height: 60px;
-      width: 528px;
       background-color: white;
+      width: 70%;
       padding: 20px;
       @include box-radius;
       @include box-shadow;
