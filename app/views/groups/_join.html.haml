@@ -1,4 +1,7 @@
-- if can? :exit, group
-  = link_to (t '.exit'), join_group_path(group), :remote => true
-- else
-  = link_to (t '.join'), join_group_path(group), :remote => true
+.join
+  - if can? :exit, group
+    = link_to (t '.exit'), join_group_path(group), :remote => true
+  - elsif can? :join, group
+    = link_to (t '.join'), join_group_path(group), :remote => true
+  - else
+    = t '.wait'

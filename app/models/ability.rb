@@ -7,6 +7,14 @@ class Ability
       group.members.include?(user)
     end
 
+    can :join, Group do |group|
+      not group.members.include?(user) and not group.tenders.include?(user)
+    end
+
+    can :like, Group do |group|
+      not group.followers.include?(user)
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
