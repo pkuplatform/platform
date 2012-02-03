@@ -11,7 +11,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-
   def picture
     @picture = Picture.find(params[:pic_id])
   end
@@ -157,6 +156,7 @@ class ActivitiesController < ApplicationController
 
   def show_members
     @activity = Activity.find(params[:id])
+    @group = @activity.group
     @tenders = @activity.tenders
     @members = @activity.members
   end
