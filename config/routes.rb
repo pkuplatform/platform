@@ -1,10 +1,20 @@
 Platform::Application.routes.draw do
 
+  devise_for :users
+
+  mailboxes_for :users
+  
+  get "home" => "site#home"
+
+  mount Ckeditor::Engine => '/ckeditor'
+
   post "search" => "search#index"
 
   resources :feedbacks
 
-  namespace :form do resources :second_building_applications end
+  namespace :form do 
+    resources :second_building_applications 
+  end
 
   namespace :admin do
     get "forms/index"
@@ -35,31 +45,6 @@ Platform::Application.routes.draw do
     end
   end
 
-
-
-  resources :users,:only=>[:index] do
-    member do
-      get 'profile/edit' => 'profiles#edit'
-      get 'profile' => 'profiles#show'
-      get 'favor'
-    end
-  end
-
-  devise_for :users, :controllers => { 
-    :sessions => "sessions",
-    :registrations => "registrations"
-  }
-
-  resources :users,:only=>[:show] 
-
-  mailboxes_for :users
-  resources :users do
-    member do
-    #users/1/liking  他喜欢的人列表
-      get :liking, :liked
-    end
-  end
-  
   resources :profiles
 
   resources :user_relations, :only => [:create, :destroy]
@@ -158,7 +143,7 @@ Platform::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'users#index'
+  root :to => "site#index"
 
   # See how all your routes lay out with "rake routes"
 
