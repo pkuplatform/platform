@@ -322,4 +322,7 @@
         back: "返回"
         title: "申请二教表单"
 
+  profiles:
+    secondary:
+      new_group: "新建社团"
   join: "参加"

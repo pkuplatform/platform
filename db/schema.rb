@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120204064152) do
+ActiveRecord::Schema.define(:version => 20120203011219) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(:version => 20120204064152) do
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
-    t.integer  "points"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "banner_file_name"
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.integer  "points"
     t.boolean  "delta",               :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "activities", ["group_id"], :name => "index_activities_on_group_id"
@@ -157,9 +157,9 @@ ActiveRecord::Schema.define(:version => 20120204064152) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.integer  "points"
+    t.boolean  "delta",             :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "delta",             :default => true, :null => false
   end
 
   add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
@@ -237,9 +237,9 @@ ActiveRecord::Schema.define(:version => 20120204064152) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "delta",               :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "delta",               :default => true, :null => false
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"

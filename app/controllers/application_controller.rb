@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :init_secondary_scope
 
   def init_secondary_scope
-    @secondary_scope = params[:controller]
+    @secondary_scope = params[:controller] unless params[:controller] == "site"
   end
 
   def feedback_init
