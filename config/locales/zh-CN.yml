@@ -287,6 +287,9 @@
       action: "%{action}了"
 
   share:
+    newsfeed:
+      at: "在"
+      before: "前"
     search:
       holder: "发现社团/活动/同学..."
     links:
