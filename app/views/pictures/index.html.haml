@@ -1,33 +1,27 @@
-.container
-  = render 'share/header'
-  .content
-    .span-7.append-1
-      = render 'activities/infobar'
-    .box.detail.span-14
-      .box-header
-        = t :activity_pictures
-        = link_to "#{t :return} "+@activity.title, @activity 
-      .box-body       
-        %table
-          %thead
-            %th Album
-            %th User
-            %th Remark
-            %th Photo
-            %th
-            %th
-            %th
-          - @pictures.each do |picture|
-            %tr
-              %td= picture.album.title
-              %td= picture.user.name
-              %td= picture.remark
-              %td= image_tag(picture.photo.url(:thumb))
-              %td= link_to 'Show', picture
-              %td= link_to 'Edit', edit_picture_path(picture)
-              %td= link_to 'Destroy', picture, confirm: 'Are you sure?', method: :delete
-        %br/
-        = link_to 'New Picture', pictures_new_activity_path(@activity)
+.box.detail.span-14
+  .box-header
+    = t :activity_pictures
+    = link_to "#{t :return} "+@activity.title, @activity 
+  .box-body       
+    %table
+      %thead
+        %th Album
+        %th User
+        %th Remark
+        %th Photo
+        %th
+        %th
+        %th
+      - @pictures.each do |picture|
+        %tr
+          %td= picture.album.title
+          %td= picture.user.name
+          %td= picture.remark
+          %td= image_tag(picture.photo.url(:thumb))
+          %td= link_to 'Show', picture
+          %td= link_to 'Edit', edit_picture_path(picture)
+          %td= link_to 'Destroy', picture, confirm: 'Are you sure?', method: :delete
+    %br/
+    = link_to 'New Picture', new_picture_path(@activity)
 
-    .clear
-  = render 'share/footer'
+.clear

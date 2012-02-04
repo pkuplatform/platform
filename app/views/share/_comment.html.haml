@@ -4,7 +4,7 @@
   .body
     %span.name= link_to comment.user.name, comment.user
     %span.gray= t :at
-    %span.time= l comment.created_at
+    %span.time= distance_of_time_in_words_to_now(comment.created_at)
     %span.gray= t :post_comment
     = comment.body
   .clear

@@ -11,8 +11,46 @@
   border:1px solid #BBB;
 }
 
+@mixin box-gradual-change {
+  background-image: -o-linear-gradient(90deg , rgb(240,240,240) 0%, rgb(255,255,255) 100%);
+  background-image: -moz-linear-gradient(90deg , rgb(240,240,240) 0%, rgb(255,255,255) 100%);
+  background-image: -webkit-linear-gradient(90deg , rgb(240,240,240) 0%, rgb(255,255,255) 100%);
+  background-image: -ms-linear-gradient(90deg , rgb(240,240,240) 0%, rgb(255,255,255) 100%);
+  background-image: linear-gradient(90deg , rgb(240,240,240) 0%, rgb(255,255,255) 100%);
+}
+
 @mixin box-inset($radius:3px, $spread:3px) {
   -webkit-box-shadow: inset 0px 0px $radius $spread rgba(150, 150, 150, 0.4);
   -moz-box-shadow: inset 0px 0px $radius $spread rgba(150, 150, 150, 0.4);
   box-shadow: inset 0px 0px $radius $spread rgba(150, 150, 150, 0.4);
+}
+
+@mixin lbubble {
+  position: relative; 
+  &:before {
+    content:""; 
+    position: absolute; 
+    top: 36px; 
+    left: -25px;
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent; 
+    border-right: 26px solid #fff; 
+    border-bottom: 14px solid transparent; 
+  }
+}
+
+@mixin rbubble {
+  position: relative; 
+  &:before {
+    content:""; 
+    position: absolute; 
+    top: 36px; 
+    right: -25px;
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent; 
+    border-left: 26px solid #fff; 
+    border-bottom: 14px solid transparent; 
+  }
 }

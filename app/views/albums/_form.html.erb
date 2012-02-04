@@ -15,7 +15,7 @@
     <%= f.label :title,(t :title) %><br />
     <%= f.text_field :title %>
   </div>
-  <%= hidden_field_tag :activity_id,params[:activity_id] %>
+  <%= hidden_field_tag :activity_id,@activity.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
