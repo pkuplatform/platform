@@ -1,20 +1,15 @@
-.container
-  = render 'share/header'
-  .content
-    .span-7.append-1
-      = render 'activities/infobar'
-    .box.span-14.new-blog
-      .box-header
-        = t :new_blog
-        = link_to "#{t :return} "+@activity.title, @activity
-      .box-body
-        = form_for @blog do |f|
-          =f.hidden_field :activity_id,:value=>@activity.id
-          .blog-title
-            =f.text_field :title,:placeholder=>(t :title)
-          .blog-content
-            =f.text_area :content,:placeholder=>(t :content)
-          %p
-            =f.submit (t :new_blog)
-    .clear
-  = render 'share/footer'
+.span-7.append-1
+.box.new-blog
+  .box-header
+    = t :new_blog
+    = secondary_scope
+  .box-body
+    = form_for @blog do |f|
+      =f.hidden_field :activity_id,:value=>@activity.id
+      .blog-title
+        =f.text_field :title,:placeholder=>(t :title)
+      .blog-content
+        =f.text_area :content,:placeholder=>(t :content)
+      %p
+        =f.submit (t :new_blog)
+.clear

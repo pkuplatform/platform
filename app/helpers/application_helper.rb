@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def secondary_scope
+    return @secondary_scope
+  end
+
   def format_datetime(time)
     time.strftime('%y-%m-%d') + " " + time.strftime('%H:%M')
   end

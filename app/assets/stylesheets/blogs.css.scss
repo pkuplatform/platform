@@ -1,25 +1,57 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.blog-content {
-  margin:10px;
-}
-.new-blog {
-  .box-body {
-    padding:15px;
-  }
-  .blog-title {
-    margin:5px;
-    input {
-      width:500px;
-      font-size: 1.5em;
-      height: 30px;
+
+
+@import 'css3';
+@import 'mixin';
+
+.blogs {
+  .blog.odd  { 
+    .avatar { float: left; } 
+    .body { 
+      float: right; 
+      margin: 20px 0px 20px 2%;
     }
   }
-  .blog-content {
-    margin:5px;
-    textarea {
-      width:500px;
+  .blog.even { 
+    .avatar { float: right; } 
+    .body { 
+      float: left; 
+      margin: 20px 2% 20px 0px;
+    }
+  }
+  li { 
+    list-style:none;
+    .avatar { 
+      @include box-radius; 
+      overflow: hidden; 
+      width: 100px;
+      height: 100px;
+      img { width: 100px; }
+      margin: 20px 0px;
+    }
+    .body {
+      @include bubble;
+      min-height: 100px;
+      background-color: white;
+      width: 70%;
+      padding: 20px;
+      @include box-radius;
+      @include box-shadow;
+      font-size: 18px;
+      .name { @include orange-link; }
+      .gray { color: #BBB; } 
+      .time { @include green; }
+      .title {
+        @include orange-link;
+        margin: 5px;
+      }
+      .content {
+        color: #555;
+        margin: 10px; 
+        min-height:30px;
+      }
     }
   }
 }

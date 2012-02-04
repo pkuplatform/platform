@@ -1,13 +1,7 @@
-.container
-  = render 'share/header'
-  .content
-    .span-7.append-1
-      = render 'activities/infobar'
-    .box.detail.span-14
-      .box-header
-        = t :new_activity_picture
-        = link_to "#{t :return} "+@activity.title, @activity 
-      .box-body       
-        = render 'form'
-    .clear
-  = render 'share/footer'
+.box.detail.span-14
+  .box-header
+    = t :new_activity_picture
+    = link_to "#{t :return} "+@activity.title, @activity 
+  .box-body       
+    = render 'form'
+.clear

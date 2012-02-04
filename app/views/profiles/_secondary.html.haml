@@ -2,8 +2,8 @@
   %ul
     %li.first= t :info
     %li= link_to (t :home), root_path
-    %li= link_to (t :edit_profile), profile_edit_user_path(@user)
-    %li= link_to (t :show_profile), profile_user_path(@user)
+    %li= link_to (t :edit_profile), edit_profile_path(@profile||(@user&&@user.profile)||current_user.profile)
+    %li= link_to (t :show_profile), profile_path(@profile||(@user&&@user.profile)||current_user.profile)
   %ul
     %li.first= t :newsfeed
     %li= link_to (t :my_activities), '#'

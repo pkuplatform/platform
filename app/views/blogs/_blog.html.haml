@@ -1,14 +1,11 @@
-.box.detail.blog
-  .box-header
-    = "#{t :activity_blogs}: "+@blog.title
-    = link_to "#{t :return} #{t :activity} "+@activity.title, @activity
-    .clear
-  .box-body
-    .blog-info
-      = "#{t :from} "
-      = link_to(@blog.author.name,@blog.author)
-      = ", "
-      = l @blog.created_at,:format=>:long
-    .blog-content
-      = @blog.content
-    = render :partial => "share/comments", :locals => {:object => @blog}
+%li.blog{:id=>"blog-#{blog.id}", :class => "#{cycle('odd', 'even')}"}
+  .avatar
+    = image_tag blog.author.avatar
+  .body
+    %span.name= link_to blog.author.name, blog.author
+    %span.gray= t :at
+    %span.time= distance_of_time_in_words_to_now(blog.created_at)
+    %span.gray= t :post_blog
+    %span.title= link_to blog.title, blog
+    .content= blog.content
+  .clear

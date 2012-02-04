@@ -8,12 +8,7 @@
   %body
     #header
     #container
-      - if params[:controller]=='users' || params[:controller]=='profiles'
-        = render 'profiles/secondary'
-      - if params[:controller]=='groups'
-        = render 'groups/secondary'    
-      - if params[:controller]=='activities'
-        = render 'activities/secondary'
+      = render "#{secondary_scope}/secondary" if secondary_scope
       .content
         = yield
         .clear

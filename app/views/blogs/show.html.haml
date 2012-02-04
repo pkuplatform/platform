@@ -1,9 +1,14 @@
-.container
-  = render 'share/header'
-  .content
-    .span-7.append-1
-      = render 'activities/infobar'
-    .span-16.last
-      = render 'blog'
+.box.detail.blog
+  .box-header
+    = "#{t :activity_blogs}: "+@blog.title
+    = link_to "#{t :return} #{t :activity} "+@activity.title, @activity
     .clear
-  = render 'share/footer'
+  .box-body
+    .blog-info
+      = "#{t :from} "
+      = link_to(@blog.author.name,@blog.author)
+      = ", "
+      = l @blog.created_at,:format=>:long
+    .blog-content
+      = @blog.content
+    = render :partial => "share/comments", :locals => {:object => @blog}

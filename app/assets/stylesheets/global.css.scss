@@ -10,6 +10,8 @@ body {
 html {
   min-height: 100%;
   min-width: 100%;
+  @include background-color;
+
 }
 
 
@@ -39,15 +41,15 @@ table {
   @include box-radius;
   @include box-shadow;
   margin: 30px 0px;
-  padding: 30px 30px; 
+  padding: 30px 4%; 
   background-color: white;
 
   .logo, .avatar, .poster { 
-    img { width: 180px; @include box-radius; }
+    img { width: 100%; @include box-radius; }
   } 
 
-  .side { width: 180px; float: left; }
-  .info { width: 463px; float: left; margin-left: 15px; }
+  .side { width: 28%; float: left; }
+  .info {  width: 62%; float: right; margin-right: 2%; }
 
   .info .title, .info .name, .info .nickname { 
     @include orange;
@@ -76,7 +78,7 @@ table {
 
 #container {
   min-height: 100%;
-  padding-top: 10px;
+  margin-top: 10px;
   @include background-color;
 
 }

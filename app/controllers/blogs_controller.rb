@@ -34,7 +34,7 @@ class BlogsController < ApplicationController
 
   def index
     @activity = Activity.find(params[:id])
-    @blog = Blog.new
+    @blogs = @activity.blogs
   end
 
 end
