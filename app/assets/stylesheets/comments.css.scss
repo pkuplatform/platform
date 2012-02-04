@@ -9,6 +9,7 @@
   .comment.odd  { 
     .avatar { float: left; } 
     .body { 
+      @include lbubble;
       float: right; 
       margin: 20px 0px 20px 2%;
     }
@@ -16,6 +17,7 @@
   .comment.even, .new-comment { 
     .avatar { float: right; } 
     .body { 
+      @include rbubble;
       float: left; 
       margin: 20px 2% 20px 0px;
     }

@@ -1,25 +1,19 @@
-.container
-  = render 'share/header'
-  .content
-    .span-7.append-1
-      = render 'activities/infobar'
-    .span-16.last
-      .box.detail
-        .box-header
-          = @album.title
-          = link_to "#{t :return}#{t(:activity_albums)+t(:list)}: "+@activity.title, activity_albums_path(@activity)
-          .clear
-        .box-body
-          %ul.album-pictures
-            - @album.pictures.each do |pic|
-              %a{:href=>album_picture_path(@album,pic)}
-                %li
-                  %p= image_tag(pic.url(:small))
-                  %p= pic.remark
-                  %p
-                    ="#{t :comment}: "
-                    =pic.comments.count
+.span-16.last
+  .box.detail
+    .box-header
+      = @album.title
+      = link_to "#{t :return}#{t(:activity_albums)+t(:list)}: "+@activity.title, albums_path(@activity)
+      .clear
+    .box-body
+      %ul.album-pictures
+        - @album.pictures.each do |pic|
+          %a{:href=>album_picture_path(@album,pic)}
+            %li
+              %p= image_tag(pic.url(:small))
+              %p= pic.remark
+              %p
+                ="#{t :comment}: "
+                =pic.comments.count
 
-            .clear
-    .clear
-  = render 'share/footer'
+        .clear
+.clear

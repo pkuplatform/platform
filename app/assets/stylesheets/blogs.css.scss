@@ -10,6 +10,7 @@
   .blog.odd  { 
     .avatar { float: left; } 
     .body { 
+      @include lbubble;
       float: right; 
       margin: 20px 0px 20px 2%;
     }
@@ -17,6 +18,7 @@
   .blog.even { 
     .avatar { float: right; } 
     .body { 
+      @include rbubble;
       float: left; 
       margin: 20px 2% 20px 0px;
     }
@@ -32,7 +34,6 @@
       margin: 20px 0px;
     }
     .body {
-      @include bubble;
       min-height: 100px;
       background-color: white;
       width: 70%;
@@ -53,5 +54,11 @@
         min-height:30px;
       }
     }
+  }
+}
+.blog {
+  .blog-content {
+    color: #555;
+    margin: 10px;
   }
 }

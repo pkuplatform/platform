@@ -42,7 +42,6 @@ Platform::Application.routes.draw do
   resources :user_relations, :only => [:create, :destroy]
 
   resources :groups do
-    resources :albums
     resources :activities
     member do
       get 'join'
@@ -79,6 +78,7 @@ Platform::Application.routes.draw do
           get 'show_gallery'
         end
       end
+      resources :albums 
       get 'show_members'
       post 'members/edit' => 'activities#edit_members'
     end

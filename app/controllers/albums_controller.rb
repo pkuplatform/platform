@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.find(params[:id])
     @albums = @activity.albums
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new.json
   def new
     @album = Album.new
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.find(params[:id])
 
     respond_to do |format|
       format.html { render "new",:layout=>false }

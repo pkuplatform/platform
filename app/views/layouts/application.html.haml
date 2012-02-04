@@ -8,10 +8,15 @@
   %body
     #header
     #container
-      = render "#{secondary_scope}/secondary" if secondary_scope
-      .content
-        = yield
-        .clear
+      -if secondary_scope
+        = render "#{secondary_scope}/secondary"
+        .content
+          = yield
+          .clear
+      -else
+        .content.no-secondary
+          = yield
+          .clear
       .sidebar
         - if user_signed_in?
           = render 'users/card' 
