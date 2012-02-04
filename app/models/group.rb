@@ -52,9 +52,11 @@ class Group < ActiveRecord::Base
 
   define_index do
     # fields
-    indexes :name
+    indexes :name, :sortable => true
     
     # attributes
     has :created_at, :updated_at
+
+    set_property :delta => true
   end
 end

@@ -241,6 +241,7 @@
       members: "管理成员"
       activity: "新建活动"
       forms: "管理申请表"
+      second: "新建教室申请表"
     form:
       name: "名称"
       slogan: "标语"
@@ -295,5 +296,28 @@
     sessions:
       new:
         remember_me: "勿忘我"
+
+  admin:
+    groups:
+      members:
+        title: "成员管理"
+        back: "返回"
+        name: "姓名"
+        nick: "昵称"
+        id: "学号"
+        status: "状态"
+      index:
+        title: "社团管理"
+        name: "社团名称"
+        status: "状态"
+        email: "社团邮箱"
+        admin: "社长姓名"
+        phone: "社长手机"
+
+  form:
+    second_building_applications:
+      new:
+        back: "返回"
+        title: "申请二教表单"
 
   join: "参加"
