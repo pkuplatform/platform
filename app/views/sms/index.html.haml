@@ -1,0 +1,7 @@
+.sms.box
+  .title
+    = t '.title'
+  .new
+    = form_tag sms_push_group_path(@group) do
+      = text_area_tag :content
+      = submit_tag :send

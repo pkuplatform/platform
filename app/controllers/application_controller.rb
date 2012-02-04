@@ -5,7 +5,14 @@ class ApplicationController < ActionController::Base
   before_filter :init_secondary_scope
 
   def init_secondary_scope
-    @secondary_scope = params[:controller] unless params[:controller] == "site"
+    val = params[:controller]
+    if val == "sms" or val == "form/second_building_applications"
+      @secondary_scope = "groups"
+    elsif val == "site"
+      @secondary_scope = nil
+    else
+      @secondary_scope = params[:controller]
+    end
   end
 
   def feedback_init

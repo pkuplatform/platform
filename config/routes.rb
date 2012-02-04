@@ -37,8 +37,6 @@ Platform::Application.routes.draw do
     end
   end
 
-
-
   resources :profiles
 
   resources :user_relations, :only => [:create, :destroy]
@@ -50,6 +48,8 @@ Platform::Application.routes.draw do
       get 'join'
       get 'like'
       post 'comment'
+      get 'sms' => 'sms#index'
+      post 'sms/push' => 'sms#push'
       namespace :admin do
         get 'members'
         get 'forms'

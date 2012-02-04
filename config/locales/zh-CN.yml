@@ -242,6 +242,7 @@
       activity: "新建活动"
       forms: "管理申请表"
       second: "新建教室申请表"
+      sms: "短信管理"
     form:
       name: "名称"
       slogan: "标语"
@@ -315,6 +316,13 @@
         email: "社团邮箱"
         admin: "社长姓名"
         phone: "社长手机"
+      secondary:
+        new: "新建社团"
+        edit: "编辑社团"
+        members: "管理成员"
+        activity: "新建活动"
+        forms: "管理申请表"
+        second: "新建教室申请表"
 
   form:
     second_building_applications:
@@ -325,4 +333,9 @@
   profiles:
     secondary:
       new_group: "新建社团"
+
+  sms:
+    index:
+      title: "短信管理"
+
   join: "参加"
