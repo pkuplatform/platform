@@ -70,4 +70,8 @@ class User < ActiveRecord::Base
   def nickname
     profile.nickname
   end
+
+  def phone
+    profile.phone
+  end
 end

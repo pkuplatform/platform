@@ -1,3 +1,17 @@
 // Place all the styles related to the forms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mixin';
+
+.form.new.box {
+  .title {
+   @include blue;
+   font-size: 20px;
+   text-align: center;
+   span {
+     float: left;
+     @include green-link;
+   }
+  }
+}
