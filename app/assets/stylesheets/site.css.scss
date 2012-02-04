@@ -30,6 +30,7 @@
 .newsfeed {
   @include box-gradual-change;
   @include box-radius;
+  @include orange-link;
   .avatar,.content { display: inline-block; float:left;  }
   .poster { display: inline-block; float:right;  }
   .content { margin: 0 auto; padding-left:30px; padding-right:30px; font-size: 0.8em; padding-top: 10px;}

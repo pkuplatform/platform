@@ -5,3 +5,4 @@
 $ ->
   $('.search form').submit ->
     $('.search input[type=text]').val().length > 0
+  $('.title a').widthTruncate { width: 300 }

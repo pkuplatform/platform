@@ -7,8 +7,9 @@
   .content
     .time
       = link_to subject.name, subject
-      = " "
-      = t("newsfeed name and time", :time => distance_of_time_in_words_to_now(event.created_at))
+      = t ".at"
+      = distance_of_time_in_words_to_now(event.created_at)
+      = t '.before'
     .title
       - if event.object_type=="Comment"
         - comment = event.object
