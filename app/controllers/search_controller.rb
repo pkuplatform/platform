@@ -1,9 +1,8 @@
 class SearchController < ApplicationController
   def index
-    @q = params[:q]
-    unless @q.blank?
-      @results = Group.search @q
-    end
+    @groups = Group.search(params[:q])
+    @activities = Activity.search(params[:q])
+    @profiles = Profile.search(params[:q])
   end
 
 end

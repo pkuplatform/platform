@@ -41,14 +41,6 @@ class Activity < ActiveRecord::Base
     ret
   end
 
-  def lstart_at(format=:short_w)
-    return I18n.l(start_at, :format=>format)
-  end
-
-  def lend_at(format=:short_w)
-    return I18n.l(end_at, :format=>format)
-  end
-
   def url
     poster.url(:thumb)
   end
@@ -60,4 +52,12 @@ class Activity < ActiveRecord::Base
   def admin
     admins.first
   end
+
+  define_index do
+    indexes :title, :sortable => true
+    indexed :description
+
+    has :start_at, :end_at
+  end
+
 end

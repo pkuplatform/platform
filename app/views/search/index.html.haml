@@ -1,3 +1,4 @@
-.search-result
-  - @results.each do |result|
-    = result.name
+.results
+  = render :partial => 'groups/card', :collection => @groups, :as => :group
+  = render :partial => 'activities/card', :collection => @activities, :as => :activity
+  = render :partial => 'profiles/card', :collection => @profiles, :as => :profile
