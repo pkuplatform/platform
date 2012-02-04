@@ -9,8 +9,9 @@
     %li.first= t :administrate
     %li= link_to (t '.new'), new_group_path
     - if can? :admin, @group
-      %li= link_to (t '.edit'), edit_group_path(@group)
+      %li= link_to (t '.edit'), edit_group_path
       %li= link_to (t '.activity'), new_group_activity_path(@group)
-      %li= link_to (t '.members'), members_admin_group_path(@group)
-      %li= link_to (t '.forms'), forms_admin_group_path(@group)
+      %li= link_to (t '.members'), members_admin_group_path
+      %li= link_to (t '.forms'), forms_admin_group_path
+      %li= link_to (t '.second'), second_building_new_form_group_path
   .clear

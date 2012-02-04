@@ -131,62 +131,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit_members
-    @group = Group.find(params[:id])
-
-    pre_tenders_list = params[:pre_tender]
-    pre_members_list = params[:pre_member]
-
-    pre_tenders_list && pre_tenders_list.each do |key, value|
-      ug = UserGroup.find_by_group_id_and_user_id(@group, key)
-      case value.to_i
-        when Constant::Approving
-        when Constant::Member
-          ug.status &= ~Constant::Approving
-          ug.status |=  Constant::Member
-          Event.create(:subject_type=>"User",:subject_id => key, :action=>:join, :object_type=>"Group", :object_id => @group.id)
-        when Constant::Rejected
-          ug.status &= ~Constant::Approving
-          ug.status |=  Constant::Rejected
-      end
-      ug.save
-    end
-    pre_members_list && pre_members_list.each do |key, value|
-      ug = UserGroup.find_by_group_id_and_user_id(@group, key)
-      case value.to_i
-        when Constant::Member
-        when Constant::Rejected
-          ug.status &= ~Constant::Member
-          ug.status |=  Constant::Rejected
-      end
-      ug.save
-    end
-      
-    redirect_to show_members_group_path
-  end
-
-  def edit_activities
-    @group = Group.find(params[:id])
-
-    del_list = params[:del]
-    del_list && del_list.each do |key, value|
-      if value.to_i == 1
-        activity = Activity.find(key)
-        activity.destroy
-      end
-    end
-
-    redirect_to show_activities_group_path
-  end
-
-  def history
-    @group = Group.find(params[:id])
-  end
-
-  def organization 
-    @group = Group.find(params[:id])
-  end
-
   def comment
     @group = Group.find(params[:id])
     @comment = @group.comments.create(:user => current_user, :body => params["comment-content"])
