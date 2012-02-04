@@ -19,7 +19,7 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
 gem 'savon'
-gem 'ckeditor'
+gem 'ckeditor', '3.7.0.rc2'
 
 gem 'annotate'
 gem 'mysql2'
