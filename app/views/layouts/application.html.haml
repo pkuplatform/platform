@@ -8,20 +8,14 @@
   %body
     #header
     #container
-      -if secondary_scope
-        = render "#{secondary_scope}/secondary"
-        .content
-          = yield
-          .clear
-      -else
-        .content.no-secondary
-          = yield
-          .clear
+      .content
+        = yield
       .sidebar
         - if user_signed_in?
           = render 'users/card' 
           = render 'share/links'
           = render 'share/search'
+          = render "#{secondary_scope}/secondary"
         - else
           = render 'devise/sessions/new'
-        .clear
+      .clear
