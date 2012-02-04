@@ -1,5 +1,7 @@
 Platform::Application.routes.draw do
 
+  post "search/index"
+
   devise_for :users
 
   mailboxes_for :users

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203070817) do
+ActiveRecord::Schema.define(:version => 20120204064152) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.boolean  "delta",               :default => true, :null => false
   end
 
   add_index "activities", ["group_id"], :name => "index_activities_on_group_id"
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "delta",             :default => true, :null => false
   end
 
   add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
@@ -237,6 +239,7 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.datetime "avatar_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "delta",               :default => true, :null => false
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"

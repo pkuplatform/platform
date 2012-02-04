@@ -1,6 +1,6 @@
 .bundle
 db/*.sqlite3*
-log/*.log
+log/*
 tmp/
 .sass-cache/
 public/system
@@ -19,3 +19,4 @@ Gemfile.lock
 task_scheduler.rb
 public/*.zip
 config/database.yml
+db/sphinx
