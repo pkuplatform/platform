@@ -1,0 +1,22 @@
+.header
+  .span-12.tools
+    .links
+      .left
+        = link_to (t "index"), current_user
+        |
+        = link_to (t "groups"), groups_path
+        |
+        = link_to (t "activities"), activities_path
+      .right
+        = link_to  (current_user.profile.name), user_path(current_user)
+        |
+        = link_to (t "mail_box"), mailboxes_path
+        |
+        = link_to (t "settings"), edit_profile_path(current_user)
+        |
+        = link_to (t "sign_out"), destroy_user_session_path, :method => :delete
+      .clear
+    .search
+      = form_tag search_path do
+        = text_field_tag :q, nil, :placeholder=>"Search..."
+        = submit_tag "Search"

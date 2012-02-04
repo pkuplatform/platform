@@ -39,11 +39,7 @@ Platform::Application.routes.draw do
     end
   end
 
-  resources :blogs do
-    member do
-      post :comment
-    end
-  end
+
 
   resources :profiles
 
@@ -70,30 +66,29 @@ Platform::Application.routes.draw do
 
 
   resources :activities do
-    resources :albums
     member do
       get 'join'
       get 'like'
       post 'comment'
-      get 'pictures/new' => 'pictures#new'
-      get 'pictures' => 'pictures#index'
-      get 'blogs/new' => 'blogs#new'
-      get 'blogs' => 'blogs#index'
+      #get 'pictures/new' => 'pictures#new'
+      #get 'pictures' => 'pictures#index'
+      resources :blogs do
+        member do
+          post :comment
+        end
+      end
+      resources :pictures do
+        member do
+          post 'comment'
+          get 'show_gallery'
+        end
+      end
       get 'show_members'
       post 'members/edit' => 'activities#edit_members'
     end
   end
 
-  resources :albums do
-    resources :pictures
-  end
 
-  resources :pictures do
-    member do
-      post 'comment'
-      get 'show_gallery'
-    end
-  end
 
 
   # The priority is based upon order of creation:

@@ -1,11 +1,18 @@
 .secondary
   %ul
     %li.first= link_to (t :activities_all), activities_path(:sort => "all")
-  %div
+    - if @activity
+      %li= link_to (t :Blog), blogs_path(@activity)
+      %li= link_to (t :Picture), pictures_path(@activity)
+
   %ul
     %li.first= t :administrate
     - if can? :admin, @group
       %li= link_to (t '.new'), new_group_activity_path(@group)
     - if can? :admin, @activity
       %li= link_to (t '.edit'), edit_group_activity_path(@group, @activity)
+    - if can? :admin, @activity
+      %li= link_to (t 'new_blog'), new_blog_path(@activity)
+    - if can? :admin, @activity
+      %li= link_to (t 'new_picture'), new_picture_path(@activity)
   .clear
