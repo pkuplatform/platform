@@ -26,19 +26,3 @@
   }
   .medium {  width: 77%; img {width:100%; overflow:hidden; } }
 }
-
-.newsfeed {
-  @include box-gradual-change;
-  @include box-radius;
-  @include orange-link;
-  .avatar,.content { display: inline-block; float:left;  }
-  .poster { display: inline-block; float:right;  }
-  .content { margin: 0 auto; padding-left:30px; padding-right:30px; font-size: 0.8em; padding-top: 10px;}
-  .name { @include orange-link; }
-  span { color: #BBB; }
-  .time { @include green; }
-  .object { @include orange-link; }
-  border: 1px solid #eee;
-  padding: 20px 20px 10px 20px;
-  margin-top: 10px;
-}

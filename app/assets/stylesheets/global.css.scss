@@ -35,41 +35,6 @@ table {
   margin-right: -480px;
 }
 
-.box {
-  @include box-radius;
-  @include box-shadow;
-  @include box-gradual-change;
-  margin: 30px 0px;
-  padding: 30px 4%; 
-  background-color: white;
-
-  .logo, .avatar, .poster { 
-    img { width: 100%; @include box-radius; }
-  } 
-
-  .side { width: 28%; float: left; }
-  .info {  width: 62%; float: right; margin-right: 2%; }
-
-  .info .title, .info .name, .info .nickname { 
-    @include orange;
-    @include orange-link; 
-    font-size: 20px;
-    margin: 5px 0px;
-  }
-
-  .info .admin {
-    @include green;
-    @include green-link;
-    font-size: 18px;
-    margin: 5px 0px;
-  }
-
-  .info .label { color: #BBB; font-size: 18px; }
-  .info .description { margin: 5px 0px; }
-  .side .like-join, .side .like { text-align: center; color: #BBB; }
-  .side .join, .like { @include gray-link; text-align: center; }
-}
-
 .content { 
   width: 680px; 
   float: left;

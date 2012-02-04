@@ -1,22 +1,20 @@
 .info
   .title= link_to activity.title, activity
   .admin
-    %span= link_to activity.group.name, activity.group
+    %span.group-name= link_to activity.group.name, activity.group
     - if board
       %span= t :host
       %span= link_to activity.admin.profile.name, activity.admin.profile
       %span= t :organize
     - else
       %span= "/"
-      %span.time= l activity.start_at
-      %span= "/"
       %span.location= activity.location
   - if board 
-    .time
-      = t "time:", :start_time => (l activity.start_at), :end_time => (l activity.end_at)
     .location
       %span.label= t '.location'
       %span.location= activity.location
+  .time
+    = t "time:", :start_time => (l activity.start_at), :end_time => (l activity.end_at)
   .description
     = activity.description
   .blog

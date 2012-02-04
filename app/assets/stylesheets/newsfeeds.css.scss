@@ -1,0 +1,24 @@
+@import 'css3';
+@import 'mixin';
+
+.newsfeed {
+  @include box-gradual-change;
+  @include box-radius;
+  @include orange-link;
+  overflow: hidden;
+  .avatar  { float: left;  }
+  .poster  { float: right; }
+  .content { 
+    width: 450px;
+    margin-left: 30px;
+    font-size: 1em; 
+    padding-top: 10px;
+  }
+  .name { @include orange-link; }
+  span { color: #BBB; }
+  .time { @include green; }
+  .object { @include orange-link; }
+  border: 1px solid #eee;
+  padding: 20px 20px 10px 20px;
+  margin-top: 10px;
+}

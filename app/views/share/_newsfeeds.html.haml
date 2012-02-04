@@ -1,13 +1,9 @@
-.newsfeeds.box
-  .box-header
-    = t "newsfeed"
-  .box-body
-    - if @newsfeeds.empty?
-      - Event.order('updated_at DESC').first(50).each do |event|
-        - if event_exist?(event)
-          = render :partial => "share/newsfeed", :locals => { :event => event }
-    - else
-      - @newsfeeds.each do |newsfeed|
-        - if event_exist?(newsfeed.event)
-          = render :partial => "share/newsfeed", :locals => { :event => newsfeed.event }
-  .more
+.newsfeeds
+  - if @newsfeeds.empty?
+    - Event.order('updated_at DESC').first(50).each do |event|
+      - if event_exist?(event)
+        = render :partial => "share/newsfeed", :locals => { :event => event }
+  - else
+    - @newsfeeds.each do |newsfeed|
+      - if event_exist?(newsfeed.event)
+        = render :partial => "share/newsfeed", :locals => { :event => newsfeed.event }

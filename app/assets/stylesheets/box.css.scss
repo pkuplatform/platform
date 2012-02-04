@@ -1,0 +1,38 @@
+@import 'css3';
+@import 'mixin';
+
+.box {
+  @include box-radius;
+  @include box-shadow;
+  @include box-gradual-change;
+  margin: 30px 0px;
+  padding: 30px 25px; 
+  background-color: white;
+
+  .logo, .avatar, .poster { 
+    img { width: 100%; @include box-radius; }
+  } 
+
+  .side { width: 180px; float: left; }
+  .info { width: 420px; float: left; margin-left: 20px; }
+
+  .info .title, .info .name, .info .nickname { 
+    @include orange;
+    @include orange-link; 
+    font-size: 20px;
+    margin: 5px 0px;
+  }
+
+  .info .admin {
+    @include green;
+    @include green-link;
+    font-size: 18px;
+    margin: 5px 0px;
+  }
+
+  .info .label { color: #BBB; font-size: 18px; }
+  .info .description { margin: 5px 0px; }
+  .side .like-join, .side .like { text-align: center; color: #BBB; }
+  .side .join, .like { @include gray-link; text-align: center; }
+}
+
