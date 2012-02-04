@@ -20,8 +20,8 @@
       .sidebar
         - if user_signed_in?
           = render 'users/card' 
+          = render 'share/links'
+          = render 'share/search'
         - else
           = render 'devise/sessions/new'
-        = render 'share/links'
-        = render 'share/search'
         .clear

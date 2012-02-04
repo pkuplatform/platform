@@ -286,6 +286,8 @@
       action: "%{action}了"
 
   share:
+    search:
+      holder: "发现社团/活动/同学..."
     links:
       home: "个人中心"
       group: "社团中心"

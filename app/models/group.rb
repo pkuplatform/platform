@@ -53,6 +53,8 @@ class Group < ActiveRecord::Base
   define_index do
     # fields
     indexes :name, :sortable => true
+    indexes :introduction
+    indexes :description
     
     # attributes
     has :created_at, :updated_at
