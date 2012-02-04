@@ -52,6 +52,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        UserGroup.create(:user => current_user, :group => @group, :status => Constant::Admin + Constant::Member)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
@@ -86,11 +87,6 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url }
       format.json { head :ok }
     end
-  end
-
-  def show_forms
-    @group = Group.find(params[:id])
-    @second_buildings = @group.second_building_applications
   end
 
   def like
@@ -133,12 +129,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
-
-  def show_members
-    @group = Group.find(params[:id])
-    @tenders = @group.tenders
-    @members = @group.members
   end
 
   def edit_members

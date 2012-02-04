@@ -65,7 +65,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        UserActivity.create(:user => current_user, :activity => @activity, :status => (1 << 8))
+        UserActivity.create(:user => current_user, :activity => @activity, :status => Constant::Admin + Constant::Member)
         Event.create(:subject_type => "Group", :subject_id => params[:activity][:group_id], :action => "create", :object_type => "Activity", :object_id => @activity.id, :processed => false)
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
@@ -154,7 +154,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def show_members
+  def members
     @activity = Activity.find(params[:id])
     @group = @activity.group
     @tenders = @activity.tenders

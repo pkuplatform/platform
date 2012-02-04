@@ -49,4 +49,15 @@ class Admin::GroupsController < ApplicationController
     redirect_to admin_groups_index_path
   end
 
+  def members
+    @group = Group.find(params[:id])
+    @tenders = @group.tenders
+    @members = @group.members
+  end
+
+  def forms
+    @group = Group.find(params[:id])
+    @second_buildings = @group.second_building_applications
+  end
+
 end
