@@ -6,22 +6,23 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #header
-    #container
-      -if secondary_scope
-        = render "#{secondary_scope}/secondary"
-        .content
-          = yield
+    = render 'share/header' 
+    .container-wrapper
+      #container
+        -if secondary_scope
+          = render "#{secondary_scope}/secondary"
+          .content
+            = yield
+            .clear
+        -else
+          .content.no-secondary
+            = yield
+            .clear
+        .sidebar
+          - if user_signed_in?
+            = render 'users/card' 
+            = render 'share/links'
+            = render 'share/search'
+          - else
+            = render 'devise/sessions/new'
           .clear
-      -else
-        .content.no-secondary
-          = yield
-          .clear
-      .sidebar
-        - if user_signed_in?
-          = render 'users/card' 
-          = render 'share/links'
-          = render 'share/search'
-        - else
-          = render 'devise/sessions/new'
-        .clear

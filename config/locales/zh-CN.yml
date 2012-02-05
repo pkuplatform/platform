@@ -292,6 +292,10 @@
       action: "%{action}了"
 
   share:
+    header:
+      mailbox: "站内信"
+      setting: "设置"
+      logout: "离开"
     newsfeed:
       at: "在"
       before: "前"
@@ -336,7 +340,7 @@
     second_building_applications:
       new:
         back: "返回"
-        title: "申请二教表单"
+        title: "申请二教教室"
 
   profiles:
     secondary:

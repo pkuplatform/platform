@@ -15,13 +15,20 @@ html {
 }
 
 
-#header { 
-  height:10px; 
+.header-wrapper { 
   width:100%; 
   background-color:#CBA; 
   position:fixed; 
   top:0px; 
-  left:0px; 
+}
+
+.header {
+  margin-left:  16%;
+  margin-right: 30%;
+  overflow: hidden;
+  .panel { float: right; }
+  height: 50px;
+  @include orange-link;
 }
 
 table { 
@@ -80,11 +87,14 @@ table {
   }
 }
 
+.container-wrapper {
+  margin-top: 70px;
+}
+
 #container {
   min-height: 100%;
   margin-top: 10px;
   @include background-color;
-
 }
 
 .clear { clear: both; }
