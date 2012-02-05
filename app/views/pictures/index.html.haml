@@ -19,7 +19,7 @@
           %td= picture.remark
           %td= image_tag(picture.photo.url(:thumb))
           %td= link_to 'Show', picture
-          %td= link_to 'Edit', edit_picture_path(picture)
+          %td= link_to 'Edit', edit_activity_picture_path(@activity, picture)
           %td= link_to 'Destroy', picture, confirm: 'Are you sure?', method: :delete
     %br/
     = link_to 'New Picture', new_picture_path(@activity)
