@@ -10,6 +10,7 @@ class SmsController < ApplicationController
     client = Savon::Client.new("http://qun.pku.edu.cn:8080/PKUMSG/services/sendSMS?wsdl")
     client.wsdl.soap_actions
 
+    re = 1
     @group.members.each do |member|
       response = client.request(:send_sms) do
         soap.body = "<phone>#{member.phone}</phone><sms>#{params[:content]}</sms>"
@@ -18,7 +19,7 @@ class SmsController < ApplicationController
     end
 
     print "-----#{re}------"
-    if status == 0
+    if re == 0
       Sms.create(:group_id => params[:group_id], :content => params[:content])
     end
 
