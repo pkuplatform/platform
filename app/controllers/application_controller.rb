@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     val = params[:controller]
     if val == "sms" or val == "form/second_building_applications"
       @secondary_scope = "groups"
-    elsif val = "mailboxes"
+    elsif val == "mailboxes"
       @secondary_scope = "profiles"
     elsif val == "site"
       @secondary_scope = nil
