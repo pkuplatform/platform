@@ -4,3 +4,8 @@
 
 $ ->
   $(".activities .new a").fancybox({'hideOnContentClick':false})
+  $(".groups form li label").click ->
+    id = $(this).attr('for')
+    $(".groups form li").hide()
+    $(".groups form .first").show()
+    $("#"+id).parent('li').show();

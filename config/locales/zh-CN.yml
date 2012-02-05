@@ -226,8 +226,13 @@
       title: "新建社团"
     show:
       new: "新建活动>>"
+      history: "历史"
+      description: "介绍"
+      organization: "构架"
     info:
       founded: "成立"
+    side:
+      description: "介绍"
     join:
       join: "参加>>"
       exit: "退出>>"

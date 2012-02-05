@@ -8,7 +8,10 @@
   - if board
     = render :partial => 'groups/join', :object => group, :as => :group
     = render :partial => 'groups/like', :object => group, :as => :group
-    .organization
-      = t :organization 
-    .history
-      = t :history
+    .js
+      .organization
+        = link_to (t :organization), '#organization'
+      .history
+        = link_to (t :history), '#history'
+      .description
+        = link_to (t '.description'), '#description'
