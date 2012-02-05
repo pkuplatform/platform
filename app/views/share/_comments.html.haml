@@ -4,7 +4,7 @@
       = image_tag current_user.avatar
     .body
       = form_tag  url_for(:action=>"comment"),:remote=>true  do
-        = text_area_tag "comment-content"
-        = submit_tag t(:new_comment)
+        = text_area_tag "comment-content", nil, :placeholder => (t '.holder')
+        = submit_tag t('.submit')
     .clear
   = render :partial => 'share/comment', :collection => object.comments.recent

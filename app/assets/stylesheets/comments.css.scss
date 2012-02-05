@@ -6,6 +6,12 @@
 @import 'mixin';
 
 .comments {
+  .new-comment {
+    textarea { 
+      width: 400px; 
+      height: 50px;
+    }
+  }
   .comment.odd  { 
     .avatar { float: left; } 
     .body { 

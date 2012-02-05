@@ -14,11 +14,11 @@ html {
 }
 
 #header { 
-  height:10px; 
+  height:50px; 
+  width: 100%;
   background-color:#CBA; 
   position:fixed; 
   top:0px; 
-  left:0px; 
 }
 
 table { 
@@ -28,11 +28,8 @@ table {
 }
 
 .sidebar { 
-  position:fixed; 
-  top:100px; 
-  width:250px; 
-  right: 50%;
-  margin-right: -480px;
+  width: 250px; 
+  float: right;
 }
 
 .content { 
@@ -44,7 +41,7 @@ table {
   min-height: 100%;
   @include background-color;
   width: 960px;
-  margin: 0px auto;
+  margin: 50px auto;
 }
 
 .clear { clear: both; }

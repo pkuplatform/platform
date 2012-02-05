@@ -287,6 +287,9 @@
       action: "%{action}了"
 
   share:
+    comments:
+      holder: "说些什么吧~"
+      submit: "发表评论"
     newsfeed:
       at: "在"
       before: "前"
