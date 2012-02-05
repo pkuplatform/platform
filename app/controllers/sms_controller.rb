@@ -14,10 +14,10 @@ class SmsController < ApplicationController
       response = client.request(:send_sms) do
         soap.body = "<phone>#{member.phone}</phone><sms>#{params[:content]}</sms>"
       end
-      status = response.body[:send_sms_response][:return]
+      re = response.body[:send_sms_response][:return]
     end
 
-    print "-----#{status}------"
+    print "-----#{re}------"
     if status == 0
       Sms.create(:group_id => params[:group_id], :content => params[:content])
     end

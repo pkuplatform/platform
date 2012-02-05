@@ -1,5 +1,20 @@
 .main
   = render :partial => 'board', :object => @group, :as => :group
+  #organization
+    .header
+      %span= t '.organization'
+    .box
+      = simple_format @group.organization
+  #history
+    .header
+      %span= t '.history'
+    .box
+      = simple_format @group.history
+  #description
+    .header
+      %span= t '.description'
+    .box
+      = simple_format @group.description
   .activities
     .header
       %span= t :activity

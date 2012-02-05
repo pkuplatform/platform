@@ -12,7 +12,7 @@
 .group.board .side {
   text-align: center;
   .logo { margin-top: -70px; }
-  .history, .organization { @include blue; }
+  .history, .organization, .description { @include blue-link; }
 }
 
 .group .info { 
@@ -25,3 +25,13 @@
 
 .main .activities { margin-top: 60px; float: none; }
 .main .comments { margin-top: 60px; }
+
+.groups.new, .groups.edit {
+  form ul li { 
+    display: none; 
+    list-style: none;
+  }
+
+  .show { display: block; }
+  .first { margin: 10px 0px; }
+}

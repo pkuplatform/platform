@@ -24,17 +24,19 @@
   .field
     = f.label :category, (t '.category')
     = f.collection_select :category_id, Category.all, :id, :translated_name
-  .field
-    = f.label :introduction, (t '.introduction')
-    = f.cktext_area :introduction
-  .field
-    = f.label :description, (t '.description')
-    = f.text_area :description
-  .field
-    = f.label :history, (t '.history')
-    = f.text_area :history
-  .field
-    = f.label :organization, (t '.organization')
-    = f.text_area :organization
+  %ul
+    %li.show.first
+      = f.label :introduction, (t '.introduction')
+      = f.label :description, (t '.description')
+      = f.label :history, (t '.history')
+      = f.label :organization, (t '.organization')
+    %li.show
+      = f.cktext_area :introduction
+    %li
+      = f.cktext_area :description
+    %li
+      = f.cktext_area :history
+    %li
+      = f.cktext_area :organization
   .actions
     = f.submit 'Save'

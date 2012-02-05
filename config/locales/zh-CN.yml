@@ -226,8 +226,13 @@
       title: "新建社团"
     show:
       new: "新建活动>>"
+      history: "历史"
+      description: "介绍"
+      organization: "构架"
     info:
       founded: "成立"
+    side:
+      description: "介绍"
     join:
       join: "参加>>"
       exit: "退出>>"
@@ -287,6 +292,10 @@
       action: "%{action}了"
 
   share:
+    header:
+      mailbox: "站内信"
+      setting: "设置"
+      logout: "离开"
     newsfeed:
       at: "在"
       before: "前"
@@ -331,7 +340,7 @@
     second_building_applications:
       new:
         back: "返回"
-        title: "申请二教表单"
+        title: "申请二教教室"
 
   profiles:
     secondary:
