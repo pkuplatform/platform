@@ -5,7 +5,7 @@
 @import 'mixin';
 
 .group.card .like-join { margin-top: 10px; }
-.group.board { margin-top: 100px; overflow: visible; }
+.group.board { margin-top: 20px; overflow: visible; }
 .group.board .side {
   text-align: center;
   .logo { margin-top: -70px; }
@@ -22,3 +22,13 @@
 
 .main .activities { margin-top: 100px; float: none; }
 .main .comments { margin-top: 100px; }
+
+.group.form {
+  .title {
+    @include orange;
+    text-align: center;
+    margin: 20px 0px;
+    font-size: 24px;
+  }
+  form { text-align: right; }
+}

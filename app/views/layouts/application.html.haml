@@ -6,9 +6,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #header
-      = render 'share/header'
-    #container
+    = render 'share/header'
+    .container
       .content
         = yield
       .sidebar

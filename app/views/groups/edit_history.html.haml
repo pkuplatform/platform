@@ -1,0 +1,7 @@
+.group.form
+  .title
+    = t '.title'
+  = form_for @group do |f|
+    = hidden_field_tag 'q', '4'
+    = f.cktext_area :history
+    = f.submit (t '.save')

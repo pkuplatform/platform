@@ -42,6 +42,21 @@ class GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @group = Group.find(params[:id])
+
+    case params[:q]
+    when '1'
+      render :action => :edit_introduction
+    when '2'
+      render :edit_description
+    when '3'
+      render :edit_history
+    when '4'
+      render :edit_organization
+    when '5'
+      redirect_to @group
+    else
+      render :edit
+    end
   end
 
   # POST /groups
@@ -53,7 +68,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         UserGroup.create(:user => current_user, :group => @group, :status => Constant::Admin + Constant::Member)
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to :action => 'edit', :id => @group.id, :q => 1 }
         format.json { render json: @group, status: :created, location: @group }
       else
         format.html { render action: "new" }
@@ -69,7 +84,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.html { redirect_to :action => 'edit', :id => @group.id, :q => params[:q] }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

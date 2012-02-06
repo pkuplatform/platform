@@ -15,7 +15,18 @@ class SiteController < ApplicationController
       @profile.save
       redirect_to edit_profile_path(@profile)
     end
+    
     @newsfeeds = current_user.newsfeeds.order("id DESC")
+
+    if @newsfeeds.empty?
+      @events = Event.order('updated_at DESC').first(10)
+    else
+      @events = []
+      @newsfeeds.each do |newsfeed|
+        @events << newsfeed.event
+      end
+    end
+    
     @secondary_scope = 'profiles'
   end
 

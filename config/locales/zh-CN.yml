@@ -250,10 +250,19 @@
       logo: "Logo"
       founded: "成立时间"
       category: "类别"
-      introduction: "简介"
-      description: "介绍"
-      history: "社团大记事"
-      organization: "组织构架"
+      save: "下一步 >>"
+    edit_introduction:
+      title: "社团简介"
+      save: "下一步 >>"
+    edit_description:
+      title: "社团介绍"
+      save: "下一步 >>"
+    edit_history:
+      title: "社团历史"
+      save: "下一步 >>"
+    edit_organization:
+      title: "组织构架"
+      save: "完成!"
 
   activities:
     new:
