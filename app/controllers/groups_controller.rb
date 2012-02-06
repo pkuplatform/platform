@@ -33,6 +33,8 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @more = @group.activities.count > 3
     @core = @group.comments.recent.count > 8
+    @members = @group.members.order("user_groups.updated_at DESC").first(14)
+    @mere = @group.members.count > 14
 
     respond_to do |format|
       format.html # show.html.erb
@@ -189,5 +191,10 @@ class GroupsController < ApplicationController
   def comments
     @group = Group.find(params[:id])
     @comments = @group.comments.recent
+  end
+
+  def members
+    @group = Group.find(params[:id])
+    @members = @group.members.order("updated_at DESC")
   end
 end

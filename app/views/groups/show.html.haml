@@ -2,5 +2,6 @@
   = render :partial => 'board', :object => @group, :as => :group
   - if can? :admin, @group
     = render :partial => 'admin_panel'
+  = render :partial => 'members'
   = render :partial => 'activities'
   = render :partial => 'comments'

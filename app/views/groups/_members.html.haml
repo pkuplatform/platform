@@ -1,0 +1,10 @@
+.members
+  .header
+    %span= t '.members'
+    = link_to (t '.more'), members_group_path if @mere
+  .box
+    %ul
+      - @members.each do |member|
+        %li
+          .avatar= image_tag member.url
+          .name= link_to member.name, member.profile

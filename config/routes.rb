@@ -50,6 +50,7 @@ Platform::Application.routes.draw do
       get 'organization'
       get 'activities'
       get 'comments'
+      get 'members'
       post 'comment'
       get 'sms' => 'sms#index'
       post 'sms/push' => 'sms#push'

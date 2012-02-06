@@ -246,6 +246,10 @@
     comments:
       back: "<<<"
       title: "%{name} 的评论"
+    members:
+      members: "成员"
+      back: "<<<"
+      title: "%{name} 的成员"
     description:
       title: "社团介绍"
       back: "<<<"

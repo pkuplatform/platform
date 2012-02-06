@@ -1,0 +1,11 @@
+.members
+  .back
+    = link_to (t '.back'), @group
+  .title
+    = t '.title', :name => @group.name
+  .box
+    %ul
+      - @members.each do |member|
+        %li
+          .avatar= image_tag member.url
+          .name= link_to member.name, member.profile
