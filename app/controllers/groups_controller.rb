@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
+    @more = @group.activities.count > 3
 
     respond_to do |format|
       format.html # show.html.erb
@@ -153,5 +154,22 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def description
+    @group = Group.find(params[:id])
+  end
+
+  def history
+    @group = Group.find(params[:id])
+  end
+
+  def organization
+    @group = Group.find(params[:id])
+  end
+
+  def activities
+    @group = Group.find(params[:id])
+    @activities = @group.activities
   end
 end

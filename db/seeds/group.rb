@@ -4,6 +4,7 @@ Group.delete_all
   group.category_id = rand_range(1..8)
   group.name = Faker::Company.name
   group.slogan = Faker::Company.catch_phrase
+  group.introduction = Faker::Lorem.paragraph(4)
   group.description = Faker::Lorem.paragraph(10)
   group.history = Faker::Lorem.paragraph(10)
   group.organization = Faker::Lorem.paragraph(10)

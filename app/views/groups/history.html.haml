@@ -1,0 +1,7 @@
+.group.info-wrapper
+  .back
+    = link_to (t '.back'), @group
+  .title
+    = t '.title'
+  .box
+    = simple_format @group.history

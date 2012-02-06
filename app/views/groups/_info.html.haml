@@ -7,7 +7,7 @@
     = "/"
     = l group.founded_at, :format => :long
     = t '.founded'
-  .description
+  .introduction
     = simple_format group.introduction
   .activity
     = t :activities_count, :count => group.activities.count

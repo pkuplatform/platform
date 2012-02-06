@@ -31,7 +31,10 @@
   }
 
   .info .label { color: #BBB; font-size: 18px; }
-  .info .description { margin: 5px 0px; }
+  .info .introduction { 
+    margin: 5px 0px; 
+    min-height: 160px;
+  }
   .side .like-join, .side .like { text-align: center; color: #BBB; }
   .side .join, .like { @include gray-link; text-align: center; }
 }

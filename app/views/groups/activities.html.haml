@@ -1,0 +1,6 @@
+.group-activities
+  .back
+    = link_to (t '.back'), @group
+  .title
+    = t '.title', :name => @group.name
+= render :partial => 'activities/card', :collection => @activities, :as => :activity

@@ -42,10 +42,13 @@ Platform::Application.routes.draw do
   resources :user_relations, :only => [:create, :destroy]
 
   resources :groups do
-    resources :activities
     member do
       get 'join'
       get 'like'
+      get 'description'
+      get 'history'
+      get 'organization'
+      get 'activities'
       post 'comment'
       get 'sms' => 'sms#index'
       post 'sms/push' => 'sms#push'
@@ -53,15 +56,12 @@ Platform::Application.routes.draw do
         get 'members'
         get 'forms'
         post 'edit_members'
-        get 'edit_introduction'
-        get 'edit_description'
-        get 'edit_history'
-        get 'edit_organization'
       end
       namespace :form do
         get 'second_building/new' => 'second_building_applications#new'
       end
     end
+    resources :activities
   end
 
   resources :activities do

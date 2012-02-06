@@ -194,4 +194,5 @@ class ActivitiesController < ApplicationController
       
     redirect_to show_members_activity_path
   end
+
 end
