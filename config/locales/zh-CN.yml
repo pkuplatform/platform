@@ -222,6 +222,11 @@
       submit: "储存%{model}"
   
   groups:
+    index:
+      category: "类别"
+      sort: "排序"
+      latest: "最新创建"
+      founded: "成立时间"
     new:
       title: "新建社团"
     show:

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'css3';
 @import 'mixin';
 
 .group.card .like-join { margin-top: 10px; }
@@ -20,8 +21,8 @@
   }
 }
 
-.main .activities { margin-top: 100px; float: none; }
-.main .comments { margin-top: 100px; }
+.main .activities { margin-top: 70px; float: none; }
+.main .comments { margin-top: 70px; }
 
 .group.form {
   @include title;
@@ -31,4 +32,30 @@
 .group.info-wrapper, .group-activities, .group-comments {
   @include title;
   @include back;
+}
+
+.group-comments {
+  margin-bottom: 50px;
+}
+
+.group .list {
+  margin-top: 30px;
+}
+
+.groups.sort-filter {
+  padding: 10px 20px;
+  @include box-gradual-change;
+  @include box-radius;
+
+  .category, .sort { overflow: hidden; }
+  .split { 
+    margin: 5px 0px;
+  }
+
+  li { 
+    list-style: none; 
+    float: left;
+    @include orange-link;
+    margin-right: 10px;
+  }
 }

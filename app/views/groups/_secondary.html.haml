@@ -1,11 +1,5 @@
 .secondary
   %ul
-    %li.first= link_to (t :groups_all), groups_path(:sort => "all")
-    - Category.all.each do |category|
-      %li
-        = link_to category.translated_name, groups_path(:sort => "category", :id => category.id)
-  %div
-  %ul
     %li.first= t :administrate
     %li= link_to (t '.new'), new_group_path
     - if can? :admin, @group

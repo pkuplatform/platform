@@ -3,10 +3,18 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    if params[:sort] == "category"
-      @groups = Category.find(params[:id]).groups
+    if params[:sort] == "latest"
+      sort = "created_at DESC"
+    elsif params[:sort] == "founded"
+      sort = "founded_at DESC"
     else
-      @groups = Group.all
+      sort = ""
+    end
+
+    if params[:filter] == "category"
+      @groups = Category.find(params[:id]).groups.order(sort)
+    else
+      @groups = Group.order(sort)
     end
 
     respond_to do |format|
