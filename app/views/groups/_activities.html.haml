@@ -1,0 +1,6 @@
+.activities
+  .header
+    %span= t :activity
+    = link_to (t :activity_more), activities_group_path if @more
+  .list
+    = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity

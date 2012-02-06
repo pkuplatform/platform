@@ -262,7 +262,8 @@
     like:
       like: "关注"
       unlike: "取消关注"
-    secondary:
+    admin_panel:
+      admin: "管理"
       new: "新建社团"
       edit: "编辑社团"
       members: "管理成员"

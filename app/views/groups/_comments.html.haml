@@ -1,0 +1,6 @@
+.comments
+  .header
+    %span= t :comment
+    = link_to (t :comments_more), comments_group_path if @core
+  .list
+    = render :partial => "share/comments", :locals => { :object => @group }

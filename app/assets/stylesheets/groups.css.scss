@@ -59,3 +59,19 @@
     margin-right: 10px;
   }
 }
+
+.admin-panel {
+  margin-top: 50px;
+  ul { overflow: hidden; }
+  li { 
+    list-style: none;
+    @include orange-link;
+    float: left;
+    margin-right: 10px;
+  }
+  .list { 
+    @include box-gradual-change; 
+    @include box-radius;
+    padding: 20px;
+  }
+}

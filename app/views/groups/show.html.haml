@@ -1,14 +1,6 @@
 .main.group
   = render :partial => 'board', :object => @group, :as => :group
-  .activities
-    .header
-      %span= t :activity
-      = link_to (t :activity_more), activities_group_path if @more
-    .list
-      = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
-  .comments
-    .header
-      %span= t :comment
-      = link_to (t :comments_more), comments_group_path if @core
-    .list
-      = render :partial => "share/comments", :locals => { :object => @group }
+  - if can? :admin, @group
+    = render :partial => 'admin_panel'
+  = render :partial => 'activities'
+  = render :partial => 'comments'
