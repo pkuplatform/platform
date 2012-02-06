@@ -52,4 +52,16 @@ module ApplicationHelper
   def user_path(user)
     profile_path(user.id)
   end
+
+  def blog_path(blog)
+    activity_blog_path(blog.activity, blog)
+  end
+
+  def picture_path(picture)
+    activity_picture_path(picture.imageable, picture)
+  end
+
+  def album_path(album)
+    activity_album_path(album.imageable, album)
+  end
 end

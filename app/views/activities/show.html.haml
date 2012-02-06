@@ -1,8 +1,26 @@
 .main
   = render :partial => 'board', :object => @activity, :as => :activity
-.comments
-  .header
-    %span= t :comment
-    = link_to (t :comments_more), '#'
-  .list
-    = render :partial => "share/comments", :locals => { :object => @activity }
+  .blogs
+    .header
+      %span= t "Blog"
+      = link_to (t :blogs_more), activity_blogs_path(@activity)
+    .list
+      = render :partial => "blogs/blog", :collection => @activity.blogs
+  .pictures
+    .header
+      %span= t "Picture"
+      = link_to (t :pictures_more), activity_pictures_path(@activity)
+    .box.image_carousel
+      .carousel-items
+        - @activity.pictures.each do |pic|
+          .image-wrap
+            = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"),show_gallery_activity_picture_path(@activity, pic), :class => :gallery_pics
+      .clear
+      = link_to "<<", "##", :class=>"prev"
+      = link_to ">>", "##", :class=>"next"
+  .comments
+    .header
+      %span= t :comment
+      = link_to (t :comments_more), '#'
+    .list
+      = render :partial => "share/comments", :locals => { :object => @activity }

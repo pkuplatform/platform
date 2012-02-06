@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
   def index
-    @activity = Activity.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
     @pictures = @activity.pictures
 
     respond_to do |format|
@@ -40,7 +40,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
-    @activity = Activity.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
     @picture = Picture.new
 
     respond_to do |format|
@@ -63,7 +63,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to album_picture_path(@picture.album,@picture), notice: 'Picture was successfully created.' }
+        format.html { redirect_to [@activity, @picture], notice: 'Picture was successfully created.' }
         format.json { render json: @picture, status: :created, location: @picture }
       else
         format.html { render action: "new" }
@@ -79,7 +79,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+        format.html { redirect_to [@picture.imageable, @picture], notice: 'Picture was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

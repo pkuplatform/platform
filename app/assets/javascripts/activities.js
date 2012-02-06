@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    /*
     $('.description p').jTruncate({
         length: 400,
         minTrail: 0,
@@ -7,13 +8,15 @@ $(document).ready(function() {
         ellipsisText: " ...",
         moreAni: "fast",
     });
+*/
     $(".carousel-items").carouFredSel({
     auto : false,
-    prev : ".carousel .prev",
-    next : ".carousel .next"
+    prev : ".prev,left",
+    next : ".next,right",
+    width: "98%"
     });
 
     $("a.gallery_pics").fancybox({
     });
-});
 
+});

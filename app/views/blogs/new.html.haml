@@ -2,10 +2,8 @@
 .box.new-blog
   .box-header
     = t :new_blog
-    = secondary_scope
   .box-body
-    = form_for @blog do |f|
-      =f.hidden_field :activity_id,:value=>@activity.id
+    = form_for [@activity,@blog] do |f|
       .blog-title
         =f.text_field :title,:placeholder=>(t :title)
       .blog-content
