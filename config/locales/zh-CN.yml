@@ -235,6 +235,9 @@
     activities:
       back: "<<<"
       title: "%{name} 的活动"
+    comments:
+      back: "<<<"
+      title: "%{name} 的评论"
     description:
       title: "社团介绍"
       back: "<<<"

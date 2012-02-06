@@ -30,3 +30,20 @@
 @mixin gray-link {
   a { color: #BBB; text-decoration: none; text-align: center; }
 }
+
+@mixin title {
+  .title { 
+    @include orange;
+    text-align: center;
+    margin: 20px 0px;
+    font-size: 24px;
+  }
+}
+
+@mixin back {
+  .back { 
+    float: left; 
+    margin-top: 10px;
+    @include green-link;
+  }
+}

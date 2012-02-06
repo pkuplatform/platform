@@ -24,39 +24,11 @@
 .main .comments { margin-top: 100px; }
 
 .group.form {
-  .title {
-    @include orange;
-    text-align: center;
-    margin: 20px 0px;
-    font-size: 24px;
-  }
+  @include title;
   form { text-align: right; }
 }
 
-.group.info-wrapper {
-  .back { 
-    float: left; 
-    margin-top: 10px;
-    @include green-link;
-  }
-  .title { 
-    @include orange;
-    text-align: center;
-    margin: 20px 0px;
-    font-size: 24px;
-  }
-}
-
-.group-activities {
-  .back {
-    float: left;
-    margin-top: 10px;
-    @include green-link;
-  }
-   .title { 
-    @include orange;
-    text-align: center;
-    margin: 20px 0px;
-    font-size: 24px;
-  }
+.group.info-wrapper, .group-activities, .group-comments {
+  @include title;
+  @include back;
 }

@@ -49,6 +49,7 @@ Platform::Application.routes.draw do
       get 'history'
       get 'organization'
       get 'activities'
+      get 'comments'
       post 'comment'
       get 'sms' => 'sms#index'
       post 'sms/push' => 'sms#push'

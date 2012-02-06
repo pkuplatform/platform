@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @more = @group.activities.count > 3
+    @core = @group.comments.recent.count > 8
 
     respond_to do |format|
       format.html # show.html.erb
@@ -171,5 +172,10 @@ class GroupsController < ApplicationController
   def activities
     @group = Group.find(params[:id])
     @activities = @group.activities
+  end
+
+  def comments
+    @group = Group.find(params[:id])
+    @comments = @group.comments.recent
   end
 end
