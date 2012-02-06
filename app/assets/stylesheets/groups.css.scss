@@ -47,7 +47,7 @@
   @include box-gradual-change;
   @include box-radius;
 
-  .category, .sort { overflow: hidden; }
+  .category, .sort, .my { overflow: hidden; }
   .split { 
     margin: 5px 0px;
   }

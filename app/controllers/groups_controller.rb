@@ -13,6 +13,10 @@ class GroupsController < ApplicationController
 
     if params[:filter] == "category"
       @groups = Category.find(params[:id]).groups.order(sort)
+    elsif params[:filter] = "join"
+      @groups = current_user.join_groups.order(sort)
+    elsif params[:filter] = "like"
+      @groups = current_user.like_groups.order(sort)
     else
       @groups = Group.order(sort)
     end

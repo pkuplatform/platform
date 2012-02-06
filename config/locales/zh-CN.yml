@@ -227,6 +227,9 @@
       sort: "排序"
       latest: "最新创建"
       founded: "成立时间"
+      join: "参加"
+      like: "关注"
+      my: "我的"
     new:
       title: "新建社团"
     show:
