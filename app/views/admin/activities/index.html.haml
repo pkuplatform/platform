@@ -1,4 +1,20 @@
-.admin.group
-  = render :partial => 'group_list', :locals => { :groups => @groups, :selected_group_id => @selected_group.id }
-.admin.activity
-  = render :partial => 'activities_list', :locals => { :group => @selected_group, :activities => @activities }
+.admin.app-form
+  .back
+    = link_to (t '.back'), admin_index_path
+  .title
+    = t '.title'
+  %table
+    %tr
+      %th= t '.activity'
+      %th= t '.group'
+      %th= t '.pub'
+      %th= t '.status'
+    - @activities.each do |activity|
+      %tr{:class => cycle('odd', 'even')}
+        %td= link_to activity.title.truncate(25), activity
+        %td= link_to activity.group.name.truncate(25), activity.group
+        %td= activity.public ? t('.public') : t('.private')
+        %td
+          = form_for activity do |f|
+            = f.select :status, { (t 'approving') => Constant::Approving, (t 'blocked') => Constant::Blocked, (t '.approved') => Constant::Approved }
+

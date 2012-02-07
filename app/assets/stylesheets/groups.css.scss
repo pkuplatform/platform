@@ -111,3 +111,8 @@
     @include orange-link;
   }
 }
+
+.activities .box .warn { 
+  text-align: center;
+  @include orange;
+}

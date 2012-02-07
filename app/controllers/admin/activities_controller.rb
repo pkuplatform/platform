@@ -1,9 +1,7 @@
 class Admin::ActivitiesController < ApplicationController
 
   def index
-    @groups = Group.all
-    @selected_group = Group.first
-    @activities = @selected_group.activities
+    @activities = Activity.first(10)
   end
 
   def change_group
