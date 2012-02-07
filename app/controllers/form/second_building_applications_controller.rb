@@ -64,7 +64,7 @@ class Form::SecondBuildingApplicationsController < ApplicationController
 
     respond_to do |format|
       if @form_second_building_application.update_attributes(params[:form_second_building_application])
-        format.html { redirect_to @form_second_building_application, notice: 'Second building application was successfully updated.' }
+        format.html { redirect_to admin_forms_path, notice: 'Second building application was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

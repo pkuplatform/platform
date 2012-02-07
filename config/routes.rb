@@ -17,8 +17,7 @@ Platform::Application.routes.draw do
   resources :feedbacks
 
   namespace :admin do
-    get "forms/index"
-    post "forms/edit"
+    resources :forms
     get "members/index"
     post "members/edit"
     get "groups/index"

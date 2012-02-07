@@ -219,3 +219,6 @@
   edit_group: "编辑社团"
 
   activities_index: "活动中心"
+  approved: "已批准"
+  approving: "审批中"
+  rejected: "已否决"

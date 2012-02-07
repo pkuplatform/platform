@@ -1,19 +1,14 @@
 class Admin::FormsController < ApplicationController
   def index
-    @second_buildings = Form::SecondBuildingApplication.all
+    @forms = Form::SecondBuildingApplication.all
+  end
+
+  def show
+    @form = Form::SecondBuildingApplication.find(params[:id])
   end
 
   def edit
-    f  = params[:form]
-    id = params[:form_id]
-    case f
-      when "second_building"
-        form = Form::SecondBuildingApplication.find(id)
-        jwzh = params[:jwzh]
-        zhdzhx = params[:zhdzhx]
-        form.jiaowuzhang = jwzh
-        form.zhidaozhongxin = zhdzhx
-    end
+    @form = Form::SecondBuildingApplication.find(params[:id])
     status = params[:status].first.to_i
     case status
       when Constant::Approving
@@ -28,6 +23,5 @@ class Admin::FormsController < ApplicationController
     end
     redirect_to admin_forms_index_path
   end
-
 
 end

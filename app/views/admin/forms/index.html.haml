@@ -1,13 +1,17 @@
-- @second_buildings.each do |a|
-  = render :partial => 'form/second_building_applications/form_show', :locals => { :form => a }
-  %p= a.group.name
-  - if approving?(a)
-    = form_tag admin_forms_edit_path, :method => :post do
-      = hidden_field_tag 'form', 'second_building'
-      = hidden_field_tag 'form_id', "#{a.id}"
-      = text_field_tag 'jwzh', (t "jiaowuzhangyijian")
-      = text_field_tag 'zhdzhx', (t "zhidaozhongxinyijian")
-      = select "status","", { (t "approving") => Constant::Approving,  (t "approved") => Constant::Approved, (t "reject") => Constant::Rejected, (t "delete") => Constant::Destroy }
-      = submit_tag t "confirm_change"
-  - else
-    %p= show_status a
+.admin.app-form
+  .title
+    = t '.title'
+  %table
+    %tr
+      %td= t '.group'
+      %td= t '.apptime'
+      %td= t '.status'
+      %td= t '.detail'
+    - @forms.each do |f|
+      %tr
+        %td= f.group.name
+        %td
+          = l f.huodongshijian
+          = t '.time', :start => f.startclass, :end => f.endclass
+        %td= t(show_status f)
+        %td= link_to (t '.detail'), admin_form_path(f)

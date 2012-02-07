@@ -1,0 +1,63 @@
+.admin.app-form.box.form
+  .back
+    = link_to (t '.back'), admin_forms_path
+  .title
+    = t '.title'
+  = form_for @form do |f|
+    .field
+      = f.label :group, t('.group')
+      = @form.group.name
+    .field
+      = f.label :zhubandanwei, t('.host')
+      = @form.zhubandanwei
+    .field
+      = f.label :fuzeren, t('.charge')
+      = @form.fuzeren
+    .field
+      = f.label :xingming, t('.name')
+      = @form.xingming
+    .field
+      = f.label :yuanxi, t('.school')
+      = @form.yuanxi
+    .field
+      = f.label :lianxifangshi, t('.contact')
+      = @form.lianxifangshi
+    .field
+      = f.label :zhujiangren, t('.speaker')
+      = @form.zhujiangren
+    .field
+      = f.label :gongzuodanwei, t('.department')
+      = @form.gongzuodanwei
+    .field
+      = f.label :zhicheng, t('.tit')
+      = @form.zhicheng
+    .field
+      = f.label :yanjiangtimu, t('.topic')
+      = @form.yanjiangtimu
+    .field
+      = f.label :fangyingneirong, t('.display')
+      = @form.fangyingneirong
+    .field
+      = f.label :huodongxingshi, t('.form')
+      = @form.huodongxingshi
+    .field
+      = f.label :huodongshijian, t('.datetime')
+      = l @form.huodongshijian
+      = t '.time', :start => @form.startclass, :end => @form.endclass
+    .field
+      = f.label :huodongrenshu, t('.count')
+      = @form.huodongrenshu
+    .field
+      = f.label :beizhu, t('.notes')
+      = @form.beizhu
+    .field
+      = f.label :jiaowuzhang, t('.chief')
+      = f.text_field 'jiaowuzhang'
+    .field
+      = f.label :zhidaozhongxin, t('.center')
+      = f.text_field 'zhidaozhongxin'
+    .field
+      = f.label :status, t('.status')
+      = f.select :status, { (t "approving") => Constant::Approving,  (t "approved") => Constant::Approved, (t "reject") => Constant::Rejected, (t "delete") => Constant::Destroy }
+    .submit
+      = f.submit t ".submit"
