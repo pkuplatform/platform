@@ -34,6 +34,10 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @group = Group.find(params[:group_id])
+    if !(can? :admin, @group) 
+      redirect_to @group
+      return
+    end
     @activity = @group.activities.build
 
     respond_to do |format|
@@ -46,6 +50,9 @@ class ActivitiesController < ApplicationController
   def edit
     @group = Group.find(params[:group_id])
     @activity = Activity.find(params[:id])
+    if !(can? :admin,@activity) 
+      redirect_to @activity
+    end
   end
 
   def comment

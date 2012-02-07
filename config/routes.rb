@@ -77,21 +77,21 @@ Platform::Application.routes.draw do
       post 'comment'
       #get 'pictures/new' => 'pictures#new'
       #get 'pictures' => 'pictures#index'
-      resources :blogs do
-        member do
-          post :comment
-        end
-      end
-      resources :pictures do
-        member do
-          post 'comment'
-          get 'show_gallery'
-        end
-      end
-      resources :albums 
       get 'show_members'
       post 'members/edit' => 'activities#edit_members'
     end
+    resources :blogs do
+      member do
+        post :comment
+      end
+    end
+    resources :pictures do
+      member do
+        post 'comment'
+        get 'show_gallery'
+      end
+    end
+    resources :albums 
   end
 
 

@@ -3,9 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'mixin';
+@import 'css3';
 
 .activity .info .blog { @include blue; font-size: 18px; }
 .activity.card .like-join { margin-top: 20px; }
+.activity .info .additions { @include blue-link; font-size: 18px; }
 .activity .info div { margin: 10px 0px; }
 .activity .info .time { @include blue; }
 
@@ -14,4 +16,54 @@
   .poster { margin-top: -70px; }
   .like-join { margin-top: 40px; }
   .info .time, .info .location { @include green; }
+}
+
+
+.box.image_carousel {
+  padding: 15px 0px 15px 15px;
+  position: relative;
+  height: 160px;
+}
+
+.image-wrap {
+  float: left;
+  margin: 10px;
+  .image-mask {
+    @include glossy(20px);
+    height: 138px;
+    width: 138px;
+    position: relative;
+    top: 1px;
+    left: 1px;
+    z-index: 1022;
+  }
+  img {
+  @include box-radius(20px);
+  border: 1px solid #ccc;
+  display: block;
+  float: left;
+  height: 138px;
+  width: 138px;
+  }
+}
+a.prev, a.next {
+  width: 45px;
+  height: 50px;
+  display: block;
+  position: absolute;
+  top: 75px;
+}
+a.prev {      left: -22px;
+          background-position: 0 0; }
+a.prev:hover {    background-position: 0 -50px; }
+a.next {      right: -42px;
+          background-position: -50px 0; }
+a.next:hover {    background-position: -50px -50px; }
+
+a.prev span, a.next span {
+  display: none;
+}
+.clearfix {
+  float: none;
+  clear: both;
 }

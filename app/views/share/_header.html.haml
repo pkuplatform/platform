@@ -2,4 +2,7 @@
   .header
     .logo
     .panel
-      = link_to (t '.mailbox'), '#'
+      = link_to (t '.mailbox'), mailboxes_path
+      -if current_user
+        = link_to (t '.setting'), edit_profile_path(current_user)
+        = link_to (t '.logout'), destroy_user_session_path, :method => :delete

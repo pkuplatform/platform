@@ -14,14 +14,15 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @activity = Activity.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
     @blog = Blog.new
   end
 
   def create
     @blog = Blog.new(params[:blog])
+    @activity = Activity.find(params[:activity_id])
     @blog.author = current_user
-    @activity = @blog.activity
+    @blog.activity = @activity
 
     respond_to do |format|
       if @blog.save
@@ -33,7 +34,7 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @activity = Activity.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
     @blogs = @activity.blogs
   end
 

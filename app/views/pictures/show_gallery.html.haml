@@ -7,7 +7,7 @@
     %b= t :uploader
     = link_to(@picture.user.name,@picture.user)
   %p
-    = link_to(image_tag(@picture.photo.url(:medium)),album_picture_path(@picture.album,@picture))
+    = link_to(image_tag(@picture.photo.url(:medium)),@picture)
   %p
     = @picture.remark
   = render :partial => "share/comments", :locals => {:object => @picture}

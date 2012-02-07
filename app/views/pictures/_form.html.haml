@@ -1,4 +1,4 @@
-= form_for @picture, :html => { :multipart => true }do |f|
+= form_for [@activity ,@picture], :html => { :multipart => true }do |f|
   - if @picture.errors.any?
     #error_explanation
       %h2
@@ -9,8 +9,8 @@
           %li= msg
   .field
     = f.label :album
-    = collection_select(:picture, :album_id, @activity.albums, :id, :title)
-    = link_to (t "new_album"), new_album_path(@activity),:class=>"pop_fancy_box"
+    = collection_select(:picture, :album_id, @activity.albums, :id, :title, :selected => params[:album_id])
+    = link_to (t "new_album"), new_activity_album_path(@activity),:class=>"pop_fancy_box"
   .field
     = f.label :remark
     %br/

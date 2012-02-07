@@ -17,8 +17,8 @@
     = t "time:", :start_time => (l activity.start_at), :end_time => (l activity.end_at)
   .description
     = activity.description
-  .blog
-    = t :blog_count, :count => activity.blogs.count
+  .additions
+    = link_to (t :blog_count, :count => activity.blogs.count), activity_blogs_path(activity)
     = " "
-    = t :picture_count, :count => activity.pictures.count
+    = link_to (t :picture_count, :count => activity.pictures.count), activity_pictures_path(activity)
 .clear
