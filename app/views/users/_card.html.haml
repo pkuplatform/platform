@@ -1,7 +1,10 @@
-.card
-  .avatar
+.gogo.card
+  %span.avatar
     = image_tag current_user.profile.avatar.url(:small)
-  .name
-    = current_user.profile.name
-  .points
-    = t :level, :points => current_user.profile.points
+  .info
+    .name
+      = current_user.name
+    .nickname
+      = current_user.nickname.truncate(15)
+    .points
+      = t :level, :points => current_user.profile.points

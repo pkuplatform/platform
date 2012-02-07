@@ -116,3 +116,12 @@ table {
   overflow: hidden;
   .admin-panel { float: right; }
 }
+
+.gogo.card {
+  .info { float: right; }
+  div { margin-bottom: 10px; }
+  .name { @include orange; }
+  .nickname { @include green; }
+  .points { @include blue; }
+  margin-bottom: 50px;
+}

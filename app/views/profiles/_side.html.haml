@@ -2,4 +2,4 @@
   .avatar
     = image_tag user.avatar(:medium)
   .like
-    = t :like_count, :count => user.users_like_me.count
+    = t '.like', :count => user.users_like_me.count

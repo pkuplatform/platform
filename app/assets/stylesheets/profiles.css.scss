@@ -10,7 +10,8 @@
   .student-id, .phone { margin: 5px 0px; }
   .label { color: #BBB; margin-right: 10px; } 
   .val { @include green; }
-  .info { margin-left: 40px; }
+  .info { margin-left: 20px; }
   .description { color: #999; margin: 10px 0px; }
   .group-activity { @include blue; }
+  .like { margin-top: 20px; }
 }

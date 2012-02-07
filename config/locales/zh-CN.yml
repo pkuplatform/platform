@@ -409,6 +409,8 @@
         title: "申请二教表单"
 
   profiles:
+    side:
+      like: "%{count}人关注"
     secondary:
       new_group: "新建社团"
 
