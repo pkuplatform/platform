@@ -15,6 +15,6 @@
         %td= link_to activity.group.name.truncate(25), activity.group
         %td= activity.public ? t('.public') : t('.private')
         %td
-          = form_for activity do |f|
-            = f.select :status, { (t 'approving') => Constant::Approving, (t 'blocked') => Constant::Blocked, (t '.approved') => Constant::Approved }
+          = form_for activity, :remote => true do |f|
+            = f.select :status, { (t 'approving') => Constant::Approving, (t 'blocked') => Constant::Blocked, (t 'approved') => Constant::Approved }
 

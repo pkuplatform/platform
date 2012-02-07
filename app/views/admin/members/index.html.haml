@@ -3,18 +3,18 @@
     = link_to (t '.back'), admin_index_path
   .title
     = t '.title'
-  = form_tag admin_members_edit_path do 
-    %table
-      %thead
-        %th= t ".name"
-        %th= t ".nickname"
-        %th= t ".number"
-        %th= t ".status"
-      %tbody
-        - @users.each do |user|
-          %tr{:class => cycle('odd', 'even')}
-            %td= link_to user.name, user.profile
-            %td= user.nickname
-            %td= user.profile.student_id
-            %td= select "user", "#{user.id}", { (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
-    = submit_tag t 'confirm_change'
+  %table
+    %thead
+      %th= t ".name"
+      %th= t ".nickname"
+      %th= t ".number"
+      %th= t ".status"
+    %tbody
+      - @users.each do |user|
+        %tr{:class => cycle('odd', 'even')}
+          %td= link_to user.name, user.profile
+          %td= user.nickname
+          %td= user.profile.student_id
+          %td
+            = form_for user.profile, :remote => true do |f|
+              = f.select :status, { (t "approved") => Constant::Approved, (t "approving") => Constant::Approving, (t "blocked") => Constant::Blocked,  (t "kick_ass") => Constant::Destroy }

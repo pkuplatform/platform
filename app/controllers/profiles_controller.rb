@@ -58,6 +58,7 @@ class ProfilesController < ApplicationController
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to profile_path(@profile), notice: 'Profile was successfully updated.' }
         format.json { head :ok }
+        format.js   { head :ok }
       else
         format.html { render action: "edit" }
         format.json { render json: @profile.errors, status: :unprocessable_entity }

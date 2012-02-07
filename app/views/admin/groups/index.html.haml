@@ -1,33 +1,14 @@
-.admin.groups.app-form
+.admin.app-form
+  .back
+    = link_to (t '.back'), admin_index_path
   .title
-    %span
-      = link_to (t '.back'), admin_index_path
     = t '.title'
-  = form_tag admin_groups_edit_path do 
-    %table
-      %thead
-        %th= t ".name"
-        %th= t ".admin"
-        %th= t ".email"
-        %th= t ".status"
-      %tbody
-        - @approving_groups.each do |group|
-          %tr{:class => cycle('odd', 'even')}
-            %td= link_to group.name, group
-            %td= group.admin.name
-            %td= group.email
-            %td= select "approving_group", "#{group.id}", { (t "approving") => Constant::Approving, (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
-        - @blocked_groups.each do |group|
-          %tr{:class => cycle('odd', 'even')}
-            %td= link_to group.name, group
-            %td= group.admin.name
-            %td= group.email
-            %td= select "blocked_group", "#{group.id}", { (t "blocked") => Constant::Blocked, (t "approved") => Constant::Approved, (t "kick_ass") => Constant::Destroy }
-        - @approved_groups.each do |group|
-          %tr{:class => cycle('odd', 'even')}
-            %td
-            %td= link_to group.name, group
-            %td= group.admin.name
-            %td= group.email
-            %td= select "approved_group", "#{group.id}", { (t "approved") => Constant::Approved, (t "blocked") => Constant::Blocked, (t "kick_ass") => Constant::Destroy }
-    = submit_tag t 'confirm_change'
+  %table
+    %tr
+      %th= t ".name"
+      %th= t ".admin"
+      %th= t ".email"
+      %th= t ".status"
+    = render :partial => 'part', :locals => { :groups => @approving_groups }
+    = render :partial => 'part', :locals => { :groups => @blocked_groups   }
+    = render :partial => 'part', :locals => { :groups => @approved_groups  }

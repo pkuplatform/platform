@@ -108,6 +108,7 @@ class GroupsController < ApplicationController
           end
         }
         format.json { head :ok }
+        format.js   { head :ok }
       else
         format.html { render action: "edit" }
         format.json { render json: @group.errors, status: :unprocessable_entity }

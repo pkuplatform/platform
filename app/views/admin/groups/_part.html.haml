@@ -1,0 +1,8 @@
+- groups.each do |group|
+  %tr{:class => cycle('odd', 'even')}
+    %td= link_to group.name, group
+    %td= group.admin.name
+    %td= group.email
+    %td
+      = form_for group, :remote => true do |f|
+        = f.select :status, { (t "approving") => Constant::Approving, (t "approved") => Constant::Approved, (t "blocked") => Constant::Blocked, (t "kick_ass") => Constant::Destroy }
