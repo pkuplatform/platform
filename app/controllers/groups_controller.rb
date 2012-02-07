@@ -8,14 +8,14 @@ class GroupsController < ApplicationController
     elsif params[:sort] == "founded"
       sort = "founded_at DESC"
     else
-      sort = ""
+      sort = "created_at DESC"
     end
 
     if params[:filter] == "category"
       @groups = Category.find(params[:id]).groups.order(sort)
-    elsif params[:filter] = "join"
+    elsif params[:filter] == "join"
       @groups = current_user.join_groups.order(sort)
-    elsif params[:filter] = "like"
+    elsif params[:filter] == "like"
       @groups = current_user.like_groups.order(sort)
     else
       @groups = Group.order(sort)
