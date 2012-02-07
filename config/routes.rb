@@ -1,5 +1,7 @@
 Platform::Application.routes.draw do
 
+  get "admin/index"
+
   post "search/index"
 
   devise_for :users

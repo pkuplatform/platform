@@ -8,6 +8,7 @@ class Group < ActiveRecord::Base
   has_many :second_building_applications, :class_name => "Form::SecondBuildingApplication"
   has_many :albums, :as => :imageable
   has_many :tags, :as => :tagable
+  has_many :sms, :class_name => "Sms"
   has_attached_file :logo, :styles => { :medium => "300x300#", :card => "180x180#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
 
   has_many :user_groups

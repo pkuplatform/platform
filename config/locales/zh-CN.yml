@@ -352,6 +352,7 @@
       home: "个人中心"
       group: "社团中心"
       activity: "活动中心"
+      admin: "后台管理"
       logout: "退出"
 
   devise:
@@ -360,6 +361,12 @@
         remember_me: "勿忘我"
 
   admin:
+    index:
+      form: "申请表管理"
+      members: "成员管理"
+      groups: "社团管理"
+      activities: "活动管理"
+      title: "后台管理入口"
     groups:
       forms:
         time: "%{start}-%{end}节"

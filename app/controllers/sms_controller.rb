@@ -2,6 +2,7 @@ class SmsController < ApplicationController
 
   def index
     @group = Group.find(params[:id])
+    @sms = @group.sms
   end
 
   def push
@@ -18,10 +19,8 @@ class SmsController < ApplicationController
       re = response.body[:send_sms_response][:return]
     end
 
-    print "-----#{re}------"
-    if re == 0
-      Sms.create(:group_id => params[:group_id], :content => params[:content])
-    end
+    Sms.create(:group_id => params[:id], 
+               :content => params[:content]) if re == '0'
 
     redirect_to sms_group_path
   end

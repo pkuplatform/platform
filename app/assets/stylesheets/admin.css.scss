@@ -1,0 +1,22 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mixin';
+
+.admin.box {
+  .title { 
+    text-align: center;
+    @include orange;
+  }
+  ul { 
+    overflow: hidden; 
+    padding-left: 130px;
+  }
+  li { 
+    list-style: none; 
+    float: left; 
+    margin-right: 20px; 
+    @include orange-link;
+  }
+}

@@ -1,6 +1,9 @@
 .sms.box
   .title
     = t '.title'
+  .list
+    - @sms.each do |sms|
+      = sms.content
   .new
     = form_tag sms_push_group_path(@group) do
       = text_area_tag :content
