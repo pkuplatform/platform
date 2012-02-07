@@ -1,0 +1,8 @@
+.group.form.admin
+  .back
+    = link_to (t '.back'), edit_group_path
+  .title
+    = t '.title'
+  = form_for @group do |f|
+    = f.cktext_area :history
+    = f.submit (t '.save')

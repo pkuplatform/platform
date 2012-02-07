@@ -1,3 +1,10 @@
+.slink
+  %ul
+    %li.first= t '.other'
+    %li= link_to (t '.intr'), introduction_admin_group_path
+    %li= link_to (t '.desc'), description_admin_group_path
+    %li= link_to (t '.hist'), history_admin_group_path
+    %li= link_to (t '.orga'), organization_admin_group_path
 .groups.edit.box.form
   .title= t :edit_group
-  = render 'form'
+  = render :partial => 'form', :locals => { :type => 'edit' }

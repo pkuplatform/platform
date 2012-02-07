@@ -62,12 +62,15 @@
 
 .admin-panel {
   margin-top: 50px;
-  ul { overflow: hidden; }
+  ul { 
+    overflow: hidden; 
+    margin-right: -20px;
+  }
   li { 
     list-style: none;
     @include orange-link;
     float: left;
-    margin-right: 10px;
+    margin-right: 38px;
   }
   .list { 
     @include box-gradual-change; 
@@ -91,4 +94,20 @@
     @include box-radius(0px);
   }
   .name { @include orange-link; }
+}
+
+.group.form.admin { @include back; }
+
+.slink {
+  @include box-gradual-change;
+  @include box-radius;
+  padding: 20px;
+  li.first { @include blue; }
+  ul { overflow: hidden; }
+  li { 
+    float: left; 
+    list-style: none; 
+    margin-right: 30px; 
+    @include orange-link;
+  }
 }

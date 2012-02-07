@@ -94,4 +94,19 @@ class Admin::GroupsController < ApplicationController
     redirect_to members_admin_group_path
   end
 
+  def description
+    @group = Group.find(params[:id])
+  end
+
+  def introduction
+    @group = Group.find(params[:id])
+  end
+
+  def history
+    @group = Group.find(params[:id])
+  end
+
+  def organization
+    @group = Group.find(params[:id])
+  end
 end

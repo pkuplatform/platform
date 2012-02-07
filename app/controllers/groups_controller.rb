@@ -100,7 +100,13 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to :action => 'edit', :id => @group.id, :q => params[:q] }
+        format.html { 
+          if params[:q].nil?
+            redirect_to @group
+          else
+            redirect_to :action => 'edit', :id => @group.id, :q => params[:q]
+          end
+        }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

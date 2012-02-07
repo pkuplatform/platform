@@ -57,6 +57,10 @@ Platform::Application.routes.draw do
       namespace :admin do
         get 'members'
         get 'forms'
+        get 'introduction'
+        get 'description'
+        get 'history'
+        get 'organization'
         post 'edit_members'
       end
       namespace :form do

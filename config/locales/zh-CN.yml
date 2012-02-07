@@ -269,12 +269,13 @@
     admin_panel:
       admin: "管理"
       new: "新建社团"
-      edit: "编辑社团"
-      members: "管理成员"
+      edit: "社团信息管理"
+      members: "成员管理"
       activity: "新建活动"
-      forms: "管理申请表"
+      forms: "申请表管理"
       second: "新建教室申请表"
       sms: "短信管理"
+      desc: "编辑社团介绍"
     form:
       name: "名称"
       slogan: "标语"
@@ -282,18 +283,25 @@
       logo: "Logo"
       founded: "成立时间"
       category: "类别"
-      save: "下一步 >>"
+      next: "下一步 >>"
+      done: "完成"
+    edit:
+      intr: "修改社团简介"
+      desc: "修改社团介绍"
+      hist: "修改社团历史"
+      orga: "修改组织构架"
+      other: "更多修改 ---> "
     edit_introduction:
-      title: "社团简介"
+      title: "添加社团简介"
       save: "下一步 >>"
     edit_description:
-      title: "社团介绍"
+      title: "添加社团介绍"
       save: "下一步 >>"
     edit_history:
-      title: "社团历史"
+      title: "添加社团历史"
       save: "下一步 >>"
     edit_organization:
-      title: "组织构架"
+      title: "添加组织构架"
       save: "完成!"
 
   activities:
@@ -349,9 +357,32 @@
 
   admin:
     groups:
+      forms:
+        time: "%{start}-%{end}节"
+        datetime: "活动时间"
+        status: "审核状态"
+        back: "<<<"
+        title: "申请表管理"
+        new: "+"
+      history:
+        back: "<<<"
+        title: "修改社团历史"
+        save: "保存"
+      introduction:
+        back: "<<<"
+        title: "修改社团简介"
+        save: "保存"
+      description:
+        title: "修改社团介绍"
+        save: "保存"
+        back: "<<<"
+      organization:
+        title: "修改组织构架"
+        back: "<<<"
+        save: "保存"
       members:
         title: "成员管理"
-        back: "返回"
+        back: "<<<"
         name: "姓名"
         nick: "昵称"
         id: "学号"

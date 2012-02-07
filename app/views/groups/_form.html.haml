@@ -25,4 +25,4 @@
     = f.label :category, (t '.category')
     = f.collection_select :category_id, Category.all, :id, :translated_name
   .actions
-    = f.submit (t '.save')
+    = f.submit ( type == "new" ? t('.next') : t('.done') )
