@@ -222,3 +222,5 @@
   approved: "已批准"
   approving: "审批中"
   rejected: "已否决"
+  success: "成功"
+  failure: "失败"

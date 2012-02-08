@@ -1,15 +1,22 @@
-.box.app-form
-  .head
-    .back= link_to (t '.back'), @group
+.admin.app-form
+  .back
+    = link_to (t '.back'), @group
+  .title
     = t '.title'
-    .new= link_to (t '.new'), second_building_new_form_group_path
+    .new
+      = link_to (t '.new'), second_building_new_form_group_path
   %table
     %tr
-      %td= t '.datetime'
-      %td= t '.status'
+      %th= t '.id'
+      %th= t '.datetime'
+      %th= t '.status'
+      %th= t '.classroom'
     - @second_buildings.each do |f|
-      %tr
+      %tr{:class => cycle('odd', 'even')}
+        %td
+          = link_to f.id, f
         %td
           = l f.huodongshijian
           = t '.time', :start => f.startclass, :end => f.endclass
         %td= t(show_status f)
+        %td= f.classroom

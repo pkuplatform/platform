@@ -1,40 +1,61 @@
-%table
-  %thead
-    %th= "group"
-    %th= t "zhubandanwei"
-    %th= t "fuzeren"
-    %th= t "xingming"
-    %th= t "yuanxi"
-    %th= t "lianxifangshi"
-    %th= t "zhujiangren"
-    %th= t "gongzuodanwei"
-    %th= t "zhicheng"
-    %th= t "yanjiangtimu"
-    %th= t "fangyingneirong"
-    %th= t "huodongshijian"
-    %th= t "startclass"
-    %th= t "endclass"
-    %th= t "huodongrenshu"
-    %th= t "zhidaozhongxin"
-    %th= t "jiaowuzhang"
-    %th= t "beizhu"
-  %tbody
-    %tr
-      %td= @form.group.name
-      %td= @form.zhubandanwei
-      %td= @form.fuzeren
-      %td= @form.xingming
-      %td= @form.yuanxi
-      %td= @form.lianxifangshi
-      %td= @form.zhujiangren
-      %td= @form.gongzuodanwei
-      %td= @form.zhicheng
-      %td= @form.yanjiangtimu
-      %td= @form.fangyingneirong
-      %td= @form.huodongshijian
-      %td= @form.startclass
-      %td= @form.endclass
-      %td= @form.huodongrenshu
-      %td= @form.zhidaozhongxin
-      %td= @form.jiaowuzhang
-      %td= @form.beizhu
+.admin.app-form.box.form
+  .back
+    = link_to (t '.back'), forms_admin_group_path(@form.group.id)
+  .title
+    = t '.title'
+  = form_for @form do |f|
+    .field
+      = f.label :zhubandanwei, t('.host')
+      = @form.zhubandanwei
+    .field
+      = f.label :fuzeren, t('.charge')
+      = @form.fuzeren
+    .field
+      = f.label :xingming, t('.name')
+      = @form.xingming
+    .field
+      = f.label :yuanxi, t('.school')
+      = @form.yuanxi
+    .field
+      = f.label :lianxifangshi, t('.contact')
+      = @form.lianxifangshi
+    .field
+      = f.label :zhujiangren, t('.speaker')
+      = @form.zhujiangren
+    .field
+      = f.label :gongzuodanwei, t('.department')
+      = @form.gongzuodanwei
+    .field
+      = f.label :zhicheng, t('.tit')
+      = @form.zhicheng
+    .field
+      = f.label :yanjiangtimu, t('.topic')
+      = @form.yanjiangtimu
+    .field
+      = f.label :fangyingneirong, t('.display')
+      = @form.fangyingneirong
+    .field
+      = f.label :huodongxingshi, t('.form')
+      = @form.huodongxingshi
+    .field
+      = f.label :huodongshijian, t('.datetime')
+      = l @form.huodongshijian
+      = t '.time', :start => @form.startclass, :end => @form.endclass
+    .field
+      = f.label :huodongrenshu, t('.count')
+      = @form.huodongrenshu
+    .field
+      = f.label :beizhu, t('.notes')
+      = @form.beizhu
+    .field
+      = f.label :jiaowuzhang, t('.chief')
+      = @form.jiaowuzhang
+    .field
+      = f.label :zhidaozhongxin, t('.center')
+      = @form.zhidaozhongxin
+    .field
+      = f.label :classroom, t('.classroom')
+      = @form.classroom
+    .field
+      = f.label :status, t('.status')
+      = t(show_status @form)

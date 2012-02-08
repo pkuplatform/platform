@@ -117,3 +117,9 @@
   text-align: center;
   @include orange;
 }
+
+.sms { 
+  textarea { width: 100%; height: 80px; }
+  .box { text-align: right; }
+  .list { margin-top: 80px; }
+}

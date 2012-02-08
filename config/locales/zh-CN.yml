@@ -442,12 +442,14 @@
         admin: "管理员"
         rejected: "拒绝"
       forms:
+        id: "表单号"
         time: "%{start}-%{end}节"
-        datetime: "活动时间"
+        datetime: "申请时间段"
         status: "审核状态"
         back: "<<<"
-        title: "申请表管理"
+        title: "教室申请表管理"
         new: "+"
+        classroom: "教室"
       history:
         back: "<<<"
         title: "修改社团历史"
@@ -498,6 +500,29 @@
       new:
         back: "返回"
         title: "申请二教教室"
+      show:
+        back: "<<<"
+        title: "申请表详情"
+        host: "主办单位"
+        charge: "负责人"
+        title: "教室申请表详情"
+        name: "姓名"
+        school: "院系"
+        contact: "联系方式"
+        speaker: "演讲人"
+        department: "工作单位"
+        tit: "职称"
+        topic: "演讲题目"
+        display: "放映内容"
+        form: "活动形式"
+        time: "%{start}-%{end}节"
+        datetime: "活动时间"
+        count: "活动人数"
+        notes: "备注"
+        chief: "教务长意见"
+        center: "指导中心意见"
+        status: "状态"
+        classroom: "教室"
 
   profiles:
     side:
@@ -507,7 +532,14 @@
 
   sms:
     index:
-      title: "短信管理"
+      title: "发送新短信"
+      back: "<<<"
+      content: "短信内容"
+      time: "发送时间"
+      status: "发送状态"
+      head: "已发短信列表"
+      holder: "写些什么呢~"
+      send: "发送"
 
   will_paginate:
     page_gap: "..."

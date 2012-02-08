@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203070817) do
+ActiveRecord::Schema.define(:version => 20120208054440) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -26,13 +26,14 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
-    t.integer  "points"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "banner_file_name"
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.integer  "points"
+    t.boolean  "delta",               :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "activities", ["group_id"], :name => "index_activities_on_group_id"
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "classroom"
   end
 
   add_index "form_second_building_applications", ["group_id"], :name => "index_form_second_building_applications_on_group_id"
@@ -156,6 +158,7 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.integer  "points"
+    t.boolean  "delta",             :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -235,6 +238,7 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "delta",               :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -254,6 +258,7 @@ ActiveRecord::Schema.define(:version => 20120203070817) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status"
   end
 
   add_index "sms", ["group_id"], :name => "index_sms_on_group_id"
