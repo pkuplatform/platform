@@ -1,6 +1,6 @@
 .sign_up
   %h2= t "sign_up"
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name),:remote=>true) do |f|
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     .devise_error= devise_error_messages!
     %div
       = f.label :email, (t :email)
