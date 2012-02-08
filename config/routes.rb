@@ -62,7 +62,7 @@ Platform::Application.routes.draw do
         get 'description'
         get 'history'
         get 'organization'
-        post 'edit_members'
+        post 'members' => 'groups#edit_members'
       end
       namespace :form do
         get 'second_building/new' => 'second_building_applications#new'

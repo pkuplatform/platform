@@ -34,7 +34,7 @@ table {
   min-height: 100%;
   @include background-color;
   width: 960px;
-  margin: 70px auto;
+  margin: 100px auto;
 }
 
 .clear { clear: both; }
@@ -139,4 +139,8 @@ table {
   .nickname { @include green; }
   .points { @include blue; }
   margin-bottom: 50px;
+}
+
+.highlight {
+  background-color: #DDD;
 }

@@ -9,7 +9,6 @@ Group.delete_all
   group.history = Faker::Lorem.paragraph(10)
   group.organization = Faker::Lorem.paragraph(10)
   group.email = Faker::Internet.free_email
-  group.status = rand_range(0..3)
   group.points = rand_range(100..1000)
   group.logo = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   group.save

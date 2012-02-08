@@ -1,10 +1,22 @@
-.sms.box
+.sms.admin.app-form
+  .back
+    = link_to t('.back'), @group
   .title
     = t '.title'
-  .list
-    - @sms.each do |sms|
-      = sms.content
-  .new
+  .box
     = form_tag sms_push_group_path(@group) do
-      = text_area_tag :content
-      = submit_tag :send
+      = text_area_tag :content, nil, :placeholder => (t ".holder")
+      = submit_tag t '.send'
+  .list
+    .head
+      = t '.head'
+    %table
+      %tr
+        %th= t '.content'
+        %th= t '.time'
+        %th= t '.status'
+      - @sms.each do |sms|
+        %tr{:class => cycle('odd', 'even')}
+          %td= sms.content
+          %td= l sms.created_at
+          %td= sms.st

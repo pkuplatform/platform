@@ -1,7 +1,23 @@
 class Admin::ActivitiesController < ApplicationController
 
   def index
-    @activities = Activity.first(10)
+    if params[:filter] == "approving"
+      filter = Constant::Approving
+    elsif params[:filter] == "approved"
+      filter = Constant::Approved
+    elsif params[:filter] == "blocked"
+      filter = Constant::Blocked
+    elsif params[:filter] == "rejected"
+      filter = Constant::Rejected
+    else
+      filter = nil 
+    end
+
+    if filter.nil?
+      @activities = Activity.page(params[:page])
+    else
+      @activities = Activity.where(:status => filter).page(params[:page])
+    end
   end
 
   def change_group

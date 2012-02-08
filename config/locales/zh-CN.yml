@@ -384,6 +384,12 @@
         number: "学号"
         name: "姓名"
         nickname: "昵称"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        blocked: "已锁定"
+        filter: "筛选 >>"
     index:
       form: "申请表管理"
       members: "成员管理"
@@ -422,6 +428,11 @@
         status: "申请状态"
         time: "%{start}-%{end}节"
         detail: "详情"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        filter: "筛选 >>"
     activities:
       index:
         back: "<<<"
@@ -432,14 +443,27 @@
         status: "状态"
         public: "公开"
         private: "内部"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        blocked: "已锁定"
+        filter: "筛选 >>"
     groups:
+      part:
+        approving: "审核中"
+        member: "普通成员"
+        admin: "管理员"
+        rejected: "拒绝"
       forms:
+        id: "表单号"
         time: "%{start}-%{end}节"
-        datetime: "活动时间"
+        datetime: "申请时间段"
         status: "审核状态"
         back: "<<<"
-        title: "申请表管理"
+        title: "教室申请表管理"
         new: "+"
+        classroom: "教室"
       history:
         back: "<<<"
         title: "修改社团历史"
@@ -471,6 +495,12 @@
         email: "社团邮箱"
         admin: "社长姓名"
         phone: "社长手机"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        blocked: "已锁定"
+        filter: "筛选 >>"
       secondary:
         new: "新建社团"
         edit: "编辑社团"
@@ -484,6 +514,29 @@
       new:
         back: "返回"
         title: "申请二教教室"
+      show:
+        back: "<<<"
+        title: "申请表详情"
+        host: "主办单位"
+        charge: "负责人"
+        title: "教室申请表详情"
+        name: "姓名"
+        school: "院系"
+        contact: "联系方式"
+        speaker: "演讲人"
+        department: "工作单位"
+        tit: "职称"
+        topic: "演讲题目"
+        display: "放映内容"
+        form: "活动形式"
+        time: "%{start}-%{end}节"
+        datetime: "活动时间"
+        count: "活动人数"
+        notes: "备注"
+        chief: "教务长意见"
+        center: "指导中心意见"
+        status: "状态"
+        classroom: "教室"
 
   blogs:
     navi:
@@ -510,6 +563,17 @@
 
   sms:
     index:
-      title: "短信管理"
+      title: "发送新短信"
+      back: "<<<"
+      content: "短信内容"
+      time: "发送时间"
+      status: "发送状态"
+      head: "已发短信列表"
+      holder: "写些什么呢~"
+      send: "发送"
 
+  will_paginate:
+    page_gap: "..."
+    previous_label: "<<"
+    next_label: ">>"
   join: "参加"

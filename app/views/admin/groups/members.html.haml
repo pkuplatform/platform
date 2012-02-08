@@ -1,26 +1,14 @@
-.admin.group.box
+.admin.app-form 
+  .back
+    = link_to (t '.back'), group_path
   .title
-    %span
-      = link_to (t '.back'), group_path(@group)
     = t '.title'
-  = form_tag edit_members_admin_group_path do
-    %table
-      %thead
-        %th= t ".name"
-        %th= t ".nick"
-        %th= t ".id"
-        %th= t ".status"
-      %tbody
-        - @tenders && @tenders.each do |tender|
-          %tr
-            %td= tender.profile.name
-            %td= tender.name
-            %td= tender.profile.student_id
-            %td= select "pre_tender", "#{tender.id}", { (t "approving") => Constant::Approving, (t "member") => Constant::Member, (t "reject") => Constant::Rejected }
-        -@members && @members.each do |member|
-          %tr
-            %td= member.profile.name
-            %td= member.name
-            %td= member.profile.student_id
-            %td= select "pre_member", "#{member.id}", { (t "member") => Constant::Member, (t "kick_ass") => Constant::Rejected}
-    = submit_tag t 'confirm_change'
+  %table
+    %tr
+      %th= t ".name"
+      %th= t ".nick"
+      %th= t ".id"
+      %th= t ".status"
+    = render :partial => 'part', :locals => { :members => @tenders }
+    = render :partial => 'part', :locals => { :members => @admins  }
+    = render :partial => 'part', :locals => { :members => @members }

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'css3';
 @import 'mixin';
 
 .admin.box {
@@ -18,5 +19,22 @@
     float: left; 
     margin-right: 20px; 
     @include orange-link;
+  }
+}
+
+.admin.app-form {
+  .filter {
+    padding: 10px 20px;
+    @include box-gradual-change;
+    ul { overflow: hidden; }
+    li { 
+      list-style: none;
+      float: left;
+      margin-right: 60px;
+    }
+  }
+  .pagination {
+    text-align: right;
+    margin-top: 10px;
   }
 }

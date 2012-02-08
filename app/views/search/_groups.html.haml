@@ -1,0 +1,16 @@
+.group.card.box
+  = render :partial => 'groups/side', :locals => { :group => group, :board => false }
+  .info
+    %span.name= link_to (highlight group.name, @q), group
+    %span.category= t group.category.name, :scope => :category
+    .admin
+      = t :group_admin
+      = link_to group.admin.name, group.admin.profile
+      = "/"
+      = l group.founded_at, :format => :long
+      = t '.founded'
+    .introduction
+      = simple_format (highlight group.introduction, @q)
+    .activity
+      = t :activities_count, :count => group.activities.count
+  .clear

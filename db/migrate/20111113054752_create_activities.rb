@@ -3,12 +3,12 @@ class CreateActivities < ActiveRecord::Migration
     create_table :activities do |t|
       t.references :group
       t.string   :title
-      t.text     :description
+      t.text     :description, :default => ""
       t.datetime :start_at
       t.datetime :end_at
-      t.string   :location
-      t.boolean  :public
-      t.integer  :status
+      t.string   :location, :default => ""
+      t.boolean  :public, :default => true
+      t.integer  :status, :default => true
       t.string   :poster_file_name
       t.string   :poster_content_type
       t.integer  :poster_file_size
@@ -17,7 +17,7 @@ class CreateActivities < ActiveRecord::Migration
       t.string   :banner_content_type
       t.integer  :banner_file_size
       t.datetime :banner_updated_at
-      t.integer  :points
+      t.integer  :points, :default => 0
       t.boolean  :delta, :default => true, :null => false
 
       t.timestamps

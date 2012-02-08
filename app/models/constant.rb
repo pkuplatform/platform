@@ -9,6 +9,7 @@ class Constant
   Approving = 1 << 2
   Approved  = 1 << 3
   Destroy   = 1 << 4
+  Mask      = ~31
 
   Admin    = 1 << 8
   Manager  = 1 << 9

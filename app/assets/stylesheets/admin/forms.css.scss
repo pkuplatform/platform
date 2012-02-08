@@ -9,7 +9,7 @@
   .head { 
     text-align: center;
     @include orange; 
-    font-size: 22px;
+    font-size: 24px;
     margin-bottom: 30px;
   }
   .back { 
@@ -20,7 +20,7 @@
   .new {
     float: right;
     @include orange-link;
-    font-size: 16px;
+    font-size: 24px;
   }
 
   th, td {

@@ -2,7 +2,6 @@ Profile.delete_all
 100.times do |i|
   profile = Profile.new
   profile.user_id = i + 1
-  profile.status = 3
   profile.name = Faker::Name.name
   profile.nickname = Faker::Name.name
   profile.gender = rand_range(1..2)

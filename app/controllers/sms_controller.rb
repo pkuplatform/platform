@@ -20,7 +20,8 @@ class SmsController < ApplicationController
     end
 
     Sms.create(:group_id => params[:id], 
-               :content => params[:content]) if re == '0'
+               :content => params[:content], 
+               :status => re)
 
     redirect_to sms_group_path
   end

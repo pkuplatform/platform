@@ -3,12 +3,26 @@
     = link_to (t '.back'), admin_index_path
   .title
     = t '.title'
+  .filter
+    %ul
+      %li= t '.filter'
+      %li= link_to t('.all'), admin_groups_index_path(:filter => "all")
+      %li= link_to t('.approving'), admin_groups_index_path(:filter => "approving")
+      %li= link_to t('.approved'), admin_groups_index_path(:filter => "approved")
+      %li= link_to t('.rejected'), admin_groups_index_path(:filter => "rejected")
+      %li= link_to t('.blocked'), admin_groups_index_path(:filter => "blocked")
   %table
     %tr
       %th= t ".name"
       %th= t ".admin"
       %th= t ".email"
       %th= t ".status"
-    = render :partial => 'part', :locals => { :groups => @approving_groups }
-    = render :partial => 'part', :locals => { :groups => @blocked_groups   }
-    = render :partial => 'part', :locals => { :groups => @approved_groups  }
+    - @groups.each do |group|
+      %tr{:class => cycle('odd', 'even')}
+        %td= link_to group.name, group
+        %td= group.admin.name
+        %td= group.email
+        %td
+          = form_for group, :remote => true do |f|
+            = f.select :status, { (t "approving") => Constant::Approving, (t "approved") => Constant::Approved, (t "blocked") => Constant::Blocked, (t "rejected") => Constant::Rejected }
+  = will_paginate @groups

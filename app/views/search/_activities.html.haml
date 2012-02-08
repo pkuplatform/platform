@@ -1,0 +1,17 @@
+.activity.card.box
+  = render :partial => 'activities/side', :locals => { :activity => activity, :board => false }
+  .info
+    .title= link_to (highlight activity.title, @q), activity
+    .admin
+      %span.group-name= link_to activity.group.name, activity.group
+      %span= "/"
+      %span.location= activity.location
+    .time
+      = t "time:", :start_time => (l activity.start_at), :end_time => (l activity.end_at)
+    .description
+      = highlight activity.description, @q
+    .additions
+      = link_to (t :blog_count, :count => activity.blogs.count), activity_blogs_path(activity)
+      = " "
+      = link_to (t :picture_count, :count => activity.pictures.count), activity_pictures_path(activity)
+  .clear

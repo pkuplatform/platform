@@ -4,11 +4,11 @@ class Ability
   def initialize(user)
 
     can :exit, Group do |group|
-      group.members.include?(user)
+      group.members.include?(user) or group.admins.include?(user)
     end
 
     can :join, Group do |group|
-      not group.members.include?(user) and not group.tenders.include?(user)
+      not group.admins.include?(user) and not group.members.include?(user) and not group.tenders.include?(user)
     end
 
     can :like, Group do |group|
