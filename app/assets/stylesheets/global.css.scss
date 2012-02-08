@@ -236,6 +236,11 @@ table {
 .sign_up.box.form {
   margin-top: 80px;
   input[type=email], input[type=password] { width: 400px; }
+  textarea { 
+    width: 100%; 
+    font-size: 18px;
+    margin-top: 20px;
+  }
 }
 .sign-in-form .func { 
   margin: 20px;

@@ -1,3 +1,4 @@
+- resource.build_profile
 .sign_up.box.form
   .title= t ".title"
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
@@ -11,5 +12,26 @@
     .field
       = f.label :password_confirmation, (t :password_confirmation)
       = f.password_field :password_confirmation
+    = f.fields_for :profile do |p|
+      .field
+        = p.label :name, (t '.name')
+        = p.text_field :name
+      .field
+        = p.label :nickname, (t '.nickname')
+        = p.text_field :nickname
+      .field
+        = p.label :gender, (t '.gender')
+        = p.select :gender, [[t('.male'), 1], [t('.female'), 2]]
+      .field
+        = p.label :student_id, (t '.sid')
+        = p.text_field :student_id
+      .field
+        = p.label :phone, (t '.phone')
+        = p.text_field :phone
+      .field.avatar
+        = p.label :avatar, (t '.avatar')
+        = p.file_field :avatar
+      .field
+        = p.text_area :description, :size => "75x5", :placeholder => t(".holder")
     .button-wrapper.submit
-      = f.submit t "sign_up"
+      = submit_tag t "sign_up"

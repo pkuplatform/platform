@@ -9,7 +9,7 @@ gem 'sqlite3'
 
 gem 'thin'
 gem 'haml-rails'
-gem 'devise'
+gem 'devise', '2.0.0'
 gem 'has_mailbox'
 gem 'paperclip'
 gem 'cancan'

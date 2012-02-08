@@ -9,13 +9,6 @@ class SiteController < ApplicationController
   end
 
   def home
-    if current_user.profile.nil?
-      @profile=Profile.new
-      @profile.user = current_user
-      @profile.save
-      redirect_to edit_profile_path(@profile)
-    end
-    
     @newsfeeds = current_user.newsfeeds.order("id DESC")
 
     if @newsfeeds.empty?

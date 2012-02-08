@@ -374,6 +374,15 @@
     registrations:
       new:
         title: "注册"
+        male: "男生"
+        female: "女生"
+        name: "姓名"
+        nickname: "昵称"
+        gender: "性别"
+        sid: "学号"
+        phone: "电话"
+        avatar: "头像"
+        holder: "添加您的个人简介吧~"
     sessions:
       new:
         remember_me: "勿忘我"

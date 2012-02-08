@@ -1,18 +1,19 @@
 class User < ActiveRecord::Base
 
   acts_as_taggable
-
   has_mailbox
 
-  # Include default devise modules. Others available are: :confirmable,
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable, :lockable, :timeoutable
+         :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_one  :profile
+  accepts_nested_attributes_for :profile, :allow_destroy => true
+  attr_accessible :profile_attributes
 
   has_many :user_groups
   has_many :groups, :through => :user_groups

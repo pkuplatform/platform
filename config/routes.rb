@@ -1,10 +1,10 @@
 Platform::Application.routes.draw do
 
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
   get "admin/index"
 
   post "search/index"
-
-  devise_for :users
 
   mailboxes_for :users
   
