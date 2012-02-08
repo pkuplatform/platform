@@ -177,9 +177,12 @@ table {
   background-image: -webkit-linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);
   background-image: -ms-linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);
   background-image: linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);  @include box-inset(1px,0);
-  &.active {
+  &.active.hovering, &.active {
     @include box-shadow(5px,3px);
     border: 1px solid #eee;
+  }
+  &.hovering {
+    @include box-shadow(10px,2px);
   }
   .sprite {
     width: 16px;
