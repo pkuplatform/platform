@@ -7,7 +7,7 @@
     = csrf_meta_tags
   %body
     = render 'share/header'
-    .container
+    .container{:class => ("noheader" if !user_signed_in? )}
       .content
         = yield
       .sidebar

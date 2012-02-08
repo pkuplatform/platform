@@ -40,6 +40,18 @@ $(document).ready(function(){
     topPos: '80px',                                   //position from the top
     fixedPosition: true                               //options: true makes it stick(fixed position) on scroll
   });
+  $('input').focus(function() {
+    $(this).parent().addClass("active");
+  });
+  $('input').blur(function() {
+    $(this).parent().removeClass("active");
+  });
+  $('input').hover(function() {
+    $(this).parent().addClass("hovering");
+  });
+  $('input').mouseout(function() {
+    $(this).parent().removeClass("hovering");
+  });
 });
 
 

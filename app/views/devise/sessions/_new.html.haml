@@ -1,11 +1,15 @@
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %div
-    = f.email_field :email, :placeholder => :email
-  %div
-    = f.password_field :password, :placeholder => :password
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label t :remember_me
-  %div= f.submit "Sign in"
+.sign-in-form
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .email.input-wrapper
+      = f.email_field :email, :placeholder => (t :email)
+      .sprite
+    .password.input-wrapper
+      = f.password_field :password, :placeholder => (t :password)
+      .sprite
+    - if devise_mapping.rememberable?
+      .remember.radio-wrapper
+        = f.check_box :remember_me, :checked => true
+        = f.label :remember_me,(t :remember_me)
+    .sign-in.button-wrapper= f.submit (t "sign_in")
+    .clear
 = render :partial => "devise/shared/links"
