@@ -4,4 +4,4 @@
 
 $ ->
   $('.category-body a').widthTruncate({width:140})
-  $('.pop_fancy_box').fancybox();
+  $('.pop_fancy_box').fancybox({helpers: {overlay: null}})

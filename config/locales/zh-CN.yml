@@ -549,11 +549,19 @@
       activity: "返回活动"
       list: "返回相册列表"
       new: "新图片"
+    new:
+      title: "新相册"
 
   pictures:
+    new:
+      title: "上传新的图片"
     picture:
       prev: "上一张"
       next: "下一张"
+    navi:
+      activity: "返回活动"
+      list: "返回图片列表"
+      new: "新图片"
 
   profiles:
     side:

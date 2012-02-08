@@ -17,6 +17,12 @@ $(document).ready(function() {
     });
 
     $("a.gallery_pics").fancybox({
+        helpers: {
+            title: {
+                type: "over"
+            }
+
+        }
     });
 
 });

@@ -1,27 +1,17 @@
-.box.detail.span-14
+.box.detail
   .box-header
-    = t :activity_pictures
-    = link_to "#{t :return} "+@activity.title, @activity 
-  .box-body       
-    %table
-      %thead
-        %th Album
-        %th User
-        %th Remark
-        %th Photo
-        %th
-        %th
-        %th
-      - @pictures.each do |picture|
-        %tr
-          %td= picture.album.title
-          %td= picture.user.name
-          %td= picture.remark
-          %td= image_tag(picture.photo.url(:thumb))
-          %td= link_to 'Show', picture
-          %td= link_to 'Edit', edit_activity_picture_path(@activity, picture)
-          %td= link_to 'Destroy', picture, confirm: 'Are you sure?', method: :delete
-    %br/
-    = link_to 'New Picture', new_picture_path(@activity)
+    = link_to @activity.name, @activity
+    = t(:de) + t(:Picture)
+    .clear
+  .box-body
+    %ul.album-pictures
+      - @activity.pictures.each do |pic|
+        %a{:href=>picture_path(pic)}
+          %li
+            %p= image_tag(pic.url(:small))
+            %p= pic.remark
+            %p
+              ="#{t :comment}: "
+              =pic.comments.count
 
-.clear
+      .clear

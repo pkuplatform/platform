@@ -127,6 +127,7 @@
   albums_list: "相册列表"
   activity_albums: "活动相册"
   albums: "相册"
+  new_album: "新相册"
   empty_album: "空相册"
   activity_comments: "活动评论"
   posted_new_blog: "发表了日志"
@@ -218,6 +219,8 @@
   users_show: "个人中心"
   slogan: "标语"
 
+
+  de: "的"
   groups_index: "社团中心"
   edit_group: "编辑社团"
 
@@ -227,3 +230,5 @@
   rejected: "已否决"
   success: "成功"
   failure: "失败"
+
+  remark: "说明"
