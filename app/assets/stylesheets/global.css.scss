@@ -211,9 +211,14 @@ table {
   font-size: 18px;
   margin-top: 8px;
 }
-.sign-in.button-wrapper {
-  float: right;
-  margin-right: 13px;
+.button-wrapper {
+  &.sign-in {
+    float: right;
+    margin-right: 13px;
+  }
+  &.sign-up {
+    margin-bottom: 30px;
+  }
   input {
     background: url("sprites.png");
     background-position: -21px -4px;
