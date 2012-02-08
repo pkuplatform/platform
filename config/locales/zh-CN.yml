@@ -584,4 +584,8 @@
     page_gap: "..."
     previous_label: "<<"
     next_label: ">>"
+
+  search:
+    groups:
+      founded: "成立"
   join: "参加"
