@@ -1,20 +1,21 @@
 class Admin::MembersController < ApplicationController
   def index
-    @users = User.all || []
-  end
-
-  def edit
-    user_list = params[:user]
-    user_list && user_list.each do |key, value|
-      case value.to_i
-        when Constant::Approved
-        when Constant::Destroy
-          u = User.find(key)
-          u.destroy
-      end
+    if params[:filter] == "approving"
+      filter = Constant::Approving
+    elsif params[:filter] == "approved"
+      filter = Constant::Approved
+    elsif params[:filter] == "blocked"
+      filter = Constant::Blocked
+    elsif params[:filter] == "rejected"
+      filter = Constant::Rejected
+    else
+      filter = nil
     end
 
-    redirect_to admin_members_index_path
+    if filter.nil?
+      @profiles = Profile.page(params[:page])
+    else
+      @profiles = Profile.where(:status => filter).page(params[:page])
+    end
   end
-
 end

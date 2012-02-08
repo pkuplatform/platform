@@ -370,6 +370,12 @@
         number: "学号"
         name: "姓名"
         nickname: "昵称"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        blocked: "已锁定"
+        filter: "筛选 >>"
     index:
       form: "申请表管理"
       members: "成员管理"
@@ -408,6 +414,11 @@
         status: "申请状态"
         time: "%{start}-%{end}节"
         detail: "详情"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        filter: "筛选 >>"
     activities:
       index:
         back: "<<<"
@@ -418,6 +429,12 @@
         status: "状态"
         public: "公开"
         private: "内部"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        blocked: "已锁定"
+        filter: "筛选 >>"
     groups:
       forms:
         time: "%{start}-%{end}节"
@@ -457,6 +474,12 @@
         email: "社团邮箱"
         admin: "社长姓名"
         phone: "社长手机"
+        all: "全部"
+        approving: "审核中"
+        approved: "已批准"
+        rejected: "已否决"
+        blocked: "已锁定"
+        filter: "筛选 >>"
       secondary:
         new: "新建社团"
         edit: "编辑社团"
@@ -481,4 +504,8 @@
     index:
       title: "短信管理"
 
+  will_paginate:
+    page_gap: "..."
+    previous_label: "<<"
+    next_label: ">>"
   join: "参加"

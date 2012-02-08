@@ -3,18 +3,27 @@
     = link_to (t '.back'), admin_index_path
   .title
     = t '.title'
+  .filter
+    %ul
+      %li= t '.filter'
+      %li= link_to t('.all'), admin_members_index_path(:filter => "all")
+      %li= link_to t('.approving'), admin_members_index_path(:filter => "approving")
+      %li= link_to t('.approved'), admin_members_index_path(:filter => "approved")
+      %li= link_to t('.rejected'), admin_members_index_path(:filter => "rejected")
+      %li= link_to t('.blocked'), admin_members_index_path(:filter => "blocked")
   %table
-    %thead
+    %tr
       %th= t ".name"
       %th= t ".nickname"
       %th= t ".number"
       %th= t ".status"
-    %tbody
-      - @users.each do |user|
+    %tr
+      - @profiles.each do |profile|
         %tr{:class => cycle('odd', 'even')}
-          %td= link_to user.name, user.profile
-          %td= user.nickname
-          %td= user.profile.student_id
+          %td= link_to profile.name, profile
+          %td= profile.nickname
+          %td= profile.student_id
           %td
-            = form_for user.profile, :remote => true do |f|
-              = f.select :status, { (t "approved") => Constant::Approved, (t "approving") => Constant::Approving, (t "blocked") => Constant::Blocked,  (t "kick_ass") => Constant::Destroy }
+            = form_for profile, :remote => true do |f|
+              = f.select :status, { (t "approved") => Constant::Approved, (t "approving") => Constant::Approving, (t "blocked") => Constant::Blocked,  (t "rejected") => Constant::Rejected }
+  = will_paginate @profiles
