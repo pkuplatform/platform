@@ -83,7 +83,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        UserGroup.create(:user => current_user, :group => @group, :status => Constant::Admin + Constant::Member)
+        UserGroup.create(:user => current_user, :group => @group, :status => Constant::Admin + Constant::Approved)
         format.html { redirect_to :action => 'edit', :id => @group.id, :q => 1 }
         format.json { render json: @group, status: :created, location: @group }
       else
@@ -151,7 +151,7 @@ class GroupsController < ApplicationController
 
   def join
     @group = Group.find(params[:id])
-    ug = @group.user_groups.find_by_user_id(current_user)
+    ug = UserGroup.f(params[:id], current_user.id)
     
     if @group.members.include?(current_user)
       ug.status &= ~Constant::Member

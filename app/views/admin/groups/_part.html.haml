@@ -1,8 +1,9 @@
-- groups.each do |group|
+- members.each do |member|
   %tr{:class => cycle('odd', 'even')}
-    %td= link_to group.name, group
-    %td= group.admin.name
-    %td= group.email
+    %td= member.name
+    %td= member.nickname
+    %td= member.profile.student_id
     %td
-      = form_for group, :remote => true do |f|
-        = f.select :status, { (t "approving") => Constant::Approving, (t "approved") => Constant::Approved, (t "blocked") => Constant::Blocked, (t "kick_ass") => Constant::Destroy }
+      = form_tag members_admin_group_path, :remote => true do
+        = hidden_field_tag :member_id, member.id
+        = select "status", member.id, options_for_select({ (t '.approving') => Constant::Approving, (t ".member") => Constant::Member + Constant::Approved, (t '.admin') => Constant::Admin + Constant::Approved, (t ".rejected") => Constant::Rejected}, UserGroup.f(@group.id, member.id).status)

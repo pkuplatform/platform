@@ -51,6 +51,10 @@ class Group < ActiveRecord::Base
     admins.first || User.first
   end
 
+  def join_count
+    members.count + admins.count
+  end
+
   define_index do
     # fields
     indexes :name, :sortable => true

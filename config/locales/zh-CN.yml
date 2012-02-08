@@ -436,6 +436,11 @@
         blocked: "已锁定"
         filter: "筛选 >>"
     groups:
+      part:
+        approving: "审核中"
+        member: "普通成员"
+        admin: "管理员"
+        rejected: "拒绝"
       forms:
         time: "%{start}-%{end}节"
         datetime: "活动时间"
