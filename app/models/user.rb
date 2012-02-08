@@ -63,8 +63,8 @@ class User < ActiveRecord::Base
     RankList.where("identify_id > ? && identify_id < ?", 9, 19)
   end
 
-  def url
-    profile.avatar.url(:thumb)
+  def url(size = :thumb)
+    profile.avatar.url(size)
   end
 
   def nickname

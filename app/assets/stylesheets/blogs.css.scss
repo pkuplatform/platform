@@ -40,7 +40,7 @@
       padding: 20px;
       @include box-radius;
       @include box-shadow;
-      font-size: 18px;
+      font-size: 16px;
       .name { @include orange-link; }
       .gray { color: #BBB; } 
       .time { @include green; }

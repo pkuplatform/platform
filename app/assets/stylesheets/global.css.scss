@@ -5,6 +5,7 @@ body {
   font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
   min-height: 100%;
   min-width: 100%;
+  @include orange-link;
 }
 
 html {
@@ -20,7 +21,7 @@ table {
 }
 
 .sidebar { 
-  width: 250px; 
+  width: 220px; 
   float: right;
 }
 
@@ -56,7 +57,7 @@ table {
     }
     line-height: 40px;
     @include gray-link;
-    a { font-size: 18px; margin-right: 10px; }
+    a { font-size: 16px; margin-right: 10px; }
   }
 } 
 
@@ -100,17 +101,34 @@ table {
 
 .header-wrapper {
   background: url('bg.png');
+  position: fixed;
+  width: 100%;
+  top:0;
+  left:0;
+  @include glossy(0,40%);
 }
 
 .header-wrapper .header {
   width: 960px;
-  height: 70px;
+  height: 36px;
   margin: 0px auto;
+  margin-top:10px;
   overflow: hidden;
-  .admin-panel { float: right; }
+  .secondary {
+    float: left;
+ }
+  .panel { 
+    float: right; 
+  }
 }
 
 .gogo.card {
+  .avatar { 
+    float: left;
+    img {
+      @include box-radius;
+    }
+  }
   .info { float: right; }
   div { margin-bottom: 10px; }
   .name { @include orange; }

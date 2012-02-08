@@ -18,6 +18,22 @@
         = link_to comment.commentable.name,comment.commentable
         = t :post
         = link_to (t :comment), comment
+      - elsif event.object_type=="Picture"
+        - picture = event.object
+        = t :in
+        = t :activity
+        = link_to picture.imageable.name,picture.imageable
+        = t :post
+        = t :Picture
+        = link_to picture.bare_name, picture
+      - elsif event.object_type=="Blog"
+        - blog = event.object
+        = t :in
+        = t :activity
+        = link_to blog.activity.name, blog.activity
+        = t :post
+        = t :Blog
+        = link_to blog.bare_name, blog
       - else
         = t event.action
         = " "

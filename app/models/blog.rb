@@ -16,6 +16,10 @@ class Blog < ActiveRecord::Base
     return title+"(#{activity.name})"
   end
 
+  def bare_name
+    return title
+  end
+
   def url
     return activity.url
   end
