@@ -5,6 +5,7 @@
 @import 'mixin';
 
 .app-form {
+  @include orange-link;
   .head { 
     text-align: center;
     @include orange; 
@@ -21,4 +22,12 @@
     @include orange-link;
     font-size: 18px;
   }
+
+  th, td {
+    padding: 10px;
+    text-align: center;
+  }
+  th { background-color: #AAFFFF; }
+  tr.odd { background-color: #FFFFFF; }
+  tr.even { background-color: #EFF7FF; }  
 }

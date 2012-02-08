@@ -243,6 +243,7 @@
     activities:
       back: "<<<"
       title: "%{name} 的活动"
+      warn: "还没有任何活动哦~"
     comments:
       back: "<<<"
       title: "%{name} 的评论"
@@ -361,6 +362,14 @@
         remember_me: "勿忘我"
 
   admin:
+    members:
+      index:
+        back: "<<<"
+        title: "全站成员管理"
+        status: "状态"
+        number: "学号"
+        name: "姓名"
+        nickname: "昵称"
     index:
       form: "申请表管理"
       members: "成员管理"
@@ -392,12 +401,23 @@
         status: "状态"
         submit: "提交修改"
       index:
+        back: "<<<"
         title: "申请表管理"
         group: "申请社团"
         apptime: "申请时间"
         status: "申请状态"
         time: "%{start}-%{end}节"
         detail: "详情"
+    activities:
+      index:
+        back: "<<<"
+        title: "全站活动管理"
+        activity: "活动名称"
+        group: "活动社团"
+        pub: "公开/内部活动"
+        status: "状态"
+        public: "公开"
+        private: "内部"
     groups:
       forms:
         time: "%{start}-%{end}节"
@@ -430,7 +450,8 @@
         id: "学号"
         status: "状态"
       index:
-        title: "社团管理"
+        back: "<<<"
+        title: "全站社团管理"
         name: "社团名称"
         status: "状态"
         email: "社团邮箱"

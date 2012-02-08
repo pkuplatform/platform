@@ -92,6 +92,7 @@ class ActivitiesController < ApplicationController
       if @activity.update_attributes(params[:activity])
         format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
         format.json { head :ok }
+        format.js { head :ok }
       else
         format.html { render action: "edit" }
         format.json { render json: @activity.errors, status: :unprocessable_entity }

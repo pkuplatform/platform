@@ -1,14 +1,16 @@
 .admin.app-form
+  .back
+    = link_to (t '.back'), admin_index_path
   .title
     = t '.title'
   %table
     %tr
-      %td= t '.group'
-      %td= t '.apptime'
-      %td= t '.status'
-      %td= t '.detail'
+      %th= t '.group'
+      %th= t '.apptime'
+      %th= t '.status'
+      %th= t '.detail'
     - @forms.each do |f|
-      %tr
+      %tr{:class => cycle('odd', 'even')}
         %td= f.group.name
         %td
           = l f.huodongshijian
