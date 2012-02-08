@@ -57,7 +57,7 @@ table {
     }
     line-height: 40px;
     @include gray-link;
-    a { font-size: 18px; margin-right: 10px; }
+    a { font-size: 16px; margin-right: 10px; }
   }
 } 
 
@@ -123,6 +123,12 @@ table {
 }
 
 .gogo.card {
+  .avatar { 
+    float: left;
+    img {
+      @include box-radius;
+    }
+  }
   .info { float: right; }
   div { margin-bottom: 10px; }
   .name { @include orange; }

@@ -26,11 +26,11 @@
   .info .admin {
     @include green;
     @include green-link;
-    font-size: 18px;
+    font-size: 16px;
     margin: 5px 0px;
   }
 
-  .info .label { color: #BBB; font-size: 18px; }
+  .info .label { color: #BBB; font-size: 16px; }
   .info .introduction { 
     margin: 5px 0px; 
     min-height: 160px;
