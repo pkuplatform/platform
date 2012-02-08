@@ -16,3 +16,5 @@ public/*.zip
 public/ckeditor_assets
 config/database.yml
 db/sphinx
+public/assets
+platform.war
