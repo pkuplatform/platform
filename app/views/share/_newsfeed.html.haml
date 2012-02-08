@@ -18,6 +18,9 @@
         = link_to comment.commentable.name,comment.commentable
         = t :post
         = link_to (t :comment), comment
+        %pre
+          = "#{comment.user.name}: "
+          = comment.body.truncate(100)
       - elsif event.object_type=="Picture"
         - picture = event.object
         = t :in

@@ -13,6 +13,9 @@
     margin-left: 30px;
     font-size: 1em; 
     padding-top: 10px;
+    .title {
+ 
+    }
   }
   .name { @include orange-link; }
   span { color: #BBB; }
@@ -21,4 +24,13 @@
   border: 1px solid #eee;
   padding: 20px 20px 10px 20px;
   margin-bottom: 10px;
+
+  pre {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    color: #888;
+    background: #eee;
+    font-size: 0.7em;
+  }
 }

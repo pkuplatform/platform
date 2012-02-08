@@ -14,10 +14,14 @@
       .carousel-items
         - @activity.pictures.each do |pic|
           .image-wrap
-            = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"),show_gallery_activity_picture_path(@activity, pic), :class => :gallery_pics
+            = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br />"+pic.remark, :"data-fancybox-group" => "gallery"
       .clear
-      = link_to "<<", "##", :class=>"prev"
-      = link_to ">>", "##", :class=>"next"
+      = link_to "", "##", :class=>"prev"
+      = link_to "", "##", :class=>"next"
+      .inline-hide
+        - @activity.pictures.each do |pic|
+          %div{:id=>"picture-ori-#{pic.id}"}=link_to image_tag(pic.url(:original)), pic
+
   .comments
     .header
       %span= t :comment
