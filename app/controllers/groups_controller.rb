@@ -2,7 +2,10 @@ class GroupsController < ApplicationController
   # layout "groups"
   # GET /groups
   # GET /groups.json
+
   def index
+    @navi = :default
+  
     if params[:sort] == "latest"
       sort = "created_at DESC"
     elsif params[:sort] == "founded"
@@ -30,6 +33,8 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @navi = :default
+
     @group = Group.find(params[:id])
     @more = @group.activities.count > 3
     @core = @group.comments.recent.count > 8
@@ -191,6 +196,7 @@ class GroupsController < ApplicationController
   end
 
   def activities
+    @navi = "activities/navi"
     @group = Group.find(params[:id])
     @activities = @group.activities
   end

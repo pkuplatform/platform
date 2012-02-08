@@ -220,7 +220,7 @@
       create: "新增%{model}"
       update: "更新%{model}"
       submit: "储存%{model}"
-  
+
   groups:
     index:
       category: "类别"
@@ -277,6 +277,14 @@
       second: "新建教室申请表"
       sms: "短信管理"
       desc: "编辑社团介绍"
+    navi:
+      admin: "管理"
+      new: "新建社团"
+      edit: "社团信息管理"
+      members: "成员管理"
+      forms: "申请表管理"
+      sms: "短信管理"
+      activities: "社团活动"
     form:
       name: "名称"
       slogan: "标语"
@@ -324,6 +332,8 @@
       edit: "编辑活动"
     form:
       poster: "海报"
+    navi:
+      group: "回到社团"
 
   site:
     index:
@@ -353,8 +363,12 @@
       home: "个人中心"
       group: "社团中心"
       activity: "活动中心"
-      admin: "后台管理"
       logout: "退出"
+      admin: "后台管理"
+    navi:
+      home: "个人中心"
+      group: "社团中心"
+      activity: "活动中心"
 
   devise:
     sessions:
@@ -523,6 +537,23 @@
         center: "指导中心意见"
         status: "状态"
         classroom: "教室"
+
+  blogs:
+    navi:
+      activity: "返回活动"
+      list: "返回日志列表"
+      new: "新日志"
+
+  albums:
+    navi:
+      activity: "返回活动"
+      list: "返回相册列表"
+      new: "新图片"
+
+  pictures:
+    picture:
+      prev: "上一张"
+      next: "下一张"
 
   profiles:
     side:

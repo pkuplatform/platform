@@ -2,20 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :feedback_init
   before_filter :store_location
-  before_filter :init_secondary_scope
-
-  def init_secondary_scope
-    val = params[:controller]
-    if val == "sms" or val == "form/second_building_applications"
-      @secondary_scope = "groups"
-    elsif val == "mailboxes"
-      @secondary_scope = "profiles"
-    elsif val == "site"
-      @secondary_scope = nil
-    else
-      @secondary_scope = params[:controller]
-    end
-  end
+  
 
   def feedback_init
     @feedback = Feedback.new

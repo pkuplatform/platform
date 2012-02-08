@@ -90,6 +90,7 @@ Platform::Application.routes.draw do
       member do
         post 'comment'
         get 'show_gallery'
+        get 'load'
       end
     end
     resources :albums 

@@ -1,3 +1,46 @@
 // Place all the styles related to the pictures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixin';
+
+.box.picture {
+  .box-header{
+    .avatar {
+      width: 128px;
+      float: left;
+      margin-top: -60px;
+    }
+    .info {
+      float: left;
+      margin-left: 40px;
+      padding: 0;
+      font-size: 16px;
+      .user-name {
+        @include green-link;
+      }
+      .post-in {
+        @include gray;
+      }
+      .time {
+        @include green;
+      }
+
+    }
+    .title {
+      font-size: 1.5em;
+      margin: 0;
+    }
+  }
+  .box-content {
+    margin-top: 30px;
+    width: 100%;
+    img {
+      width:100%;
+    }
+    p {
+      text-align: center;
+      padding: 5px;
+      @include blue-link;
+    }
+  }
+}

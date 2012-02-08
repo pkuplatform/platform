@@ -1,21 +1,2 @@
-.span-16.last
-  .box.detail
-    .box-header
-      = "#{t :activity_albums}: "
-      = link_to(@picture.album.title, @picture.album, :class=>"title")
-      = link_to "#{t :return} #{t :activity} "+@activity.title, @activity
-      .clear
-    .box-content
-      .picture
-        %p
-          %b= t :uploader
-          = link_to(@picture.user.name,@picture.user)
-        %p= image_tag(@picture.url(:medium))
-        %p= @picture.remark
-  .comments
-    .header
-      %span= t :comment
-      = link_to (t :comments_more), '#'
-    .list
-      = render :partial => "share/comments", :locals => { :object => @picture }
-.clear
+.main
+  =render :partial=>'picture'

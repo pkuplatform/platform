@@ -29,4 +29,11 @@ class Picture < ActiveRecord::Base
     album.imageable
   end
 
+  def prev
+    album.pictures[(album.pictures.find_index(self)-1) % album.pictures.count]
+  end
+
+  def next
+    album.pictures[(album.pictures.find_index(self)+1) % album.pictures.count]
+  end
 end

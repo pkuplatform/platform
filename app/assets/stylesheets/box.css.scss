@@ -37,5 +37,8 @@
   }
   .side .like-join, .side .like { text-align: center; color: #BBB; }
   .side .join, .like { @include gray-link; text-align: center; }
+  .box-header {
+    font-size: 1.5em;
+  }
 }
 

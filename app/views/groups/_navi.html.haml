@@ -1,0 +1,12 @@
+= link_to (t 'share.navi.home'), home_path
+= link_to (t 'share.navi.group'), groups_path
+- if @group.nil?
+  = link_to (t 'share.navi.activity'), activities_path
+  = link_to (t '.new'), new_group_path
+- else
+  = link_to (t '.activities'), group_activities_path(@group)
+- if can? :admin, @group
+  = link_to (t '.edit'), edit_group_path
+  = link_to (t '.members'), members_admin_group_path
+  = link_to (t '.forms'), forms_admin_group_path
+  = link_to (t '.sms'), sms_group_path

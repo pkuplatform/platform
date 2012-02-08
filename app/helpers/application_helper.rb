@@ -1,7 +1,13 @@
 module ApplicationHelper
 
-  def secondary_scope
-    return @secondary_scope
+  def navi
+    if @navi == :default
+      params[:controller]+"/navi"
+    elsif @navi
+      @navi
+    else
+      "share/navi"
+    end
   end
 
   def format_datetime(time)
@@ -59,6 +65,10 @@ module ApplicationHelper
 
   def picture_path(picture)
     activity_picture_path(picture.imageable, picture)
+  end
+
+  def load_picture_path(picture)
+    load_activity_picture_path(picture.imageable, picture)
   end
 
   def album_path(album)

@@ -1,6 +1,6 @@
 .side
   .poster
-    = image_tag activity.poster.url(:medium)
+    = link_to (image_tag activity.poster.url(:medium)), activity
   .like-join
     = t :like_count, :count => activity.followers.count
     = " "

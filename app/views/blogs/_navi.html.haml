@@ -1,0 +1,7 @@
+= link_to (t 'share.navi.home'), home_path
+= link_to (t 'share.navi.group'), groups_path
+= link_to (t '.activity'), activity_path(@activity)
+- if !@blog.nil?
+  = link_to (t '.list'), activity_blogs_path(@activity)
+- if (can? :admin, @activity) 
+  = link_to (t '.new'), new_activity_blog_path(@activity)

@@ -15,6 +15,10 @@
   color: rgb(202,225,119);
 }
 
+@mixin gray {
+   color: #BBB; 
+}
+
 @mixin orange-link {
   a { @include orange; text-decoration: none; }
 }
@@ -45,5 +49,13 @@
     float: left; 
     margin-top: 10px;
     @include green-link;
+  }
+}
+
+@mixin black-link {
+  a {
+    color: #333;
+    text-shadow: rgba(50, 50, 50, .3) 1px 1px 3px;
+    font: bold 100% "微软雅黑E\8F6F\96C5\9ED1",Arial,verdana;
   }
 }

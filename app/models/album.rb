@@ -8,7 +8,7 @@ class Album < ActiveRecord::Base
 
   def cover
     if pictures.first.nil?
-      return Picture.first
+      return nil
     else
       return pictures.first
     end
