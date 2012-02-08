@@ -564,6 +564,15 @@
       new: "新图片"
 
   profiles:
+    edit:
+      title: "完善您的个人信息"
+      name: "姓名"
+      nickname: "昵称"
+      gender: "性别"
+      sid: "学号"
+      phone: "电话"
+      avatar: "头像"
+      holder: "添加您的个人简介吧~"
     side:
       like: "%{count}人关注"
     secondary:

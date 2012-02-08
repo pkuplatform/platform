@@ -18,3 +18,12 @@
 .field.avatar.img {
   width: 128px;
 }
+
+.box.profile.form {
+  textarea { 
+    width: 100%; 
+    font-size: 18px;
+  }
+  label { width: 50px; }
+  form { width: 480px; }
+}

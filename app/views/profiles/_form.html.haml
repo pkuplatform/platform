@@ -7,28 +7,26 @@
       %ul
         - @profile.errors.full_messages.each do |msg|
           %li= msg
-  .span-7.last
-    .field
-      = f.label :name, (t :name)
-      = f.text_field :name
-    .field
-      = f.label :nickname, (t :nickname)
-      = f.text_field :nickname
-    .field
-      = f.label :gender, (t :gender)
-      = f.select :gender, [['Male', 1], ['Female', 2]]
-    .field
-      = f.label :student_id, (t :student_id)
-      = f.text_field :student_id
-    .field
-      = f.label :phone, (t :phone)
-      = f.text_field :phone
-  .span-7.last
-    .field.avatar
-      = f.label :avatar, (t :avatar)
-      = f.file_field :avatar
-    .field.avatar.img
-      = image_tag @profile.avatar.url(:small)
+  .field
+    = f.label :name, (t :name)
+    = f.text_field :name
+  .field
+    = f.label :nickname, (t :nickname)
+    = f.text_field :nickname
+  .field
+    = f.label :gender, (t :gender)
+    = f.select :gender, [['Male', 1], ['Female', 2]]
+  .field
+    = f.label :student_id, (t :student_id)
+    = f.text_field :student_id
+  .field
+    = f.label :phone, (t :phone)
+    = f.text_field :phone
+  .field.avatar
+    = f.label :avatar, (t :avatar)
+    = f.file_field :avatar
+  .field.avatar.img
+    = image_tag @profile.avatar.url(:small)
   .clear
   .field
     = f.text_area :description, :size => "75x5", :placeholder => "在这儿添加您的个人简介吧！"
