@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120208054440) do
+ActiveRecord::Schema.define(:version => 20120203011219) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(:version => 20120208054440) do
     t.text     "description"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.string   "location"
-    t.boolean  "public"
-    t.integer  "status"
+    t.string   "location",            :default => ""
+    t.boolean  "public",              :default => true
+    t.integer  "status",              :default => 1
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20120208054440) do
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
-    t.integer  "points"
+    t.integer  "points",              :default => 0
     t.boolean  "delta",               :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -132,12 +132,12 @@ ActiveRecord::Schema.define(:version => 20120208054440) do
     t.integer  "huodongrenshu"
     t.string   "zhidaozhongxin"
     t.string   "jiaowuzhang"
+    t.string   "classroom"
     t.string   "beizhu"
     t.integer  "status"
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "classroom"
   end
 
   add_index "form_second_building_applications", ["group_id"], :name => "index_form_second_building_applications_on_group_id"
@@ -145,19 +145,19 @@ ActiveRecord::Schema.define(:version => 20120208054440) do
   create_table "groups", :force => true do |t|
     t.integer  "category_id"
     t.string   "name"
-    t.string   "slogan"
+    t.string   "slogan",            :default => ""
     t.text     "introduction"
     t.text     "description"
     t.text     "history"
     t.text     "organization"
-    t.string   "email"
+    t.string   "email",             :default => ""
     t.date     "founded_at"
-    t.integer  "status"
+    t.integer  "status",            :default => 4
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.integer  "points"
+    t.integer  "points",            :default => 0
     t.boolean  "delta",             :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -226,13 +226,13 @@ ActiveRecord::Schema.define(:version => 20120208054440) do
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "status"
+    t.integer  "status",              :default => 4
     t.string   "name"
     t.string   "nickname"
-    t.integer  "gender"
+    t.integer  "gender",              :default => 1
     t.string   "student_id"
     t.string   "phone"
-    t.integer  "points"
+    t.integer  "points",              :default => 0
     t.text     "description"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -256,9 +256,9 @@ ActiveRecord::Schema.define(:version => 20120208054440) do
   create_table "sms", :force => true do |t|
     t.integer  "group_id"
     t.text     "content"
+    t.integer  "status",     :default => -1
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status"
   end
 
   add_index "sms", ["group_id"], :name => "index_sms_on_group_id"

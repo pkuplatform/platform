@@ -3,6 +3,7 @@ class CreateSms < ActiveRecord::Migration
     create_table :sms do |t|
       t.references :group
       t.text :content
+      t.integer :status, :default => -1
 
       t.timestamps
     end

@@ -18,6 +18,7 @@ class CreateFormSecondBuildingApplications < ActiveRecord::Migration
       t.integer :huodongrenshu
       t.string :zhidaozhongxin
       t.string :jiaowuzhang
+      t.string :classroom
       t.string :beizhu
       t.integer :status
       t.references :group

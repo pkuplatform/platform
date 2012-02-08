@@ -59,7 +59,6 @@ class Group < ActiveRecord::Base
     # fields
     indexes :name, :sortable => true
     indexes :introduction
-    indexes :description
     
     # attributes
     has :created_at, :updated_at
