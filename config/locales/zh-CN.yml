@@ -371,6 +371,9 @@
       activity: "活动中心"
 
   devise:
+    registrations:
+      new:
+        title: "注册"
     sessions:
       new:
         remember_me: "勿忘我"

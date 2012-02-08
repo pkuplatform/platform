@@ -231,3 +231,14 @@ table {
     input {background-position: -21px -49px;}
   }
 }
+
+.submit.button-wrapper { text-align: right; margin-top: 30px; }
+.sign_up.box.form {
+  margin-top: 80px;
+  input[type=email], input[type=password] { width: 400px; }
+}
+.sign-in-form .func { 
+  margin: 20px;
+  font-size: 18px;
+  text-align: right; 
+}
