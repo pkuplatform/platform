@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
+    @navi = :default
     @activities = Activity.first(50)
 
     respond_to do |format|
@@ -11,13 +12,11 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def picture
-    @picture = Picture.find(params[:pic_id])
-  end
 
   # GET /activities/1
   # GET /activities/1.json
   def show
+    @navi = :default
     @activity = Activity.find(params[:id])
     @group = @activity.group
     if @activity.admins.include?(current_user)
@@ -33,6 +32,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
+    @navi = :default
     @group = Group.find(params[:group_id])
     if !(can? :admin, @group) 
       redirect_to @group

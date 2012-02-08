@@ -6,7 +6,7 @@
 
 .user.card {
   margin-top: 100px;
-  .avatar { margin-top: -70px; }
+  .avatar { margin-top: -70px;}
   .student-id, .phone { margin: 5px 0px; }
   .label { color: #BBB; margin-right: 10px; } 
   .val { @include green; }
@@ -14,4 +14,7 @@
   .description { color: #999; margin: 10px 0px; }
   .group-activity { @include blue; }
   .like { margin-top: 20px; }
+}
+.field.avatar.img {
+  width: 128px;
 }

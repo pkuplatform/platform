@@ -109,4 +109,11 @@ class PicturesController < ApplicationController
     end
   end
 
+  def load
+    @picture = Picture.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

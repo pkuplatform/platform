@@ -1,15 +1,19 @@
 .span-16.last
   .box.detail
     .box-header
-      = t(:activity_albums)+t(:list)
-      = link_to "#{t :return} "+@activity.title, @activity
+      = link_to(@activity.name, @activity)
+      = t(:albums_list)
       .clear
     .box-content
       %ul.album-pictures
         - @albums.each do |album|
           %a{:href=>album_path(album)}
             %li
-              %p.cover=image_tag(album.cover.url(:small)) if album.cover
+              %p.cover
+                -if album.cover
+                  =image_tag(album.cover.url(:small)) 
+                -else
+                  %span.empty-album=t :empty_album
               %p=album.title
         .clear
 .clear

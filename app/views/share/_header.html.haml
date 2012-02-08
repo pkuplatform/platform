@@ -2,6 +2,8 @@
   .header-wrapper
     .header
       .logo
+      .navi
+        = render navi if navi
       .panel
         = link_to (t '.mailbox'), mailboxes_path
         = link_to (t '.setting'), edit_profile_path(current_user)

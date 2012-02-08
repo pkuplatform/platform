@@ -1,10 +1,12 @@
 class BlogsController < ApplicationController
   def show
+    @navi = :default
     @blog = Blog.find(params[:id])
     @activity = @blog.activity
   end
 
   def comment
+    @navi = :default
     @blog = Blog.find(params[:id])
     @comment = @blog.comments.create(:user=>current_user,:body=>params["comment-content"])
  
@@ -14,6 +16,7 @@ class BlogsController < ApplicationController
   end
 
   def new
+    @navi = :default
     @activity = Activity.find(params[:activity_id])
     @blog = Blog.new
   end
@@ -34,6 +37,7 @@ class BlogsController < ApplicationController
   end
 
   def index
+    @navi = :default
     @activity = Activity.find(params[:activity_id])
     @blogs = @activity.blogs
   end

@@ -1,19 +1,16 @@
-.span-16.last
-  .box.detail
-    .box-header
-      = @album.title
-      = link_to "#{t :return}#{t(:activity_albums)+t(:list)}: "+@activity.title, albums_path(@activity)
-      .clear
-    .box-body
-      %ul.album-pictures
-        - @album.pictures.each do |pic|
-          %a{:href=>album_picture_path(@album,pic)}
-            %li
-              %p= image_tag(pic.url(:small))
-              %p= pic.remark
-              %p
-                ="#{t :comment}: "
-                =pic.comments.count
+.box.detail
+  .box-header
+    = (t :album)+@album.title
+    .clear
+  .box-body
+    %ul.album-pictures
+      - @album.pictures.each do |pic|
+        %a{:href=>picture_path(pic)}
+          %li
+            %p= image_tag(pic.url(:small))
+            %p= pic.remark
+            %p
+              ="#{t :comment}: "
+              =pic.comments.count
 
-        .clear
-.clear
+      .clear

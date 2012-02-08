@@ -26,8 +26,6 @@ class SiteController < ApplicationController
         @events << newsfeed.event
       end
     end
-    
-    @secondary_scope = 'profiles'
   end
 
 end

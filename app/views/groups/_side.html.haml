@@ -1,6 +1,6 @@
 .side
   .logo
-    = image_tag group.logo.url(:card)
+    = link_to (image_tag group.logo.url(:card)), group
   .like-join
     = t :like_count, :count => group.followers.count
     = " "

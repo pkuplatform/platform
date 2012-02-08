@@ -1,8 +1,0 @@
-.secondary
-  %ul
-    %li= link_to (t :home), root_path
-    %li= link_to (t :blogs_list), activity_blogs_path(@activity)
-    - if can? :admin, @activity
-      %li= link_to (t 'new_blog'), new_activity_blog_path(@activity)
-    %li= link_to "#{t :return} "+@activity.title, @activity
-  .clear

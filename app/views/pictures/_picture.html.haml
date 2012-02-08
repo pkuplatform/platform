@@ -1,16 +1,23 @@
-.picture
-  %p#notice= notice
-  %p
-    %b Album:
-    = @picture.album.title
-  %p
-    %b User:
-    = @picture.user.name
-  %p
-    = image_tag(@picture.photo.url(:medium))
-  %p
-    = @picture.remark
-  = render :partial => "share/comments", :locals => {:object => @picture}
-  = link_to 'Edit', edit_picture_path(@picture)
-  |
-  \#{link_to 'Back', pictures_path}
+.box.picture
+  .box-header
+    .avatar= link_to(image_tag(@picture.user.url(:small)),@picture.user)
+    .info 
+      .title= link_to(@picture.album.title, @picture.album, :class=>"title")
+      .uploader
+        %span.user-name= link_to(@picture.user.name,@picture.user)
+        %span.post-in= (t :post) + (t :in)
+        %span.time= l @picture.created_at
+    .clear
+  .box-content
+    = image_tag(@picture.url(:original))
+    %p= @picture.remark
+    %p
+      = link_to (t ".prev"),load_picture_path(@picture.prev),:remote=>true
+      = "/"
+      = link_to (t ".next"),load_picture_path(@picture.next),:remote=>true
+.picture.comments
+  .header
+    %span= t :comment
+    = link_to (t :comments_more), '#'
+  .list
+    = render :partial => "share/comments", :locals => { :object => @picture }
