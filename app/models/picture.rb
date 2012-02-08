@@ -14,6 +14,10 @@ class Picture < ActiveRecord::Base
   end
 
   def name
+    album.title + "(#{album.imageable.name})"
+  end
+
+  def bare_name
     album.title
   end
 

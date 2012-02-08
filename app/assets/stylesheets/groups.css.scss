@@ -46,7 +46,7 @@
   padding: 10px 20px;
   @include box-gradual-change;
   @include box-radius;
-
+  font-size: 0.8em;
   .category, .sort, .my { overflow: hidden; }
   .split { 
     margin: 5px 0px;
