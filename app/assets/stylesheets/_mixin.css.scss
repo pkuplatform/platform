@@ -1,9 +1,3 @@
-@mixin background-color {
-  background: url('screen_background.gif') repeat-x;
-  background-color: #EEE;
-}
-
-
 @mixin blue {
   color: rgb(144,220,220);
 }

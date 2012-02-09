@@ -5,13 +5,12 @@ body {
   font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
   min-height: 100%;
   min-width: 100%;
-  @include background-color;
+  background: url("fabric_plaid.png");
 }
 
 html {
   min-height: 100%;
   min-width: 100%;
-  @include background-color;
 }
 
 
@@ -34,7 +33,7 @@ table {
 .container {
   min-height: 100%;
   width: 960px;
-  margin: 0 auto;
+  margin: 100px auto;
 }
 
 .container.noheader {
@@ -117,6 +116,7 @@ table {
 .icon.exit    { background-position: -109px -98px; }
 
 .header-wrapper {
+  background: url('screen_background.gif') repeat-x;
   position: fixed;
   top:0;
   left:0;
