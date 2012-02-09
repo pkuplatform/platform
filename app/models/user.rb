@@ -41,7 +41,11 @@ class User < ActiveRecord::Base
   end
 
   def name
-    profile.name
+    if profile.nil?
+      return ""
+    else
+      return profile.name || ""
+    end
   end
 
   def avatar(size=:small)

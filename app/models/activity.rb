@@ -46,7 +46,7 @@ class Activity < ActiveRecord::Base
   end
 
   def name
-    title
+    title || ""
   end
 
   def admin

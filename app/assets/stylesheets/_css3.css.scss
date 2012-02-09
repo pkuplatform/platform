@@ -20,10 +20,10 @@
   background-image: linear-gradient(90deg , rgb(240,240,240) 0%, rgb(255,255,255) 100%);
 }
 
-@mixin box-inset($radius:3px, $spread:3px) {
-  -webkit-box-shadow: inset 0px 0px $radius $spread rgba(150, 150, 150, 0.4);
-  -moz-box-shadow: inset 0px 0px $radius $spread rgba(150, 150, 150, 0.4);
-  box-shadow: inset 0px 0px $radius $spread rgba(150, 150, 150, 0.4);
+@mixin box-inset($radius:3px, $spread:3px, $color: rgba(150, 150, 150, 0.4)) {
+  -webkit-box-shadow: inset 0px 0px $radius $spread $color;
+  -moz-box-shadow: inset 0px 0px $radius $spread $color;
+  box-shadow: inset 0px 0px $radius $spread $color;
 }
 
 @mixin lbubble {

@@ -260,6 +260,8 @@
     organization:
       title: "组织构架"
       back: "<<<"
+    introduction:
+      title: "组织简介"
     join:
       join: "参加>>"
       exit: "退出>>"
@@ -354,6 +356,29 @@
       mailbox: "站内信"
       setting: "设置"
       logout: "离开"
+      home: "个人首页"
+      group: "社团中心"
+      curgroup: "社团：%{name}"
+      activity: "活动中心"
+      curactivity: "活动：%{name}"
+      groups:
+        new: "+新社团"
+        admin: "社团管理"
+        edit: "信息管理"
+        members: "成员管理"
+        forms: "申请表管理"
+        sms: "短信管理"
+        activities: "社团活动"
+        new_activity: "+社团活动"
+        infos: "社团信息"
+      activities:
+        new: "+新活动"
+        admin: "活动管理"
+        blogs: "所有日志"
+        new_blog: "+新日志"
+        albums: "所有相册"
+        new_picture: "+新图片"
+        edit: "修改活动"
     newsfeed:
       at: "在"
       before: "前"

@@ -1,7 +1,58 @@
 -if user_signed_in?
   .header-wrapper
     .header
-      .logo
+      %ul.dropdown.navi
+        %li#navi-home
+          = link_to (t '.home'), home_path
+        %li#navi-group-center
+          = link_to (t '.group'), groups_path
+          %ul.dropdown-menu
+            %li= link_to (t ".groups.new"), new_group_path
+        %li#navi-activity-center
+          = link_to (t '.activity'), activities_path
+        - if @group&&@group.id&&!(@activity&&@activity.id)
+          %li#navi-cur-group
+            = link_to (t '.curgroup', :name=>@group.name), group_path(@group)
+            %ul.dropdown-menu
+              %li
+                = link_to (t '.groups.activities'), group_activities_path(@group)
+                -if can? :admin, @group
+                  %ul
+                    %li=link_to (t '.groups.new_activity'), new_group_activity_path(@group)
+              %li
+                = link_to (t '.groups.infos'), "#"
+                %ul
+                  %li= link_to (t 'groups.description.title'), description_group_path(@group)
+                  %li= link_to (t 'groups.history.title'), description_group_path(@group)
+                  %li= link_to (t 'groups.organization.title'), organization_group_path(@group)
+
+              - if can? :admin, @group
+                %li
+                  = link_to (t '.groups.admin'), "#"
+                  %ul
+                    %li= link_to (t '.groups.edit'), edit_group_path(@group)
+                    %li= link_to (t '.groups.members'), members_admin_group_path(@group)
+                    %li= link_to (t '.groups.forms'), forms_admin_group_path(@group)
+                    %li= link_to (t '.groups.sms'), sms_group_path(@group)
+        - if (@activity&&@activity.id)
+          %li#navi-cur-activity
+            = link_to (t '.curactivity', :name=>@activity.name), activity_path(@activity)
+            %ul.dropdown-menu
+              %li
+                = link_to (t '.activities.blogs'), activity_blogs_path(@activity)
+                -if can? :admin, @activity
+                  %ul
+                    %li= link_to (t '.activities.new_blog'), new_activity_blog_path(@activity)
+              %li
+                = link_to (t '.activities.albums'), activity_albums_path(@activity)
+                -if can? :admin, @activity
+                  %ul
+                    %li= link_to (t '.activities.new_picture'), new_activity_picture_path(@activity)
+              - if can? :admin, @activity
+                %li
+                  = link_to (t '.activities.admin'), "#"
+                  %ul
+                    %li= link_to (t '.activities.edit'), edit_group_activity_path(@activity.group, @activity)
       .panel
         .mailbox
           = link_to (t '.mailbox'), mailboxes_path, { :class => "icon mailbox" }
