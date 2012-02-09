@@ -108,9 +108,10 @@ table {
 .header-wrapper {
   background: url('bg.png');
   position: fixed;
-  width: 100%;
   top:0;
   left:0;
+  right:0;
+  overflow: visible;
   @include glossy(0,40%);
 }
 
@@ -118,19 +119,61 @@ table {
   width: 960px;
   height: 30px;
   margin: 0px auto;
-  margin-top:4px;
-  overflow: hidden;
+  overflow: visible;
   @include black-link;
-  a {
-    margin: 10px;
-  }
   .navi {
     float: left;
  }
   .panel { 
     float: right; 
   }
+  li {
+    list-style:none;
+    float: left;
+    line-height:18px;
+  }
 }
+
+/* 
+  LEVEL ONE
+*/
+ul.dropdown                         { position: relative; }
+ul.dropdown li                      { font-weight: bold; float: left; padding: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+ul.dropdown li a                    {  display: block; }
+ul.dropdown li.hover,
+ul.dropdown li:hover                { @include box-inset(30px,0px,rgba(255,255,255,.8));  position: relative; }
+
+
+/* 
+  LEVEL TWO
+*/
+ul.dropdown ul { visibility: hidden; position: absolute; top: 100%; left: 0;  
+  right:40px;
+
+}
+ul.dropdown ul li { 
+  width: 100%;  
+
+  font-weight: normal;
+  background: url('bg.png'); 
+  border-bottom: 1px solid #ccc; 
+  float: none; 
+  height: 20px;
+  font-size: 0.8em;
+}
+
+/* 
+  LEVEL THREE
+*/
+ul.dropdown ul ul           { left: 100%; top: 0; width:120px; }
+ul.dropdown li:hover > ul       { visibility: visible; }
+           
+ul.dropdown ul li a { border-right: none; width: 100%; display: inline-block; } 
+
 
 .gogo.card {
   .avatar { 
