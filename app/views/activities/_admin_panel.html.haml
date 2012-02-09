@@ -1,0 +1,8 @@
+.admin-panel
+  .header
+    %span= t '.admin'
+  .list
+    %ul
+      %li= link_to (t '.info'), edit_group_activity_path(@group, @activity)
+      %li= link_to (t '.blogs'), activity_blogs_path(@activity)
+      %li= link_to (t '.albums'), activity_albums_path(@activity)

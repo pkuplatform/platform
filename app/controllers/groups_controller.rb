@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @more = @group.activities.count > 3
     @core = @group.comments.recent.count > 8
-    @members = @group.members.order("user_groups.updated_at DESC").first(14)
+    @members = @group.admins + @group.members.order("user_groups.updated_at DESC").first(14)
     @mere = @group.members.count > 14
 
     respond_to do |format|

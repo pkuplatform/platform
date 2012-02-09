@@ -16,9 +16,11 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
-    @navi = :default
     @activity = Activity.find(params[:id])
     @group = @activity.group
+    @bore = @activity.blogs.count > 4
+    @pore = @activity.pictures.count > 6
+    @core = @activity.comments.recent.count > 6
     if @activity.admins.include?(current_user)
       @is_admin = true
     end

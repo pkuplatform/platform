@@ -1,30 +1,6 @@
 .main
   = render :partial => 'board', :object => @activity, :as => :activity
-  .blogs
-    .header
-      %span= t "Blog"
-      = link_to (t :blogs_more), activity_blogs_path(@activity)
-    .list
-      = render :partial => "blogs/blog", :collection => @activity.blogs
-  .pictures
-    .header
-      %span= t "Picture"
-      = link_to (t :pictures_more), activity_pictures_path(@activity)
-    .box.image_carousel
-      .carousel-items
-        - @activity.pictures.each do |pic|
-          .image-wrap
-            = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br />"+pic.remark, :"data-fancybox-group" => "gallery"
-      .clear
-      = link_to "", "##", :class=>"prev"
-      = link_to "", "##", :class=>"next"
-      .inline-hide
-        - @activity.pictures.each do |pic|
-          %div{:id=>"picture-ori-#{pic.id}"}=link_to image_tag(pic.url(:original)), pic
-
-  .comments
-    .header
-      %span= t :comment
-      = link_to (t :comments_more), '#'
-    .list
-      = render :partial => "share/comments", :locals => { :object => @activity }
+  = render :partial => 'admin_panel' if can? :admin, @activity
+  = render :partial => 'blogs'
+  = render :partial => 'pictures'
+  = render :partial => 'comments'

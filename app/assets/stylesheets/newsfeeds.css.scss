@@ -2,9 +2,9 @@
 @import 'mixin';
 
 .newsfeed {
-  @include box-gradual-change;
   @include box-radius;
   @include orange-link;
+  background: url("groovepaper.png");
   overflow: hidden;
   .avatar  { float: left;  }
   .poster  { float: right; }
@@ -19,10 +19,38 @@
   }
   .name { @include orange-link; }
   span { color: #BBB; }
-  .time { @include green; }
+  .time { color: #888; }
   .object { @include orange-link; }
   border: 1px solid #eee;
   padding: 20px 20px 10px 20px;
+  margin-bottom: 10px;
+
+  pre {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    color: #888;
+    background: #eee;
+    font-size: 0.7em;
+  }
+}
+
+.news {
+  @include orange-link;
+  overflow: hidden;
+  .content { 
+    width: 450px;
+    margin-left: 30px;
+    font-size: 1em; 
+    padding-top: 10px;
+    .title {
+ 
+    }
+  }
+  .name { @include orange-link; }
+  span { color: #BBB; }
+  .time { @include green; }
+  .object { @include orange-link; }
   margin-bottom: 10px;
 
   pre {

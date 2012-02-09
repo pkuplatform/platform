@@ -1,8 +1,8 @@
-.newsfeed
-  %span.name= link_to subject.name, subject
+.news
+  %span.name= link_to subject.name.truncate(10), subject
   %span= t '.at'
   %span.time= distance_of_time_in_words_to_now(event.created_at)
   %span= t '.before'
   %span.action= t '.action', :action => t(event.action)
   %span= t event.object_type
-  %span.object= link_to object.name, object
+  %span.object= link_to object.name.truncate(20), object

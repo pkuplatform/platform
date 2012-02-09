@@ -2,9 +2,10 @@
   .header-wrapper
     .header
       .logo
-      .navi
-        = render navi if navi
       .panel
-        = link_to (t '.mailbox'), mailboxes_path
-        = link_to (t '.setting'), edit_profile_path(current_user.profile)
-        = link_to (t '.logout'), destroy_user_session_path, :method => :delete
+        .mailbox
+          = link_to (t '.mailbox'), mailboxes_path, { :class => "icon mailbox" }
+        .setting
+          = link_to (t '.setting'), edit_profile_path(current_user.profile), { :class => "icon setting" }
+        .exit
+          = link_to (t '.logout'), destroy_user_session_path, { :method => :delete, :class => "icon exit" }

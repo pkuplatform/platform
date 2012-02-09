@@ -1,5 +1,6 @@
 @mixin background-color {
-  background: url('bg.jpg');
+  background: url('screen_background.gif') repeat-x;
+  background-color: #EEE;
 }
 
 

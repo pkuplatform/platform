@@ -5,9 +5,9 @@
 @import 'css3';
 @import 'mixin';
 
-.group.main { margin-top: 50px; }
+.group.main .comments .list { margin-top: 0px; }
 .group.card .like-join { margin-top: 10px; }
-.group.board { margin-top: 20px; overflow: visible; }
+.group.board { overflow: visible; }
 .group.board .side {
   text-align: center;
   .logo { margin-top: -70px; }
@@ -15,6 +15,7 @@
 }
 
 .group .info { 
+  .introduction { margin-top: -20px; }
   .category, .activity { 
     @include blue;
     font-size: 16px;
@@ -44,6 +45,7 @@
 }
 
 .groups.sort-filter {
+  margin-bottom: 30px;
   padding: 10px 20px;
   @include box-gradual-change;
   @include box-radius;
@@ -84,11 +86,16 @@
   margin-top: 50px;
   @include back;
   @include title;
+  .header  { margin-bottom: 20px; }
   ul { overflow: hidden; }
   li {
     list-style: none;
     float: left;
     margin: 10px 10px;
+  }
+  .box { 
+    padding: 10px 20px; 
+    .name { text-align: center; }
   }
   .box img { 
     width: 64px; 

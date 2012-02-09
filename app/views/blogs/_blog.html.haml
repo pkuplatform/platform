@@ -7,5 +7,5 @@
     %span.time= distance_of_time_in_words_to_now(blog.created_at)
     %span.gray= t :post_blog
     %span.title= link_to blog.title, [@activity,blog]
-    .content= blog.content
+    .content= blog.content.truncate(100)
   .clear

@@ -12,7 +12,6 @@
 .activity .info .time { @include blue; }
 
 .activity.board {
-  margin-top: 100px;
   .poster { margin-top: -70px; }
   .like-join { margin-top: 40px; }
   .info .time, .info .location { @include green; }
@@ -72,4 +71,15 @@ a.prev span, a.next span {
 }
 .inline-hide {
   display:none;
+}
+
+.main {
+  .header { margin-bottom: 20px; }
+}
+.box.no-content {
+  text-align: center;
+}
+
+.admin-panel {
+  margin-bottom: 30px;
 }

@@ -1,0 +1,12 @@
+.inset-box.site
+  %ul
+    - @activities.each do |activity|
+      %li
+        .banner
+          = image_tag activity.banner.url(:banner)
+        .detail
+          .title= activity.title.truncate(10)
+          .location= activity.location.truncate(10)
+          .time= l activity.start_at, :format => :short
+
+        

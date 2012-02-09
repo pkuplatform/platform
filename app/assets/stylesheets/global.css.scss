@@ -5,7 +5,7 @@ body {
   font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
   min-height: 100%;
   min-width: 100%;
-  @include orange-link;
+  @include background-color;
 }
 
 html {
@@ -13,6 +13,7 @@ html {
   min-width: 100%;
   @include background-color;
 }
+
 
 table { 
   width: 100%; 
@@ -23,7 +24,6 @@ table {
 .sidebar { 
   width: 220px; 
   float: right;
-  margin-top: 100px;
 }
 
 .content { 
@@ -33,14 +33,12 @@ table {
 
 .container {
   min-height: 100%;
-  @include background-color;
   width: 960px;
   margin: 0 auto;
-  margin-top: 60px;
-  margin-bottom: 30px;
-  &.noheader {
-    margin-top: 30px;
-  }
+}
+
+.container.noheader {
+  .content, .sidebar { margin-top: 100px; }
 }
 
 .clear { clear: both; }
@@ -105,30 +103,45 @@ table {
   }
 }
 
+.icon {
+  background: url("icon.png");
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  text-indent: -999px;
+}
+
+.icon.mailbox { background-position: -36px -98px; }
+.icon.setting { background-position: -72px -98px; }
+.icon.exit    { background-position: -109px -98px; }
+
 .header-wrapper {
-  background: url('bg.png');
-  position: fixed;
   width: 100%;
-  top:0;
-  left:0;
-  @include glossy(0,40%);
+  margin-bottom: 30px;
 }
 
 .header-wrapper .header {
   width: 960px;
-  height: 30px;
+  height: 70px;
   margin: 0px auto;
-  margin-top:4px;
   overflow: hidden;
-  @include black-link;
-  a {
-    margin: 10px;
-  }
   .navi {
     float: left;
- }
+    a {
+        color: #EEEEEE;
+        margin: 10px;
+        text-decoration: none;
+        text-shadow: 0 -2px 2px #4D6170;
+        font-size: 20px;
+      }
+      a:hover { @include orange; }
+  }
+  
   .panel { 
+    margin-top: 40px;
     float: right; 
+    div { width: 50px; float: left; }
   }
 }
 
@@ -246,4 +259,11 @@ table {
   margin: 20px;
   font-size: 18px;
   text-align: right; 
+}
+
+.inset-box {
+  @include box-inset;
+  @include box-radius;
+  background: white;
+  padding: 20px;
 }
