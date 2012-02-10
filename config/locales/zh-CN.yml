@@ -645,6 +645,9 @@
       like: "%{count}人关注"
     secondary:
       new_group: "新建社团"
+    form:
+      male: "男生"
+      femail: "女生"
 
   sms:
     index:
