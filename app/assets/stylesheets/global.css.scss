@@ -140,6 +140,7 @@ body.form {
   left:0;
   right:0;
   overflow: visible;
+  z-index: 10000;
 }
 
 .header-wrapper .header {
@@ -362,10 +363,11 @@ ul.panel {
   .list { 
     @include box-gradual-change; 
     @include box-radius;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    @include box-shadow2;
     padding: 20px;
   }
 }
 
+span.cke_skin_kama { border: 0px !important; }
+.field.area label { vertical-align: top; }
+.field { @include blue-link; }

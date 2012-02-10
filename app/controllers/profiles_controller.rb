@@ -1,5 +1,18 @@
 class ProfilesController < ApplicationController
   before_filter :authenticate_user!
+  layout :resolve_layout
+
+  private
+  def resolve_layout
+    case action_name
+    when "new", "edit"
+      "form"
+    else
+      "application"
+    end
+  end
+  
+  public
   # GET /profiles/1
   # GET /profiles/1.json
   def show

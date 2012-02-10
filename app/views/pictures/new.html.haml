@@ -1,7 +1,3 @@
-.box.new-picture
-  .box-header
-    = t ".title"
-    = link_to @activity.title, @activity 
-  .box-body       
-    = render 'form'
-.clear
+.title= t ".title"
+.box.form
+  = render 'form'

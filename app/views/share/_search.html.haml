@@ -1,3 +1,5 @@
-.search.input-wrapper
+.search
   = form_tag search_index_path do
-    = text_field_tag :q, nil, :placeholder => t('.holder')
+    .input-wrapper
+      = text_field_tag :q, nil, :placeholder => t('.holder')
+      .sprite
