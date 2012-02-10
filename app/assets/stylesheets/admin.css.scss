@@ -6,9 +6,11 @@
 @import 'mixin';
 
 .admin.box {
+  margin-top: 150px;
   .title { 
     text-align: center;
     @include orange;
+    text-shadow: none;
   }
   ul { 
     overflow: hidden; 

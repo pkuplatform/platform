@@ -1,4 +1,5 @@
 class Admin::ActivitiesController < ApplicationController
+  layout "form"
 
   def index
     if params[:filter] == "approving"
@@ -14,9 +15,9 @@ class Admin::ActivitiesController < ApplicationController
     end
 
     if filter.nil?
-      @activities = Activity.page(params[:page])
+      @activities = Activity.paginate(:page => params[:page], :per_page => 10)
     else
-      @activities = Activity.where(:status => filter).page(params[:page])
+      @activities = Activity.where(:status => filter).paginate(:page => params[:page], :per_page => 10)
     end
   end
 

@@ -1,4 +1,5 @@
 class Admin::FormsController < ApplicationController
+  layout "form"
   def index
     if params[:filter] == "approving"
       filter = Constant::Approving
@@ -11,9 +12,9 @@ class Admin::FormsController < ApplicationController
     end
 
     if filter.nil?
-      @forms = Form::SecondBuildingApplication.page(params[:page])
+      @forms = Form::SecondBuildingApplication.paginate(:page => params[:page], :per_page => 10)
     else
-      @forms = Form::SecondBuildingApplication.where(:status => filter).page(params[:page])
+      @forms = Form::SecondBuildingApplication.where(:status => filter).paginate(:page => params[:page], :per_page => 10)
     end
   end
 

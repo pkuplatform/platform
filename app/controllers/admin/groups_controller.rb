@@ -15,9 +15,9 @@ class Admin::GroupsController < ApplicationController
     end
 
     if filter.nil?
-      @groups = Group.page(params[:page])
+      @groups = Group.paginate(:page => params[:page], :per_page => 10)
     else
-      @groups = Group.where(:status => filter).page(params[:page])
+      @groups = Group.where(:status => filter).paginate(:page => params[:page], :per_page => 10)
     end
   end
 

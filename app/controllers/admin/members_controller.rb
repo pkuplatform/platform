@@ -1,4 +1,5 @@
 class Admin::MembersController < ApplicationController
+  layout "form"
   def index
     if params[:filter] == "approving"
       filter = Constant::Approving
@@ -13,9 +14,9 @@ class Admin::MembersController < ApplicationController
     end
 
     if filter.nil?
-      @profiles = Profile.page(params[:page])
+      @profiles = Profile.paginate(:page => params[:page], :per_page => 10)
     else
-      @profiles = Profile.where(:status => filter).page(params[:page])
+      @profiles = Profile.where(:status => filter).paginate(:page => params[:page], :per_page => 10)
     end
   end
 end
