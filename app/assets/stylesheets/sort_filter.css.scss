@@ -1,0 +1,21 @@
+@import 'css3';
+@import 'mixin';
+
+.sort-filter {
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  @include box-gradual-change;
+  @include box-radius;
+  .category, .sort, .my { overflow: hidden; }
+  .split { 
+    margin: 5px 0px;
+  }
+
+  li { 
+    list-style: none; 
+    float: left;
+    @include orange-link;
+    margin-right: 10px;
+  }
+}
+

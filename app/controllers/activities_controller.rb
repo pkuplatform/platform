@@ -1,10 +1,44 @@
 class ActivitiesController < ApplicationController
+  before_filter :authenticate_user!
+  layout :resolve_layout
+
+  private
+  def resolve_layout
+    case action_name
+    when "new", "edit"
+      "form"
+    else
+      "application"
+    end
+  end
+
+  public
   #layout 'activities'
   # GET /activities
   # GET /activities.json
   def index
     @navi = :default
-    @activities = Activity.first(50)
+
+    if params[:sort] == "latest"
+      sort = "created_at DESC"
+    elsif params[:sort] == "pop"
+      sort = "points DESC"
+    else
+      sort = "created_at DESC"
+    end
+
+    @activities = []
+    if params[:filter] == "category"
+      Category.find(params[:id]).groups.each do |group|
+        @activities += group.activities
+      end
+    elsif params[:filter] == "join"
+      @activities = current_user.join_activities.order(sort)
+    elsif params[:filter] == "like"
+      @activities = current_user.like_activities.order(sort)
+    else
+      @activities = Activity.order(sort).limit(50)
+    end
 
     respond_to do |format|
       format.html # index.html.erb

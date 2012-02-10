@@ -1,7 +1,7 @@
 .info
   .title= link_to activity.title, activity
   .admin
-    %span.group-name= link_to activity.group.name, activity.group
+    %span.group-name= link_to activity.group.name.truncate(20), activity.group
     - if board
       %span= t :host
       %span= link_to activity.admin.profile.name, activity.admin.profile

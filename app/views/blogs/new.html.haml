@@ -1,13 +1,9 @@
-.span-7.append-1
-.box.new-blog
-  .box-header
-    = t :new_blog
-  .box-body
-    = form_for [@activity,@blog] do |f|
-      .blog-title
-        =f.text_field :title,:placeholder=>(t :title)
-      .blog-content
-        =f.text_area :content,:placeholder=>(t :content)
-      %p
-        =f.submit (t :new_blog)
-.clear
+.title= t '.title'
+.new-blog
+  = form_for [@activity,@blog] do |f|
+    .input-wrapper
+      =f.text_field :title,:placeholder=>(t :title)
+    .blog-content
+      =f.cktext_area :content,:placeholder=>(t :content)
+    .button-wrapper
+      =f.submit (t '.submit')

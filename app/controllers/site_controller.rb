@@ -1,5 +1,6 @@
 class SiteController < ApplicationController
   before_filter :authenticate_user!, :only => [:home]
+  layout "site"
 
   def index
     redirect_to home_path if user_signed_in?

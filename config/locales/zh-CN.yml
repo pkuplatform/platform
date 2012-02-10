@@ -319,10 +319,22 @@
       save: "完成!"
 
   activities:
+    index:
+      sort: "排序"
+      my: "我的"
+      like: "关注"
+      join: "参加"
+      latest: "最新"
+      pop: "最热门"
+      category: "分类"
     new:
       title: "新建活动"
     edit:
       title: "编辑活动"
+    blogs:
+      empty: "没有发表日志"
+    pictures:
+      empty: "没有上传图片"
     info:
       location: "地点"
     join:
@@ -337,13 +349,22 @@
       edit: "编辑活动"
     form:
       poster: "海报"
+      banner: "横幅"
+      save: "创建"
     navi:
       group: "回到社团"
+    admin_panel:
+      admin: "管理"
+      info: "活动信息管理"
+      blogs: "日志管理"
+      albums: "相册管理"
 
   site:
     index:
       hotspot: "热点"
       new: "最新"
+    home:
+      newsfeed: "新鲜事"
     newsfeeds:
       newsfeed: "动态"
     newsfeed:
@@ -583,6 +604,9 @@
         classroom: "教室"
 
   blogs:
+    new:
+      title: "发表新日志"
+      submit: "发布"
     navi:
       activity: "返回活动"
       list: "返回日志列表"

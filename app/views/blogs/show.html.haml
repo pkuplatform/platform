@@ -10,7 +10,7 @@
         = ", "
         = l @blog.created_at,:format=>:long
       .blog-content
-        = @blog.content
+        = simple_format @blog.content
   .comments
     .header
       %span= t :comment

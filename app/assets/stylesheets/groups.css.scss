@@ -42,43 +42,6 @@
   margin-top: 30px;
 }
 
-.groups .sort-filter {
-  margin-bottom: 30px;
-  padding: 10px 20px;
-  @include box-gradual-change;
-  @include box-radius;
-  font-size: 0.8em;
-  .category, .sort, .my { overflow: hidden; }
-  .split { 
-    margin: 5px 0px;
-  }
-
-  li { 
-    list-style: none; 
-    float: left;
-    @include orange-link;
-    margin-right: 10px;
-  }
-}
-
-.admin-panel {
-  margin-top: 50px;
-  ul { 
-    overflow: hidden; 
-    margin-right: -20px;
-  }
-  li { 
-    list-style: none;
-    @include orange-link;
-    float: left;
-    margin-right: 38px;
-  }
-  .list { 
-    @include box-gradual-change; 
-    @include box-radius;
-    padding: 20px;
-  }
-}
 
 .members {
   margin-top: 50px;

@@ -5,7 +5,7 @@ body {
   font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
   min-height: 100%;
   min-width: 100%;
-  background: url("fabric_plaid.png");
+  background: url("blu_stripes.png");
 }
 
 html {
@@ -109,6 +109,10 @@ table {
 .icon.setting { background-position: -72px -98px; }
 .icon.exit    { background-position: -109px -98px; }
 
+body.site {
+  background: url('screen_background.gif') repeat-x;
+}
+
 body.form {
   background: url('screen_background.gif') repeat-x;
   background-color: #EEE;
@@ -167,7 +171,6 @@ body.form {
 ul.dropdown                         { position: relative; }
 ul.dropdown li                      { font-weight: bold; float: left; padding: 6px;
   padding-left: 20px;
-  padding-right: 20px;
   text-align: center;
 }
 ul.dropdown li a                    {  display: block; }
@@ -211,7 +214,7 @@ ul.dropdown ul li a { border-right: none; width: 100%; display: inline-block; }
   }
   .info { float: right; }
   div { margin-bottom: 10px; }
-  .name { @include orange; }
+  .name { @include blue; }
   .nickname { @include green; }
   .points { @include blue; }
   margin-bottom: 50px;
@@ -324,3 +327,26 @@ ul.dropdown ul li a { border-right: none; width: 100%; display: inline-block; }
   background: white;
   padding: 20px;
 }
+
+.admin-panel {
+  margin-top: 50px;
+  ul { 
+    overflow: hidden; 
+    margin-right: -20px;
+  }
+  li { 
+    list-style: none;
+    @include orange-link;
+    float: left;
+    margin-right: 38px;
+  }
+  .list { 
+    @include box-gradual-change; 
+    @include box-radius;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+  }
+}
+

@@ -57,9 +57,9 @@
     }
   }
 }
-.blog {
-  .blog-content {
-    color: #555;
-    margin: 10px;
-  }
+
+.new-blog {
+  .input-wrapper { width: auto; }
+  .input-wrapper input { width: 100%; }
+  .button-wrapper { text-align: right; }
 }
