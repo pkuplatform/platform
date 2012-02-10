@@ -1,6 +1,18 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!
-  # layout "groups"
+  layout :resolve_layout
+
+  private
+  def resolve_layout
+    case action_name
+    when "new", "edit"
+      "form"
+    else
+      "application"
+    end
+  end
+  
+  public
   # GET /groups
   # GET /groups.json
 
@@ -63,6 +75,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    @form = true
     @group = Group.find(params[:id])
 
     case params[:q]

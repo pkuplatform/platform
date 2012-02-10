@@ -6,5 +6,5 @@
     %li= link_to (t '.hist'), history_admin_group_path
     %li= link_to (t '.orga'), organization_admin_group_path
 .groups.edit.box.form
-  .title= t :edit_group
+  .title= t ".title"
   = render :partial => 'form', :locals => { :type => 'edit' }

@@ -33,7 +33,7 @@ table {
 .container {
   min-height: 100%;
   width: 960px;
-  margin: 100px auto;
+  margin: 150px auto;
 }
 
 .container.noheader {
@@ -76,12 +76,6 @@ table {
 .box.form {
   font-size: 14px;
   form { width: 530px; margin: 0 auto; }
-  .title { 
-    text-align: center; 
-    font-size: 24px; 
-    @include green;
-    margin: 20px 0px 40px 0px;
-  }
   .field { margin: 10px 0px; }
   label { 
     @include orange; 
@@ -114,6 +108,20 @@ table {
 .icon.mailbox { background-position: -36px -98px; }
 .icon.setting { background-position: -72px -98px; }
 .icon.exit    { background-position: -109px -98px; }
+
+body.form {
+  background: url('screen_background.gif') repeat-x;
+  background-color: #EEE;
+  .container { 
+    width: 700px;
+    margin: 100px auto 0px auto;
+  }
+  .title { 
+    @include white-shadow; 
+    span { font-size: 16px; }
+  }
+  .button-wrapper { margin-top: 20px; }
+}
 
 .header-wrapper {
   background: url('screen_background.gif') repeat-x;

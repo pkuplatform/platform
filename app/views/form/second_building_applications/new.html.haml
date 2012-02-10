@@ -1,6 +1,7 @@
-.form.new.box
+.app-form
+  .back
+    = link_to (t '.back'), @group 
   .title
-    %span
-      = link_to (t '.back'), group_path
     = t '.title'
-  = render 'form'
+  .box.form
+    = render 'form'

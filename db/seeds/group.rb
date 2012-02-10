@@ -12,5 +12,5 @@ Group.delete_all
   group.points = rand_range(100..1000)
   group.founded_at = Time.now
   group.logo = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
-  group.save
+  group.save!
 end

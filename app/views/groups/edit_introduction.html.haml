@@ -1,7 +1,9 @@
 .group.form
   .title
     = t '.title'
+    %span= t '.remark'
   = form_for @group do |f|
     = hidden_field_tag 'q', '2'
     = f.cktext_area :introduction
-    = f.submit (t '.save')
+    .button-wrapper
+      = f.submit (t '.save')

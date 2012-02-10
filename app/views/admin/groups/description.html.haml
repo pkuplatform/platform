@@ -3,6 +3,8 @@
     = link_to (t '.back'), edit_group_path
   .title
     = t '.title'
+    %span= t '.remark'
   = form_for @group do |f|
-    = f.cktext_area :description
-    = f.submit (t '.save')
+    = f.cktext_area :description, :height => 300
+    .button-wrapper
+      = f.submit (t '.save')

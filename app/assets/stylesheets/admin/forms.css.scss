@@ -12,15 +12,12 @@
     font-size: 24px;
     margin-bottom: 30px;
   }
-  .back { 
-    float: left;
-    @include green-link;
-    font-size: 16px;
-  }
+  @include back;
   .new {
     float: right;
-    @include orange-link;
-    font-size: 24px;
+    @include blue-link;
+    font-size: 26px;
+    margin-top: 5px;
   }
 
   th, td {

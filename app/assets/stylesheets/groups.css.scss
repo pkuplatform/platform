@@ -15,7 +15,6 @@
 }
 
 .group .info { 
-  .introduction { margin-top: -20px; }
   .category, .activity { 
     @include blue;
     font-size: 16px;
@@ -27,7 +26,6 @@
 .main .comments { margin-top: 70px; }
 
 .group.form {
-  @include title;
   form { text-align: right; }
 }
 
@@ -44,7 +42,7 @@
   margin-top: 30px;
 }
 
-.groups.sort-filter {
+.groups .sort-filter {
   margin-bottom: 30px;
   padding: 10px 20px;
   @include box-gradual-change;
@@ -110,6 +108,7 @@
   @include box-gradual-change;
   @include box-radius;
   padding: 20px;
+  margin-bottom: 30px;
   li.first { @include blue; }
   ul { overflow: hidden; }
   li { 
@@ -125,8 +124,6 @@
   @include orange;
 }
 
-.sms { 
-  textarea { width: 100%; height: 80px; }
-  .box { text-align: right; }
-  .list { margin-top: 80px; }
-}
+.groups .group .introduction { min-height: 130px; }
+.groups .group .like-join { margin-top: 14px; }
+.groups.index { margin-top: -50px; }

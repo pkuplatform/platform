@@ -1,7 +1,7 @@
 Activity.delete_all
-500.times do |i|
+200.times do |i|
   activity = Activity.new
-  activity.group_id = rand_range(1..100)
+  activity.group_id = rand_range(1..50)
   activity.title = Faker::Lorem.sentence(5)
   activity.description = Faker::Lorem.paragraph(10)
   activity.start_at = rand_range(100..200).hours.ago
@@ -11,5 +11,5 @@ Activity.delete_all
   activity.poster = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   activity.banner = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   activity.points = rand_range(1..100)
-  activity.save
+  activity.save!
 end

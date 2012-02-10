@@ -4,11 +4,13 @@
 
 @import 'mixin';
 
-.form.new.box {
+.form.box {
   .title {
    @include blue;
-   font-size: 20px;
+   font-size: 26px;
    text-align: center;
+   text-shadow: none;
+   margin-bottom: 30px;
    span {
      float: left;
      @include green-link;

@@ -6,7 +6,8 @@
   .box
     = form_tag sms_push_group_path(@group) do
       = text_area_tag :content, nil, :placeholder => (t ".holder")
-      = submit_tag t '.send'
+      .button-wrapper
+        = submit_tag t '.send'
   .list
     .head
       = t '.head'

@@ -4,5 +4,6 @@
   .title
     = t '.title'
   = form_for @group do |f|
-    = f.cktext_area :organization
-    = f.submit (t '.save')
+    = f.cktext_area :organization, :height => 300
+    .button-wrapper
+      = f.submit (t '.save')

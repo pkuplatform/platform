@@ -1,4 +1,5 @@
 class SmsController < ApplicationController
+  layout "form"
 
   def index
     @group = Group.find(params[:id])

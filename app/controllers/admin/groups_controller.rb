@@ -1,4 +1,6 @@
 class Admin::GroupsController < ApplicationController
+  layout "form"
+
   def index
     if params[:filter] == "approving"
       filter = Constant::Approving

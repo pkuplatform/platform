@@ -1,3 +1,10 @@
 // Place all the styles related to the sms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sms {
+  textarea { width: 530px; height: 80px; }
+  .list { margin-top: 80px; }
+  .button-wrapper { float: right; }
+}
+
