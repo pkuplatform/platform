@@ -7,8 +7,6 @@
 
 .site-index { 
   overflow: hidden;
-  .newsfeeds  { margin-top: 50px; }
-  .newsfeed   { margin-top: 10px; }
   .activities { margin-top: 50px; }
 }
 
@@ -40,12 +38,8 @@
   }
 }
 
-.site-index .newsfeeds { 
-  margin-bottom: 50px; 
-  padding-left: 30px;
-}
-
-.site.home.title {
+.site.home { margin-top: -60px; }
+.site.home .header {
   text-align: center;
   margin-bottom: 30px;
   font-size: 28px;
@@ -57,3 +51,18 @@
   background: url("polaroid.png");
 }
 
+.newsfeeds-wrapper {
+  overflow: hidden;
+  margin: 50px 20px 0px 20px;
+  .toto { 
+    color: white;
+    text-shadow: -2px 2px 2px #4D6170;
+    float: left; 
+    font-size: 24px;
+  }
+  .newsfeeds { 
+    float: left; 
+    margin-left: 20px;
+  }
+  .newsfeed   { margin-top: 10px; }
+}

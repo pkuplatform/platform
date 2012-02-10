@@ -367,6 +367,7 @@
       newsfeed: "新鲜事"
     newsfeeds:
       newsfeed: "动态"
+      title: "Ta们正在:"
     newsfeed:
       at: "在"
       before: "前"
@@ -382,9 +383,9 @@
       logout: "离开"
       home: "个人首页"
       group: "社团中心"
-      curgroup: "社团：%{name}"
+      curgroup: "社团: %{name}"
       activity: "活动中心"
-      curactivity: "活动：%{name}"
+      curactivity: "活动: %{name}"
       groups:
         new: "+新社团"
         admin: "社团管理"
@@ -671,4 +672,8 @@
   search:
     groups:
       founded: "成立"
+
+  mailboxes:
+    new:
+      topic: "主题"
   join: "参加"

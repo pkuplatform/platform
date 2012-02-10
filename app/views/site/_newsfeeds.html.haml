@@ -1,4 +1,6 @@
-.newsfeeds
-  - @events.each do |event|
-    - if event_exist?(event)
-      = render :partial => "site/newsfeed", :locals => { :event => event, :subject => event.subject, :object => event.object }
+.newsfeeds-wrapper
+  .toto= t '.title'
+  .newsfeeds
+    - @events.each do |event|
+      - if event_exist?(event)
+        = render :partial => "site/newsfeed", :locals => { :event => event, :subject => event.subject, :object => event.object }

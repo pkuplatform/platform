@@ -44,16 +44,16 @@
   .content { 
     width: 450px;
     margin-left: 30px;
-    font-size: 1em; 
+    font-size: 18px; 
     padding-top: 10px;
     .title {
  
     }
   }
-  .name { @include orange-link; }
-  span { color: #BBB; }
-  .time { @include green; }
-  .object { @include orange-link; }
+  .name { @include green-link; }
+  span { @include blue; }
+  .time { @include blue; }
+  .object { @include green-link; }
   margin-bottom: 10px;
 
   pre {

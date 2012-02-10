@@ -6,12 +6,10 @@
         = label_tag :user_tokens, "#{t :receiver} :"
         = select_tag(:user_tokens,options_from_collection_for_select(current_user.users_i_like,:id,:name),:options=>{:default =>t('select_receiver')})
       .subject
-        = label_tag :subject, "#{t :subject} :"
-        .input-wrapper= text_field_tag :subject, ""
+        .input-wrapper
+          = text_field_tag :subject, "", :placeholder => (t ".topic")
       .area-wrapper
         %p
-          = label_tag :body, "#{t :messages} :"
-        %p
           = cktext_area :body, "", :class => "medium"
-      .submit-wrapper
+      .button-wrapper
         = submit_tag (t "send"), :class => "submit"

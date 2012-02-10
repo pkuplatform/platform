@@ -6,6 +6,7 @@ body {
   min-height: 100%;
   min-width: 100%;
   background: url("background-texture-darkblue.png");
+  background-color: #9EDFE8;
 }
 
 html {
@@ -37,7 +38,8 @@ table {
 }
 
 .container.noheader {
-  .content, .sidebar { margin-top: 100px; }
+  margin-top: 80px;
+  margin-bottom: 0px;
 }
 
 .clear { clear: both; }
@@ -153,7 +155,7 @@ body.form {
     a {
         color: #EEEEEE;
         text-decoration: none;
-        text-shadow: 0 -2px 2px #4D6170;
+        text-shadow: 0 -4px 3px #4D6170;
       }
       a:hover { @include orange; }
   }
@@ -371,3 +373,4 @@ ul.panel {
 span.cke_skin_kama { border: 0px !important; }
 .field.area label { vertical-align: top; }
 .field { @include blue-link; }
+.func { @include orange-link; @include blue; }
