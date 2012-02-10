@@ -53,10 +53,10 @@
                   = link_to (t '.activities.admin'), "#"
                   %ul
                     %li= link_to (t '.activities.edit'), edit_group_activity_path(@activity.group, @activity)
-      .panel
-        .mailbox
+      %ul.panel
+        %li.mailbox
           = link_to (t '.mailbox'), mailboxes_path, { :class => "icon mailbox" }
-        .setting
+        %li.setting
           = link_to (t '.setting'), edit_profile_path(current_user.profile), { :class => "icon setting" }
-        .exit
+        %li.exit
           = link_to (t '.logout'), destroy_user_session_path, { :method => :delete, :class => "icon exit" }

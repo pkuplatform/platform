@@ -9,7 +9,8 @@
           = link_to(@message.from.name,@message.from)
           = ", "
           = l @message.created_at,:format=>:long
-        %p= @message.body
+        .mail-body
+          =simple_format(raw @message.body)
       - unless params[:mailbox] == "outbox"
         %p
           = label_tag :body, "#{t :reply_message} :"

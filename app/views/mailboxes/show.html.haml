@@ -1,10 +1,5 @@
-.box
-  .box-header
-    = t "mailbox"
-    = link_to (t "trash"), box_mailboxes_path(:trash), :remote => true
-    = link_to (t "outbox"), box_mailboxes_path(:outbox), :remote => true
-    = link_to (t "inbox"), box_mailboxes_path(:inbox), :remote => true
-    = link_to (t "compose_new_message"), new_mailboxes_path
+.box.mailbox
+  .box-header= render 'header'
   .box-body
     = render 'show'
 .clear

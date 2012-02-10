@@ -74,4 +74,21 @@ module ApplicationHelper
   def album_path(album)
     activity_album_path(album.imageable, album)
   end
+
+  def chops(options)
+    ops = []
+    options.each do |op|
+      if op == "Delete"
+        ops << [t("delete"), "Delete"]
+      elsif op == "Undelete"
+        ops << [t("undelete"), "Undelete"]
+      elsif op == "Read"
+        ops << [t("read"), "Read"]
+      elsif op == "Unread"
+        ops << [t("unread"), "Unread"]
+      end
+    end
+    puts ops
+    ops
+  end
 end

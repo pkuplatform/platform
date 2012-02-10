@@ -5,7 +5,7 @@ body {
   font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
   min-height: 100%;
   min-width: 100%;
-  background: url("blu_stripes.png");
+  background: url("background-texture-darkblue.png");
 }
 
 html {
@@ -105,9 +105,15 @@ table {
   text-indent: -999px;
 }
 
-.icon.mailbox { background-position: -36px -98px; }
-.icon.setting { background-position: -72px -98px; }
-.icon.exit    { background-position: -109px -98px; }
+.icon.mailbox { background-position: -38px -98px; 
+  &:hover{  background-position: -38px -128px; }
+}
+.icon.setting { background-position: -74px -98px;
+  &:hover{  background-position: -74px -128px; }
+ }
+.icon.exit    { background-position: -110px -98px; 
+  &:hover{  background-position: -110px -128px; }
+}
 
 body.site {
   background: url('screen_background.gif') repeat-x;
@@ -128,7 +134,7 @@ body.form {
 }
 
 .header-wrapper {
-  background: url('screen_background.gif') repeat-x;
+  background: url('global_nav_bg.png') repeat-x;
   position: fixed;
   top:0;
   left:0;
@@ -138,61 +144,60 @@ body.form {
 
 .header-wrapper .header {
   width: 960px;
-  height: 70px;
+  height: 36px;
   margin: 0px auto;
   overflow: visible;
   .navi {
     float: left;
     a {
         color: #EEEEEE;
-        margin: 10px;
         text-decoration: none;
         text-shadow: 0 -2px 2px #4D6170;
-        font-size: 20px;
       }
       a:hover { @include orange; }
   }
   
   .panel { 
-    margin-top: 40px;
     float: right; 
-    div { width: 50px; float: left; }
   }
   li {
     list-style:none;
     float: left;
-    line-height:18px;
+    line-height:34px;
   }
 }
 
 /* 
   LEVEL ONE
 */
-ul.dropdown                         { position: relative; }
-ul.dropdown li                      { font-weight: bold; float: left; padding: 6px;
-  padding-left: 20px;
+ul.dropdown                         { position: relative; margin:0; }
+ul.dropdown li                      { font-weight: bold; float: left; 
   text-align: center;
 }
-ul.dropdown li a                    {  display: block; }
+ul.dropdown li a                    {  display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+     }
 ul.dropdown li.hover,
-ul.dropdown li:hover                { @include box-inset(30px,0px,rgba(255,255,255,.8));  position: relative; }
+ul.dropdown li:hover                { @include box-inset(30px,0px,rgba(0,123,205,.3));  position: relative; }
 
 
 /* 
   LEVEL TWO
 */
-ul.dropdown ul { visibility: hidden; position: absolute; top: 100%; left: 0;  
-  right:40px;
+ul.dropdown ul { visibility: hidden; position: absolute; top: 100%; left: 0; right: 0; 
 
 }
 ul.dropdown ul li { 
   width: 100%;  
 
   font-weight: normal;
-  background: url('bg.png'); 
-  border-bottom: 1px solid #ccc; 
+  background: rgba(235,235,255,0.9); 
+  border-bottom: 1px solid #aaa; 
   float: none; 
-  height: 20px;
+  line-height:30px;
+  height: 30px;
   font-size: 0.8em;
 }
 
@@ -202,8 +207,22 @@ ul.dropdown ul li {
 ul.dropdown ul ul           { left: 100%; top: 0; width:120px; }
 ul.dropdown li:hover > ul       { visibility: visible; }
            
-ul.dropdown ul li a { border-right: none; width: 100%; display: inline-block; } 
+ul.dropdown ul li a { border-right: none; width: 100%; display: inline-block; color: #333!important;  text-shadow: none!important;
+  padding:0;
+} 
 
+
+ul.panel {
+  li{
+    padding: 10px;
+    padding-top: 8px;
+    a {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
 
 .gogo.card {
   .avatar { 

@@ -1,12 +1,24 @@
-.mailbox {
-  td {
-    background-color:#fff;
-  }
+@import 'mixin';
+@import 'css3';
+.box.mailbox {
   li {
     display: inline-block;
-    font-size:1.3em;
-    float:right;
-    margin:10px;
+    float:left;
+    padding:5px;
+    margin: 15px;
+    font-size: 0.8em;
+    @include box-radius(8px);
+    &.current {
+      background: #eee;
+    }
+  }
+  .subject {
+    .input-wrapper {
+      width: 600px;
+      input {
+        width: 600px;
+      }
+    }
   }
   .unread td{
     font-weight:800;
@@ -15,5 +27,8 @@
   label {
     width:60px;
     display:inline-block;
+  }
+  .box-header {
+    @include orange-link;
   }
 }
