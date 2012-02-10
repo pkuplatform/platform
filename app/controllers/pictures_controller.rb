@@ -1,5 +1,18 @@
 class PicturesController < ApplicationController
+  before_filter :authenticate_user!
+  layout :resolve_layout
 
+  private
+  def resolve_layout
+    case action_name
+    when "new", "edit"
+      "form"
+    else
+      "application"
+    end
+  end
+  
+  public
   # GET /pictures
   # GET /pictures.json
   def index

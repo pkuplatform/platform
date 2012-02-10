@@ -621,6 +621,9 @@
       title: "新相册"
 
   pictures:
+    form:
+      photo: "选择图片"
+      album: "新建相册"
     new:
       title: "上传新的图片"
     picture:
