@@ -15,6 +15,9 @@
       %span.location= activity.location
   .time
     = t "time:", :start_time => (l activity.start_at), :end_time => (l activity.end_at)
+  .tags
+    = t "tags"
+    = render :partial=>"share/tag_list", :locals => {:tags=>activity.tags, :controller=>:activities}
   .description
     = activity.description
   .additions

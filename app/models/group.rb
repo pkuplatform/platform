@@ -4,10 +4,9 @@ class Group < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :category
-  has_many :activities
+  has_many :activities, :dependent => :destroy
   has_many :second_building_applications, :class_name => "Form::SecondBuildingApplication"
   has_many :albums, :as => :imageable
-  has_many :tags, :as => :tagable
   has_many :sms, :class_name => "Sms"
   has_attached_file :logo, :styles => { :medium => "300x300#", :card => "180x180#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
 
@@ -63,6 +62,6 @@ class Group < ActiveRecord::Base
     # attributes
     has :created_at, :updated_at
 
-    set_property :delta => true
+    #set_property :delta => true
   end
 end

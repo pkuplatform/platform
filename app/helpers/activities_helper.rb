@@ -1,4 +1,7 @@
 module ActivitiesHelper
+
+  include ActsAsTaggableOn::TagsHelper
+
   def stime(activity)
     if activity.start_at.to_date == activity.end_at.to_date
       t("time:",:start_time=>activity.lstart_at,:end_time=>activity.lend_at(:only_time))

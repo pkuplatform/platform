@@ -78,6 +78,11 @@ class GroupsController < ApplicationController
     @form = true
     @group = Group.find(params[:id])
 
+    if not (can? :admin, @group)
+      redirect_to @group
+      return
+    end
+
     case params[:q]
     when '1'
       render :action => :edit_introduction

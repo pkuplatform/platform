@@ -53,6 +53,8 @@
       .name { @include orange-link; }
       .gray { color: #BBB; } 
       .time { @include green; }
+      p {padding: 10px;}
+      .delete { @include gray-link; float: right;}
     }
   }
 }

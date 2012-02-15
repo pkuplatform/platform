@@ -34,6 +34,10 @@ module ApplicationHelper
     url_for(comment.commentable)+"#comment-#{comment.id}"
   end
 
+  def destroy_comment_path(comment)
+    url_for(:id => comment.id,:controller=>:comments, :action=>:destroy)
+  end
+
   def event_exist?(event)
     not (event.subject.nil? || event.object.nil?)
 #    class_eval(event.object_type).all.include?(event.object) && class_eval(event.subject_type).all.include?(event.subject)

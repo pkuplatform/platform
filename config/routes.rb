@@ -72,12 +72,14 @@ Platform::Application.routes.draw do
   end
 
   resources :activities do
+    collection do
+      get 'tag_cloud'
+      get 'tag'
+    end
     member do
       get 'join'
       get 'like'
       post 'comment'
-      #get 'pictures/new' => 'pictures#new'
-      #get 'pictures' => 'pictures#index'
       get 'show_members'
       post 'members/edit' => 'activities#edit_members'
     end
@@ -96,8 +98,7 @@ Platform::Application.routes.draw do
     resources :albums 
   end
 
-
-
+  resources :comments, :only => :destroy
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -12,6 +12,12 @@
 .activity .info div { margin: 10px 0px; }
 .activity .info .time { @include blue; }
 .activity .description { min-height: 160px; }
+.activity .info .tags { @include gray-link; padding: 4px;}
+
+.activity-blogs,.activity-albums,.activity-pictures {
+  @include title;
+  @include back;
+}
 
 .activity.board {
   .poster { margin-top: -70px; }

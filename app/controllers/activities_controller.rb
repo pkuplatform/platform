@@ -17,7 +17,6 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @navi = :default
 
     if params[:sort] == "latest"
       sort = "created_at DESC"
@@ -198,7 +197,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def members
+  def show_members
     @activity = Activity.find(params[:id])
     @group = @activity.group
     @tenders = @activity.tenders
@@ -235,8 +234,41 @@ class ActivitiesController < ApplicationController
       end
       ug.save
     end
-      
+
     redirect_to show_members_activity_path
   end
 
+  def tag_cloud
+    @tags = Activity.tag_counts
+  end
+
+  def tag
+    if params[:sort] == "latest"
+      sort = "created_at DESC"
+    elsif params[:sort] == "pop"
+      sort = "points DESC"
+    else
+      sort = "created_at DESC"
+    end
+
+    @activities = []
+    if params[:filter] == "category"
+      Category.find(params[:id]).groups.each do |group|
+        @activities += group.activities
+      end
+    elsif params[:filter] == "join"
+      @activities = current_user.join_activities.order(sort)
+    elsif params[:filter] == "like"
+      @activities = current_user.like_activities.order(sort)
+    else
+      @activities = Activity.order(sort).limit(50)
+    end
+
+    @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag_name])
+    @activities = @activities.find_all {|a| a.tags.include?(@tag)}
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @activities }
+    end  end
 end

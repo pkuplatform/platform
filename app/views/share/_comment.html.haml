@@ -6,5 +6,7 @@
     %span.gray= t :at
     %span.time= distance_of_time_in_words_to_now(comment.created_at)
     %span.gray= t :post_comment
-    = comment.body
+    -if can? :delete, comment
+      %span.delete= link_to "X", destroy_comment_path(comment), :method => :delete, :remote => true, :confirm => t(".sure_to_delete")
+    %p= comment.body
   .clear

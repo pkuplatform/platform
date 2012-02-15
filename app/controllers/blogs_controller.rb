@@ -56,4 +56,41 @@ class BlogsController < ApplicationController
     @blogs = @activity.blogs
   end
 
+  def edit
+    @blog = Blog.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
+    if !(can? :admin, @activity)
+      redirect_to(@blog)
+    end
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    @activity = @blog.activity
+
+    respond_to do |format|
+      if @blog.update_attributes(params[:blog])
+        format.html { redirect_to activity_blog_path(@activity, @blog), notice: 'Activity was successfully updated.' }
+        format.json { head :ok }
+        format.js { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @blog.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @blog = Blog.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
+    if can? :admin, @activity
+      @blog.destroy
+    end
+
+    respond_to do |format|
+      format.html { redirect_to activities_url }
+      format.json { head :ok }
+    end
+  end
+
 end

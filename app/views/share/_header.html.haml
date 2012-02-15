@@ -53,6 +53,17 @@
                   = link_to (t '.activities.admin'), "#"
                   %ul
                     %li= link_to (t '.activities.edit'), edit_group_activity_path(@activity.group, @activity)
+        - if (can? :admin, @activity)&&@blog&&@blog.id
+          %li#admin-blog
+            = link_to (t ".admin_blog"), "#"
+            %ul.dropdown-menu
+              %li= link_to (t '.blogs.edit'), edit_activity_blog_path(@activity, @blog)
+              %li= link_to (t '.blogs.delete'), destroy_activity_blog_path(@activity, @blog), :method => :delete, :confirm => (t '.blogs.sure')
+        - if (can? :admin, @activity)&&@album&&@album.id
+          %li#admin-blog= link_to (t '.albums.delete'), destroy_activity_album_path(@activity, @album), :method => :delete, :confirm => (t '.albums.sure')
+        - if (can? :admin, @activity)&&@picture&&@picture.id
+          %li#admin-blog= link_to (t '.pictures.delete'), destroy_activity_picture_path(@activity, @picture), :method => :delete, :confirm => (t '.pictures.sure')
+
       %ul.panel
         %li.mailbox
           = link_to (t '.mailbox'), mailboxes_path, { :class => "icon mailbox" }

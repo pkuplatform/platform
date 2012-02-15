@@ -1,16 +1,17 @@
-.box.detail
-  .box-header
-    = (t :album)+@album.title
-    .clear
-  .box-body
-    %ul.album-pictures
-      - @album.pictures.each do |pic|
-        %a{:href=>picture_path(pic)}
+.activity-pictures
+  .back= link_to t(".back"), activity_albums_path(@activity)
+  .title= t ".title", :name => @album.title
+-if @pictures.empty?
+  .box.no-content
+    =t (".empty")
+-else
+  .box.detail
+    .box-body
+      %ul.album-pictures
+        - @activity.pictures.each do |pic|
           %li
-            %p= image_tag(pic.url(:small))
-            %p= pic.remark
-            %p
-              ="#{t :comment}: "
-              =pic.comments.count
-
-      .clear
+            .image-pic=link_to image_tag(pic.url(:medium)), pic
+            .image-mani
+              - if !pic.remark.empty?
+                .image-remark= pic.remark
+    .clear
