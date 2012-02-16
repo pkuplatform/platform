@@ -24,5 +24,10 @@ $(document).ready(function() {
 
         }
     });
+    $(".tags_input").tagsInput({
+        'defaultText':'添加标签',
+        'height': '50px',
+        'width': '400px',
+    });
 
 });

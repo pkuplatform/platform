@@ -39,6 +39,8 @@
             = link_to (t '.curactivity', :name=>@activity.name), activity_path(@activity)
             %ul.dropdown-menu
               %li
+                = link_to (t '.activities.group'), group_path(@activity.group)
+              %li
                 = link_to (t '.activities.blogs'), activity_blogs_path(@activity)
                 -if can? :admin, @activity
                   %ul

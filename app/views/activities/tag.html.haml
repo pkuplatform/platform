@@ -1,5 +1,12 @@
 .activities.index
   .sort-filter
+    .tag
+      %ul
+        %li.first= t "tags"
+        %li
+          %span.tag= link_to @tag.name,"#"
+    .clear
+    .split
     .category
       %ul
         %li.first= t '.category'

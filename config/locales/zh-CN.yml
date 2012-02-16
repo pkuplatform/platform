@@ -415,6 +415,7 @@
         albums: "所有相册"
         new_picture: "+新图片"
         edit: "修改活动"
+        group: "承办社团"
       blogs:
         delete: "删除日志"
         edit: "编辑日志"

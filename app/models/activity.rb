@@ -26,7 +26,6 @@ class Activity < ActiveRecord::Base
       object = RankList.find_by_identify_id(id) 
       ret << object unless object.nil?
     end
-
     ret
   end
 
