@@ -16,11 +16,17 @@
         = t :in
         = t comment.commentable_type
         = link_to comment.commentable.name,comment.commentable
-        = t :post
-        = link_to (t :comment), comment
-        %pre
+        - if event.action=="post"
+          = t event.action
+          = link_to (t :comment), comment
+        - elsif event.action=="reminded"
+          = t :de
+          = link_to (t :comment), comment
+          = t :zhong
+          = t event.action
+        %pre.comment-body
           = "#{comment.user.name}: "
-          = comment.body.truncate(100)
+          =raw comment.body.truncate(100)
       - elsif event.object_type=="Picture"
         - picture = event.object
         = t :in

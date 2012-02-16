@@ -153,6 +153,7 @@
   User: "用户"
   like: "喜欢"
   post: "发表"
+  reminded: "被提及"
   in: "在"
   Blog: "日志"
   Picture: "图片"
@@ -223,6 +224,7 @@
 
 
   de: "的"
+  zhong: "中"
   groups_index: "社团中心"
   edit_group: "编辑社团"
 
