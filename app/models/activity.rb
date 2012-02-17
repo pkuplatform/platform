@@ -52,6 +52,10 @@ class Activity < ActiveRecord::Base
     admins.first
   end
 
+  def count
+    admins.count + members.count
+  end
+
   define_index do
     indexes :title, :sortable => true
     indexed :description

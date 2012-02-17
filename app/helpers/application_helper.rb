@@ -60,7 +60,7 @@ module ApplicationHelper
   end
 
   def user_path(user)
-    profile_path(user.id)
+    profile_path(user.profile.id)
   end
 
   def blog_path(blog)

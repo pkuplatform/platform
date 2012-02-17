@@ -1,0 +1,97 @@
+"zh-CN":
+  groups:
+    index:
+      category: "类别"
+      sort: "排序"
+      latest: "最新创建"
+      founded: "成立时间"
+      join: "参加"
+      like: "关注"
+      my: "我的"
+    new:
+      title: "新建社团"
+    show:
+      new: "新建活动>>"
+    side:
+      des: "社团介绍"
+      org: "组织构架"
+      his: "社团历史"
+    info:
+      founded: "成立"
+    activities:
+      back: "<<<"
+      title: "%{name} 的活动"
+      warn: "还没有任何活动哦~"
+    comments:
+      back: "<<<"
+      title: "%{name} 的评论"
+    members:
+      members: "成员"
+      back: "<<<"
+      title: "%{name} 的成员"
+    description:
+      title: "社团介绍"
+      back: "<<<"
+    history:
+      title: "社团历史"
+      back: "<<<"
+    organization:
+      title: "组织构架"
+      back: "<<<"
+    introduction:
+      title: "组织简介"
+    join:
+      join: "参加>>"
+      exit: "退出>>"
+      wait: "审批中..."
+    like:
+      like: "关注"
+      unlike: "取消关注"
+    admin_panel:
+      admin: "管理"
+      new: "新建社团"
+      edit: "社团信息管理"
+      members: "成员管理"
+      activity: "新建活动"
+      forms: "申请表管理"
+      second: "新建教室申请表"
+      sms: "短信管理"
+      desc: "编辑社团介绍"
+    navi:
+      admin: "管理"
+      new: "新建社团"
+      edit: "社团信息管理"
+      members: "成员管理"
+      forms: "申请表管理"
+      sms: "短信管理"
+      activities: "社团活动"
+    form:
+      name: "名称"
+      slogan: "标语"
+      email: "E-mail"
+      logo: "Logo"
+      founded: "成立时间"
+      category: "类别"
+      next: "下一步"
+      done: "完成"
+    edit:
+      title: "修改社团信息"
+      intr: "修改社团简介"
+      desc: "修改社团介绍"
+      hist: "修改社团历史"
+      orga: "修改组织构架"
+      other: "更多修改 ---> "
+    edit_introduction:
+      title: "添加社团简介"
+      save: "下一步"
+      remark: "(200字以内)"
+    edit_description:
+      title: "添加社团介绍"
+      save: "下一步"
+      remark: "(800字以内)"
+    edit_history:
+      title: "添加社团历史"
+      save: "下一步"
+    edit_organization:
+      title: "添加组织构架"
+      save: "完成!"

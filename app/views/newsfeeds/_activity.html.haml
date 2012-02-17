@@ -1,0 +1,23 @@
+.newsfeed
+  .avatar
+    = link_to (image_tag subject.url), subject
+  .content
+    .top
+      = link_to subject.name, subject
+      = t '.action'
+      = link_to activity.title, activity
+    .center
+      = image_tag activity.poster.url(:thumb)
+    .bottom
+      %span.time
+        = distance_of_time_in_words_to_now(event.created_at)
+        = t 'newsfeeds.before'
+      %span.from
+        = t 'newsfeeds.from'
+        = link_to activity.group.name, activity.group
+      %span.meta
+        = t '.like', :count => activity.followers.count
+        = "|"
+        = t '.join', :count => activity.count
+        = "|"
+        = t 'newsfeeds.comments', :count => activity.comments.count

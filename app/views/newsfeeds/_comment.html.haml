@@ -1,0 +1,24 @@
+.newsfeed
+  .avatar
+    = link_to (image_tag subject.url), subject
+  .content
+    .top
+      = link_to subject.name, subject
+      = t ".at"
+      = link_to comment.commentable.name, comment.commentable
+      = t '.action'
+      - if event.action=="reminded"
+        = t :de
+        = link_to (t :comment), comment
+        = t :zhong
+        = t event.action
+    .center
+      %pre.comment-body
+        = raw comment.body.truncate(100)
+    .bottom
+      %span.time
+        = distance_of_time_in_words_to_now(event.created_at)
+        = t 'newsfeeds.before'
+      %span.from
+        = t 'newsfeeds.from'
+        = link_to comment.commentable.name, comment.commentable

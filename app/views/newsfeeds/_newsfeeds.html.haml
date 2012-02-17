@@ -1,0 +1,4 @@
+.newsfeeds
+  - @events.each do |event|
+    - if event_exist?(event)
+      = render :partial => "newsfeeds/newsfeed", :locals => { :event => event }

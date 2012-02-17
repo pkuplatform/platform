@@ -1,0 +1,19 @@
+.newsfeed
+  .avatar
+    = link_to (image_tag subject.url), subject
+  .content
+    .top
+      = link_to subject.name, subject
+      = t '.action'
+      = link_to picture.bare_name, picture
+    .center
+      = image_tag picture.url(:thumb)
+    .bottom
+      %span.time
+        = distance_of_time_in_words_to_now(event.created_at)
+        = t 'newsfeeds.before'
+      %span.from
+        = t 'newsfeeds.from'
+        = link_to picture.imageable.name, picture.imageable
+      %span.meta
+        = t 'newsfeeds.comments', :count => picture.comments.count
