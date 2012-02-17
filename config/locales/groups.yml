@@ -1,5 +1,7 @@
 "zh-CN":
   groups:
+    wall:
+      wall: "Logo Wall"
     index:
       hot: "近期热门"
     new:

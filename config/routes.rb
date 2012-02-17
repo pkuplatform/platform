@@ -43,6 +43,9 @@ Platform::Application.routes.draw do
   resources :user_relations, :only => [:create, :destroy]
 
   resources :groups do
+    collection do
+      get 'wall'
+    end
     member do
       get 'join'
       get 'like'

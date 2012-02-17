@@ -229,4 +229,8 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @members = @group.members.order("updated_at DESC")
   end
+
+  def wall
+    @groups = Group.all
+  end
 end

@@ -11,3 +11,4 @@
       %li= link_to (t '.founded'), groups_path(:sort => 'founded', :filter => params[:filter], :id => params[:id])
       %li= link_to (t '.like'), groups_path(:sort => params[:sort], :filter => 'like')
       %li= link_to (t '.join'), groups_path(:sort => params[:sort], :filter => 'join')
+      %li= link_to (t '.wall'), wall_groups_path
