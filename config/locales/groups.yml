@@ -1,13 +1,7 @@
 "zh-CN":
   groups:
     index:
-      category: "类别"
-      sort: "排序"
-      latest: "最新创建"
-      founded: "成立时间"
-      join: "参加"
-      like: "关注"
-      my: "我的"
+      hot: "近期热门"
     new:
       title: "新建社团"
     show:
@@ -95,3 +89,16 @@
     edit_organization:
       title: "添加组织构架"
       save: "完成!"
+    card:
+      founded: "成立"
+      activities: "活动(%{count})"
+      like: "关注(%{count})"
+      join: "参加(%{count})"
+    filter:
+      category: "类别"
+      sort: "排序"
+      founded: "最新"
+      join: "参加"
+      like: "关注"
+      my: "我的"
+      all: "全部"

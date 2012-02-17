@@ -50,7 +50,7 @@ class Group < ActiveRecord::Base
     admins.first || User.first
   end
 
-  def join_count
+  def count
     members.count + admins.count
   end
 

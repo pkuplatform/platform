@@ -4,7 +4,7 @@
   .like-join
     = t :like_count, :count => group.followers.count
     = " "
-    = t :join_count, :count => group.join_count
+    = t :join_count, :count => group.count
   - if board
     = render :partial => 'groups/join', :object => group, :as => :group
     = render :partial => 'groups/like', :object => group, :as => :group

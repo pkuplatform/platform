@@ -1,4 +1,21 @@
-.group.card.box
-  = render :partial => 'groups/side', :locals => { :group => group, :board => false }
-  = render :partial => 'groups/info', :locals => { :group => group }
-  .clear
+.group.card
+  = link_to (image_tag group.logo.url(:card)), group
+  .info
+    .top
+      %span.name= link_to group.name, group
+      %span.category= t group.category.name, :scope => :category
+    .center
+      = simple_format group.introduction
+    .bottom
+      %span.founded
+        = l group.founded_at
+        = t '.founded'
+      %span.admin
+        = t :group_admin
+        = link_to group.admin.name, group.admin
+      %span.meta
+        = t '.activities', :count => group.activities.count
+        = "|"
+        = t '.like', :count => group.followers.count
+        = "|"
+        = t '.join', :count => group.count

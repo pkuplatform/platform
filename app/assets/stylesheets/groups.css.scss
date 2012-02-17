@@ -6,20 +6,11 @@
 @import 'mixin';
 
 .group.main .comments .list { margin-top: 0px; }
-.group.card .like-join { margin-top: 10px; }
 .group.board { overflow: visible; }
 .group.board .side {
   text-align: center;
   .logo { margin-top: -70px; }
   .history, .organization, .description { @include blue-link; }
-}
-
-.group .info { 
-  .category, .activity { 
-    @include blue;
-    font-size: 16px;
-    margin: 5px 0px;
-  }
 }
 
 .main .activities { margin-top: 70px; float: none; }
@@ -87,6 +78,36 @@
   @include orange;
 }
 
-.groups .group .introduction { min-height: 130px; }
-.groups .group .like-join { margin-top: 14px; }
-.groups.index { margin-top: -50px; }
+.groups.index { 
+  background-color: white;
+  padding: 0px 30px;
+  margin-top: -100px;
+  padding-top: 20px;
+}
+
+.groups.index .hot {
+  img { width: 100px; margin-right: 20px; }
+  margin-bottom: 30px;
+  .title { margin-bottom: 10px; @include orange; }
+}
+
+.group.card {
+  overflow: hidden;
+  border-bottom: 1px solid #BBB;
+  padding: 20px 0px;
+  font-size: 12px;
+  .name { font-size: 16px; }
+  .category { margin-left: 10px; @include green; }
+  .top, .center { margin-bottom: 5px; }
+  .center { min-height: 75px; }
+  .bottom { color: #7AA5B9; }
+  .meta { float: right; }
+  a { color: #005EAC; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { float: left; width: 120px; @include box-radius(10px); }
+  .info { 
+    float: left;
+    margin-left: 20px;
+    width: 480px;
+  }
+}

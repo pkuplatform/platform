@@ -2,21 +2,24 @@
 @import 'mixin';
 
 .sort-filter {
-  margin-bottom: 30px;
+  font-size: 14px;
+  margin-bottom: 20px;
   padding: 10px 20px;
-  @include box-gradual-change;
-  @include box-radius;
+  background: url("white_plaster.png");
+  @include box-radius(5px);
   @include box-shadow2;
   .category, .sort, .my { overflow: hidden; }
   .split { 
     margin: 5px 0px;
   }
 
+  li.category ul { display: none; }
   li { 
     list-style: none; 
     float: left;
-    @include orange-link;
     margin-right: 10px;
+    a { color: #005EAC; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   }
 }
 
