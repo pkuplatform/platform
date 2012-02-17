@@ -17,6 +17,7 @@
   mailbox: "站内信"
   mail_box: "站内信"
   return: "回到"
+  tags: "标签"
 
   is_group_member: "是社团成员"
   not_group_member: "不是社团成员"
@@ -108,7 +109,6 @@
   "time:": "%{start_time} 至 %{end_time}"
   "location:": "地点在 %{location}"
   location: "地点"
-  tags: "Tags"
   joined: "参加的人"
   dislike: "我不喜欢"
   like: "我喜欢"
@@ -119,6 +119,7 @@
   blocked: "锁定"
   reject: "拒绝"
   member: "成员"
+  nonmember: "非成员"
   allow_join: "允许加入"
   followed: "喜欢的人"
   activity_blogs: "活动日志"
@@ -152,6 +153,7 @@
   User: "用户"
   like: "喜欢"
   post: "发表"
+  reminded: "被提及"
   in: "在"
   Blog: "日志"
   Picture: "图片"
@@ -205,6 +207,7 @@
   pictures_more: "浏览更多图片>>"
   at: "在"
   post_comment: "发表评论"
+  post_blog: "前发表日志"
   comments_more: "浏览更多评论>>"
   info: "信息"
   home: "个人首页"
@@ -221,6 +224,7 @@
 
 
   de: "的"
+  zhong: "中"
   groups_index: "社团中心"
   edit_group: "编辑社团"
 

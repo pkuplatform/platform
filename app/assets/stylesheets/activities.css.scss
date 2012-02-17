@@ -11,7 +11,12 @@
 .activity .info .additions { @include blue-link; font-size: 16px; }
 .activity .info div { margin: 10px 0px; }
 .activity .info .time { @include blue; }
-.activity .description { min-height: 160px; }
+.activity .description { min-height: 160px; padding:10px;}
+
+.activity-blogs,.activity-albums,.activity-pictures {
+  @include title;
+  @include back;
+}
 
 .activity.board {
   .poster { margin-top: -70px; }

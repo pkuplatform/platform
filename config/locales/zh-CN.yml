@@ -327,6 +327,14 @@
       latest: "最新"
       pop: "最热门"
       category: "分类"
+    tag:
+      sort: "排序"
+      my: "我的"
+      like: "关注"
+      join: "参加"
+      latest: "最新"
+      pop: "最热门"
+      category: "分类"
     new:
       title: "新建活动"
     edit:
@@ -377,6 +385,8 @@
     comments:
       holder: "说些什么吧~"
       submit: "发表评论"
+    comment:
+      sure_to_delete: "确认删除评论？"
     header:
       mailbox: "站内信"
       setting: "设置"
@@ -386,6 +396,7 @@
       curgroup: "社团: %{name}"
       activity: "活动中心"
       curactivity: "活动: %{name}"
+      admin_blog: "管理日志"
       groups:
         new: "+新社团"
         admin: "社团管理"
@@ -404,6 +415,17 @@
         albums: "所有相册"
         new_picture: "+新图片"
         edit: "修改活动"
+        group: "承办社团"
+      blogs:
+        delete: "删除日志"
+        edit: "编辑日志"
+        sure: "删除日志后不可恢复，确认删除？"
+      pictures:
+        delete: "删除图片"
+        sure: "删除图片后不可恢复，确认删除？"
+      albums:
+        delete: "删除相册"
+        sure: "删除相册后不可恢复，且所有照片丢失，确认删除？"
     newsfeed:
       at: "在"
       before: "前"
@@ -607,11 +629,18 @@
   blogs:
     new:
       title: "发表新日志"
+    form:
       submit: "发布"
+    edit:
+      title: "修改日志"
     navi:
       activity: "返回活动"
       list: "返回日志列表"
       new: "新日志"
+    index:
+      title: "%{name}的日志"
+      empty: "没有发表日志"
+      back: "<<<"
 
   albums:
     navi:
@@ -620,6 +649,14 @@
       new: "新图片"
     new:
       title: "新相册"
+    index:
+      title: "%{name}的相册"
+      empty: "没有任何相册"
+      back: "<<<"
+    show:
+      title: "相册%{name}的图片"
+      empty: "相册是空的~"
+      back: "<<<"
 
   pictures:
     form:
@@ -634,6 +671,11 @@
       activity: "返回活动"
       list: "返回图片列表"
       new: "新图片"
+    index:
+      title: "%{name}的图片"
+      back: "<<<"
+      empty: "还没有任何活动图片"
+
 
   profiles:
     edit:

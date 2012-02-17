@@ -31,8 +31,7 @@ class PicturesController < ApplicationController
   def show
 
     @picture = Picture.find(params[:id])
-    @album = @picture.album
-    @activity = @album.imageable
+    @activity = @picture.album.imageable
     @navi = :default
 
     respond_to do |format|
@@ -108,10 +107,11 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1.json
   def destroy
     @picture = Picture.find(params[:id])
+    @activity = @picture.imageable
     @picture.destroy
 
     respond_to do |format|
-      format.html { redirect_to pictures_url }
+      format.html { redirect_to activity_pictures_path(@activity) }
       format.json { head :ok }
     end
   end

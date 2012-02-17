@@ -1,7 +1,6 @@
 = form_tag members_edit_activity_path do 
   %table
     %thead
-      %th= "id"
       %th= t "name"
       %th= t "nickname"
       %th= t "student_id"
@@ -10,16 +9,24 @@
     %tbody
       - @tenders && @tenders.each do |tender|
         %tr
-          %td
           %td= tender.profile.name
           %td= tender.name
           %td= tender.profile.student_id
+          %td
+            - if @group.members.include?(tender)
+              = t "member"
+            - else
+              = t "nonmember"
           %td= select "pre_tender", "#{tender.id}", { (t "approving") => Constant::Approving, (t "member") => Constant::Member, (t "reject") => Constant::Rejected }
       -@members && @members.each do |member|
         %tr
-          %td
           %td= member.profile.name
           %td= member.name
           %td= member.profile.student_id
+          %td
+            - if @group.members.include?(member)
+              = t "member"
+            - else
+              = t "nonmember"
           %td= select "pre_member", "#{member.id}", { (t "member") => Constant::Member, (t "kick_ass") => Constant::Rejected}
   = submit_tag t 'confirm_change'

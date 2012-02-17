@@ -1,0 +1,28 @@
+.activities.index
+  .sort-filter
+    .tag
+      %ul
+        %li.first= t "tags"
+        %li
+          %span.tag= link_to @tag.name,"#"
+    .clear
+    .split
+    .category
+      %ul
+        %li.first= t '.category'
+        - Category.all.each do |category|
+          %li
+            = link_to category.translated_name, tag_activities_path(:sort => params[:sort], :filter => 'category', :id => category.id, :tag_name => params[:tag_name])
+    .split
+    .sort
+      %ul
+        %li.first= t '.sort'
+        %li= link_to (t '.latest'), tag_activities_path(:sort => 'latest', :filter => params[:filter], :id => params[:id], :tag_name => params[:tag_name])
+        %li= link_to (t '.pop'), tag_activities_path(:sort => 'pop', :filter => params[:filter], :id => params[:id], :tag_name => params[:tag_name])
+    .split
+    .my
+      %ul
+        %li.first= t '.my'
+        %li= link_to (t '.like'), tag_activities_path(:sort => params[:sort], :filter => 'like', :tag_name => params[:tag_name])
+        %li= link_to (t '.join'), tag_activities_path(:sort => params[:sort], :filter => 'join', :tag_name => params[:tag_name])
+  = render :partial => 'card', :collection => @activities, :as => :activity

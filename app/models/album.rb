@@ -4,7 +4,7 @@ class Album < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :imageable, :polymorphic => true
-  has_many :pictures
+  has_many :pictures, :dependent => :destroy
 
   def cover
     if pictures.first.nil?

@@ -50,7 +50,8 @@
 @mixin black-link {
   a {
     color: #333;
-    text-shadow: rgba(50, 50, 50, .3) 1px 1px 3px;
+    text-shadow: rgba(150, 150, 150, .7) 0px 1px 0px;
+    text-decoration: none;
   }
 }
 

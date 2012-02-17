@@ -59,6 +59,17 @@
     }
   }
 }
+.blog-content {
+  &,li,p,br,hr,div,span{
+    font-size: 0.8em;
+    line-height:1;
+  }
+  ol,ul {
+    *margin-right:0px;
+    padding:0 40px;
+  }
+  padding: 20px;
+}
 
 .new-blog {
   .input-wrapper { width: auto; }

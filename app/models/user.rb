@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :reverse_user_relations, :foreign_key => "liked_id", :class_name => "UserRelation", :dependent => :destroy
   has_many :users_like_me, :through => :reverse_user_relations,:source => :liking
 
+  has_many :pictures, :dependent => :destroy
   def subscribers
     a = subscribers_others.to_ary
     a << self

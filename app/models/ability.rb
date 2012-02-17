@@ -35,6 +35,11 @@ class Ability
       not activity.nil? and not activity.id.nil? and activity.admins.include?(user)
     end
 
+    can :delete, Comment do |comment|
+      (user == comment.user) || (((comment.commentable.is_a?(Group))||(comment.commentable.is_a?(Activity))) && comment.commentable.admins.include?(user)) 
+    end
+
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
