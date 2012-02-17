@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
     elsif params[:filter] == "like"
       @groups = current_user.like_groups.order(sort)
     else
-      @groups = Group.order(sort)
+      @groups = Group.where(:status => Constant::Approved).order(sort)
     end
 
     respond_to do |format|
