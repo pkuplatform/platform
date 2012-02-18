@@ -244,8 +244,9 @@
     hot_groups:
       title: "热门社团"
     comments:
-      holder: "说些什么吧~"
+      holder: "Ctrl+Enter直接发送"
       submit: "发表评论"
+      mention: "@某人"
     comment:
       sure_to_delete: "确认删除评论？"
     header:

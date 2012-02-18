@@ -197,8 +197,6 @@ ul.dropdown ul li {
   background-color: #eef;
   background: rgba(235,235,255,0.9); 
   border-bottom: 1px solid #aaa; 
-  float: none; 
-  line-height:30px;
   height: 30px;
   font-size: 0.8em;
 }
@@ -377,15 +375,25 @@ span.cke_skin_kama { border: 0px !important; }
 
 .ui-autocomplete {
   width:150px;
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
   li {
     list-style:none;
-    @include gray-link;
     border: 1px solid #ccc;
+    clear:both;
     left:0;
     right:0;
     a {
       display:block;
       width:100%;
+      color:#005EAC;
+      background: #ffffff;
+      &.ui-state-hover {
+        background:#fffccc;
+      }
+      img {width:28px; float:left; border:0;}
+      p {font-size:20px; line-height:30px; margin-left: 50px; display:block;}
     }
   }
 }

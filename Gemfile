@@ -25,6 +25,7 @@ gem 'annotate'
 gem 'mysql2'
 gem 'thinking-sphinx'
 gem 'hz2py'
+gem 'scorer'
 
 
 #gem 'mysql2'

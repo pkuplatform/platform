@@ -6,12 +6,13 @@
       = link_to subject.name, subject
       = t ".at"
       = link_to comment.commentable.name, comment.commentable
-      = t '.action'
-      - if event.action=="reminded"
+      - if event.action=="mentioned"
         = t :de
         = link_to (t :comment), comment
         = t :zhong
         = t event.action
+      - else       
+        = t '.action'
     .center
       %pre.comment-body
         = raw comment.body.truncate(100)
