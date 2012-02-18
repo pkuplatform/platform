@@ -15,6 +15,12 @@ html {
 
 .container { width: 960px; margin: 0px auto; }
 
+.container.application { 
+  overflow: hidden;
+  margin-top: 100px;
+  .content { width: 680px; float: left; }
+}
+
 .container.groups.index, .container.activities.index, .container.site.home {
   overflow: hidden;
   margin-top: 50px;
