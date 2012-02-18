@@ -1,12 +1,14 @@
 %li.comment{:id=>"comment-#{comment.id}", :class => "#{cycle('odd', 'even')}"}
-  .avatar
-    = image_tag comment.user.avatar
-  .body
-    %span.name= link_to comment.user.name, comment.user
-    %span.gray= t :at
-    %span.time= distance_of_time_in_words_to_now(comment.created_at)
-    %span.gray= t :post_comment
-    -if can? :delete, comment
-      %span.delete= link_to "X", destroy_comment_path(comment), :method => :delete, :remote => true, :confirm => t(".sure_to_delete")
-    %p.comment-body=raw comment.body
-  .clear
+  -if can? :delete, comment
+    .delete= link_to "X", destroy_comment_path(comment), :method => :delete, :remote => true, :confirm => t(".sure_to_delete")
+  .comment-box
+    .avatar
+      = link_to (image_tag comment.user.url), comment.user
+    .body
+      %span.name= link_to comment.user.name, comment.user
+      %span.gray= t :at
+      %span.time= distance_of_time_in_words_to_now(comment.created_at)
+      %span.gray= t :before
+      %span.gray= t :post_comment
+      %pre.comment-body=raw comment.body.truncate(140)
+    .clear

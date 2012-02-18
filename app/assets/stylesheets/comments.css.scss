@@ -18,7 +18,6 @@
     .body { 
       @include lbubble;
       float: right; 
-      margin: 20px 0px 20px 2%;
     }
   }
   .comment.even, .new-comment { 
@@ -26,38 +25,51 @@
     .body { 
       @include rbubble;
       float: left; 
-      margin: 20px 2% 20px 0px;
     }
   }
   li { 
+    background-color: white;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    &.new-comment{margin-bottom: 10px;}
+    border-bottom: 1px solid #cfcfcf;
+    font-size: 14px;
     list-style:none;
+    padding:20px;
+    padding-bottom:0;
+    .comment-box {margin:0; padding:0;}
     .avatar { 
-      @include box-radius; 
+      @include box-radius(5px); 
       overflow: hidden; 
-      width: 100px;
-      height: 100px;
-      img { width: 100px; }
-      margin: 20px 0px;
+      width: 64px;
+      height: 64px;
+      margin: 10px;
+      margin-bottom: 30px;
     }
     .body {
-      min-height: 60px;
-      background-color: white;
-      width: 70%;
-      padding: 20px;
-      @include box-radius;
-      @include box-gradual-change;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-      -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-      font-size: 16px;
+      min-height: 40px;
+      width: 530px;
       .name { @include orange-link; }
       .gray { color: #BBB; } 
       .time { @include green; }
       p {padding: 10px;}
-      .delete { @include gray-link; float: right;}
+    }   
+    .delete {
+      @include gray-link;
+      position:relative;
+      left:645px;
+      top:-13px;
+      float:left;
+      font-size:12px;
     }
   }
 }
 .comment-body{
   @include orange-link;
+  white-space:pre-wrap;
+  word-wrap: break-word; 
+  word-break: normal;
+  padding:5px;
+  padding-bottom:15px;
 }

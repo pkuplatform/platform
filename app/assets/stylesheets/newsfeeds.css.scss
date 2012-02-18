@@ -3,7 +3,7 @@
 
 .newsfeed {
   overflow: hidden;
-  .avatar  { float: left;  }
+  .avatar  { float: left; img {@include box-radius(5px);} }
   .wrapper { 
     width: 500px;
     margin-left: 30px;

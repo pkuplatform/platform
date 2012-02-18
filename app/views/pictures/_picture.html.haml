@@ -9,7 +9,7 @@
         %span.time= l @picture.created_at
     .clear
   .box-content
-    = image_tag(@picture.url(:original))
+    =link_to image_tag(@picture.url(:original)),@picture.url(:original)
     %p= @picture.remark
     %p
       = link_to (t ".prev"),load_picture_path(@picture.prev),:remote=>true

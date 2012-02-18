@@ -5,7 +5,7 @@ class Picture < ActiveRecord::Base
   
   belongs_to :album
   belongs_to :user
-  has_attached_file :photo, :styles => { :medium => "300x300>", :small => "128x128>", :thumb => "64x64>" }
+  has_attached_file :photo, :styles => { :big=>"600x600>",:medium => "300x300>", :small => "128x128>", :thumb => "64x64>" }
   
   after_create :new_event
 
