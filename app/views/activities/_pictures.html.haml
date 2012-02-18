@@ -16,5 +16,5 @@
       = link_to "", "##", :class=>"next"
       .inline-hide
         - @activity.pictures.each do |pic|
-          %div{:id=>"picture-ori-#{pic.id}"}=link_to image_tag(pic.url(:original)), pic
+          %div{:id=>"picture-ori-#{pic.id}"}=link_to image_tag(pic.url(:big)), pic
 

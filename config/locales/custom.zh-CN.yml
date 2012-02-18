@@ -154,7 +154,6 @@
   like: "喜欢"
   post: "发表"
   reminded: "被提及"
-  in: "在"
   Blog: "日志"
   Picture: "图片"
   Activity: "活动"
@@ -187,8 +186,7 @@
 
   "": ""
   "Create New Group": "创建新社团"
-  male: "男"
-  female: "女"
+
 
   like_count: "%{count}人喜欢"
   join_count: "%{count}人参加"
@@ -205,7 +203,6 @@
   activity_more: "浏览更多活动>>"
   blogs_more: "浏览更多日志>>"
   pictures_more: "浏览更多图片>>"
-  at: "在"
   post_comment: "发表评论"
   post_blog: "前发表日志"
   comments_more: "浏览更多评论>>"
@@ -222,9 +219,14 @@
   users_show: "个人中心"
   slogan: "标语"
 
-
+  male: "男"
+  female: "女"
+  in: "在"
+  at: "在"
   de: "的"
   zhong: "中"
+  before: "前"
+
   groups_index: "社团中心"
   edit_group: "编辑社团"
 
