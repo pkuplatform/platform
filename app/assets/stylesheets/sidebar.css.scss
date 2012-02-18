@@ -1,0 +1,25 @@
+@import 'mixin';
+
+.sidebar {
+  width: 260px;
+  float: left;
+  padding-left: 20px;
+}
+
+.recommend, .hot.groups {
+  li { 
+    list-style: none; 
+    overflow: hidden; 
+    margin: 5px 0px;
+  }
+  img { float: left; }
+  .meta { float: left; margin-left: 10px; }
+  @include link;
+  font-size: 12px;
+  border-bottom: 1px solid #BBB;
+  padding: 10px 0px;
+  .title { 
+    font-size: 16px; 
+    margin-bottom: 10px;
+  }
+}

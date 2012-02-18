@@ -20,11 +20,6 @@ table {
   tr { margin: 5px 0px; }
 }
 
-.sidebar { 
-  width: 220px; 
-  float: right;
-}
-
 .content { 
   width: 680px; 
   float: left;
@@ -91,9 +86,13 @@ table {
 }
 
 .search {
-  margin-top: 30px;
-  input { 
-    height: 20px;
+  float: right;
+  .input-wrapper { 
+    margin: 0; 
+    margin-top: 3px;
+    margin-right: 40px;
+    padding: 0;
+    input { font-size: 12px; }
   }
 }
 

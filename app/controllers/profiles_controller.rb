@@ -101,4 +101,15 @@ class ProfilesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def like
+    @profile = Profile.find(params[:id])
+    ur = UserRelation.find_by_liking_id_and_liked_id(current_user.id, @profile.user.id)
+    if ur.nil?
+      UserRelation.create!(:liking_id => current_user.id, :liked_id => @profile.user.id)
+    else
+      ur.destroy
+    end
+    redirect_to @profile
+  end
 end

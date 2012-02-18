@@ -13,12 +13,14 @@ class Profile < ActiveRecord::Base
     indexes :description
   end
 
+  def thumb
+    avatar.url(:thumb)
+  end
+
   def get_py
     if self.pyname!=Hz2py.do(name)
       self.pyname = Hz2py.do(name)
       save
     end
   end
-
-
 end

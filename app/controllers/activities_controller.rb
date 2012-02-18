@@ -18,6 +18,8 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
 
+    @hots = Activity.first(5)
+
     if params[:sort] == "latest"
       sort = "created_at DESC"
     elsif params[:sort] == "pop"
@@ -270,5 +272,10 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activities }
-    end  end
+    end  
+  end
+
+  def wall
+    @activities = Activity.first(50)
+  end
 end

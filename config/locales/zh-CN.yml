@@ -236,6 +236,13 @@
       action: "%{action}了"
 
   share:
+    user_recommend:
+      title: "可能感兴趣的人"
+      indirect: "%{count}个间接关注人"
+    recommend_groups:
+      title: "推荐社团"
+    hot_groups:
+      title: "热门社团"
     comments:
       holder: "说些什么吧~"
       submit: "发表评论"
@@ -403,7 +410,9 @@
       avatar: "头像"
       holder: "添加您的个人简介吧~"
     side:
-      like: "%{count}人关注"
+      like_cnt: "%{count}人关注"
+      like: "关注"
+      dislike: "取消关注"
     secondary:
       new_group: "新建社团"
     form:
@@ -433,4 +442,23 @@
   mailboxes:
     new:
       topic: "主题"
+
+  activities:
+    card:
+      like: "关注(%{count})"
+      join: "参加(%{count})"
+      comment: "评论(%{count})"
+      from: "来自"
+    filter:
+      like: "关注"
+      join: "参加"
+      pop: "热门"
+      latest: "最新"
+      all: "全部"
+      category: "类别"
+      wall: "海报墙"
+    hot:
+      hot: "热门活动"
+    wall:
+      wall: "海报墙"
   join: "参加"

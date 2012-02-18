@@ -13,7 +13,9 @@
       .sidebar
         - if user_signed_in?
           = render 'users/card' 
-          = render 'share/search'
+          = render 'share/recommend_groups'
+          = render 'share/hot_groups'
+          = render 'share/user_recommend'
         - else
           = render 'devise/sessions/new'
       .clear

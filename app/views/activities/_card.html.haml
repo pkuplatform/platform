@@ -1,3 +1,21 @@
-.activity.card.box
-  = render :partial => 'activities/side', :locals => { :activity => activity, :board => false }
-  = render :partial => 'activities/info', :locals => { :activity => activity, :board => false }
+.activity.card
+  = link_to (image_tag activity.poster.url(:card)), activity
+  .info
+    .top
+      %span.name= link_to activity.title, activity
+    .center
+      = simple_format activity.description
+    .bottom
+      %span.time
+        = l activity.start_at, :format => :short
+      %span.location
+        = activity.location
+      %span.group
+        = t '.from'
+        = link_to activity.group.name, activity.group
+      %span.meta
+        = t '.like', :count => activity.followers.count
+        = "|"
+        = t '.join', :count => activity.count
+        = "|"
+        = t '.comment', :count => activity.comments.count
