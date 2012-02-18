@@ -1,0 +1,14 @@
+.sort-filter
+  .category
+    %ul
+      %li= link_to (t '.all'), activities_path(:sort => params[:sort], :filter => 'all')
+      %li.category
+        = t '.category'
+        %ul
+          - Category.all.each do |category|
+            %li= link_to category.translated_name, activities_path(:sort => params[:sort], :filter => 'category', :id => category.id)
+      %li= link_to (t '.latest'), activities_path(:sort => 'latest', :filter => params[:filter], :id => params[:id])
+      %li= link_to (t '.pop'), activities_path(:sort => 'pop', :filter => params[:filter], :id => params[:id])
+      %li= link_to (t '.like'), activities_path(:sort => params[:sort], :filter => 'like')
+      %li= link_to (t '.join'), activities_path(:sort => params[:sort], :filter => 'join')
+      %li= link_to (t '.wall'), wall_activities_path

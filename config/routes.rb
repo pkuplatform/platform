@@ -38,9 +38,11 @@ Platform::Application.routes.draw do
     end
   end
 
-  resources :profiles
-
-  resources :user_relations, :only => [:create, :destroy]
+  resources :profiles do
+    member do
+      get 'like'
+    end
+  end
 
   resources :groups do
     collection do
@@ -78,6 +80,7 @@ Platform::Application.routes.draw do
     collection do
       get 'tag_cloud'
       get 'tag'
+      get 'wall'
     end
     member do
       get 'join'

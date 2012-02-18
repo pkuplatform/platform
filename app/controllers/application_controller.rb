@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_filter :feedback_init
   before_filter :store_location
   
-
   def feedback_init
     @feedback = Feedback.new
     @params = {:params=>params, :cookies=>cookies, :session=>session}.to_s
@@ -16,4 +15,5 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource_or_scope) || home_path
   end
+
 end

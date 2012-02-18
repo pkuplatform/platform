@@ -30,6 +30,11 @@
   a { color: #BBB; text-decoration: none; text-align: center; }
 }
 
+@mixin link {
+  a { color: #005EAC; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+}
+
 @mixin title {
   .title { 
     @include orange;

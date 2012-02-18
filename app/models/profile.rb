@@ -12,4 +12,7 @@ class Profile < ActiveRecord::Base
     indexes :description
   end
 
+  def thumb
+    avatar.url(:thumb)
+  end
 end

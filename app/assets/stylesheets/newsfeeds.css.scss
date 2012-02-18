@@ -51,8 +51,7 @@
 }
 
 .newsfeed {
-  a { color: #005EAC; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  @include link;
   font-size: 12px; 
   padding: 10px 10px;
   .top { font-size: 14px; }

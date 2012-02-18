@@ -1,0 +1,4 @@
+.hot
+  .title= t '.hot'
+  - @hots.each do |activity|
+    = image_tag activity.poster.url(:card)

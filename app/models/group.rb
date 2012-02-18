@@ -54,6 +54,14 @@ class Group < ActiveRecord::Base
     members.count + admins.count
   end
 
+  def self.recommend
+    Group.first(3)
+  end
+
+  def self.hot
+    Group.order("points DESC").first(3)
+  end
+
   define_index do
     # fields
     indexes :name, :sortable => true

@@ -53,14 +53,6 @@ class User < ActiveRecord::Base
     profile.avatar.url(size)
   end
 
-  def like!(liked)
-    user_relations.create!(:liked_id => liked.id)
-  end
-
-  def dislike!(disliked)
-    user_relations.find_by_liked_id(disliked).destroy
-  end
-
   def self.daily_ranks
     RankList.where("identify_id < ?", 10)
   end

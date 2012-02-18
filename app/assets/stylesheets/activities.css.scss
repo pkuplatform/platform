@@ -5,11 +5,8 @@
 @import 'mixin';
 @import 'css3';
 
-.activities.index { margin-top: -50px; }
 .activity .info .blog { @include blue; font-size: 16px; }
-.activity.card .like-join { margin-top: 20px; }
 .activity .info .additions { @include blue-link; font-size: 16px; }
-.activity .info div { margin: 10px 0px; }
 .activity .info .time { @include blue; }
 .activity .description { min-height: 160px; padding:10px;}
 
@@ -89,4 +86,51 @@ a.prev span, a.next span {
 
 .admin-panel {
   margin-bottom: 50px;
+}
+
+.activities.index, .activities.wall {
+  background-color: white;
+  padding: 0px 30px;
+  margin-top: -100px;
+  padding-top: 20px;
+}
+
+.activities.wall .hot {
+  .title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    @include orange;
+  }
+  img { width: 140px; margin-right: 15px; margin-bottom: 10px; }
+  margin-bottom: 30px;
+  margin-right: -15px;
+}
+
+.activities.index .hot {
+  img { width: 100px; margin-right: 25px; }
+  margin-bottom: 30px;
+  .title { margin-bottom: 10px; @include orange; }
+  margin-right: -25px;
+}
+
+.activity.card {
+  overflow: hidden;
+  border-bottom: 1px solid #BBB;
+  padding: 20px 0px;
+  font-size: 12px;
+  .name { font-size: 16px; }
+  .top { margin-bottom: 5px; }
+  .center { margin-bottom: 5px; min-height: 120px; }
+  .bottom { color: #7AA5B9; }
+  .meta { float: right; }
+  a { color: #005EAC; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { float: left; width: 120px; @include box-radius(10px); }
+  .info {
+    float: left;
+    margin-left: 20px;
+    width: 480px;
+  }
 }
