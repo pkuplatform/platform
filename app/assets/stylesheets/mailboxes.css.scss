@@ -12,17 +12,53 @@
       background: #eee;
     }
   }
-  .subject {
-    .input-wrapper {
-      width: 600px;
-      input {
-        width: 600px;
-      }
+  .user-subject-wrapper
+  {
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    input {
+      border:0;
+      font-size:20px;
+    }
+    .user{
+      width: 150px;
+      float:left;
+      border: 1px solid #eee;
+      margin-left:10px;
+    }
+    .subject{
+      width: 430px;
+      float:right;
     }
   }
-  .unread td{
-    font-weight:800;
-    background-color:#3EB;
+
+  table.mail-list {
+    border-collapse: collapse;
+    thead th{
+      border:1px solid #999;
+      text-align:center;
+    }
+    td {
+      text-align:center;
+      @include black-link(0);
+      .avatar {
+        width: 64px;
+        height: 64px;
+        float: left;
+        margin:20px;
+      }
+      .infos {
+        padding:30px;
+      }
+      border-bottom:1px solid #999;
+    }
+
+    .unread td{
+      font-weight:800;
+      background-color:#FFD;
+      @include orange-link;
+    }
   }
   label {
     width:60px;
@@ -31,6 +67,38 @@
   .box-header {
     @include orange-link;
   }
+
 }
 
+
+
 .mailbox .button-wrapper { text-align: right; margin-top: 20px; }
+
+.mails {
+  padding: 15px;
+  border-top: 1px solid #ccc;
+  h3 {
+    font-size:1.5em;
+    font-weight:bold;
+    padding-bottom:5px;
+  }
+  .infos {
+    color: #888;
+    font-size: 0.8em;
+    @include green-link;
+  }
+  .mail-body {
+    padding: 15px;
+    margin: 15px;
+    background:#f3f3f3;
+    @include box-radius;
+    min-height: 100px;
+  }
+  .reply {
+    padding: 10px;
+
+  }
+  .pagination {
+    text-align:center;
+  }
+}

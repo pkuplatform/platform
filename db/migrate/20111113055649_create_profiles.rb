@@ -4,6 +4,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.references :user
       t.integer  :status, :default => 4
       t.string   :name
+      t.string   :pyname
       t.string   :nickname
       t.integer  :gender, :default => 1
       t.string   :student_id

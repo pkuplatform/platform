@@ -47,10 +47,10 @@
   }
 }
 
-@mixin black-link {
+@mixin black-link($shadow:1px) {
   a {
     color: #333;
-    text-shadow: rgba(150, 150, 150, .7) 0px 1px 0px;
+    text-shadow: rgba(150, 150, 150, .7) 0px $shadow 0px;
     text-decoration: none;
   }
 }

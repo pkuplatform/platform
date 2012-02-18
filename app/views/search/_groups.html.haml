@@ -10,7 +10,7 @@
       = l group.founded_at, :format => :long
       = t '.founded'
     .introduction
-      = simple_format (highlight group.introduction, @q)
+      = sanitize(highlight(group.introduction), :attributes => %w(id class style href _cke_saved_href title alt width height)) 
     .activity
       = t :activities_count, :count => group.activities.count
   .clear

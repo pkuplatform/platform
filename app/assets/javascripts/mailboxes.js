@@ -24,5 +24,20 @@ $(function() {
 	$(window).bind("popstate", function() {
 		$.getScript(location.href);
 	});
-		
+
+	$("#user_nameid").blur(function() {
+		var reg=/\((\d+)\)/;
+		chk = this.value.match(reg);
+		if (chk==null&&this.value!='')
+		{
+			$(this).css("background-color","#c00");
+		} else {
+			if (chk!=null) $("#user_tokens").attr("value",chk[1]);
+			$(this).css("background-color","#fff");
+			return true;
+		}
+	});
+	$("#user_nameid").focus(function() {
+			$(this).css("background-color","#ffd");
+	});
 });

@@ -5,7 +5,7 @@
       %span.name= link_to group.name, group
       %span.category= t group.category.name, :scope => :category
     .center
-      = simple_format group.introduction
+      = sanitize(group.introduction, :attributes => %w(id class style href _cke_saved_href title alt width height))   
     .bottom
       %span.founded
         = l group.founded_at

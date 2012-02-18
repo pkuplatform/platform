@@ -2,14 +2,13 @@
 .mailbox
   .mails
     = form_tag create_mailboxes_path, :method => :post do
-      .select-wrapper
-        = label_tag :user_tokens, "#{t :receiver} :"
-        = select_tag(:user_tokens,options_from_collection_for_select(current_user.users_i_like,:id,:name),:options=>{:default =>t('select_receiver')})
-      .subject
-        .input-wrapper
-          = text_field_tag :subject, "", :placeholder => (t ".topic")
+      .user-subject-wrapper
+        = text_field_tag :user_nameid,"",:class=>"user user-input", :placeholder=>(t :receiver)
+        = hidden_field_tag :user_tokens,""
+        = text_field_tag :subject, "",:class=>"subject", :placeholder => (t ".topic")
+        .clear
       .area-wrapper
         %p
-          = cktext_area :body, "", :class => "medium"
+          = cktext_area_tag :body, "", :toolbar => "Basic"
       .button-wrapper
         = submit_tag (t "send"), :class => "submit"
