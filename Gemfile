@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'thin'
 gem 'haml-rails'
 gem 'devise', '2.0.0'
-gem 'has_mailbox'
+gem 'has_mailbox', :git => 'https://github.com/fajrif/has_mailbox.git'
 gem 'paperclip'
 gem 'cancan'
 gem 'ransack'
@@ -24,6 +24,8 @@ gem 'ckeditor', '3.7.0.rc2'
 gem 'annotate'
 gem 'mysql2'
 gem 'thinking-sphinx'
+gem 'hz2py'
+
 
 #gem 'mysql2'
 # Gems used only for assets and not required

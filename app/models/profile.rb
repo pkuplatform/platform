@@ -5,6 +5,7 @@ class Profile < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :nickname
   validates_presence_of :student_id
+  after_save :get_py
 
   define_index do
     indexes :name, :sortable => true
@@ -14,5 +15,12 @@ class Profile < ActiveRecord::Base
 
   def thumb
     avatar.url(:thumb)
+  end
+
+  def get_py
+    if self.pyname!=Hz2py.do(name)
+      self.pyname = Hz2py.do(name)
+      save
+    end
   end
 end

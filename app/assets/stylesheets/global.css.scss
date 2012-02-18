@@ -194,6 +194,7 @@ ul.dropdown ul li {
   width: 100%;  
 
   font-weight: normal;
+  background-color: #eef;
   background: rgba(235,235,255,0.9); 
   border-bottom: 1px solid #aaa; 
   float: none; 
@@ -372,3 +373,19 @@ span.cke_skin_kama { border: 0px !important; }
 .field.area label { vertical-align: top; }
 .field { @include blue-link; }
 .func { @include orange-link; @include blue; }
+
+
+.ui-autocomplete {
+  width:150px;
+  li {
+    list-style:none;
+    @include gray-link;
+    border: 1px solid #ccc;
+    left:0;
+    right:0;
+    a {
+      display:block;
+      width:100%;
+    }
+  }
+}

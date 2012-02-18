@@ -24,6 +24,17 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def index
+    qs = "%"
+    Hz2py.do(params[:q]).each_char{|c| qs+= c + '%'}
+    @profiles = Profile.select("id,name").where("pyname like ?",qs).limit(20)
+    @nameids = @profiles.collect {|p| "#{p.name}(#{p.id})" }
+    respond_to do |format|
+      format.json { render json: @nameids }
+      format.html
+    end
+  end
+
   # GET /profiles/new
   # GET /profiles/new.json
   def new

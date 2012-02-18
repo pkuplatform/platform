@@ -4,4 +4,4 @@
   .title
     = t '.title'
   .box
-    = simple_format @group.organization
+    = sanitize(@group.organization, :attributes => %w(id class style href _cke_saved_href title alt width height))  

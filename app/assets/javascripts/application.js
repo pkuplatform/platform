@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
 //= require ckeditor/ckeditor
 
@@ -51,6 +52,26 @@ $(document).ready(function(){
   $('input').mouseout(function() {
     $(this).parent().removeClass("hovering");
   });
+
+  $(".user-input").autocomplete({
+    source:function(req,res){
+      $.get("/profiles.json?q="+req.term,function(data){
+        res(data);
+      },"JSON");
+    }
+  });
+
+  CKEDITOR.config.toolbar_Basic =
+  [
+   ['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','Attachment','-','About']
+  ];
+
+  $("a[_cke_saved_href]").each(function() {
+      var lCkeSavedHref = $(this).attr("_cke_saved_href");
+      lCkeSavedHref = lCkeSavedHref.replace(/http:\/\/http:\/\//g, "http://");
+      lCkeSavedHref = lCkeSavedHref.replace(/javascript:/g, "");
+      this.href = lCkeSavedHref;
+  })
 });
 
 
