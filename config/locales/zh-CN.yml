@@ -613,4 +613,11 @@
         forms: "管理申请表"
         second: "新建教室申请表"
 
+  users:
+    card:
+      like: "关注(%{count})"
+      fans: "粉丝(%{count})"
+      groups: "社团(%{count})"
+      activities: "活动(%{count})"
+
   join: "参加"

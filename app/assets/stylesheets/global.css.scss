@@ -208,18 +208,17 @@ ul.panel {
 }
 
 .gogo.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #005EAC;
   .avatar { 
     float: left;
-    img {
-      @include box-radius;
-    }
+    img { @include box-radius; }
   }
-  .info { float: right; }
-  div { margin-bottom: 10px; }
-  .name { @include blue; }
-  .nickname { @include green; }
-  .points { @include blue; }
-  margin-bottom: 50px;
+  .info { float: left; margin-left: 20px; }
+  .name { font-size: 16px; }
+  div { margin-bottom: 5px; }
 }
 
 .highlight {
