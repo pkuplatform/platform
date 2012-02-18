@@ -1,7 +1,4 @@
-.groups.index
-  .hot
-    .title= t '.hot'
-    - Group.first(5).each do |group|
-      = image_tag group.logo.url(:card)
+.content.index
+  = render :partial => 'hot'
   = render :partial => 'filter'
   = render :partial => 'card', :collection => @groups, :as => :group

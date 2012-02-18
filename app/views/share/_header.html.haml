@@ -10,6 +10,9 @@
             %li= link_to (t ".groups.new"), new_group_path
         %li#navi-activity-center
           = link_to (t '.activity'), activities_path
+        - if can? :admin, :all
+          %li#navi-site-admin
+            = link_to (t '.admin'), admin_index_path
         - if @group&&@group.id&&!(@activity&&@activity.id)
           %li#navi-cur-group
             = link_to (t '.curgroup', :name=>@group.name), group_path(@group)

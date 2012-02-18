@@ -2,7 +2,7 @@
   groups:
     wall:
       wall: "Logo Wall"
-    index:
+    hot:
       hot: "近期热门"
     new:
       title: "新建社团"
@@ -18,6 +18,7 @@
       back: "<<<"
       title: "%{name} 的活动"
       warn: "还没有任何活动哦~"
+      more: "更多 >>"
     comments:
       back: "<<<"
       title: "%{name} 的评论"

@@ -5,6 +5,10 @@ class GroupsController < ApplicationController
   private
   def resolve_layout
     case action_name
+    when "index", "wall"
+      "groups_index"
+    when "show"
+      "groups_show"
     when "new", "edit"
       "form"
     else

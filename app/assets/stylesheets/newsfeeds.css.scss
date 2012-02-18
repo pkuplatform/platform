@@ -4,10 +4,11 @@
 .newsfeed {
   overflow: hidden;
   .avatar  { float: left;  }
-  .content { 
+  .wrapper { 
     width: 500px;
     margin-left: 30px;
     font-size: 1em; 
+    float: left;
   }
   .name { @include orange-link; }
   .object { @include orange-link; }
@@ -25,14 +26,11 @@
 .news {
   @include orange-link;
   overflow: hidden;
-  .content { 
+  .wrapper { 
     width: 450px;
     margin-left: 30px;
     font-size: 18px; 
     padding-top: 10px;
-    .title {
- 
-    }
   }
   .name { @include green-link; }
   span { @include blue; }
@@ -53,7 +51,7 @@
 .newsfeed {
   @include link;
   font-size: 12px; 
-  padding: 10px 10px;
+  padding: 10px 0px;
   .top { font-size: 14px; }
   .center { 
     margin: 5px 0px; 
