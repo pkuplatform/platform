@@ -62,6 +62,14 @@ class Group < ActiveRecord::Base
     Group.order("points DESC").first(3)
   end
 
+  def card
+    logo.url(:card)
+  end
+
+  def thumb
+    logo.url(:thumb)
+  end
+
   define_index do
     # fields
     indexes :name, :sortable => true

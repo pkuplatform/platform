@@ -72,4 +72,8 @@ class User < ActiveRecord::Base
   def phone
     profile.phone
   end
+
+  def admin?
+    profile.status | Constant::Super == profile.status
+  end
 end

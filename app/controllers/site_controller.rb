@@ -1,6 +1,18 @@
 class SiteController < ApplicationController
   before_filter :authenticate_user!, :only => [:home]
+  layout :resolve_layout
 
+  private
+  def resolve_layout
+    case action_name
+    when "home"
+      "site_home"
+    else
+      "application"
+    end
+  end
+
+  public
   def index
     redirect_to home_path if user_signed_in?
     @banners = Activity.last(3)

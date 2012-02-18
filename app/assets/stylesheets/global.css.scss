@@ -1,33 +1,14 @@
 @import 'css3';
 @import 'mixin';
 
-body {
-  font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
-  min-height: 100%;
-  min-width: 100%;
-  background-color: #B0E0FA;
-}
-
-html {
-  min-height: 100%;
-  min-width: 100%;
-}
-
-
 table { 
   width: 100%; 
   margin-top: 10px !important; 
   tr { margin: 5px 0px; }
 }
 
-.content { 
-  width: 680px; 
-  float: left;
-}
-
 .container {
   min-height: 100%;
-  width: 960px;
   margin: 150px auto;
 }
 
@@ -38,12 +19,12 @@ table {
 
 .clear { clear: both; }
 
-.main {
+.content.show {
   .header {
     span { 
       @include orange; 
       @include box-radius(10px);
-      @include box-inset;
+      @include box-shadow2;
       background-color: white; 
       display: inline-block;
       width: 90px;
@@ -225,18 +206,17 @@ ul.panel {
 }
 
 .gogo.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #005EAC;
   .avatar { 
     float: left;
-    img {
-      @include box-radius;
-    }
+    img { @include box-radius; }
   }
-  .info { float: right; }
-  div { margin-bottom: 10px; }
-  .name { @include blue; }
-  .nickname { @include green; }
-  .points { @include blue; }
-  margin-bottom: 50px;
+  .info { float: left; margin-left: 20px; }
+  .name { font-size: 16px; }
+  div { margin-bottom: 5px; }
 }
 
 .highlight {

@@ -3,6 +3,10 @@ class Ability
 
   def initialize(user)
 
+    if user.admin?
+      can :admin, :all
+    end
+
     can :like, Profile do |p|
       not UserRelation.where(:liking_id => user.id, :liked_id => p.user.id).exists?
     end

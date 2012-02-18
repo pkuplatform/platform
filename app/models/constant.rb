@@ -18,4 +18,5 @@ class Constant
 
   Like  = 1 << 16
   
+  Super = 1 << 30
 end

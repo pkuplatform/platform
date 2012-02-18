@@ -5,6 +5,10 @@ class ActivitiesController < ApplicationController
   private
   def resolve_layout
     case action_name
+    when "index", "wall"
+      "activities_index"
+    when "show"
+      "activities_show"
     when "new", "edit"
       "form"
     else

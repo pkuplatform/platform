@@ -5,16 +5,12 @@
 @import 'css3';
 @import 'mixin';
 
-.group.main .comments .list { margin-top: 0px; }
-.group.board { overflow: visible; }
+.group.board { overflow: visible; margin-bottom: 40px; }
 .group.board .side {
   text-align: center;
   .logo { margin-top: -70px; }
   .history, .organization, .description { @include blue-link; }
 }
-
-.main .activities { margin-top: 70px; float: none; }
-.main .comments { margin-top: 70px; }
 
 .group.form {
   form { text-align: right; }
@@ -29,13 +25,8 @@
   margin-bottom: 50px;
 }
 
-.group .list {
-  margin-top: 30px;
-}
-
-
-.members {
-  margin-top: 50px;
+.groups.show .members {
+  margin-bottom: 40px;
   @include back;
   @include title;
   .header  { margin-bottom: 20px; }
@@ -78,26 +69,18 @@
   @include orange;
 }
 
-.groups.index, .groups.wall { 
-  background-color: white;
-  padding: 0px 30px;
-  margin-top: -100px;
-  padding-top: 20px;
-}
-
-.groups.index .hot {
+.content.index .hot {
   img { width: 100px; margin-right: 25px; }
   margin-bottom: 30px;
   .title { margin-bottom: 10px; @include orange; }
   margin-right: -25px;
 }
 
-.groups.wall .hot {
+.content.wall .hot {
   .title { 
     font-size: 30px; 
     text-align: center; 
     margin-bottom: 30px; 
-    margin-top: 10px;
     @include orange;
   }
   img { width: 140px; margin-right: 15px; margin-bottom: 10px; }
@@ -124,4 +107,18 @@
     margin-left: 20px;
     width: 480px;
   }
+}
+
+.groups.show .admin-panel {
+  margin-bottom: 50px;
+  .header { margin-bottom: 20px; }
+}
+
+.groups.show .activities .list {
+  background-color: white;
+  padding: 20px 30px;
+  margin: 20px 0px 40px 0px;
+  @include box-shadow2;
+  @include box-radius;
+  .more { @include link; text-align: right; padding-top: 10px; }
 }
