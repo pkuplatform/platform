@@ -108,7 +108,7 @@ class GroupsController < ApplicationController
         format.html { redirect_to :action => 'edit', :id => @group.id, :q => 1 }
         format.json { render json: @group, status: :created, location: @group }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", layout: "form" }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end

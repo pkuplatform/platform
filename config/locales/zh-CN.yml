@@ -206,6 +206,8 @@
 
   activerecord:
     attributes:
+      group:
+        name: "名称"
       user:
         email: "邮箱"
         password: "密码"

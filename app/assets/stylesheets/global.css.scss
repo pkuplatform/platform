@@ -9,6 +9,11 @@ table {
 
 .clear { clear: both; }
 
+.field_with_errors { 
+  display: inline; 
+  input { background-color: #DDD; }
+}
+
 .content.show, .container.profile {
   .header {
     span { 
