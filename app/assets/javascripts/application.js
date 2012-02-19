@@ -53,13 +53,6 @@ $(document).ready(function(){
     $(this).parent().removeClass("hovering");
   });
 
-  $(".user-input").autocomplete({
-    source:function(req,res){
-      $.get("/profiles.json?q="+req.term,function(data){
-        res(data);
-      },"JSON");
-    }
-  });
 
   CKEDITOR.config.toolbar_Basic =
   [

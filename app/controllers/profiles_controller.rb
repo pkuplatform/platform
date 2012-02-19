@@ -34,10 +34,12 @@ class ProfilesController < ApplicationController
   def index
     qs = "%"
     Hz2py.do(params[:q]).each_char{|c| qs+= c + '%'}
-    @profiles = Profile.select("id,name").where("pyname like ?",qs).limit(20)
-    @nameids = @profiles.collect {|p| "#{p.name}(#{p.id})" }
+    @profiles = Profile.where("pyname like ?",qs).limit(100)
+    qs = qs.gsub('%','#')
+    @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
+    @hashed = @profiles.shift(20).collect {|p| {:label=>"<img src=\"#{p.thumb}\"></img><p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
     respond_to do |format|
-      format.json { render json: @nameids }
+      format.json { render json: @hashed }
       format.html
     end
   end

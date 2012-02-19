@@ -25,6 +25,14 @@ $(function() {
 		$.getScript(location.href);
 	});
 
+  $("#user_nameid").autocomplete({
+    source:function(req,res){
+      $.getJSON("/profiles",{q: req.term}, res);
+    },
+    delay: 100,
+    html: true
+  });
+
 	$("#user_nameid").blur(function() {
 		var reg=/\((\d+)\)/;
 		chk = this.value.match(reg);
