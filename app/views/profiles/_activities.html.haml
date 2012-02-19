@@ -1,0 +1,9 @@
+.activities.profile
+  .header
+    %span= t '.title'
+  .list
+    %ul
+      - @activities.each do |activity|
+        %li
+          .thumb= image_tag activity.thumb
+          .name= activity.title.truncate(8)

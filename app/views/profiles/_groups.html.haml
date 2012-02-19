@@ -1,0 +1,9 @@
+.groups.profile
+  .header
+    %span= t '.title'
+  .list
+    %ul
+      - @groups.each do |group|
+        %li
+          .thumb= image_tag group.thumb
+          .name= group.name.truncate(8)

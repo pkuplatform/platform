@@ -7,6 +7,8 @@ class ProfilesController < ApplicationController
     case action_name
     when "new", "edit"
       "form"
+    when "show"
+      "profile"
     else
       "application"
     end
@@ -18,6 +20,11 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @user = @profile.user
+    @groups = @profile.user.groups
+    @activities = @profile.user.activities
+    @likes = @profile.user.users_i_like
+    @fans = @profile.user.users_like_me
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @profile }

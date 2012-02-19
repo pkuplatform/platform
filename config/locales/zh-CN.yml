@@ -236,6 +236,10 @@
       action: "%{action}了"
 
   share:
+    recommend_activities:
+      title: "推荐活动"
+    hot_activities:
+      title: "热门活动"
     user_recommend:
       title: "可能感兴趣的人"
       indirect: "%{count}个间接关注人"
@@ -401,6 +405,14 @@
 
 
   profiles:
+    groups:
+      title: "社团"
+    activities:
+      title: "活动"
+    like:
+      title: "关注"
+    fans:
+      title: "粉丝"
     edit:
       title: "完善您的个人信息"
       name: "姓名"

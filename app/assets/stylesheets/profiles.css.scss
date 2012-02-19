@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'css3';
 @import 'mixin';
 
 .user.card {
-  margin-top: 100px;
+  margin-bottom: 50px;
   .avatar { margin-top: -70px;}
   .student-id, .phone { margin: 5px 0px; }
   .label { color: #BBB; margin-right: 10px; } 
@@ -27,4 +28,20 @@
   label { width: 50px; }
   form { width: 480px; }
   margin-bottom: 0px;
+}
+
+.groups.profile, .activities.profile, .like.profile, .fans.profile {
+  margin-bottom: 50px;
+  .list {
+    @include box-radius;
+    @include box-gradual-change;
+    @include box-shadow2;
+    padding: 25px 20px;
+  }
+  ul { overflow: hidden; margin-right: -8px; }
+  li {
+    list-style: none;
+    float: left;
+    margin: 8px;
+  }
 }

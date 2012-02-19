@@ -56,6 +56,22 @@ class Activity < ActiveRecord::Base
     admins.count + members.count
   end
 
+  def thumb
+    poster.url(:thumb)
+  end
+
+  def card
+    poster.url(:card)
+  end
+
+  def self.recommend
+    Activity.first(3)
+  end
+
+  def self.hot
+    Activity.order("points DESC").first(3)
+  end
+
   define_index do
     indexes :title, :sortable => true
     indexed :description

@@ -1,0 +1,9 @@
+.hot.groups
+  .title= t '.title'
+  %ul
+    - Activity.hot.each do |activity|
+      %li
+        = link_to (image_tag activity.thumb), activity
+        .meta
+          .name= link_to activity.title.truncate(20), activity
+          .points= activity.points

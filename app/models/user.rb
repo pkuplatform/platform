@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
     profile.phone
   end
 
+  def thumb
+    profile.avatar.url(:thumb)
+  end
+
   def admin?
     profile.status | Constant::Super == profile.status
   end

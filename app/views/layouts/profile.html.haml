@@ -7,11 +7,12 @@
     = csrf_meta_tags
   %body
     = render 'share/header'
-    .container.activities.index
+    .container.profile
       .content-wrapper
         = yield
       .sidebar
         = render 'users/card' 
-        = render 'share/recommend_activities'
-        = render 'share/hot_activities'
+        = render 'share/recommend_groups'
+        = render 'share/hot_groups'
         = render 'share/user_recommend'
+      .clear
