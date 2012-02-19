@@ -48,6 +48,9 @@ class Ability
     end
 
 
+    can :admin, Picture do |picture|
+      @picture&&@picture.id&&((user.can? :admin, picture.imageable)||(picture.user==user))
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

@@ -50,6 +50,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @comment = Comment.new
     @navi = :default
 
     @group = Group.find(params[:id])
@@ -197,14 +198,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def comment
-    @group = Group.find(params[:id])
-    @comment = @group.comments.create(:user => current_user, :body => params["comment-content"])
-
-    respond_to do |format|
-      format.js
-    end
-  end
 
   def description
     @group = Group.find(params[:id])

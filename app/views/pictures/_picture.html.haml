@@ -9,12 +9,15 @@
         %span.time= l @picture.created_at
     .clear
   .box-content
-    =link_to image_tag(@picture.url(:original)),@picture.url(:original)
-    %p= @picture.remark
-    %p
-      = link_to (t ".prev"),load_picture_path(@picture.prev),:remote=>true
-      = "/"
-      = link_to (t ".next"),load_picture_path(@picture.next),:remote=>true
+    =link_to image_tag(@picture.url(:big)),@picture.url(:original), :target=>"_blank", :display_with => :simple_format, :ok_button => 'Save', :cancel_button => 'Cancel' 
+  .textarea-wrapper
+    =best_in_place_if (can? :delete,@picture), @picture, :remark, :type => :textarea, :nil => t("Click me to add remark!")
+    :javascript
+      $(".best_in_place").best_in_place();
+  .navi
+    = link_to (t ".prev"),load_picture_path(@picture.prev),:remote=>true
+    = "/"
+    = link_to (t ".next"),load_picture_path(@picture.next),:remote=>true
 .picture.comments
   .header
     %span= t :comment

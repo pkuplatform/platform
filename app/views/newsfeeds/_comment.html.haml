@@ -12,7 +12,8 @@
         = t :zhong
         = t event.action
       - else       
-        = t '.action'
+        = t event.action
+        = link_to (t :comment), comment
     .center
       %pre.comment-body
         = raw comment.body.truncate(100)

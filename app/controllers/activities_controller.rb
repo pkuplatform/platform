@@ -96,15 +96,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def comment
-    @activity = Activity.find(params[:id])
-    @comment = @activity.comments.create(:user=>current_user,:body=>params["comment-content"])
- 
-    respond_to do |format|
-      format.js
-    end
-  end
-
   # POST /activities
   # POST /activities.json
   def create

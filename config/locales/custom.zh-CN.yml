@@ -1,6 +1,7 @@
 "zh-CN":
   comment: "评论"
   new_comment: "+评论"
+  comment_failed: "评论失败不能为空"
 
   index: "首页"
   list: "列表"
@@ -238,3 +239,4 @@
   failure: "失败"
 
   remark: "说明"
+  "Click me to add remark!": "点击我来加上描述"

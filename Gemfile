@@ -26,6 +26,7 @@ gem 'mysql2'
 gem 'thinking-sphinx'
 gem 'hz2py'
 gem 'scorer'
+gem 'best_in_place'
 
 
 #gem 'mysql2'

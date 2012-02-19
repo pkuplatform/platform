@@ -6,22 +6,18 @@
 @import 'mixin';
 
 .comments {
-  .new-comment {
-    #comment-content { 
-      padding-left:3px;
+  margin-bottom: 30px;
+  #new-comment {
+    .hints {
+      position:relative;
+      display:block;
+    }
+    #comment_body { 
       width: 76%;
       height: 80px;
-      background-color:#fafafa;
-      border: 1px solid #ddd;
-      color: #888;
-      font-weight:300;
-      line-height:1.5;
-      -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
     }
     .comment-buttons {
-      input { 
+      input {   
         border:0;
         display: block; 
         margin: 10px;
@@ -32,11 +28,16 @@
         &:hover{
           background-color:#2A85E8;
         }
+        &:disabled {
+          background-color:#CCC;
+          color:#777;
+        }
       }
       float:left;
       margin-left: 0;
       margin-right: 15px;
     }
+    margin-bottom:10px;
   }
   .comment.odd  { 
     .avatar { float: left; } 
@@ -45,23 +46,25 @@
       float: right; 
     }
   }
-  .comment.even, .new-comment { 
+  .comment.even, #new-comment { 
     .avatar { float: right; } 
     .body { 
       @include rbubble;
       float: left; 
     }
   }
+  .comment.active {
+    background-color: #ecFcee;
+  }
   li { 
     background-color: white;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-    &.new-comment{margin-bottom: 10px;}
     border-bottom: 1px solid #cfcfcf;
     font-size: 15px;
     list-style:none;
-    padding:10px;
+    padding:15px;
     padding-bottom:0;
     .comment-box {margin:0; padding:0;}
     .avatar { 
@@ -83,8 +86,8 @@
     .delete {
       @include gray-link;
       position:relative;
-      left:655px;
-      top:-5px;
+      left:650px;
+      top:-10px;
       float:left;
       font-size:10px;
     }

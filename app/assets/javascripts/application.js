@@ -65,6 +65,18 @@ $(document).ready(function(){
       lCkeSavedHref = lCkeSavedHref.replace(/javascript:/g, "");
       this.href = lCkeSavedHref;
   })
+  $(".best_in_place").best_in_place();
+
+  $(location.hash).scrollToAndActivate();
+
+  $(window).bind( 'hashchange', function(event){
+    event.preventDefault();
+    $(".active").removeClass("active");
+    $(location.hash).scrollToAndActivate();
+  });
+    
 });
+
+
 
 
