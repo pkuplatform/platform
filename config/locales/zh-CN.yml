@@ -458,6 +458,12 @@
       topic: "主题"
 
   activities:
+    new:
+      title: "新建活动"
+    form:
+      save: "完成"
+      poster: "海报"
+      banner: "横幅"
     card:
       like: "关注(%{count})"
       join: "参加(%{count})"

@@ -2,6 +2,8 @@ class Admin::GroupsController < ApplicationController
   layout "form"
 
   def index
+    authorize! :manage, :all
+
     if params[:filter] == "approving"
       filter = Constant::Approving
     elsif params[:filter] == "approved"
@@ -23,6 +25,8 @@ class Admin::GroupsController < ApplicationController
 
   def members
     @group = Group.find(params[:id])
+    authorize! :admin, @group
+
     @tenders = @group.tenders
     @admins  = @group.admins
     @members = @group.members
@@ -30,10 +34,15 @@ class Admin::GroupsController < ApplicationController
 
   def forms
     @group = Group.find(params[:id])
+    authorize! :admin, @group
+
     @second_buildings = @group.second_building_applications
   end
 
   def edit_members
+    @group = Group.find(params[:id])
+    authorize! :admin, @group
+
     member = params[:member_id]
     relation = UserGroup.f(params[:id], member)
     relation.set(params[:status][member])
@@ -42,17 +51,21 @@ class Admin::GroupsController < ApplicationController
 
   def description
     @group = Group.find(params[:id])
+    authorize! :admin, @group
   end
 
   def introduction
     @group = Group.find(params[:id])
+    authorize! :admin, @group
   end
 
   def history
     @group = Group.find(params[:id])
+    authorize! :admin, @group
   end
 
   def organization
     @group = Group.find(params[:id])
+    authorize! :admin, @group
   end
 end

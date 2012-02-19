@@ -1,6 +1,8 @@
 class Admin::MembersController < ApplicationController
   layout "form"
   def index
+    authorize! :manage, :all
+
     if params[:filter] == "approving"
       filter = Constant::Approving
     elsif params[:filter] == "approved"

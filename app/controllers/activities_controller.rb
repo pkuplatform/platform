@@ -73,14 +73,10 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
-    @navi = :default
     @group = Group.find(params[:group_id])
-    if !(can? :admin, @group) 
-      redirect_to @group
-      return
-    end
-    @activity = @group.activities.build
+    authorize! :manage, @group
 
+    @activity = @group.activities.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }
@@ -91,9 +87,7 @@ class ActivitiesController < ApplicationController
   def edit
     @group = Group.find(params[:group_id])
     @activity = Activity.find(params[:id])
-    if !(can? :admin,@activity) 
-      redirect_to @activity
-    end
+    authorize! :manage, @activity
   end
 
   def comment
@@ -108,6 +102,9 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
+    @group = Group.find(params[:activity][:group_id])
+    authorize! :manage, @group
+
     @activity = Activity.new(params[:activity])
     @activity.status = Constant::Approving
 
@@ -128,6 +125,7 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1.json
   def update
     @activity = Activity.find(params[:id])
+    authorize! :manage, @activity
 
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
@@ -145,6 +143,8 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1.json
   def destroy
     @activity = Activity.find(params[:id])
+    authorize! :manage, @activity
+
     @activity.destroy
 
     respond_to do |format|
@@ -208,40 +208,6 @@ class ActivitiesController < ApplicationController
     @group = @activity.group
     @tenders = @activity.tenders
     @members = @activity.members
-  end
-
-  def edit_members
-    @activity = Activity.find(params[:id])
-
-    pre_tenders_list = params[:pre_tender]
-    pre_members_list = params[:pre_member]
-
-    pre_tenders_list && pre_tenders_list.each do |key, value|
-      ug = UserActivity.find_by_activity_id_and_user_id(@activity, key)
-      case value.to_i
-        when Constant::Approving
-        when Constant::Member
-          ug.status &= ~Constant::Approving
-          ug.status |=  Constant::Member
-          Event.create(:subject_type=>"User",:subject_id => key, :action=>:join, :object_type=>"Activity", :object_id => @activity.id)
-        when Constant::Rejected
-          ug.status &= ~Constant::Approving
-          ug.status |=  Constant::Rejected
-      end
-      ug.save
-    end
-    pre_members_list && pre_members_list.each do |key, value|
-      ug = UserActivity.find_by_activity_id_and_user_id(@activity, key)
-      case value.to_i
-        when Constant::Member
-        when Constant::Rejected
-          ug.status &= ~Constant::Member
-          ug.status |=  Constant::Rejected
-      end
-      ug.save
-    end
-
-    redirect_to show_members_activity_path
   end
 
   def tag_cloud

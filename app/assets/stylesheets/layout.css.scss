@@ -13,7 +13,9 @@ html {
   min-width: 100%;
 }
 
-.container { width: 960px; margin: 0px auto; }
+body.registration { background: url('husk.png'); }
+
+.container { width: 960px; margin: 0px auto; min-height: 100%; }
 
 .container.site.index {
   margin-top: 100px;

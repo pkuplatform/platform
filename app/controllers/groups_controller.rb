@@ -21,8 +21,6 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
-    @navi = :default
-  
     if params[:sort] == "latest"
       sort = "created_at DESC"
     elsif params[:sort] == "founded"
@@ -50,8 +48,6 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @navi = :default
-
     @group = Group.find(params[:id])
     @more = @group.activities.count > 3
     @core = @group.comments.recent.count > 8
@@ -67,9 +63,8 @@ class GroupsController < ApplicationController
   # GET /groups/new
   # GET /groups/new.json
   def new
+    authorize! :manage, :all
     @group = Group.new
-    @daily_ranks = Group.daily_ranks
-    @weekly_ranks = Group.weekly_ranks
 
     respond_to do |format|
       format.html # new.html.erb
@@ -81,11 +76,7 @@ class GroupsController < ApplicationController
   def edit
     @form = true
     @group = Group.find(params[:id])
-
-    if not (can? :admin, @group)
-      redirect_to @group
-      return
-    end
+    authorize! :manage, @group
 
     case params[:q]
     when '1'
@@ -106,6 +97,8 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
+    authorize! :manage, :all
+
     @group = Group.new(params[:group])
     @group.status = Constant::Approving
 
@@ -125,6 +118,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1.json
   def update
     @group = Group.find(params[:id])
+    authorize! :manage, @group
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
@@ -147,6 +141,8 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    authorize! :manage, :all
+
     @group = Group.find(params[:id]) 
     @group.destroy 
     respond_to do |format|
@@ -158,7 +154,6 @@ class GroupsController < ApplicationController
   def like
     @group = Group.find(params[:id])
     ug = @group.user_groups.find_by_user_id(current_user)
-    puts "----------0000--------------"
     
     if @group.followers.include?(current_user)
       ug.status &= ~Constant::Like
