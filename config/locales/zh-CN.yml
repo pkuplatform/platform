@@ -175,7 +175,7 @@
       prompt: "请选择"
 
   errors:
-    format: "%{attribute} %{message}"
+    format: "%{attribute}%{message}"
     messages: &errors_messages
       inclusion: "不包含于列表中"
       exclusion: "是保留关键字"
@@ -183,7 +183,7 @@
       confirmation: "与确认值不匹配"
       accepted: "必须是可被接受的"
       empty: "不能留空"
-      blank: "不能为空字符"
+      blank: "不能为空"
       too_long: "过长（最长为 %{count} 个字符）"
       too_short: "过短（最短为 %{count} 个字符）"
       wrong_length: "长度非法（必须为 %{count} 个字符）"
@@ -205,6 +205,16 @@
       body: "如下字段出现错误："
 
   activerecord:
+    attributes:
+      group:
+        name: "名称"
+      user:
+        email: "邮箱"
+        password: "密码"
+        profile:
+          name: "姓名"
+          nickname: "昵称"
+          student_id: "学号"
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -229,7 +239,7 @@
       newsfeed: "新鲜事"
     newsfeeds:
       newsfeed: "动态"
-      title: "Ta们正在:"
+      title: "Ta们正在"
     newsfeed:
       at: "在"
       before: "前"
@@ -458,6 +468,12 @@
       topic: "主题"
 
   activities:
+    new:
+      title: "新建活动"
+    form:
+      save: "完成"
+      poster: "海报"
+      banner: "横幅"
     card:
       like: "关注(%{count})"
       join: "参加(%{count})"
@@ -489,6 +505,10 @@
       info: "活动信息管理"
       blogs: "日志管理"
       albums: "相册管理"
+    blogs:
+      empty: "还没有日志哦~"
+    pictures:
+      empty: "还没有上传图片哦~"
 
   admin:
     members:

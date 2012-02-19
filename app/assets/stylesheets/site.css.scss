@@ -10,7 +10,10 @@
   .activities { margin-top: 50px; }
 }
 
-.hotspot .inset-box {
+.hotspot .box-wrapper {
+  @include box-shadow2;
+  background-color: white;
+  padding: 20px;
   overflow: hidden;
   .banner { 
     ul { overflow: hidden; margin-bottom: -2px; }
@@ -21,21 +24,6 @@
     img { width:150px;}
   }
   .medium {  width: 470px; float: right; img {width:470px; overflow:hidden; } }
-}
-
-.site.inset-box {
-  ul { 
-    overflow: hidden; 
-    margin-right: -40px;
-  }
-  li { 
-    margin-right: 40px;
-    img { width: 180px; }
-    .title { @include orange; }
-    float: left;
-    list-style: none;
-    div { text-align: center; }
-  }
 }
 
 .site.home { margin-top: -60px; }
@@ -53,16 +41,14 @@
 
 .newsfeeds-wrapper {
   overflow: hidden;
-  margin: 50px 20px 0px 20px;
+  margin: 50px 20px;
   .toto { 
-    color: white;
-    text-shadow: -2px 2px 2px #4D6170;
-    float: left; 
     font-size: 24px;
+    color: #7AA5B9;
+    margin-bottom: 10px;
   }
   .newsfeeds { 
-    float: left; 
-    margin-left: 20px;
+    margin-left: 120px;
   }
   .newsfeed   { margin-top: 10px; }
 }

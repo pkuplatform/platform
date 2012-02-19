@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
     @hashed = @profiles.shift(20).collect {|p| {:label=>"<img src=\"#{p.thumb}\"></img><p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
     respond_to do |format|
       format.json { render json: @hashed }
-      format.html
+      format.html { render :nothing => true }
     end
   end
 
@@ -58,17 +58,14 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
+    authorize! :edit, @profile
     @user = @profile.user
-    if current_user!=@user 
-      redirect_to @user, :notice => "You are not allowed to edit others' profile!"
-    end
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
-    @profile.user = current_user
 
     respond_to do |format|
       if @profile.save
@@ -85,6 +82,7 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
+    authorize! :edit, @profile
     @user = @profile.user
 
     respond_to do |format|
@@ -102,6 +100,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
+    authorize! :manage, :all
     @profile = Profile.find(params[:id])
     @profile.destroy
 

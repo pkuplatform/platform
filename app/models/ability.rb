@@ -4,7 +4,9 @@ class Ability
   def initialize(user)
 
     if user.admin?
-      can :admin, :all
+      can :manage, :all
+    else
+      can :read, :all
     end
 
     can :like, Profile do |p|
@@ -23,7 +25,7 @@ class Ability
       not group.followers.include?(user)
     end
 
-    can :admin, Group do |group|
+    can :manage, Group do |group|
       not group.nil? and not group.id.nil? and group.admins.include?(user)
     end
 
@@ -39,12 +41,16 @@ class Ability
       not activity.followers.include?(user)
     end
 
-    can :admin, Activity do |activity|
+    can :manage, Activity do |activity|
       not activity.nil? and not activity.id.nil? and activity.admins.include?(user)
     end
 
     can :delete, Comment do |comment|
       (user == comment.user) || (((comment.commentable.is_a?(Group))||(comment.commentable.is_a?(Activity))) && comment.commentable.admins.include?(user)) 
+    end
+
+    can :edit, Profile do |profile|
+      user.id == profile.user.id
     end
 
 

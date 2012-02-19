@@ -3,8 +3,7 @@
     %span= t :activity
   .list
     - if @group.activities.empty?
-      .box
-        .warn= t '.warn'
+      .warn= t '.warn'
     - else
       = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
     .more

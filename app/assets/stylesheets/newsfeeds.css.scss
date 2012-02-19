@@ -24,7 +24,9 @@
 }
 
 .news {
-  @include orange-link;
+  .name { color: #0073B2; }
+  color: #444;
+  
   overflow: hidden;
   .wrapper { 
     width: 450px;
@@ -32,10 +34,6 @@
     font-size: 18px; 
     padding-top: 10px;
   }
-  .name { @include green-link; }
-  span { @include blue; }
-  .time { @include blue; }
-  .object { @include green-link; }
   margin-bottom: 10px;
 
   pre {

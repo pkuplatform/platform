@@ -18,7 +18,6 @@ class PicturesController < ApplicationController
   def index
     @activity = Activity.find(params[:activity_id])
     @pictures = @activity.pictures
-    @navi = :default
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,7 +31,6 @@ class PicturesController < ApplicationController
 
     @picture = Picture.find(params[:id])
     @activity = @picture.album.imageable
-    @navi = :default
 
     respond_to do |format|
       format.html { render 'show' }
@@ -56,7 +54,6 @@ class PicturesController < ApplicationController
   def new
     @activity = Activity.find(params[:activity_id])
     @picture = Picture.new
-    @navi = :default
 
     respond_to do |format|
       format.html # new.html.erb

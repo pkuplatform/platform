@@ -7,14 +7,14 @@ zh-CN:
       not_locked: "未锁定"
       not_saved:
         one: "因为1个错误导致此%{resource}保存失败:"
-        other: "因为%{count}个错误导致此%{resource}保存失败:"
+        other: "因为%{count}个错误导致注册失败:"
   devise:
     failure:
       already_authenticated: '你已经登录。'
       unauthenticated: '继续操作前请注册或者登录.'
       unconfirmed: '请先激活您的帐号'
       locked: '您的帐号已被锁定.'
-      invalid: '邮箱或密码错误'
+      invalid: '您的邮箱与密码不匹配'
       invalid_token: '认证码无效.'
       timeout: '您已登录超时，请重新登录.'
       inactive: '您还没有激活帐户.'

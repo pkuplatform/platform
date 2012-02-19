@@ -1,6 +1,8 @@
 class Admin::FormsController < ApplicationController
   layout "form"
   def index
+    authorize! :manage, :all
+
     if params[:filter] == "approving"
       filter = Constant::Approving
     elsif params[:filter] == "approved"
@@ -19,6 +21,7 @@ class Admin::FormsController < ApplicationController
   end
 
   def show
+    authorize! :manage, :all
     @form = Form::SecondBuildingApplication.find(params[:id])
   end
 end

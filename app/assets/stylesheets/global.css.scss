@@ -7,17 +7,12 @@ table {
   tr { margin: 5px 0px; }
 }
 
-.container {
-  min-height: 100%;
-  margin: 150px auto;
-}
-
-.container.noheader {
-  margin-top: 80px;
-  margin-bottom: 0px;
-}
-
 .clear { clear: both; }
+
+.field_with_errors { 
+  display: inline; 
+  input { background-color: #DDD; }
+}
 
 .content.show, .container.profile {
   .header {
@@ -95,10 +90,6 @@ table {
  }
 .icon.exit    { background-position: -110px -98px; 
   &:hover{  background-position: -110px -128px; }
-}
-
-body.site {
-  background: url('screen_background.gif') repeat-x;
 }
 
 body.form {
