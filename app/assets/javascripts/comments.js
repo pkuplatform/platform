@@ -15,8 +15,7 @@ $(function() {
         listening = true;
       }
       if (event.ctrlKey&&event.which==13) {
-        $(this).parent("form").submit();
-        event.preventDefault();
+        $("form#new_comment").submit();
       }
       if (findq(this.value)==null) {
         listening = false;

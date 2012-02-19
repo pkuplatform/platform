@@ -46,7 +46,7 @@ class Ability
     end
 
     can :delete, Comment do |comment|
-      (user == comment.user) || (((comment.commentable.is_a?(Group))||(comment.commentable.is_a?(Activity))) && comment.commentable.admins.include?(user)) 
+      (user == comment.user) || (can? :admin, comment.commentable) 
     end
 
     can :edit, Profile do |profile|
@@ -55,7 +55,7 @@ class Ability
 
 
     can :admin, Picture do |picture|
-      @picture&&@picture.id&&((user.can? :admin, picture.imageable)||(picture.user==user))
+      picture&&picture.id&&((can? :admin, picture.imageable)||(picture.user==user))
     end
     # Define abilities for the passed in user here. For example:
     #
