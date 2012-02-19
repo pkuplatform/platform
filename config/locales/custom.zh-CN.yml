@@ -111,7 +111,6 @@
   location: "地点"
   joined: "参加的人"
   dislike: "我不喜欢"
-  like: "我喜欢"
   quit: "退出"
   approving: "申请中"
   approved: "允许"
@@ -151,7 +150,7 @@
   "Didn't receive unlock instructions?": "没有接收到解锁邮件？"
 
   User: "用户"
-  like: "喜欢"
+  like: "关注"
   post: "发表"
   mentioned: "被提及"
   Blog: "日志"

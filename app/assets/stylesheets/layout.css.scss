@@ -15,6 +15,12 @@ html {
 
 .container { width: 960px; margin: 0px auto; }
 
+.container.site.index {
+  margin-top: 100px;
+  .sidebar { width: 220px; float: right; }
+  .content { width: 680px; float: left; }
+}
+
 .container.application { 
   overflow: hidden;
   margin-top: 100px;

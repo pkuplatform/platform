@@ -8,7 +8,7 @@ class SiteController < ApplicationController
     when "home"
       "site_home"
     else
-      "application"
+      "site_index"
     end
   end
 

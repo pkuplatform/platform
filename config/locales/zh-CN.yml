@@ -229,7 +229,7 @@
       newsfeed: "新鲜事"
     newsfeeds:
       newsfeed: "动态"
-      title: "Ta们正在:"
+      title: "Ta们正在"
     newsfeed:
       at: "在"
       before: "前"
@@ -489,6 +489,10 @@
       info: "活动信息管理"
       blogs: "日志管理"
       albums: "相册管理"
+    blogs:
+      empty: "还没有日志哦~"
+    pictures:
+      empty: "还没有上传图片哦~"
 
   admin:
     members:
