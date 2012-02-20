@@ -1,3 +1,4 @@
+
 $(function() {
 	// Check all the checkboxes when the head one is selected
 	$(".checkall").live("click", function() {

@@ -133,6 +133,22 @@ body.form {
   
   .panel { 
     float: right; 
+    .new_messages {
+      position:absolute;
+      background: url("icon.png");
+      background-position: -98px -240px;
+      width:25px;
+      height:40px;
+      a {
+        font-size:4px;
+        color:#FFF;
+        padding-top:3px;
+        text-align:center;
+        display:block;
+        text-decoration:none;
+        width:100%;
+      }
+    }
   }
   li {
     list-style:none;

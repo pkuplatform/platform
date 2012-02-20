@@ -73,8 +73,11 @@
       %ul.panel
         %li.mailbox
           = link_to (t '.mailbox'), mailboxes_path, { :class => "icon mailbox" }
+          - if !new_messages.empty?
+            .new_messages=link_to (new_messages.count), mailboxes_path
         %li.setting
           = link_to (t '.setting'), edit_profile_path(current_user.profile), { :class => "icon setting" }
         %li.exit
           = link_to (t '.logout'), destroy_user_session_path, { :method => :delete, :class => "icon exit" }
       = render 'share/search'
+.clear

@@ -226,20 +226,21 @@ ActiveRecord::Schema.define(:version => 20120218122804) do
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "status",              :default => 4
+    t.integer  "status",               :default => 4
     t.string   "name"
+    t.integer  "unread_message_count"
     t.string   "pyname"
     t.string   "nickname"
-    t.integer  "gender",              :default => 1
+    t.integer  "gender",               :default => 1
     t.string   "student_id"
     t.string   "phone"
-    t.integer  "points",              :default => 0
-    t.text     "description",         :default => ""
+    t.integer  "points",               :default => 0
+    t.text     "description",          :default => ""
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "delta",               :default => true, :null => false
+    t.boolean  "delta",                :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

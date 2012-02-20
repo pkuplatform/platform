@@ -1,6 +1,11 @@
 @import 'css3';
 @import 'mixin';
 
+html {
+  min-height: 100%;
+  min-width: 100%;
+}
+
 body {
   font-family: "微软雅黑","Helvetica Neue", Arial, Helvetica, sans-serif !important;
   min-height: 100%;
@@ -8,14 +13,9 @@ body {
   background-color: #B0E0FA;
 }
 
-html {
-  min-height: 100%;
-  min-width: 100%;
-}
-
 body.registration { background: url('husk.png'); }
 
-.container { width: 960px; margin: 0px auto; min-height: 100%; }
+.container { width: 960px; margin: 0px auto; min-height: 100%; background: rgba(0,15,30,0.1); }
 
 .container.site.index {
   margin-top: 100px;
@@ -30,7 +30,7 @@ body.registration { background: url('husk.png'); }
 
 .container.groups.index, .container.activities.index, .container.site.home {
   overflow: hidden;
-  margin-top: 50px;
+  margin-top: 35px;
   .content { 
     background-color: white; 
     padding: 20px 30px; 

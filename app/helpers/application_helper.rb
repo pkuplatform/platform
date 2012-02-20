@@ -92,8 +92,21 @@ module ApplicationHelper
         ops << [t("unread"), "Unread"]
       end
     end
-    puts ops
     ops
+  end
+
+  def new_messages
+      msgs = current_user.inbox.find_all_by_opened(false)
+      new_message_count = msgs.count - (current_user.profile.unread_message_count || 0)
+      if (new_message_count>0)
+        msgs = msgs.first(new_message_count)
+      else 
+        []
+      end
+  end
+
+  def dismark_new_messages
+      puts current_user.profile.update_attributes!(unread_message_count: current_user.inbox.find_all_by_opened(false).count)
   end
 
 end
