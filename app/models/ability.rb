@@ -46,16 +46,15 @@ class Ability
     end
 
     can :delete, Comment do |comment|
-      (user == comment.user) || (can? :admin, comment.commentable) 
+      (user == comment.user) || (can? :manage, comment.commentable) 
     end
 
     can :edit, Profile do |profile|
       user.id == profile.user.id
     end
 
-
-    can :admin, Picture do |picture|
-      picture&&picture.id&&((can? :admin, picture.imageable)||(picture.user==user))
+    can :manage, Picture do |picture|
+      picture&&picture.id&&((can? :manage, picture.imageable)||(picture.user==user))
     end
     # Define abilities for the passed in user here. For example:
     #

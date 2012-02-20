@@ -11,24 +11,13 @@
 //= require ckeditor/ckeditor
 
 $(document).ready(function(){
-  $notice = $("#notice");
-  if ($notice.html()) {
-    $.fancybox(
-      $notice.html(),
-        {
-          'transitionIn'  : 'none',
-          'transitionOut' : 'none',
-    });
-  }
-  $alert = $("#alert");
-  if ($alert.html()) {
-    $.fancybox(
-      $alert.html(),
-        {
-          'transitionIn'  : 'none',
-          'transitionOut' : 'none'
-    });
-  }
+
+
+  $('.flashes').each(function(){
+      $(this).purr();
+  });
+
+
   $('.feedbacks').tabSlideOut({
     tabHandle: '.handle',                              //class of the element that will be your tab
     pathToTabImage: '/assets/contact.gif',          //path to the image for the tab *required*

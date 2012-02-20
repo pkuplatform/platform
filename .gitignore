@@ -18,3 +18,4 @@ config/database.yml
 db/sphinx
 public/assets
 platform.war
+stats

@@ -41,13 +41,13 @@
 		if ( !cont )
 		{
 			cont = '<div id="purr-container"></div>';
+				// Convert cont to a jQuery object
+			cont = $( cont );
+			
+			// Add the container to the page
+			$( 'body' ).append( cont );
 		}
 		
-		// Convert cont to a jQuery object
-		cont = $( cont );
-		
-		// Add the container to the page
-		$( 'body' ).append( cont );
 			
 		notify();
 
@@ -57,9 +57,9 @@
 			var close = document.createElement( 'a' );
 			$( close ).attr(	
 				{
-					className: 'close',
+					class: 'close',
 					href: '#close',
-					innerHTML: 'Close'
+					innerHTML: 'Close',
 				}
 			)
 				.appendTo( notice )
@@ -102,8 +102,10 @@
 						setTimeout( function ()
 							{
 								removeNotice();
-							}, options.removeTimer
+							}, notice.pending? options.removeTimer/5:options.removeTimer
 						);
+					} else {
+						notice.pending = true;
 					}
 				}, 200 );	
 			}
@@ -162,9 +164,9 @@
 	$.fn.purr = function ( options )
 	{
 		options = options || {};
-		options.fadeInSpeed = options.fadeInSpeed || 500;
-		options.fadeOutSpeed = options.fadeOutSpeed || 500;
-		options.removeTimer = options.removeTimer || 4000;
+		options.fadeInSpeed = options.fadeInSpeed || 300;
+		options.fadeOutSpeed = options.fadeOutSpeed || 300;
+		options.removeTimer = options.removeTimer || 2500;
 		options.isSticky = options.isSticky || false;
 		options.usingTransparentPNG = options.usingTransparentPNG || false;
 		

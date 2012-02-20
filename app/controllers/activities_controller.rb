@@ -120,7 +120,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
-        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+        format.html { redirect_to @activity, notice: 'Activity was successfully updated' }
         format.json { head :ok }
         format.js { head :ok }
       else
