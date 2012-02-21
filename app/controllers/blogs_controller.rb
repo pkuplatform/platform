@@ -19,15 +19,6 @@ class BlogsController < ApplicationController
     @activity = @blog.activity
   end
 
-  def comment
-    @navi = :default
-    @blog = Blog.find(params[:id])
-    @comment = @blog.comments.create(:user=>current_user,:body=>params["comment-content"])
- 
-    respond_to do |format|
-      format.js
-    end
-  end
 
   def new
     @navi = :default

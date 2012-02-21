@@ -1,0 +1,5 @@
+$("#new-comment").after("<%= escape_javascript(render :partial=>'share/comment',:locals => {:comment => @comment }) %>");
+$("#comment-<%= @comment.id%>").hide();
+$("#comment-<%= @comment.id%>").slideDown('400');
+$("#comment-<%= @comment.id%>").scrollToAndActivate();
+$("#new-comment").commentReopen();

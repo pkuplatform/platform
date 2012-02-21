@@ -73,24 +73,7 @@ table {
   }
 }
 
-.icon {
-  background: url("icon.png");
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  overflow: hidden;
-  text-indent: -999px;
-}
 
-.icon.mailbox { background-position: -38px -98px; 
-  &:hover{  background-position: -38px -128px; }
-}
-.icon.setting { background-position: -74px -98px;
-  &:hover{  background-position: -74px -128px; }
- }
-.icon.exit    { background-position: -110px -98px; 
-  &:hover{  background-position: -110px -128px; }
-}
 
 body.form {
   background: url('screen_background.gif') repeat-x;
@@ -106,96 +89,6 @@ body.form {
   .button-wrapper { margin-top: 20px; }
 }
 
-.header-wrapper {
-  background: url('global_nav_bg.png') repeat-x;
-  position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  overflow: visible;
-  z-index: 10000;
-}
-
-.header-wrapper .header {
-  width: 960px;
-  height: 36px;
-  margin: 0px auto;
-  overflow: visible;
-  .navi {
-    float: left;
-    a {
-        color: #EEEEEE;
-        text-decoration: none;
-        text-shadow: 0 -4px 3px #4D6170;
-      }
-      a:hover { @include orange; }
-  }
-  
-  .panel { 
-    float: right; 
-  }
-  li {
-    list-style:none;
-    float: left;
-    line-height:34px;
-  }
-}
-
-/* 
-  LEVEL ONE
-*/
-ul.dropdown                         { position: relative; margin:0; }
-ul.dropdown li                      { font-weight: bold; float: left; 
-  text-align: center;
-}
-ul.dropdown li a                    {  display: block;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 0 auto;
-     }
-ul.dropdown li.hover,
-ul.dropdown li:hover                { @include box-inset(30px,0px,rgba(0,123,205,.3));  position: relative; }
-
-
-/* 
- LEVEL TWO
-*/
-ul.dropdown ul { visibility: hidden; position: absolute; top: 100%; left: 0; right: 0; 
-
-}
-ul.dropdown ul li { 
-  width: 100%;  
-
-  font-weight: normal;
-  background-color: #eef;
-  background: rgba(235,235,255,0.9); 
-  border-bottom: 1px solid #aaa; 
-  height: 30px;
-  font-size: 0.8em;
-}
-
-/* 
-  LEVEL THREE
-*/
-ul.dropdown ul ul           { left: 100%; top: 0; width:120px; }
-ul.dropdown li:hover > ul       { visibility: visible; }
-           
-ul.dropdown ul li a { border-right: none; width: 100%; display: inline-block; color: #333!important;  text-shadow: none!important;
-  padding:0;
-} 
-
-
-ul.panel {
-  li{
-    padding: 10px;
-    padding-top: 8px;
-    a {
-      display: block;
-      width: 16px;
-      height: 16px;
-    }
-  }
-}
 
 .gogo.card {
   margin-top: 20px;
@@ -367,5 +260,48 @@ span.cke_skin_kama { border: 0px !important; }
       img {width:28px; float:left; border:0;}
       p {font-size:20px; line-height:30px; margin-left: 50px; display:block;}
     }
+  }
+}
+
+.textarea-wrapper {
+  textarea {
+  padding-left:3px;
+  background-color:#fafafa;
+  border: 1px solid #ddd;
+  color: #888;
+  font-weight:300;
+  line-height:1.5;
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+  }
+}
+
+#purr-container {
+  position: fixed;
+  bottom: 30px;
+  right: 0;
+
+  .flashes {
+    position: relative;
+    width: 326px;
+  }
+  .flashes .close  {position: absolute; top: 12px; right: 12px; display: block; width: 18px; height: 17px; text-indent: -9999px; background: url(purrClose.png) no-repeat 0 10px;}
+  
+  .flash-body {
+    min-height: 50px;
+    padding: 22px 22px 0 22px;
+    background: url(purrTop.png) repeat-x;
+    background-size: 100%;
+    color: #f9f9f9;
+    img  {width: 50px; margin: 0 10px 0 0; float: left;}
+    h3 {margin: 0; font-size: 1.1em;}
+    li {list-style:none;}
+  }  
+  
+  .flash-bottom {
+    height: 22px;
+    background: url(purrBottom.png) no-repeat left top;
+    background-size: 100%;
   }
 }

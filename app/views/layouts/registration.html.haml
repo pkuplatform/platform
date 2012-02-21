@@ -6,5 +6,6 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body.registration
+    = render 'share/flashes'
     .container
       = yield

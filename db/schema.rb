@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(:version => 20120218122804) do
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
     t.string   "title"
-    t.text     "description"
+    t.text     "description",         :default => ""
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "location",            :default => ""
     t.boolean  "public",              :default => true
-    t.integer  "status",              :default => 1
+    t.integer  "status",              :default => 0
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -146,10 +146,10 @@ ActiveRecord::Schema.define(:version => 20120218122804) do
     t.integer  "category_id"
     t.string   "name"
     t.string   "slogan",            :default => ""
-    t.text     "introduction"
-    t.text     "description"
-    t.text     "history"
-    t.text     "organization"
+    t.text     "introduction",      :default => ""
+    t.text     "description",       :default => ""
+    t.text     "history",           :default => ""
+    t.text     "organization",      :default => ""
     t.string   "email",             :default => ""
     t.date     "founded_at"
     t.integer  "status",            :default => 4
@@ -226,20 +226,21 @@ ActiveRecord::Schema.define(:version => 20120218122804) do
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "status",              :default => 4
+    t.integer  "status",               :default => 4
     t.string   "name"
+    t.integer  "unread_message_count"
     t.string   "pyname"
     t.string   "nickname"
-    t.integer  "gender",              :default => 1
+    t.integer  "gender",               :default => 1
     t.string   "student_id"
     t.string   "phone"
-    t.integer  "points",              :default => 0
-    t.text     "description"
+    t.integer  "points",               :default => 0
+    t.text     "description",          :default => ""
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "delta",               :default => true, :null => false
+    t.boolean  "delta",                :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

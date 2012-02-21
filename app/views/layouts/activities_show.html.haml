@@ -6,6 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    = render 'share/flashes'
     = render 'share/header'
     .container.activities.show
       .content-wrapper

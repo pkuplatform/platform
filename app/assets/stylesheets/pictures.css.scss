@@ -47,3 +47,17 @@
 .picture-pop {
   width: 800px;
 }
+.picture .textarea-wrapper {
+  span{ 
+    padding:0;
+    margin:0 auto;
+    display:block;
+   }
+  font-size: 13px;
+  margin:0;
+  padding:0;
+  white-space:normal;
+  textarea{
+    margin:0;
+  }
+}

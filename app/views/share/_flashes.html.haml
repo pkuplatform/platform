@@ -1,0 +1,7 @@
+#purr-container
+#flash
+  -flash.each do |name, msg|
+    -if msg.is_a?(String)
+      = render :partial=>'share/flash', :locals=>{:name=>name, :body=>t(msg)}
+  -if not devise_error_messages!.empty?
+    = render :partial=>'share/flash', :local =>{:name=>"devise_error", :body=> devise_error_messages!}

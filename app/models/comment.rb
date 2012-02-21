@@ -12,6 +12,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
+
   after_create :new_event
 
   def conv

@@ -1,12 +1,17 @@
 %ul
-  %li.new-comment
+  %li#new-comment
     .avatar
+      %span.hints
       = image_tag current_user.url
     .body
-      = form_tag url_for(:action=>"comment"),:remote=>true  do
+      = form_tag(Comment.new, :remote=>true, :id => "new_comment") do 
         .comment-buttons
           = submit_tag t('.submit')
           = submit_tag t(".mention"), :class=>"mention-tag"
-        = text_area_tag "comment-content", nil, :placeholder => (t '.holder')
+        .textarea-wrapper= text_area_tag "comment[body]", "",:placeholder => (t '.holder')
+        = hidden_field_tag "comment[title]"
+        = hidden_field_tag "comment[user_id]", current_user.id
+        = hidden_field_tag "comment[commentable_type]", object.class.name
+        = hidden_field_tag "comment[commentable_id]", object.id
     .clear
   = render :partial => 'share/comment', :collection => object.comments.recent

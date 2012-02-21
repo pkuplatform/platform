@@ -92,10 +92,10 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
         format.html { redirect_to [@picture.imageable, @picture], notice: 'Picture was successfully updated.' }
-        format.json { head :ok }
+        format.json { respond_with_bip(@picture) }
       else
         format.html { render action: "edit" }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip(@picture) }
       end
     end
   end
@@ -113,14 +113,6 @@ class PicturesController < ApplicationController
     end
   end
 
-  def comment
-    @picture = Picture.find(params[:id])
-    @comment = @picture.comments.create(:user=>current_user,:body=>params["comment-content"])
- 
-    respond_to do |format|
-      format.js
-    end
-  end
 
   def load
     @picture = Picture.find(params[:id])

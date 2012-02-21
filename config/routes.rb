@@ -60,7 +60,6 @@ Platform::Application.routes.draw do
       get 'activities'
       get 'comments'
       get 'members'
-      post 'comment'
       get 'sms' => 'sms#index'
       post 'sms/push' => 'sms#push'
       namespace :admin do
@@ -88,18 +87,13 @@ Platform::Application.routes.draw do
     member do
       get 'join'
       get 'like'
-      post 'comment'
       get 'show_members'
       post 'members/edit' => 'activities#edit_members'
     end
-    resources :blogs do
-      member do
-        post :comment
-      end
-    end
+    resources :blogs 
+
     resources :pictures do
       member do
-        post 'comment'
         get 'show_gallery'
         get 'load'
       end
@@ -107,7 +101,7 @@ Platform::Application.routes.draw do
     resources :albums 
   end
 
-  resources :comments, :only => :destroy
+  resources :comments, :only => [:create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

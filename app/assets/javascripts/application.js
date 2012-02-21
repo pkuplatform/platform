@@ -10,25 +10,22 @@
 //= require_tree .
 //= require ckeditor/ckeditor
 
+$.fn.scrollToAndActivate = function(options) {
+  return this.each(function() {
+    $.scrollTo(this, 300, {over:-2 ,onAfter:function(obj) {
+      $(obj).addClass("active");
+    }});
+  });
+};
+
 $(document).ready(function(){
-  $notice = $("#notice");
-  if ($notice.html()) {
-    $.fancybox(
-      $notice.html(),
-        {
-          'transitionIn'  : 'none',
-          'transitionOut' : 'none',
-    });
-  }
-  $alert = $("#alert");
-  if ($alert.html()) {
-    $.fancybox(
-      $alert.html(),
-        {
-          'transitionIn'  : 'none',
-          'transitionOut' : 'none'
-    });
-  }
+
+
+  $('.flashes').each(function(){
+      $(this).purr();
+  });
+
+
   $('.feedbacks').tabSlideOut({
     tabHandle: '.handle',                              //class of the element that will be your tab
     pathToTabImage: '/assets/contact.gif',          //path to the image for the tab *required*
@@ -65,6 +62,18 @@ $(document).ready(function(){
       lCkeSavedHref = lCkeSavedHref.replace(/javascript:/g, "");
       this.href = lCkeSavedHref;
   })
+  $(".best_in_place").best_in_place();
+
+  $(location.hash).scrollToAndActivate();
+
+  $(window).bind( 'hashchange', function(event){
+    event.preventDefault();
+    $(".active").removeClass("active");
+    $(location.hash).scrollToAndActivate();
+  });
+    
 });
+
+
 
 

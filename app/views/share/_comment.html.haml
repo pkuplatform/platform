@@ -3,7 +3,7 @@
     .delete= link_to "X", destroy_comment_path(comment), :method => :delete, :remote => true, :confirm => t(".sure_to_delete")
   .comment-box
     .avatar
-      = link_to (image_tag comment.user.url), comment.user
+      = link_to (image_tag comment.user.url), "javascript:$('#comment-#{comment.id}').commentReply();"
     .body
       %span.name= link_to comment.user.name, comment.user
       %span.gray= t :at

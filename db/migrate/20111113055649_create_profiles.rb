@@ -4,6 +4,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.references :user
       t.integer  :status, :default => 4
       t.string   :name
+      t.integer  :unread_message_count
       t.string   :pyname
       t.string   :nickname
       t.integer  :gender, :default => 1

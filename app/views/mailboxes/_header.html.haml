@@ -4,3 +4,4 @@
   %li{:class => ("current" if @mailbox == "trash" )}= link_to (t "trash"), box_mailboxes_path(:trash), :remote => true
   %li{:class => ("current" if params[:action]=="new" )}= link_to (t "compose_new_message"), new_mailboxes_path
 .clear
+- dismark_new_messages

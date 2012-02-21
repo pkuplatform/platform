@@ -5,7 +5,7 @@ $(function() {
     else return null;
   }
   var listening = false;
-  $("#comment-content")
+  $("#comment_body")
     .bind("keyup", function(event) {
       if ((event.keyCode == $.ui.keyCode.TAB) && $(this).data( "autocomplete" ).menu.active) {
         listening = false;
@@ -15,8 +15,7 @@ $(function() {
         listening = true;
       }
       if (event.ctrlKey&&event.which==13) {
-        $(this).parent("form").submit();
-        event.preventDefault();
+        $("form#new_comment").submit();
       }
       if (findq(this.value)==null) {
         listening = false;
@@ -40,7 +39,7 @@ $(function() {
       html: true
     });
     $(".mention-tag").click(function(event) {
-      $("#comment-content").each(function(){
+      $("#comment_body").each(function(){
         $(this).focus();
         this.value += '@';
         listening = true;
@@ -49,4 +48,30 @@ $(function() {
       event.preventDefault();
       return false;
     });
+    $("#new_comment").submit(function(e){
+      $('input[type=submit]', this).attr('disabled','disabled');
+      $('textarea', this).attr('readonly','readonly');
+
+    });
 });
+$.fn.commentReopen = function(options) {
+  var defaults={clear: true, failed: false};
+  var options = $.extend(defaults, options);
+  return this.each(function() {
+      $('input[type=submit]', this).removeAttr('disabled');
+      $('textarea', this).removeAttr('readonly');
+      if (options.clear) {
+        $('textarea',this).attr("value","");
+      }
+      if (options.failed) {
+        alert("评论失败！内容不能为空")
+      }
+  });
+};
+
+$.fn.commentReply = function(options) {
+  return this.each(function() {
+    var $comm = $(this).parent('ul');
+    $comm.find('.avatar img').attr("src",$('.avatar img',this).attr("src"));
+  });
+}
