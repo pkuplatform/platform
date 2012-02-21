@@ -1,16 +1,21 @@
-.group.card.box
-  = render :partial => 'groups/side', :locals => { :group => group, :board => false }
+.group.card
+  = link_to (image_tag group.logo.url(:card)), group
   .info
-    %span.name= link_to (highlight group.name, @q), group
-    %span.category= t group.category.name, :scope => :category
-    .admin
-      = t :group_admin
-      = link_to group.admin.name, group.admin.profile
-      = "/"
-      = l group.founded_at, :format => :long
-      = t '.founded'
-    .introduction
-      = sanitize(highlight(group.introduction), :attributes => %w(id class style href _cke_saved_href title alt width height)) 
-    .activity
-      = t :activities_count, :count => group.activities.count
-  .clear
+    .top
+      %span.name= link_to (highlight group.name, @q), group
+      %span.category= t group.category.name, :scope => :category
+    .center
+      = sanitize(highlight(group.introduction, @q), :attributes => %w(id class style href _cke_saved_href title alt width height)) unless group.introduction.nil?
+    .bottom
+      %span.founded
+        = l group.founded_at
+        = t '.founded'
+      %span.admin
+        = t :group_admin
+        = link_to group.admin.name, group.admin
+      %span.meta
+        = t '.activities', :count => group.activities.count
+        = "|"
+        = t '.like', :count => group.followers.count
+        = "|"
+        = t '.join', :count => group.count

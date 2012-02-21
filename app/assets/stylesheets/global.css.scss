@@ -95,17 +95,21 @@ body.form {
   margin-bottom: 20px;
   font-size: 12px;
   color: #005EAC;
+  @include link;
   .avatar { 
     float: left;
     img { @include box-radius; }
   }
-  .info { float: left; margin-left: 20px; }
+  .info { 
+    float: left; 
+  }
   .name { font-size: 16px; }
   div { margin-bottom: 5px; }
 }
 
 .highlight {
-  background-color: #DDD;
+  color: #E00034;
+  font-weight: normal;
 }
 
 .sign-in-form {

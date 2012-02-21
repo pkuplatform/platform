@@ -1,17 +1,16 @@
-.user.card.box
-  = render :partial => 'profiles/side', :locals => { :user => profile.user }
+.user.card
+  = link_to (image_tag profile.card), profile
   .info
-    .name= highlight profile.name, @q
-    .nickname= highlight profile.nickname, @q
-    .student-id
-      %span.label= t :student_id
-      %span.val= profile.student_id
-    .phone
-      %span.label= t :phone
-      %span.val= profile.phone
-    .description= highlight profile.description, @q
-    .group-activity
-      = t :group_count, :count => profile.user.groups.count
-      = " "
-      = t :activities_count, :count => profile.user.activities.count
-  .clear
+    .top
+      .name= link_to profile.name, profile
+    .center
+      = profile.description
+    .bottom
+      %span.meta
+        = t '.like', :count => profile.user.users_i_like.count
+        = "|"
+        = t '.fans', :count => profile.user.users_like_me.count
+        = "|"
+        = t '.groups', :count => profile.user.groups.count
+        = "|"
+        = t '.activities', :count => profile.user.activities.count

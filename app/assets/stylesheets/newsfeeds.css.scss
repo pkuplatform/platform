@@ -62,4 +62,7 @@
     }
     a { color: #7AA5B9; }
   }
+  .center.small { .thumb { display: block; } .medium { display: none; } }
+  .center { .thumb { display: none; } .medium { display: block; } }
+  .center img { cursor: pointer; }
 }

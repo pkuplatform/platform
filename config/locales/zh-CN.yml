@@ -460,6 +460,13 @@
     next_label: ">>"
 
   search:
+    profiles:
+      like: "关注(%{count})"
+      fans: "粉丝(%{count})"
+      groups: "社团(%{count})"
+      activities: "活动(%{count})"
+    index:
+      empty: "抱歉，没有找到您所需要的信息~"
     groups:
       founded: "成立"
 

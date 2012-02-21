@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(:version => 20120218122804) do
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
     t.string   "title"
-    t.text     "description",         :default => ""
+    t.text     "description"
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "location",            :default => ""
     t.boolean  "public",              :default => true
-    t.integer  "status",              :default => 0
+    t.integer  "status",              :default => 1
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -146,10 +146,10 @@ ActiveRecord::Schema.define(:version => 20120218122804) do
     t.integer  "category_id"
     t.string   "name"
     t.string   "slogan",            :default => ""
-    t.text     "introduction",      :default => ""
-    t.text     "description",       :default => ""
-    t.text     "history",           :default => ""
-    t.text     "organization",      :default => ""
+    t.text     "introduction"
+    t.text     "description"
+    t.text     "history"
+    t.text     "organization"
     t.string   "email",             :default => ""
     t.date     "founded_at"
     t.integer  "status",            :default => 4
@@ -235,7 +235,7 @@ ActiveRecord::Schema.define(:version => 20120218122804) do
     t.string   "student_id"
     t.string   "phone"
     t.integer  "points",               :default => 0
-    t.text     "description",          :default => ""
+    t.text     "description"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

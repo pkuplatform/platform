@@ -6,8 +6,9 @@
       = link_to subject.name, subject
       = t '.action'
       = link_to picture.bare_name, picture
-    .center
-      = image_tag picture.url(:thumb)
+    .center.small
+      .thumb= image_tag picture.thumb
+      .medium= image_tag picture.medium
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)
