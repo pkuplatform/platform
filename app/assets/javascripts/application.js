@@ -10,6 +10,14 @@
 //= require_tree .
 //= require ckeditor/ckeditor
 
+$.fn.scrollToAndActivate = function(options) {
+  return this.each(function() {
+    $.scrollTo(this, 300, {over:-2 ,onAfter:function(obj) {
+      $(obj).addClass("active");
+    }});
+  });
+};
+
 $(document).ready(function(){
 
 

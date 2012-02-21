@@ -10,6 +10,10 @@ module ApplicationHelper
     end
   end
 
+  def anchorgen
+    
+  end
+
   def format_datetime(time)
     time.strftime('%y-%m-%d') + " " + time.strftime('%H:%M')
   end

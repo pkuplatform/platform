@@ -2,6 +2,12 @@
   color: rgb(144,220,220);
 }
 
+@mixin always-fill-page {
+  min-height:100%;
+  height:auto !important;
+  height:100%;
+}
+
 @mixin orange {
   color: rgb(226,136,26);
 }
