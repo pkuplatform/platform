@@ -164,9 +164,9 @@
 	$.fn.purr = function ( options )
 	{
 		options = options || {};
-		options.fadeInSpeed = options.fadeInSpeed || 300;
-		options.fadeOutSpeed = options.fadeOutSpeed || 300;
-		options.removeTimer = options.removeTimer || 2500;
+		options.fadeInSpeed = options.fadeInSpeed || 500;
+		options.fadeOutSpeed = options.fadeOutSpeed || 500;
+		options.removeTimer = options.removeTimer || 3500;
 		options.isSticky = options.isSticky || false;
 		options.usingTransparentPNG = options.usingTransparentPNG || false;
 		
