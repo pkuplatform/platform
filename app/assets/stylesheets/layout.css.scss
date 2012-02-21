@@ -38,14 +38,17 @@ body.registration { background: url('husk.png'); }
 
 .container.groups.index, .container.activities.index, .container.site.home {
   overflow: hidden;
-  background: rgba(0,15,70,0.1); 
   .content { 
     background-color: white; 
     padding: 50px 35px 35px 35px;
-    @include box-shadow2;
+    @include box-shadow2(-100px);
+    z-index:10;
   }
   .sidebar {
     padding-top: 35px;
+    z-index:10;
+    background: rgba(0,35,70,0.1);
+    border-bottom: 4px double #777;
   }
 }
 
@@ -53,10 +56,14 @@ body.registration { background: url('husk.png'); }
   margin-top: 100px;
 }
 
-.content-wrapper { width: 680px; float: left; @include always-fill-page;
+.content-wrapper { 
+  width: 680px; 
+  float: left;
+  @include always-fill-page;
+  z-index:8;
 }
 
-
+.content-footer { width: 680px; bottom:0; position:absolute; height:100%; background:white; z-index:-1;    @include box-shadow2(-100px);}
 
 /**** Header Part ****/
 

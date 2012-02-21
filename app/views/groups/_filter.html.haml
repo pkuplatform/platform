@@ -1,14 +1,12 @@
-.sort-filter
-  .category
+%ul.sort-filter{:class=> params[:filter]=='category' ? 'show-category' : ''}
+  %li#filter-all= link_to (t '.all'), groups_path(:sort => params[:sort], :filter => 'all', :anchor => 'filter-all')
+  %li.category
+    = link_to (t '.category'), "javascript:$('.sort-filter').toggleClass('show-category');"
     %ul
-      %li= link_to (t '.all'), groups_path(:sort => params[:sort], :filter => 'all')
-      %li.category
-        = t '.category'
-        %ul
-          - Category.all.each do |category|
-            %li
-              = link_to category.translated_name, groups_path(:sort => params[:sort], :filter => 'category', :id => category.id)
-      %li= link_to (t '.founded'), groups_path(:sort => 'founded', :filter => params[:filter], :id => params[:id])
-      %li= link_to (t '.like'), groups_path(:sort => params[:sort], :filter => 'like',:anchor => '')
-      %li= link_to (t '.join'), groups_path(:sort => params[:sort], :filter => 'join')
-      %li= link_to (t '.wall'), wall_groups_path
+      - Category.all.each do |category|
+        %li{:id => 'category-'+category.id.to_s}
+          = link_to category.translated_name, groups_path(:sort => params[:sort], :filter => 'category', :id => category.id, :anchor => 'category-'+category.id.to_s)
+  %li#filter-like= link_to (t '.like'), groups_path(:sort => params[:sort], :filter => 'like', :anchor => 'filter-like')
+  %li#filter-join= link_to (t '.join'), groups_path(:sort => params[:sort], :filter => 'join', :anchor =>'filter-join')
+  %li= link_to (t '.wall'), wall_groups_path
+  .clear

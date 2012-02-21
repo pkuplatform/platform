@@ -21,6 +21,16 @@ class Activity < ActiveRecord::Base
   has_many :tenders,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Approving, Constant::Approving]
   has_many :subscribers, :through => :user_activities, :source => :user, :conditions => ["(user_activities.status & ? = ?) || (user_activities.status & ? = ?)", Constant::Member, Constant::Member, Constant::Like, Constant::Like]
 
+  after_save :get_py
+
+  def get_py
+    if self.pyname!=Hz2py.do(name)
+      self.pyname = Hz2py.do(name)
+      save
+    end
+  end
+
+
   def self.daily_ranks
     ret = []
     id_arr = [2, 7, 8]

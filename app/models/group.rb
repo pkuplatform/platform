@@ -23,6 +23,18 @@ class Group < ActiveRecord::Base
   has_many :tenders,     :through => :user_groups, :source => :user, :conditions => ["user_groups.status & ? = ?", Constant::Approving, Constant::Approving]
   has_many :subscribers, :through => :user_groups, :source => :user, :conditions => ["(user_groups.status & ? = ?) || (user_groups.status & ? = ?)", Constant::Member, Constant::Member, Constant::Like, Constant::Like]
 
+
+  after_save :get_py
+
+  def get_py
+    if self.pyname!=Hz2py.do(name)
+      self.pyname = Hz2py.do(name)
+      save
+    end
+  end
+
+
+
   def self.daily_ranks
     ret = []
     id_arr = [1, 2, 6, 9]

@@ -2,24 +2,41 @@
 @import 'mixin';
 
 .sort-filter {
+  position: relative; margin:0;
   font-size: 14px;
   margin-bottom: 20px;
   padding: 10px 20px;
   background: url("white_plaster.png");
   @include box-radius(5px);
   @include box-shadow2;
-  .category, .sort, .my { overflow: hidden; }
-  .split { 
-    margin: 5px 0px;
+
+
+  &.show-category {
+    margin-bottom: 40px;
+    li.category ul {
+      display:block;
+    }
   }
 
-  li.category ul { display: block; }
+  li.category ul { 
+    position: absolute; top: 70%; left: 0px; right: 0;
+    padding: 10px;
+    padding-left: 20px;
+    @include box-radius(5px);
+    @include box-shadow2;
+    background: url("white_plaster.png");
+    display:none;
+
+
+  }
   li { 
     list-style: none; 
-    float: left;
+    float:left;
     margin-right: 10px;
-    a { color: #005EAC; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: #005EAC; text-decoration: none; &:hover {text-decoration: underline;} }
+    &.active { @include orange-link;  }
+      
+    }
   }
-}
+
 

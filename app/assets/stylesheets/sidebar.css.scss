@@ -1,9 +1,10 @@
 @import 'mixin';
+@import 'css3';
 
 .sidebar {
-  width: 250px;
+  width: 230px;
   float: left;
-  padding-left: 30px;
+  padding-left: 50px;
 }
 
 .recommend, .hot.groups {
