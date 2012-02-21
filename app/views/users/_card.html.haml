@@ -3,9 +3,9 @@
     = link_to (image_tag current_user.url(:small)), current_user
   .info
     .name
-      = current_user.name 
-      = "|"
-      = current_user.nickname.truncate(15) unless current_user.nickname.nil?
+      = link_to current_user.name, current_user
+    .nickname
+      = link_to current_user.nickname.truncate(15), current_user unless current_user.nickname.nil?
     .points
       = t :level, :points => current_user.profile.points
     .meta

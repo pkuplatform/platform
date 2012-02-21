@@ -1,7 +1,7 @@
 .recommend.users
   .title= t '.title'
   %ul
-    - UserRecommend.recommend(1)[0, 3].each do |h|
+    - UserRecommend.recommend(current_user.id)[0, 3].each do |h|
       - p = User.find(h[0]).profile
       %li
         = link_to (image_tag p.thumb), p

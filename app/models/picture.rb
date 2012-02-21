@@ -25,6 +25,14 @@ class Picture < ActiveRecord::Base
     photo.url(size)
   end
 
+  def medium
+    url(:medium)
+  end
+
+  def thumb
+    url(:thumb)
+  end
+
   def imageable
     album.imageable
   end

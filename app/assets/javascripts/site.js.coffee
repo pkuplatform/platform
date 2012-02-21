@@ -5,3 +5,5 @@
 $ ->
   $('.search form').submit ->
     $('.search input[type=text]').val().length > 0
+  $('.newsfeed .center img').click ->
+    $(this).parents('.center').toggleClass("small")

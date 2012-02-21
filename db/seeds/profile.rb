@@ -1,5 +1,5 @@
 Profile.delete_all
-100.times do |i|
+110.times do |i|
   profile = Profile.new
   profile.user_id = i + 1
   profile.name = Faker::Name.name

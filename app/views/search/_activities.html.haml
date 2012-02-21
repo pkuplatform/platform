@@ -1,17 +1,21 @@
-.activity.card.box
-  = render :partial => 'activities/side', :locals => { :activity => activity, :board => false }
+.activity.card
+  = link_to (image_tag activity.poster.url(:card)), activity
   .info
-    .title= link_to (highlight activity.title, @q), activity
-    .admin
-      %span.group-name= link_to activity.group.name, activity.group
-      %span= "/"
-      %span.location= activity.location
-    .time
-      = t "time:", :start_time => (l activity.start_at), :end_time => (l activity.end_at)
-    .description
-      = highlight activity.description, @q
-    .additions
-      = link_to (t :blog_count, :count => activity.blogs.count), activity_blogs_path(activity)
-      = " "
-      = link_to (t :picture_count, :count => activity.pictures.count), activity_pictures_path(activity)
-  .clear
+    .top
+      %span.name= link_to (highlight activity.title, @q), activity
+    .center
+      = sanitize(highlight(activity.description, @q), :attributes => %w(id class style href _cke_saved_href title alt width height)) unless activity.description.nil?
+    .bottom
+      %span.time
+        = l activity.start_at, :format => :short
+      %span.location
+        = activity.location
+      %span.group
+        = t '.from'
+        = link_to activity.group.name, activity.group
+      %span.meta
+        = t '.like', :count => activity.followers.count
+        = "|"
+        = t '.join', :count => activity.count
+        = "|"
+        = t '.comment', :count => activity.comments.count

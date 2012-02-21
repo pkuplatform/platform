@@ -16,6 +16,10 @@ class Profile < ActiveRecord::Base
     indexes :description
   end
 
+  def card
+    avatar.url(:small)
+  end
+
   def thumb
     avatar.url(:thumb)
   end

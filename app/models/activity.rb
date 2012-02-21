@@ -76,6 +76,10 @@ class Activity < ActiveRecord::Base
     poster.url(:card)
   end
 
+  def medium
+    poster.url(:medium)
+  end
+
   def self.recommend
     Activity.first(3)
   end
