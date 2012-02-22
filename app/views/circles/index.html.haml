@@ -1,0 +1,18 @@
+%h1 Listing circles
+
+%table
+  %tr
+    %th name
+    %th
+    %th
+    %th
+
+  - @circles.each do |circle|
+    %tr
+      %td= link_to 'Show', circle
+      %td= link_to 'Edit', edit_circle_path(circle)
+      %td= link_to 'Destroy', circle, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Circle', new_circle_path

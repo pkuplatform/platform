@@ -12,26 +12,6 @@
       background: #eee;
     }
   }
-  .user-subject-wrapper
-  {
-    width: 600px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    input {
-      border:0;
-      font-size:20px;
-    }
-    .user{
-      width: 150px;
-      float:left;
-      border: 1px solid #eee;
-      margin-left:10px;
-    }
-    .subject{
-      width: 430px;
-      float:right;
-    }
-  }
 
   table.mail-list {
     border-collapse: collapse;
@@ -67,7 +47,12 @@
   .box-header {
     @include orange-link;
   }
-
+  .input-wrapper {
+    width:95%;
+    input {
+      width:100%;
+    }
+  }
 }
 
 

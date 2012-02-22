@@ -5,7 +5,7 @@ $(function() {
     else return null;
   }
   var listening = false;
-  $("#comment_body")
+  $(".autocompletable")
     .bind("keyup", function(event) {
       if ((event.keyCode == $.ui.keyCode.TAB) && $(this).data( "autocomplete" ).menu.active) {
         listening = false;

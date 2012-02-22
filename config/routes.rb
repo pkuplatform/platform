@@ -76,6 +76,7 @@ Platform::Application.routes.draw do
       end
     end
     resources :activities
+    resources :circles
   end
 
   resources :activities do
@@ -99,9 +100,12 @@ Platform::Application.routes.draw do
       end
     end
     resources :albums 
+    resources :circles
   end
 
   resources :comments, :only => [:create, :destroy]
+
+  resources :circles
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

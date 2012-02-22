@@ -26,27 +26,18 @@ $(function() {
 		$.getScript(location.href);
 	});
 
-  $("#user_nameid").autocomplete({
-    source:function(req,res){
-      $.getJSON("/profiles",{q: req.term}, res);
-    },
-    delay: 100,
-    html: true
-  });
 
 	$("#user_nameid").blur(function() {
-		var reg=/\((\d+)\)/;
+		var reg=/[^\(]*\((\d+)\)/g;
 		chk = this.value.match(reg);
 		if (chk==null&&this.value!='')
 		{
 			$(this).css("background-color","#c00");
 		} else {
-			if (chk!=null) $("#user_tokens").attr("value",chk[1]);
-			$(this).css("background-color","#fff");
+			if (chk!=null) $("#user_tokens").attr("value",this.value.replace(reg, "$1,"));
+			$(this).css("background-color","#eee");
 			return true;
 		}
 	});
-	$("#user_nameid").focus(function() {
-			$(this).css("background-color","#ffd");
-	});
+
 });

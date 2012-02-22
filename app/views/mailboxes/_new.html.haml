@@ -2,9 +2,12 @@
 .mailbox
   .mails
     = form_tag create_mailboxes_path, :method => :post do
-      .user-subject-wrapper
-        = text_field_tag :user_nameid,"",:class=>"user user-input", :placeholder=>(t :receiver)
+      .hints
+        @用户以添加收件人，可以发给多个用户
+      .input-wrapper
+        = text_field_tag :user_nameid,"",:class=>"user user-input", :placeholder=>(t :receiver), :class=>"autocompletable"
         = hidden_field_tag :user_tokens,""
+      .input-wrapper
         = text_field_tag :subject, "",:class=>"subject", :placeholder => (t ".topic")
         .clear
       .area-wrapper

@@ -21,7 +21,14 @@ class Activity < ActiveRecord::Base
   has_many :tenders,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Approving, Constant::Approving]
   has_many :subscribers, :through => :user_activities, :source => :user, :conditions => ["(user_activities.status & ? = ?) || (user_activities.status & ? = ?)", Constant::Member, Constant::Member, Constant::Like, Constant::Like]
 
+  has_many :circles, :as => :owner
+
   after_save :get_py
+
+
+  def related_users
+    members
+  end
 
   def get_py
     if self.pyname!=Hz2py.do(name)
