@@ -18,13 +18,20 @@ $.fn.scrollToAndActivate = function(options) {
   });
 };
 
+function update_newsfeeds() {
+  if ($('.site.index').size() == 0) return;
+  val = $('.hidden input[type=hidden]').val();
+  $.get('site/newsfeeds', { q: val });
+  setTimeout('update_newsfeeds()', 10000);
+}
+
 $(document).ready(function(){
 
+  update_newsfeeds();
 
   $('.flashes').each(function(){
       $(this).purr();
   });
-
 
   $('.feedbacks').tabSlideOut({
     tabHandle: '.handle',                              //class of the element that will be your tab

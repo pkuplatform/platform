@@ -15,9 +15,10 @@ class SiteController < ApplicationController
   public
   def index
     redirect_to home_path if user_signed_in?
-    @banners = Activity.last(3)
+    @banners = Activity.where("banner_file_name != ''").first(3)
     @activities = Activity.last(6)
-    @events = Event.where("object_type != 'Comment'").order('updated_at DESC').first(5)
+    @events = Event.where("object_type != 'Comment'").order('updated_at DESC').first(25)
+    @id = @events.first.id
     @secondary_scope = nil
   end
 
@@ -32,6 +33,10 @@ class SiteController < ApplicationController
         @events << newsfeed.event
       end
     end
+  end
+
+  def newsfeeds
+    @events = Event.where('id > ?', params[:q])
   end
 
 end

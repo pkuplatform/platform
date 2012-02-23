@@ -10,20 +10,27 @@
   .activities { margin-top: 50px; }
 }
 
+.hotspot { margin-bottom: 40px; }
+
 .hotspot .box-wrapper {
   @include box-shadow2;
   background-color: white;
   padding: 20px;
   overflow: hidden;
+  .activeSlide img { border: 0px solid #999; }
   .banner { 
     ul { overflow: hidden; margin-bottom: -2px; }
-    li { float: left; list-style: none; }
-    margin-right: 20px;
-    width: 150px;    
+    li { float: left; list-style: none; text-align: center; }
+    margin-right: 18px;
+    width: 152px;    
     float: left;
-    img { width:150px;}
+    img { width:150px; }
   }
-  .medium {  width: 470px; float: right; img {width:470px; overflow:hidden; } }
+  .medium {  
+    width: 470px; 
+    float: right; 
+    img {width:470px; overflow:hidden; } 
+  }
 }
 
 .site.home .header {
@@ -38,16 +45,17 @@
   background: url("polaroid.png");
 }
 
-.newsfeeds-wrapper {
-  overflow: hidden;
-  margin: 50px 20px;
-  .toto { 
-    font-size: 24px;
-    color: #7AA5B9;
-    margin-bottom: 10px;
-  }
-  .newsfeeds { 
-    margin-left: 120px;
-  }
-  .newsfeed   { margin-top: 10px; }
+.site.index .title { 
+  font-size: 22px;
+  width: 180px;
+  height: 50px;
+  background: url('site-index.png');
+  background-position: -35px;
+}
+
+.events { 
+  background-color: white; 
+  margin-bottom: 30px;  
+  padding: 20px;
+  @include box-shadow2;
 }

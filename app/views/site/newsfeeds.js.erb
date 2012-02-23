@@ -1,0 +1,9 @@
+<%- unless @events.empty? -%>
+  $('input[type=hidden]').val("<%= @events.last.id %>")
+<%- end -%>
+
+<%- @events.each do |event| -%>
+  $('.newsfeeds').prepend("<%= escape_javascript(render :partial => 'newsfeeds/newsfeed', :locals => { :event => event }) %>")
+  $('#event-<%= event.id %>').hide();
+  $('#event-<%= event.id %>').slideDown('slow');
+<%- end -%>

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :store_location
   
   def store_location
-    session[:user_return_to]  = request.url unless params[:controller] == "devise/sessions"
+    session[:user_return_to]  = request.url unless params[:controller] == "devise/sessions" or params[:controller] == "site" and params[:view] == "newsfeeds"
   end
 
   def after_sign_in_path_for(resource_or_scope)

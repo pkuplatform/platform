@@ -2,9 +2,11 @@
   .hotspot
     .box-wrapper
       .banner
-        %ul
-          - @banners.each do |activity|
-            %li= image_tag activity.banner.url(:banner)
-      .medium
-        = image_tag @banners.first.banner.url(:medium) if @banners.first && @banners.first.banner
-  = render :partial => 'site/newsfeeds'
+        %ul.pager
+      .medium.pics
+        - @banners.each do |activity|
+          = image_tag activity.banner.url(:medium)
+  .title
+  .events
+    .hidden= hidden_field_tag 'id', @id
+    = render :partial => 'newsfeeds/newsfeeds'
