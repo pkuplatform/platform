@@ -22,23 +22,9 @@
     @include orange;
     @include orange-link; 
     font-size: 20px;
-    margin: 5px 0px;
+    margin-bottom: 5px;
   }
 
-  .info .admin {
-    @include green;
-    @include green-link;
-    font-size: 16px;
-    margin: 5px 0px;
-  }
-
-  .info .label { color: #BBB; font-size: 16px; }
-  .info .introduction { 
-    margin: 5px 0px; 
-    min-height: 160px;
-  }
-  .side .like-join, .side .like { text-align: center; color: #BBB; }
-  .side .join, .like { @include gray-link; text-align: center; }
   .box-header {
     font-size: 1.5em;
   }

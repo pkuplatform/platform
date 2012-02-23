@@ -1,4 +1,4 @@
-.like
+%span.like
   - if can? :like, activity
     = link_to (t '.like'), like_activity_path(activity), :remote => true
   - else

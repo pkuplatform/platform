@@ -7,9 +7,17 @@
 
 .group.board { overflow: visible; margin-bottom: 40px; }
 .group.board .side {
+  .action { @include link; }
+  color: #999;
   text-align: center;
-  .logo { margin-top: -70px; }
-  .history, .organization, .description { @include blue-link; }
+  .logo { margin-top: -70px; margin-bottom: 10px; }
+  .like-join { margin-bottom: 10px; }
+  .count { margin-bottom: 10px; }
+  .history, .organization, .description { 
+    margin-top: 5px;
+    a { color: #E00034; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  }
 }
 
 .group.form {
@@ -121,4 +129,26 @@
   @include box-shadow2;
   @include box-radius;
   .more { @include link; text-align: right; padding-top: 10px; }
+}
+
+.group.board.box .info {
+  .head { margin-bottom: 5px; }
+  .category { 
+    margin-left: 10px; 
+    font-size: 14px;
+    @include blue; 
+  }
+  .admin { 
+    margin-bottom: 10px;
+    @include link;
+    @include blue;
+    font-size: 14px;
+  }
+  .admin a:hover { text-decoration: underline; }
+  .introduction { min-height: 160px; }
+  .meta { 
+    font-size: 14px; 
+    color: #005EAC;
+    text-align: right;
+  }
 }

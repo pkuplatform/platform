@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $(".activities .new a").fancybox({'hideOnContentClick':false})
   $(".groups form li label").click ->
     id = $(this).attr('for')
     $(".groups form li").hide()

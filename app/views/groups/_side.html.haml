@@ -2,15 +2,13 @@
   .logo
     = link_to (image_tag group.logo.url(:card)), group
   .like-join
-    = t :like_count, :count => group.followers.count
-    = " "
-    = t :join_count, :count => group.count
-  - if board
-    = render :partial => 'groups/join', :object => group, :as => :group
-    = render :partial => 'groups/like', :object => group, :as => :group
-    .description
-      = link_to (t '.des'), description_group_path
-    .organization
-      = link_to (t '.org'), organization_group_path
-    .history
-      = link_to (t '.his'), history_group_path
+    .action
+      = render :partial => 'groups/like', :object => group, :as => :group
+      = "|"
+      = render :partial => 'groups/join', :object => group, :as => :group
+  .description
+    = link_to (t '.des'), description_group_path
+  .organization
+    = link_to (t '.org'), organization_group_path
+  .history
+    = link_to (t '.his'), history_group_path

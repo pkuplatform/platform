@@ -1,6 +1,7 @@
 .info
-  %span.name= link_to group.name, group
-  %span.category= t group.category.name, :scope => :category
+  .head
+    %span.name= group.name
+    %span.category= t group.category.name, :scope => :category
   .admin
     = t :group_admin
     = link_to group.admin.name, group.admin.profile
@@ -9,5 +10,11 @@
     = t '.founded'
   .introduction
     = sanitize(group.introduction, :attributes => %w(id class style href _cke_saved_href title alt width height)) 
-  .activity
-    = t :activities_count, :count => group.activities.count
+  .meta
+    = t '.points', :count => group.points
+    = "|"
+    = t '.like', :count => group.followers.count
+    = "|"
+    = t '.join', :count => group.person_cnt
+    = "|"
+    = t '.activities', :count => group.activities.count

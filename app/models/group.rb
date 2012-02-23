@@ -3,6 +3,8 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  is_impressionable
+
   acts_as_taggable
   acts_as_commentable
 
@@ -65,12 +67,22 @@ class Group < ActiveRecord::Base
     admins.first || User.first
   end
 
-  def count
+  def person_cnt
     members.count + admins.count
   end
 
+  def self.update_points
+    Group.all.each do |group|
+      group.points = group.pv + group.person_cnt
+      group.activities.each do |activity|
+        group.points += activity.points
+      end
+      group.save
+    end
+  end
+
   def self.recommend
-    Group.first(3)
+    Group.order("points DESC").first(3)
   end
 
   def self.hot
@@ -83,6 +95,10 @@ class Group < ActiveRecord::Base
 
   def thumb
     logo.url(:thumb)
+  end
+
+  def pv
+    impressionist_count(:filter => :session_hash)
   end
 
   define_index do

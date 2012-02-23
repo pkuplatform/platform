@@ -14,6 +14,12 @@
       his: "社团历史"
     info:
       founded: "成立"
+      points: "积分(%{count})"
+      activities: "活动(%{count})"
+      blogs: "日志(%{count})"
+      pictures: "照片(%{count})"
+      like: "关注(%{count})"
+      join: "成员(%{count})"
     activities:
       back: "<<<"
       title: "%{name} 的活动"
@@ -38,8 +44,8 @@
     introduction:
       title: "组织简介"
     join:
-      join: "参加>>"
-      exit: "退出>>"
+      join: "参加"
+      exit: "退出"
       wait: "审批中..."
     like:
       like: "关注"

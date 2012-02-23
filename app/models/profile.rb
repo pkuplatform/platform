@@ -1,5 +1,7 @@
 class Profile < ActiveRecord::Base
 
+  is_impressionable
+
   belongs_to :user
   has_attached_file :avatar, :styles => { :medium => "300x300#", :small => "128x128#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
   validates_presence_of :name
@@ -22,6 +24,22 @@ class Profile < ActiveRecord::Base
 
   def thumb
     avatar.url(:thumb)
+  end
+
+  def self.recommend
+    Profile.order("points DESC").first(3)
+  end
+
+  def self.update_points
+    Profile.all.each do |profile|
+      user = profile.user
+      profile.points = profile.pv + user.groups.count + user.activities.count + user.users_i_like + 2 * user.users_like_me
+      profile.save
+    end
+  end
+
+  def pv
+    impressionist_count(:filter => :session_hash)
   end
 
   def get_py

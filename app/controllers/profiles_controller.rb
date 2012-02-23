@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_filter :authenticate_user!
   layout :resolve_layout
+  impressionist :actions => [:show], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 
   private
   def resolve_layout
