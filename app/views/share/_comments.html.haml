@@ -8,7 +8,7 @@
         .comment-buttons
           = submit_tag t('.submit')
           = submit_tag t(".mention"), :class=>"mention-tag"
-        .textarea-wrapper= text_area_tag "comment[body]", "",:placeholder => (t '.holder')
+        .textarea-wrapper= text_area_tag "comment[body]", "",:placeholder => (t '.holder'),:class=>"autocompletable"
         = hidden_field_tag "comment[title]"
         = hidden_field_tag "comment[user_id]", current_user.id
         = hidden_field_tag "comment[commentable_type]", object.class.name

@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221151409) do
+ActiveRecord::Schema.define(:version => 20120221172658) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
     t.string   "title"
-    t.text     "description"
+    t.text     "description",         :default => ""
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "location",            :default => ""
     t.boolean  "public",              :default => true
-    t.integer  "status",              :default => 1
+    t.integer  "status",              :default => 0
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(:version => 20120221151409) do
   add_index "blogs", ["activity_id", "author_id"], :name => "index_blogs_on_activity_id_and_author_id"
 
   create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "circles", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -147,10 +155,10 @@ ActiveRecord::Schema.define(:version => 20120221151409) do
     t.integer  "category_id"
     t.string   "name"
     t.string   "slogan",            :default => ""
-    t.text     "introduction"
-    t.text     "description"
-    t.text     "history"
-    t.text     "organization"
+    t.text     "introduction",      :default => ""
+    t.text     "description",       :default => ""
+    t.text     "history",           :default => ""
+    t.text     "organization",      :default => ""
     t.string   "email",             :default => ""
     t.date     "founded_at"
     t.integer  "status",            :default => 4
@@ -261,7 +269,7 @@ ActiveRecord::Schema.define(:version => 20120221151409) do
     t.string   "student_id"
     t.string   "phone"
     t.integer  "points",               :default => 0
-    t.text     "description"
+    t.text     "description",          :default => ""
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -318,6 +326,13 @@ ActiveRecord::Schema.define(:version => 20120221151409) do
 
   add_index "user_activities", ["activity_id"], :name => "index_user_activities_on_activity_id"
   add_index "user_activities", ["user_id"], :name => "index_user_activities_on_user_id"
+
+  create_table "user_circles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "circle_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_groups", :force => true do |t|
     t.integer  "user_id"

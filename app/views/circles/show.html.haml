@@ -1,0 +1,10 @@
+%p#notice= notice
+
+.circle_users
+  - @circle.users.each do |user|
+    .user 
+      .name= user.name
+
+= link_to 'Edit', edit_circle_path(@circle)
+\|
+= link_to 'Back', circles_path

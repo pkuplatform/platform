@@ -36,6 +36,14 @@ class User < ActiveRecord::Base
   has_many :users_like_me, :through => :reverse_user_relations,:source => :liking
 
   has_many :pictures, :dependent => :destroy
+
+  has_many :circles, :as => :owner
+
+
+  def related_users
+    users_i_like + users_like_me
+  end
+
   def subscribers
     a = subscribers_others.to_ary
     a << self
