@@ -1,4 +1,4 @@
-.join
+%span.join
   - if can? :join, activity
     = link_to (t '.join'), join_activity_path(activity), :remote => true
   - elsif can? :exit, activity

@@ -15,7 +15,7 @@ $(document).ready(function() {
     next : ".next,right",
     width: "98%"
     });
-
+/*
     $("a.gallery_pics").fancybox({
         helpers: {
             title: {
@@ -24,6 +24,7 @@ $(document).ready(function() {
 
         }
     });
+*/
     $(".tags_input").tagsInput({
         'defaultText':'添加标签',
         'height': '50px',

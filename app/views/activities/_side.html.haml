@@ -2,9 +2,16 @@
   .poster
     = link_to (image_tag activity.poster.url(:medium)), activity
   .like-join
-    = t :like_count, :count => activity.followers.count
-    = " "
-    = t :join_count, :count => activity.members.count
-  - if board
-    = render :partial => 'activities/join', :object => activity, :as => :activity
     = render :partial => 'activities/like', :object => activity, :as => :activity
+    = "|"
+    = render :partial => 'activities/join', :object => activity, :as => :activity
+  .location
+    %span.label= t '.location'
+    %span.field= activity.location
+  .time
+    .begin
+      %span.label= t '.begin'
+      %span.field= l activity.start_at, :format => :short
+    .end
+      %span.label= t '.end'
+      %span.field= l activity.end_at, :format => :short

@@ -5,6 +5,8 @@ class Activity < ActiveRecord::Base
   acts_as_taggable
   acts_as_commentable
 
+  is_impressionable
+
   belongs_to :group
   has_many :albums, :as => :imageable
   has_many :pictures, :through => :albums
@@ -83,7 +85,7 @@ class Activity < ActiveRecord::Base
     admins.first
   end
 
-  def count
+  def person_cnt
     admins.count + members.count
   end
 
@@ -99,12 +101,25 @@ class Activity < ActiveRecord::Base
     poster.url(:medium)
   end
 
+  def self.update_points
+    Activity.all.each do |activity|
+      activity.points = activity.pv + activity.person_cnt
+                        + activity.followers.count 
+                        + activity.blogs.count * 5 
+                        + activity.pictures.count * 3
+    end
+  end
+
   def self.recommend
-    Activity.first(3)
+    Activity.order("points DESC").first(3)
   end
 
   def self.hot
     Activity.order("points DESC").first(3)
+  end
+
+  def pv
+    impressionist_count(:filter => :session_hash)
   end
 
   define_index do

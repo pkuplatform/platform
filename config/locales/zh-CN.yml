@@ -499,7 +499,15 @@
     wall:
       wall: "海报墙"
     info:
+      blogs: "日志(%{count})"
+      pictures: "照片(%{count})"
+      points: "积分(%{count})"
+      like: "关注(%{count})"
+      join: "成员(%{count})"
+    side:
       location: "地点"
+      begin: "开始"
+      end: "结束"
     join:
       join: "参加"
       exit: "退出"
