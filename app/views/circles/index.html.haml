@@ -1,18 +1,15 @@
-%h1 Listing circles
-
-%table
-  %tr
-    %th name
-    %th
-    %th
-    %th
-
-  - @circles.each do |circle|
-    %tr
-      %td= link_to 'Show', circle
-      %td= link_to 'Edit', edit_circle_path(circle)
-      %td= link_to 'Destroy', circle, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Circle', new_circle_path
+.circle-users.box
+  .title= t '.title'
+  .circles-table
+    %table
+      %thead
+        %tr
+          %th=t '.circle'
+          %th=t '.circle-members'
+          %th
+      %tbody
+        - @circles.each do |circle|
+          %tr
+            %td= link_to circle.name, circle
+            %td= circle.users.count
+            %td

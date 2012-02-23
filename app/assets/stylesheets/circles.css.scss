@@ -1,0 +1,38 @@
+@import 'css3';
+@import 'mixin';
+.circle-users.box{
+  .users-table {
+    padding:30px;
+    table {
+      th {
+        text-align:center;
+      }
+      td {
+        text-align:center;
+        @include black-link(0);
+        &.pic {
+          width: 64px;
+          height: 64px;
+          padding:3px;
+
+        }
+        .infos {
+          padding:30px;
+        }
+      }
+
+    }
+  }
+}
+.css_right 
+{
+  float:right;
+  margin:3px;
+}
+.dataTables_paginate{
+  a {float:left;}
+}
+.multi-select-box {
+  width:93%;
+  height:400px;
+}

@@ -120,4 +120,5 @@ class ProfilesController < ApplicationController
     end
     redirect_to @profile
   end
+
 end

@@ -17,8 +17,6 @@ $(function(){
         $(this).removeClass("hover");
         $('ul:first',this).css('visibility', 'hidden');
     }
-
-    $("ul.dropdown li").hoverIntent(config);
     
     $("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
 

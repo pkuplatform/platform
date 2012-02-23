@@ -39,9 +39,12 @@ class User < ActiveRecord::Base
 
   has_many :circles, :as => :owner
 
+  has_many :user_circles
+  has_many :belonged_circles, :through => :user_circles, :source => :circle
 
-  def related_users
-    users_i_like + users_like_me
+
+  def users
+    User.all
   end
 
   def subscribers

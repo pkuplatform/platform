@@ -1,7 +1,8 @@
-%h1 Editing circle
-
-= render 'form'
-
-= link_to 'Show', @circle
-\|
-= link_to 'Back', circles_path
+.circle-users.box
+  .title= t '.title'
+  .select_users
+    = form_for @circle,:url=>circle_path(@circle) do |f|
+      %h2= t '.change_name'
+      .input-wrapper= f.text_field :name
+      = select_tag("users[]", options_for_select(@circle.owner.users.collect {|cc| [cc.name, cc.id]}, @circle.users.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select-box",:id=>"multi-select-#{@circle.id}"})
+      = f.submit (t ".update")

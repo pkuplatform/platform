@@ -76,7 +76,12 @@ Platform::Application.routes.draw do
       end
     end
     resources :activities
-    resources :circles
+    resources :circles do
+      collection do
+        post 'users/:user_id' => 'circles#update_user'
+        get 'users' => 'circles#users'
+      end
+    end
   end
 
   resources :activities do
@@ -100,12 +105,22 @@ Platform::Application.routes.draw do
       end
     end
     resources :albums 
-    resources :circles
+    resources :circles do
+      collection do
+        post 'users/:user_id' => 'circles#update_user'
+        get 'users' => 'circles#users'
+      end
+    end
   end
 
   resources :comments, :only => [:create, :destroy]
 
-  resources :circles
+  resources :circles do
+    collection do
+      post 'users/:user_id' => 'circles#update_user'
+      get 'users' => 'circles#users'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
