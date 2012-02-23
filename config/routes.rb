@@ -4,7 +4,7 @@ Platform::Application.routes.draw do
    get 'users/sign_out' => "devise/sessions#destroy"
   end
 
-
+  get 'site/newsfeeds'
   get "admin/index"
 
   post "search/index"

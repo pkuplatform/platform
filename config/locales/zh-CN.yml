@@ -235,11 +235,11 @@
     index:
       hotspot: "热点"
       new: "最新"
+      title: "Ta们正在"
     home:
       newsfeed: "新鲜事"
     newsfeeds:
       newsfeed: "动态"
-      title: "Ta们正在"
     newsfeed:
       at: "在"
       before: "前"
