@@ -1,10 +1,10 @@
 class CirclesController < ApplicationController
   # GET /circles
   # GET /circles.json
-  helper_method :owner
+  helper_method :owner, :circle_path, :edit_circle_path, :edit_circle_url
+  layout "form"
 
-
-  def owner(params)
+  def owner
     if params[:group_id]
       Group.find(params[:group_id])
     elsif params[:activity_id]
@@ -14,11 +14,39 @@ class CirclesController < ApplicationController
     end
   end
 
+  def circle_path(circle)
+    owner = circle.owner
+    if owner.is_a?(Group)
+      group_circle_path(owner,circle)
+    elsif owner.is_a?(Activity)
+      activity_circle_path(owner,circle)
+    else
+      "/circles/#{circle.id}"
+    end
+  end
+
+  def circle_url(circle)
+    circle_path(circle)
+  end
+
+  def edit_circle_path(circle)
+    owner = circle.owner
+    if owner.is_a?(Group)
+      edit_group_circle_path(owner,circle)
+    elsif owner.is_a?(Activity)
+      edit_activity_circle_path(owner,circle)
+    else
+      "/circles/#{circle.id}/edit"
+    end
+  end
+
+  def edit_circle_url(circle)
+    edit_circle_path(circle)
+  end
 
   def index
 
     @circles = owner.circles
-    @related_users = owner.related_users
     
     respond_to do |format|
       format.html # index.html.erb
@@ -37,11 +65,28 @@ class CirclesController < ApplicationController
     end
   end
 
+  def users
+    @users = owner.users
+    @circles = owner.circles
+  end
+
+  def update_user
+    @user = User.find(params[:user_id])
+    @user.belonged_circles -= owner.circles
+    @user.belonged_circles |= owner.circles.find(params[:circles]) unless params[:circles].nil?
+    respond_to do |format|
+      if @user.save
+        format.js
+      else
+        format.js :alert=> "something wrong!"
+      end
+    end
+  end
+
   # GET /circles/new
   # GET /circles/new.json
   def new
     @circle = owner.circles.new
-    @circle.owner.users
 
     respond_to do |format|
       format.html # new.html.erb
@@ -74,9 +119,11 @@ class CirclesController < ApplicationController
   # PUT /circles/1.json
   def update
     @circle = owner.circles.find(params[:id])
+    @circle.users = []
+    @circle.users = User.find(params[:users]) unless params[:users].nil?
 
     respond_to do |format|
-      if @circle.update_attributes(params[:circle])
+      if @circle.save&&@circle.update_attributes(params[:circle])
         format.html { redirect_to @circle, notice: 'Circle was successfully updated.' }
         format.json { head :ok }
       else

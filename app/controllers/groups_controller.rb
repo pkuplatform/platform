@@ -97,6 +97,7 @@ class GroupsController < ApplicationController
 
   # POST /groups
   # POST /groups.json
+  
   def create
     authorize! :manage, :all
 

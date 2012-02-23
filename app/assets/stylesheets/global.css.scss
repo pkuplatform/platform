@@ -3,7 +3,6 @@
 
 table { 
   width: 100%; 
-  margin-top: 10px !important; 
   tr { margin: 5px 0px; }
 }
 
@@ -79,7 +78,7 @@ body.form {
   background: url('screen_background.gif') repeat-x;
   background-color: #EEE;
   .container { 
-    width: 700px;
+    width: 750px;
     margin: 100px auto 0px auto;
   }
   .title { 
@@ -248,19 +247,9 @@ span.cke_skin_kama { border: 0px !important; }
   overflow-y: auto;
   overflow-x: hidden;
   li {
-    list-style:none;
-    border: 1px solid #ccc;
     clear:both;
-    left:0;
-    right:0;
     a {
       display:block;
-      width:100%;
-      color:#005EAC;
-      background: #ffffff;
-      &.ui-state-hover {
-        background:#fffccc;
-      }
       img {width:28px; float:left; border:0;}
       p {font-size:20px; line-height:30px; margin-left: 50px; display:block;}
     }

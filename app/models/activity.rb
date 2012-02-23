@@ -25,8 +25,20 @@ class Activity < ActiveRecord::Base
 
   has_many :circles, :as => :owner
 
+  has_many :users, :through => :user_activities
+
   after_save :get_py
 
+  after_create :initialize_circles
+
+  def initialize_circles
+    self.circles.create(:name=>I18n.t('member'),:status=> Constant::Member, :deletable=>false)
+    self.circles.create(:name=>I18n.t('admin'),:status=> Constant::Admin, :deletable=>false)
+  end
+
+  def default_circle
+    circles.first
+  end
 
   def related_users
     members

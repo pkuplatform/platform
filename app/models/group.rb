@@ -28,12 +28,15 @@ class Group < ActiveRecord::Base
 
   has_many :circles, :as => :owner
 
+  has_many :users, :through => :user_groups
+
+  after_create :initialize_circles
+  
   after_save :get_py
 
-
-
-  def related_users
-    members
+  def initialize_circles
+    self.circles.create(:name=>I18n.t('member'),:status=> Constant::Member, :deletable=>false)
+    self.circles.create(:name=>I18n.t('admin'),:status=> Constant::Admin, :deletable=>false)
   end
 
   def get_py
@@ -43,7 +46,9 @@ class Group < ActiveRecord::Base
     end
   end
 
-
+  def default_circle
+    circles.first
+  end
 
   def self.daily_ranks
     ret = []
