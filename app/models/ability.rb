@@ -9,19 +9,23 @@ class Ability
     end
 
     can :like, Profile do |p|
-      not UserRelation.where(:liking_id => user.id, :liked_id => p.user.id).exists?
+      not p.user.fans.include?(user)
     end
 
     can :exit, Group do |group|
-      group.persons.include?(user) and not group.admin == user
+      group.members.include?(user) and not group.admin == user
     end
 
     can :join, Group do |group|
-      not group.persons.include?(user) and not group.tenders.include?(user)
+      not group.persons.include?(user) and not group.applicants.include?(user)
     end
 
     can :like, Group do |group|
-      not group.persons.include?(user) and not group.followers.include?(user)
+      not group.persons.include?(user) and not group.fans.include?(user)
+    end
+
+    can :unlike, Group do |group|
+      group.fans.include?(user)
     end
 
     can :admin, Group do |group|
@@ -29,15 +33,19 @@ class Ability
     end
 
     can :exit, Activity do |activity|
-      not activity.admin == user and activity.persons.include?(user)
+      not activity.admin == user and activity.members.include?(user)
     end
 
     can :join, Activity do |activity|
-      not activity.persons.include?(user) and not activity.tenders.include?(user)
+      not activity.persons.include?(user) and not activity.applicants.include?(user)
     end
 
     can :like, Activity do |activity|
-      not activity.persons.include?(user) and not activity.followers.include?(user)
+      not activity.persons.include?(user) and not activity.fans.include?(user)
+    end
+
+    can :unlike, Activity do |activity|
+      activity.fans.include?(user)
     end
 
     can :admin, Activity do |activity|

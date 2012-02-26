@@ -2,7 +2,7 @@ class Admin::GroupsController < ApplicationController
   layout "form"
 
   def index
-    authorize! :manage, :all
+    authorize! :admin, :backend
 
     if params[:filter] == "approving"
       filter = Constant::Approving

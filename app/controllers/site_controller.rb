@@ -18,7 +18,7 @@ class SiteController < ApplicationController
     @banners = Activity.where("banner_file_name != ''").first(3)
     @activities = Activity.last(6)
     @events = Event.where("object_type != 'Comment'").order('updated_at DESC').first(25)
-    @id = @events.first.id
+    @id = @events.first.id unless @events.first.nil?
     @secondary_scope = nil
   end
 

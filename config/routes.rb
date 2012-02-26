@@ -53,7 +53,9 @@ Platform::Application.routes.draw do
     end
     member do
       get 'join'
+      get 'exit'
       get 'like'
+      get 'unlike'
       get 'description'
       get 'history'
       get 'organization'
@@ -92,6 +94,8 @@ Platform::Application.routes.draw do
     end
     member do
       get 'join'
+      get 'exit'
+      get 'unlike'
       get 'like'
       get 'show_members'
       post 'members/edit' => 'activities#edit_members'

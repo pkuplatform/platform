@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221172658) do
+ActiveRecord::Schema.define(:version => 20120225172254) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
     t.string   "title"
-    t.text     "description",         :default => ""
+    t.string   "pyname"
+    t.text     "description"
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "location",            :default => ""
     t.boolean  "public",              :default => true
-    t.integer  "status",              :default => 0
+    t.integer  "status",              :default => 1
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -34,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
     t.boolean  "delta",               :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "pyname"
   end
 
   add_index "activities", ["group_id"], :name => "index_activities_on_group_id"
@@ -66,9 +66,17 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
     t.datetime "updated_at"
   end
 
+  create_table "channels", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "circles", :force => true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.integer  "status",     :default => 0
+    t.boolean  "deletable",  :default => true
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -100,6 +108,17 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "dialogs", :force => true do |t|
+    t.integer  "channel_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dialogs", ["channel_id"], :name => "index_dialogs_on_channel_id"
+  add_index "dialogs", ["user_id"], :name => "index_dialogs_on_user_id"
 
   create_table "events", :force => true do |t|
     t.string   "subject_type"
@@ -154,11 +173,12 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
   create_table "groups", :force => true do |t|
     t.integer  "category_id"
     t.string   "name"
+    t.string   "pyname"
     t.string   "slogan",            :default => ""
-    t.text     "introduction",      :default => ""
-    t.text     "description",       :default => ""
-    t.text     "history",           :default => ""
-    t.text     "organization",      :default => ""
+    t.text     "introduction"
+    t.text     "description"
+    t.text     "history"
+    t.text     "organization"
     t.string   "email",             :default => ""
     t.date     "founded_at"
     t.integer  "status",            :default => 4
@@ -170,7 +190,6 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
     t.boolean  "delta",             :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "pyname"
   end
 
   add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
@@ -198,13 +217,6 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
-
-  create_table "locations", :force => true do |t|
-    t.string   "name"
-    t.integer  "capacity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "message_copies", :force => true do |t|
     t.integer  "sent_messageable_id"
@@ -269,7 +281,7 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
     t.string   "student_id"
     t.string   "phone"
     t.integer  "points",               :default => 0
-    t.text     "description",          :default => ""
+    t.text     "description"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -280,14 +292,6 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
-
-  create_table "rank_lists", :force => true do |t|
-    t.string   "name"
-    t.string   "award"
-    t.integer  "identify_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "sms", :force => true do |t|
     t.integer  "group_id"
@@ -316,17 +320,6 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
     t.string "name"
   end
 
-  create_table "user_activities", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "activity_id"
-    t.integer  "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_activities", ["activity_id"], :name => "index_user_activities_on_activity_id"
-  add_index "user_activities", ["user_id"], :name => "index_user_activities_on_user_id"
-
   create_table "user_circles", :force => true do |t|
     t.integer  "user_id"
     t.integer  "circle_id"
@@ -334,16 +327,8 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
     t.datetime "updated_at"
   end
 
-  create_table "user_groups", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.integer  "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_groups", ["group_id"], :name => "index_user_groups_on_group_id"
-  add_index "user_groups", ["user_id"], :name => "index_user_groups_on_user_id"
+  add_index "user_circles", ["circle_id"], :name => "index_user_circles_on_circle_id"
+  add_index "user_circles", ["user_id"], :name => "index_user_circles_on_user_id"
 
   create_table "user_recommends", :force => true do |t|
     t.integer  "user_id"
@@ -356,17 +341,6 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
 
   add_index "user_recommends", ["recommendable_id", "recommendable_type"], :name => "index_user_recommends_on_recommendable_id_and_recommendable_type"
   add_index "user_recommends", ["user_id"], :name => "index_user_recommends_on_user_id"
-
-  create_table "user_relations", :force => true do |t|
-    t.integer  "liking_id"
-    t.integer  "liked_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_relations", ["liked_id"], :name => "index_user_relations_on_liked_id"
-  add_index "user_relations", ["liking_id", "liked_id"], :name => "index_user_relations_on_liking_id_and_liked_id", :unique => true
-  add_index "user_relations", ["liking_id"], :name => "index_user_relations_on_liking_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

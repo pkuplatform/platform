@@ -15,40 +15,46 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile, :allow_destroy => true
   attr_accessible :profile_attributes
 
-  has_many :user_groups
-  has_many :groups, :through => :user_groups
-  has_many :join_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & ? = ?", Constant::Member, Constant::Member]
-  has_many :like_groups, :through => :user_groups, :source => :group, :conditions => ["user_groups.status & ? = ?", Constant::Like, Constant::Like]
-
-  has_many :user_activities
-  has_many :activities, :through => :user_activities
-  has_many :join_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & ? = ?", Constant::Member, Constant::Member]
-  has_many :like_activities, :through => :user_activities, :source => :activity, :conditions => ["user_activities.status & ? = ?", Constant::Like, Constant::Like]
-
   has_many :newsfeeds
   has_many :albums, :as => :imageable
   has_many :blogs, :foreign_key=>"author_id"
-
-  has_many :user_relations, :foreign_key => "liking_id", :dependent => :destroy
-  has_many :users_i_like, :through => :user_relations, :source => :liked
-  has_many :subscribers_others, :through => :user_relations, :source => :liked
-  has_many :reverse_user_relations, :foreign_key => "liked_id", :class_name => "UserRelation", :dependent => :destroy
-  has_many :users_like_me, :through => :reverse_user_relations,:source => :liking
-
   has_many :pictures, :dependent => :destroy
 
-  has_many :circles, :as => :owner
+  has_many :poly_circles, :as => :owner, :class_name => 'Circle'
 
   has_many :user_circles
-  has_many :belonged_circles, :through => :user_circles, :source => :circle
+  has_many :circles, :through => :user_circles
+
+  has_many :user_recommends
+
+  after_create :create_circles
+
+  def create_circles
+    poly_circles.create(:name => 'fan', :status => Constant::Like, :deletable => false)
+  end
+
+  def fans
+    poly_circles.fan.first.users
+  end
+
+  def follows
+    circles.user.collect { |c| User.find(c.owner_id) }
+  end
+
+  def activities
+    circles.activity.collect { |c| Activity.find(c.owner_id) }
+  end
+
+  def groups
+    circles.group.collect { |c| Group.find(c.owner_id) }
+  end
 
   def users
     User.all
   end
 
   def subscribers
-    a = subscribers_others.to_ary
-    a << self
+    fans
   end
 
   def name
@@ -61,14 +67,6 @@ class User < ActiveRecord::Base
 
   def avatar(size=:small)
     profile.avatar.url(size)
-  end
-
-  def self.daily_ranks
-    RankList.where("identify_id < ?", 10)
-  end
-
-  def self.weekly_ranks
-    RankList.where("identify_id > ? && identify_id < ?", 9, 19)
   end
 
   def url(size = :thumb)
@@ -92,7 +90,7 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    users_i_like & users_like_me
+    fans | follows
   end
 
   def online?
@@ -104,18 +102,16 @@ class User < ActiveRecord::Base
   end
 
   def recommend_groups
-    groups = Array.new
-    UserRecommend.select('recommendable_id as rid').where(:user_id => id, :recommendable_type => "Group").order('value DESC').each do |g|
-      groups << Group.find(g.rid) if Group.exists?(g.rid)
+    user_recommends.group.order('value DESC').collect do |r| 
+      gid = r.recommendable_id
+      Group.find(gid) if Group.exists?(gid)
     end
-    groups
   end
 
   def recommend_activities
-    activities = Array.new
-    UserRecommend.select('recommendable_id as rid').where(:user_id => id, :recommendable_type => "Activity").order('value DESC').each do |a|
-      activities << Activity.find(a.rid) if Activity.exists?(a.rid)
+    user_recommends.activity.order('value DESC').collect do |r|
+      aid = r.recommendable_id
+      Activity.find(aid) if Activity.exists?(aid)
     end
-    activities
   end
 end

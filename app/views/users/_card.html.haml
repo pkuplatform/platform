@@ -10,8 +10,8 @@
       = t :level, :points => current_user.profile.points
     .meta
       %div
-        %span= t '.like', :count => current_user.users_i_like.count
-        %span= t '.fans', :count => current_user.users_like_me.count
+        %span= t '.like', :count => current_user.follows.count
+        %span= t '.fans', :count => current_user.fans.count
       %div
         %span= t '.groups', :count => current_user.groups.count
         %span= t '.activities', :count => current_user.activities.count

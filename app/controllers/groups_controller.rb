@@ -52,7 +52,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @more = @group.activities.count > 3
     @core = @group.comments.recent.count > 8
-    @members = @group.admins + @group.members.order("user_groups.updated_at DESC").first(14)
+    @members = @group.persons
     @mere = @group.members.count > 14
 
     respond_to do |format|
@@ -106,7 +106,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        UserGroup.create(:user => current_user, :group => @group, :status => Constant::Admin + Constant::Approved)
+        @group.admin_circle.add(current_user)
         format.html { redirect_to :action => 'edit', :id => @group.id, :q => 1 }
         format.json { render json: @group, status: :created, location: @group }
       else
@@ -155,45 +155,35 @@ class GroupsController < ApplicationController
 
   def like
     @group = Group.find(params[:id])
-    ug = @group.user_groups.find_by_user_id(current_user)
-    
-    if @group.followers.include?(current_user)
-      ug.status &= ~Constant::Like
-      ug.save
-    else
-      if ug
-        ug.status |= Constant::Like
-        ug.save
-      else
-        UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Like)
-        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:like,:object_type=>"Group",:object_id=>@group.id)
-      end
-    end
-    respond_to do |format|
-      format.js
-    end
+    authorize! :like, @group
+
+    @group.fan_circle.add(current_user)
+    head :ok
+  end
+
+  def unlike
+    @group = Group.find(params[:id])
+    authorize! :unlike, @group
+
+    @group.fan_circle.remove(current_user)
+    head :ok
   end
 
   def join
     @group = Group.find(params[:id])
-    ug = UserGroup.f(params[:id], current_user.id)
-    
-    if @group.members.include?(current_user)
-      ug.status &= ~Constant::Member
-      ug.save
-    else
-      if ug
-        ug.status |= Constant::Approving
-        ug.save
-      else
-        UserGroup.create!(:group_id => @group.id, :user_id => current_user.id, :status => Constant::Approving)
-      end
-    end
-    respond_to do |format|
-      format.js
-    end
+    authorize! :join, @group
+
+    @group.applicant_circle.add(current_user)
+    head :ok
   end
 
+  def exit
+    @group = Group.find(params[:id])
+    authorize! :exit, @group
+
+    @group.member_circle.remove(current_user)
+    head :ok
+  end
 
   def description
     @group = Group.find(params[:id])

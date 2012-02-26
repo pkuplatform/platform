@@ -102,7 +102,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        UserActivity.create(:user => current_user, :activity => @activity, :status => Constant::Admin + Constant::Member)
+        @activity.admin_circle.add(current_user)
         Event.create(:subject_type => "Group", :subject_id => params[:activity][:group_id], :action => "create", :object_type => "Activity", :object_id => @activity.id, :processed => false)
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
@@ -147,52 +147,34 @@ class ActivitiesController < ApplicationController
 
   def like
     @activity = Activity.find(params[:id])
-    ua = @activity.user_activities.find_by_user_id(current_user)
-    
-    if @activity.followers.include?(current_user)
-      ua.status &= ~Constant::Like
-      ua.save
-    else
-      if ua
-        ua.status |= Constant::Like
-        ua.save
-      else
-        UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Like)
-        Event.create(:subject_type=>"User",:subject_id=>current_user.id,:action=>:like,:object_type=>"Activity",:object_id=>@activity.id)
-      end
-    end
-    respond_to do |format|
-      format.js
-    end
+    authorize! :like, @activity
+
+    @activity.fan_circle.add(current_user)
+    head :ok
+  end
+
+  def unlike
+    @activity = Activity.find(params[:id])
+    authorize! :unlike, @activity
+
+    @activity.fan_circle.remove(current_user)
+    head :ok
   end
 
   def join
     @activity = Activity.find(params[:id])
-    ua = @activity.user_activities.find_by_user_id(current_user)
-    
-    if @activity.members.include?(current_user)
-      ua.status &= ~Constant::Member
-      ua.save
-    else
-      if @activity.public?
-        if ua
-          ua.status |= Constant::Member
-          ua.save
-        else
-          UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Member)
-        end
-        Event.create(:subject_type=>"User",:subject_id => current_user.id, :action=>:join, :object_type=>"Activity", :object_id => @activity.id)
-      elsif ua
-        ua.status |= Constant::Approving
-        ua.save
-      else
-        UserActivity.create!(:activity_id => @activity.id, :user_id => current_user.id, :status => Constant::Approving)
-      end
+    authorize! :join, @activity
 
-    end
-    respond_to do |format|
-      format.js
-    end
+    @activity.applicant_circle.add(current_user)
+    head :ok
+  end
+
+  def exit
+    @activity = Activity.find(params[:id])
+    authorize! :exit, @activity
+
+    @activity.members.remove(current_user)
+    head :ok
   end
 
   def show_members

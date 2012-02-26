@@ -14,8 +14,8 @@
         = t '.from'
         = link_to activity.group.name.truncate(20), activity.group
       %span.meta
-        = t '.like', :count => activity.followers.count
+        = t '.like', :count => activity.fans.count
         = "|"
-        = t '.join', :count => activity.person_cnt
+        = t '.join', :count => activity.persons.count
         = "|"
         = t '.comment', :count => activity.comments.count

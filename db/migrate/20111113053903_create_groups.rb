@@ -3,6 +3,7 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
       t.references :category
       t.string   :name
+      t.string   :pyname
       t.string   :slogan, :default => ""
       t.text     :introduction, :default => ""
       t.text     :description, :default => ""

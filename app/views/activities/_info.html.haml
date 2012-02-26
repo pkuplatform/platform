@@ -12,9 +12,9 @@
   .meta
     = t '.points', :count => activity.points
     = "|"
-    = t '.like', :count => activity.followers.count
+    = t '.like', :count => activity.fans.count
     = "|"
-    = t '.join', :count => activity.person_cnt
+    = t '.join', :count => activity.persons.count
     = "|"
     = link_to (t '.blogs', :count => activity.blogs.count), activity_blogs_path(activity)
     = "|"

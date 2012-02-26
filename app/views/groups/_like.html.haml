@@ -2,4 +2,4 @@
   - if can? :like, group
     = link_to (t '.like'), like_group_path(group), :remote => true
   - else
-    = link_to (t '.unlike'), like_group_path(group), :remote => true
+    = link_to (t '.unlike'), unlike_group_path(group), :remote => true

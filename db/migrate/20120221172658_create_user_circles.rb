@@ -6,5 +6,7 @@ class CreateUserCircles < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :user_circles, :user_id
+    add_index :user_circles, :circle_id
   end
 end

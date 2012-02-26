@@ -3,6 +3,7 @@ class CreateActivities < ActiveRecord::Migration
     create_table :activities do |t|
       t.references :group
       t.string   :title
+      t.string   :pyname
       t.text     :description, :default => ""
       t.datetime :start_at
       t.datetime :end_at

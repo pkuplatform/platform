@@ -10,32 +10,76 @@ class Activity < ActiveRecord::Base
   is_impressionable
 
   belongs_to :group
+
   has_many :albums, :as => :imageable
   has_many :pictures, :through => :albums
   has_many :blogs, :dependent => :destroy
-  has_many :user_activities
-  has_many :users, :through => :user_activities
-  has_attached_file :poster, :styles => { :medium => "256x360#",:card => "180x250#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
-  has_attached_file :banner, :styles => { :medium => "576x320#", :banner => "180x100#" }
-
-  has_many :admins,      :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Admin, Constant::Admin]
-  has_many :members,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Member, Constant::Member]
-  has_many :followers,   :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Like, Constant::Like]
-#users tend to join
-  has_many :tenders,     :through => :user_activities, :source => :user, :conditions => ["user_activities.status & ? = ?", Constant::Approving, Constant::Approving]
-  has_many :subscribers, :through => :user_activities, :source => :user, :conditions => ["(user_activities.status & ? = ?) || (user_activities.status & ? = ?)", Constant::Member, Constant::Member, Constant::Like, Constant::Like]
-
   has_many :circles, :as => :owner
+  has_many :users, :through => :circles
 
-  has_many :users, :through => :user_activities
-
-  after_save :get_py
+  has_attached_file :poster, :styles => { :medium => "256x360#",:card => "180x250#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
+  has_attached_file :banner, :styles => { :medium => "576x320#", :banner => "180x100#" }, :default_url => "missing_:style.jpg"
 
   after_create :initialize_circles
+  after_save :get_py
 
   def initialize_circles
-    self.circles.create(:name=>I18n.t('member'),:status=> Constant::Member, :deletable=>false)
-    self.circles.create(:name=>I18n.t('admin'),:status=> Constant::Admin, :deletable=>false)
+    circles.create(:name => 'member',     :status => Constant::Member,    :deletable => false)
+    circles.create(:name => 'admin',      :status => Constant::Admin,     :deletable => false)
+    circles.create(:name => 'fan',        :status => Constant::Like,      :deletable => false)
+    circles.create(:name => 'applicant',  :status => Constant::Approving, :deletable => false)
+  end
+
+  def members
+    member_circle.users
+  end
+
+  def admins
+    admin_circle.users
+  end
+
+  def fans
+    fan_circle.users
+  end
+
+  def applicants
+    applicant_circle.users
+  end
+
+  def add_member(user)
+    member_circle.add(user)
+  end
+
+  def add_admin(user)
+    admin_circle.add(user)
+  end
+
+  def add_fan(user)
+    fan_circle.add(user)
+  end
+
+  def add_applicant(user)
+    applicant_circle.add(user)
+  end
+
+  def member_circle
+    circles.member.first
+  end
+
+  def admin_circle
+    circles.admin.first
+  end
+
+  def fan_circle
+    circles.fan.first
+  end
+
+  def application_circle
+    circles.application.first
+  end
+
+  def subscribers
+    members | admins | followers
   end
 
   def default_circle
@@ -53,28 +97,6 @@ class Activity < ActiveRecord::Base
     end
   end
 
-
-  def self.daily_ranks
-    ret = []
-    id_arr = [2, 7, 8]
-    id_arr.each do |id|
-      object = RankList.find_by_identify_id(id) 
-      ret << object unless object.nil?
-    end
-    ret
-  end
-
-  def self.weekly_ranks
-    ret = []
-    id_arr = [11, 16, 17]
-    id_arr.each do |id|
-      object = RankList.find_by_identify_id(id) 
-      ret << object unless object.nil?
-    end
-
-    ret
-  end
-
   def url
     poster.url(:thumb)
   end
@@ -89,10 +111,6 @@ class Activity < ActiveRecord::Base
 
   def persons
     admins | members
-  end
-
-  def person_cnt
-    admins.count + members.count
   end
 
   def thumb
