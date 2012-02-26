@@ -87,6 +87,10 @@ class Activity < ActiveRecord::Base
     admins.first
   end
 
+  def persons
+    admins | members
+  end
+
   def person_cnt
     admins.count + members.count
   end
@@ -122,6 +126,18 @@ class Activity < ActiveRecord::Base
 
   def pv
     impressionist_count(:filter => :session_hash)
+  end
+
+  def role(user)
+    r = ""
+    if members.include?(user)
+      r = I18n.t('activity_member')
+    elsif admin == user
+      r = I18n.t('activity_boss')
+    elsif admins.include?(user)
+      r = I18n.t('activity_admin')
+    end
+    r
   end
 
   define_index do

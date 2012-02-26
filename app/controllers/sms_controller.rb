@@ -4,13 +4,13 @@ class SmsController < ApplicationController
 
   def index
     @group = Group.find(params[:id])
-    authorize! :manage, @group
+    authorize! :admin, @group
     @sms = @group.sms
   end
 
   def push
     @group = Group.find(params[:id])
-    authorize! :manage, @group
+    authorize! :admin, @group
 
     client = Savon::Client.new("http://qun.pku.edu.cn:8080/PKUMSG/services/sendSMS?wsdl")
     client.wsdl.soap_actions

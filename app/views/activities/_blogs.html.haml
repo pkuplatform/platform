@@ -2,7 +2,7 @@
   .header
     %span= t "Blog"
     = link_to (t :blogs_more), activity_blogs_path(@activity) if @bore
-  .list
+  %div
     - if @activity.blogs.empty?
       .box.no-content
         = t '.empty'

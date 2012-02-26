@@ -4,9 +4,8 @@ class Ability
   def initialize(user)
 
     if user.admin?
-      can :manage, :all
-    else
-      can :read, :all
+      can :admin, :backend
+      can :admin, :site
     end
 
     can :like, Profile do |p|
@@ -14,34 +13,34 @@ class Ability
     end
 
     can :exit, Group do |group|
-      group.members.include?(user) or group.admins.include?(user)
+      group.persons.include?(user) and not group.admin == user
     end
 
     can :join, Group do |group|
-      not group.admins.include?(user) and not group.members.include?(user) and not group.tenders.include?(user)
+      not group.persons.include?(user) and not group.tenders.include?(user)
     end
 
     can :like, Group do |group|
-      not group.followers.include?(user)
+      not group.persons.include?(user) and not group.followers.include?(user)
     end
 
-    can :manage, Group do |group|
+    can :admin, Group do |group|
       not group.nil? and not group.id.nil? and group.admins.include?(user)
     end
 
     can :exit, Activity do |activity|
-      activity.members.include?(user)
+      not activity.admin == user and activity.persons.include?(user)
     end
 
     can :join, Activity do |activity|
-      not activity.members.include?(user) and not activity.tenders.include?(user)
+      not activity.persons.include?(user) and not activity.tenders.include?(user)
     end
 
     can :like, Activity do |activity|
-      not activity.followers.include?(user)
+      not activity.persons.include?(user) and not activity.followers.include?(user)
     end
 
-    can :manage, Activity do |activity|
+    can :admin, Activity do |activity|
       not activity.nil? and not activity.id.nil? and activity.admins.include?(user)
     end
 
@@ -53,8 +52,8 @@ class Ability
       user.id == profile.user.id
     end
 
-    can :manage, Picture do |picture|
-      picture&&picture.id&&((can? :manage, picture.imageable)||(picture.user==user))
+    can :admin, Picture do |picture|
+      picture&&picture.id&&((can? :admin, picture.imageable)||(picture.user==user))
     end
     # Define abilities for the passed in user here. For example:
     #

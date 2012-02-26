@@ -101,7 +101,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    authorize! :manage, :all
+    authorize! :admin, :site
     @profile = Profile.find(params[:id])
     @profile.destroy
 

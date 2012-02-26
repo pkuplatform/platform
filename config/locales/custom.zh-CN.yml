@@ -71,7 +71,6 @@
   "most subscribers group": "最受关注的社团"
 
   group_index: "社团索引"
-  admin: "管理者"
   start_at: "开始时间"
   end_at: "结束时间"
   poster: "海报"
@@ -239,3 +238,9 @@
 
   remark: "说明"
   "Click me to add remark!": "点击我来加上描述"
+
+  member: "普通会员"
+  activity_member: "普通成员"
+  group_boss: "社长"
+  activity_boss: "负责人"
+  activity_admin: "管理员"

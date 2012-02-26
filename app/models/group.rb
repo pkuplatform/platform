@@ -80,8 +80,24 @@ class Group < ActiveRecord::Base
     admins.first || User.first
   end
 
+  def persons
+    admins | members
+  end
+
   def person_cnt
     members.count + admins.count
+  end
+
+  def role(user)
+    r = ""
+    if members.include?(user)
+      r = I18n.t('member')
+    elsif admin == user
+      r = I18n.t('group_boss')
+    elsif admins.include?(user)
+      r = I18n.t('admin')
+    end
+    r
   end
 
   def self.update_points

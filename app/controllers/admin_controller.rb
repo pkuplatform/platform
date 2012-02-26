@@ -3,7 +3,7 @@ class AdminController < ApplicationController
   layout "form"
 
   def index
-    authorize! :manage, :all
+    authorize! :admin, :site
   end
 
 end

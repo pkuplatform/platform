@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   # GET /groups/new.json
   def new
-    authorize! :manage, :all
+    authorize! :admin, :site
     @group = Group.new
 
     respond_to do |format|
@@ -77,7 +77,7 @@ class GroupsController < ApplicationController
   def edit
     @form = true
     @group = Group.find(params[:id])
-    authorize! :manage, @group
+    authorize! :admin, @group
 
     case params[:q]
     when '1'
@@ -99,7 +99,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   
   def create
-    authorize! :manage, :all
+    authorize! :admin, :site
 
     @group = Group.new(params[:group])
     @group.status = Constant::Approving
@@ -120,7 +120,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1.json
   def update
     @group = Group.find(params[:id])
-    authorize! :manage, @group
+    authorize! :admin, @group
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
@@ -143,7 +143,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    authorize! :manage, :all
+    authorize! :admin, :site
 
     @group = Group.find(params[:id]) 
     @group.destroy 

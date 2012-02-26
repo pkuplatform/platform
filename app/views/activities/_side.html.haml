@@ -1,10 +1,14 @@
 .side
   .poster
     = link_to (image_tag activity.poster.url(:medium)), activity
+  .role
+    = activity.role(current_user) if activity.persons.include?(current_user)
   .like-join
-    = render :partial => 'activities/like', :object => activity, :as => :activity
-    = "|"
-    = render :partial => 'activities/join', :object => activity, :as => :activity
+    - unless activity.persons.include?(current_user)
+      = render :partial => 'activities/like', :locals => { :activity => activity }
+      = "|"
+    - unless activity.admin == current_user
+      = render :partial => 'activities/join', :locals => { :activity => activity }
   .location
     %span.label= t '.location'
     %span.field= activity.location

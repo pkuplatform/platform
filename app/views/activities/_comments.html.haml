@@ -2,5 +2,5 @@
   .header
     %span= t :comment
     = link_to (t :comments_more), '#' if @core
-  .list
+  %div
     = render :partial => "share/comments", :locals => { :object => @activity }

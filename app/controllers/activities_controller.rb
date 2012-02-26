@@ -75,7 +75,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @group = Group.find(params[:group_id])
-    authorize! :manage, @group
+    authorize! :admin, @group
 
     @activity = @group.activities.build
     respond_to do |format|
@@ -88,14 +88,14 @@ class ActivitiesController < ApplicationController
   def edit
     @group = Group.find(params[:group_id])
     @activity = Activity.find(params[:id])
-    authorize! :manage, @activity
+    authorize! :admin, @activity
   end
 
   # POST /activities
   # POST /activities.json
   def create
     @group = Group.find(params[:activity][:group_id])
-    authorize! :manage, @group
+    authorize! :admin, @group
 
     @activity = Activity.new(params[:activity])
     @activity.status = Constant::Approving
@@ -117,7 +117,7 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1.json
   def update
     @activity = Activity.find(params[:id])
-    authorize! :manage, @activity
+    authorize! :admin, @activity
 
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
@@ -135,7 +135,7 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1.json
   def destroy
     @activity = Activity.find(params[:id])
-    authorize! :manage, @activity
+    authorize! :admin, @activity
 
     @activity.destroy
 
