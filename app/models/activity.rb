@@ -24,10 +24,10 @@ class Activity < ActiveRecord::Base
   after_save :get_py
 
   def initialize_circles
-    circles.create(:name => 'member',     :status => Constant::Member,    :deletable => false)
-    circles.create(:name => 'admin',      :status => Constant::Admin,     :deletable => false)
-    circles.create(:name => 'fan',        :status => Constant::Like,      :deletable => false)
-    circles.create(:name => 'applicant',  :status => Constant::Approving, :deletable => false)
+    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0654)
+    circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0654)
+    circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
+    circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
 
   def members
@@ -64,14 +64,6 @@ class Activity < ActiveRecord::Base
 
   def subscribers
     members | admins | followers
-  end
-
-  def default_circle
-    circles.first
-  end
-
-  def related_users
-    members
   end
 
   def get_py

@@ -20,37 +20,33 @@ class User < ActiveRecord::Base
   has_many :blogs, :foreign_key=>"author_id"
   has_many :pictures, :dependent => :destroy
 
-  has_many :poly_circles, :as => :owner, :class_name => 'Circle'
+  has_many :circles, :as => :owner
 
   has_many :user_circles
-  has_many :circles, :through => :user_circles
+  has_many :belonged_circles, :through => :user_circles, :source => :circle
 
   has_many :user_recommends
 
-  after_create :create_circles
+  after_create :initialize_circles
 
-  def create_circles
-    poly_circles.create(:name => 'fan', :status => Constant::Like, :deletable => false)
+  def initialize_circles
+    circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
   end
 
   def fans
-    poly_circles.fan.first.users
+    circles.fan.first.users
   end
 
   def follows
-    circles.user.collect { |c| User.find(c.owner_id) }
+    belonged_circles.user.collect { |c| User.find(c.owner_id) }
   end
 
   def activities
-    circles.activity.collect { |c| Activity.find(c.owner_id) }
+    belonged_circles.activity.collect { |c| Activity.find(c.owner_id) }
   end
 
   def groups
-    circles.group.collect { |c| Group.find(c.owner_id) }
-  end
-
-  def users
-    User.all
+    belonged_circles.group.collect { |c| Group.find(c.owner_id) }
   end
 
   def subscribers
@@ -90,6 +86,10 @@ class User < ActiveRecord::Base
   end
 
   def friends
+    fans & follows
+  end
+
+  def persons
     fans | follows
   end
 

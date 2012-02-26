@@ -13,10 +13,10 @@ class Circle < ActiveRecord::Base
   scope :activity, where(:owner_type => 'Activity')
 
   def add(user)
-    user_circles.create(:user => user)
+    self.user_circles.create(:user => user)
   end
 
   def remove(user)
-    user_circles.find_by_user_id(user).destroy
+    self.user_circles.find_by_user_id(user).destroy
   end
 end

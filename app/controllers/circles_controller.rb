@@ -1,7 +1,7 @@
 class CirclesController < ApplicationController
   # GET /circles
   # GET /circles.json
-  helper_method :owner, :circle_path, :edit_circle_path, :edit_circle_url
+  helper_method :owner, :circle_path, :edit_circle_path, :edit_circle_url, :new_circle_path, :new_circle_url
   layout "form"
 
   def owner
@@ -73,6 +73,11 @@ class CirclesController < ApplicationController
   def show
     @circle = owner.circles.find(params[:id])
 
+    unless can? :read, @circle
+      redirect_to owner, :alert=>"no auth"
+      return
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @circle }
@@ -80,14 +85,19 @@ class CirclesController < ApplicationController
   end
 
   def users
+    unless can? :admin, owner
+      redirect_to owner, :alert=>"no auth"
+      return
+    end
     @users = owner.users
-    @circles = owner.circles
+    @circles = owner.circles.keep_if{|c| can? :write,c}
   end
 
   def update_user
     @user = User.find(params[:user_id])
-    @user.belonged_circles -= owner.circles
-    @user.belonged_circles |= owner.circles.find(params[:circles]) unless params[:circles].nil?
+    @writable_circles = owner.circles.keep_if{|c| can? :write,c}
+    @user.belonged_circles -= @writable_circles
+    @user.belonged_circles |= @writable_circles.find(params[:circles] unless params[:circles].nil?
     respond_to do |format|
       if @user.save
         format.js
@@ -111,13 +121,16 @@ class CirclesController < ApplicationController
   # GET /circles/1/edit
   def edit
     @circle = owner.circles.find(params[:id])
+    unless can? :write, @circle
+      redirect_to owner, :alert=>"no auth"
+      return
+    end
   end
 
   # POST /circles
   # POST /circles.json
   def create
     @circle = owner.circles.new(params[:circle])
-
     respond_to do |format|
       if @circle.save
         format.html { redirect_to @circle, notice: 'Circle was successfully created.' }
@@ -133,6 +146,10 @@ class CirclesController < ApplicationController
   # PUT /circles/1.json
   def update
     @circle = owner.circles.find(params[:id])
+    unless can? :write, @circle
+      redirect_to owner, :alert=>"no auth"
+      return
+    end
     @circle.users = []
     @circle.users = User.find(params[:users]) unless params[:users].nil?
 
@@ -151,6 +168,10 @@ class CirclesController < ApplicationController
   # DELETE /circles/1.json
   def destroy
     @circle = owner.circles.find(params[:id])
+    unless can? :delete, @circle
+      redirect_to owner, :alert=>"no auth"
+      return
+    end
     @circle.destroy
 
     respond_to do |format|
