@@ -1,9 +1,10 @@
-.recommend.activities
-  .title= t '.title'
-  %ul
-    - Activity.recommend.each do |activity|
-      %li
-        = link_to (image_tag activity.thumb), activity
-        .meta
-          .name= link_to activity.title.truncate(20), activity
-          .points= activity.points
+- unless current_user.recommend_activities.empty?
+  .recommend.activities
+    .title= t '.title'
+    %ul
+      - current_user.recommend_activities.each do |activity|
+        %li
+          = link_to (image_tag activity.thumb), activity
+          .meta
+            .name= link_to activity.title.truncate(20), activity
+            .points= activity.points

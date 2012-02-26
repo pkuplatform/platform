@@ -42,7 +42,6 @@ class User < ActiveRecord::Base
   has_many :user_circles
   has_many :belonged_circles, :through => :user_circles, :source => :circle
 
-
   def users
     User.all
   end
@@ -102,5 +101,21 @@ class User < ActiveRecord::Base
 
   def online_friends
     friends.delete_if { |f| not f.online? }
+  end
+
+  def recommend_groups
+    groups = Array.new
+    UserRecommend.select('recommendable_id as rid').where(:user_id => id, :recommendable_type => "Group").order('value DESC').each do |g|
+      groups << Group.find(g.rid) if Group.exists?(g.rid)
+    end
+    groups
+  end
+
+  def recommend_activities
+    activities = Array.new
+    UserRecommend.select('recommendable_id as rid').where(:user_id => id, :recommendable_type => "Activity").order('value DESC').each do |a|
+      activities << Activity.find(a.rid) if Activity.exists?(a.rid)
+    end
+    activities
   end
 end

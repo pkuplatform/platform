@@ -9,6 +9,7 @@ class Group < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :category
+
   has_many :activities, :dependent => :destroy
   has_many :second_building_applications, :class_name => "Form::SecondBuildingApplication"
   has_many :albums, :as => :imageable
