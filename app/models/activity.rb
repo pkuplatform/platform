@@ -46,22 +46,6 @@ class Activity < ActiveRecord::Base
     applicant_circle.users
   end
 
-  def add_member(user)
-    member_circle.add(user)
-  end
-
-  def add_admin(user)
-    admin_circle.add(user)
-  end
-
-  def add_fan(user)
-    fan_circle.add(user)
-  end
-
-  def add_applicant(user)
-    applicant_circle.add(user)
-  end
-
   def member_circle
     circles.member.first
   end
