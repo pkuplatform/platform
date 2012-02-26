@@ -21,12 +21,6 @@ $(function() {
 		e.preventDefault();
 	});
 	
-	//bind window for postate
-	$(window).bind("popstate", function() {
-		$.getScript(location.href);
-	});
-
-
 	$("#user_nameid").blur(function() {
 		var reg=/[^\(]*\((\d+)\)/g;
 		chk = this.value.match(reg);

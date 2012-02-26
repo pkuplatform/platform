@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_locale
   before_filter :store_location
   after_filter :user_status
+
+  def set_locale
+    I18n.locale = "zh-CN"
+  end
 
   def user_status
     current_user.try :touch

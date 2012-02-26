@@ -9,6 +9,7 @@
 //= require jquery-ui
 //= require_tree .
 //= require ckeditor/ckeditor
+//= require fancybox
 
 $.fn.scrollToAndActivate = function(options) {
   return this.each(function() {

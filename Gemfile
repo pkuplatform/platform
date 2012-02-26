@@ -27,9 +27,8 @@ gem 'hz2py'
 gem 'scorer'
 gem 'best_in_place'
 gem 'impressionist'
+gem 'fancybox-rails', :git => 'https://github.com/sverigemeny/fancybox-rails'
 
-
-#gem 'mysql2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -19,3 +19,5 @@ db/sphinx
 public/assets
 platform.war
 stats
+db/pics
+db/.DS_Store
