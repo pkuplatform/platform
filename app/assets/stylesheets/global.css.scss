@@ -45,7 +45,7 @@ table {
 
 .orange-link { @include orange-link; }
 
-.box.form {
+.box.form,.box.circle {
   font-size: 14px;
   form { width: 530px; margin: 0 auto; }
   .field { margin: 10px 0px; }

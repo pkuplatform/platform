@@ -21,7 +21,7 @@ class CirclesController < ApplicationController
     elsif owner.is_a?(Activity)
       activity_circle_path(owner,circle)
     else
-      "/circles/#{circle.id}"
+      root_path+"/circles/#{circle.id}"
     end
   end
 
@@ -36,12 +36,26 @@ class CirclesController < ApplicationController
     elsif owner.is_a?(Activity)
       edit_activity_circle_path(owner,circle)
     else
-      "/circles/#{circle.id}/edit"
+      root_path+"/circles/#{circle.id}/edit"
     end
   end
 
   def edit_circle_url(circle)
     edit_circle_path(circle)
+  end
+
+  def new_circle_path
+    if owner.is_a?(Group)
+      new_group_circle_path(owner)
+    elsif owner.is_a?(Activity)
+      new_activity_circle_path(owner)
+    else
+      root_path+"/circles/new"
+    end
+  end
+
+  def new_circle_url
+    new_circle_path
   end
 
   def index
