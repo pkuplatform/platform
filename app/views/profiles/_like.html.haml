@@ -6,4 +6,4 @@
       - @likes.each do |user|
         %li
           .thumb= link_to (image_tag user.thumb), user
-          .name= user.name.truncate(8)
+          .name= link_to user.name.truncate(8), user

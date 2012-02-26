@@ -349,11 +349,14 @@ ActiveRecord::Schema.define(:version => 20120221172658) do
 
   create_table "user_recommends", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "recommend"
+    t.integer  "recommendable_id"
+    t.string   "recommendable_type"
+    t.float    "value",              :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "user_recommends", ["recommendable_id", "recommendable_type"], :name => "index_user_recommends_on_recommendable_id_and_recommendable_type"
   add_index "user_recommends", ["user_id"], :name => "index_user_recommends_on_user_id"
 
   create_table "user_relations", :force => true do |t|

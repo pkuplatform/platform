@@ -3,11 +3,7 @@ class SearchController < ApplicationController
   layout "groups_index"
 
   def index
-    @groups = Group.search(params[:q])
-    @activities = Activity.search(params[:q])
-    @profiles = Profile.search(params[:q])
-    
-    @empty = @groups.blank? and @activities.blank? and @profiles.blank?
+    @results = ThinkingSphinx.search params[:q]
     @q = params[:q]
   end
 

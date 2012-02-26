@@ -91,4 +91,16 @@ class User < ActiveRecord::Base
   def admin?
     profile.status | Constant::Super == profile.status
   end
+
+  def friends
+    users_i_like & users_like_me
+  end
+
+  def online?
+    updated_at > 10.minutes.ago
+  end
+
+  def online_friends
+    friends.delete_if { |f| not f.online? }
+  end
 end

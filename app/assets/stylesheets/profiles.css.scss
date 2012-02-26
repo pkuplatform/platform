@@ -5,17 +5,6 @@
 @import 'css3';
 @import 'mixin';
 
-.user.card {
-  margin-bottom: 50px;
-  .avatar { margin-top: -70px;}
-  .student-id, .phone { margin: 5px 0px; }
-  .label { color: #BBB; margin-right: 10px; } 
-  .val { @include green; }
-  .info { margin-left: 20px; }
-  .description { color: #999; margin: 10px 0px; }
-  .group-activity { @include blue; }
-  .like { margin-top: 20px; }
-}
 .field.avatar.img {
   width: 128px;
 }
@@ -43,5 +32,18 @@
     list-style: none;
     float: left;
     margin: 8px;
+  }
+}
+
+.user.board {
+  overflow: hidden;
+  .avatar { margin-bottom: 20px; }
+  .like { @include link; text-align: center; }
+  .nickname { @include blue; margin-bottom: 5px; }
+  .description { margin-bottom: 10px; }
+  .meta {
+    font-size: 14px;
+    color: #005EAC;
+    text-align: right;
   }
 }

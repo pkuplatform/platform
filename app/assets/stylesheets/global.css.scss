@@ -299,3 +299,9 @@ span.cke_skin_kama { border: 0px !important; }
     background-size: 100%;
   }
 }
+
+.list .name {
+  font-size: 10px;
+  text-align: center;
+  @include link;
+}

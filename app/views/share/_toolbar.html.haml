@@ -1,0 +1,5 @@
+.tools
+  .user-info
+    = hidden_field_tag 'uid', current_user.id
+  .chat
+    = t '.friends', :count => current_user.online_friends.count

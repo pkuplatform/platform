@@ -5,5 +5,5 @@
     %ul
       - @groups.each do |group|
         %li
-          .thumb= image_tag group.thumb
-          .name= group.name.truncate(8)
+          .thumb= link_to (image_tag group.thumb), group
+          .name= link_to group.name.truncate(8), group

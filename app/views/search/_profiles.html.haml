@@ -2,9 +2,9 @@
   = link_to (image_tag profile.card), profile
   .info
     .top
-      .name= link_to profile.name, profile
+      .name= link_to (highlight profile.name, @q), profile
     .center
-      = profile.description
+      = highlight profile.description, @q
     .bottom
       %span.meta
         = t '.like', :count => profile.user.users_i_like.count

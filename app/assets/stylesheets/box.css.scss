@@ -18,15 +18,12 @@
   .side { width: 180px; float: left; }
   .info { width: 420px; float: left; margin-left: 20px; }
 
-  .info .title, .info .name, .info .nickname { 
+  .info .title, .info .name { 
     @include orange;
     @include orange-link; 
     font-size: 20px;
     margin-bottom: 5px;
   }
 
-  .box-header {
-    font-size: 1.5em;
-  }
 }
 

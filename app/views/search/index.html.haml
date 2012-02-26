@@ -1,6 +1,11 @@
 .content.index
-  - if @empty
+  - if @results.empty?
     .empty= t '.empty'
-  = render :partial => 'groups', :collection => @groups, :as => :group
-  = render :partial => 'activities', :collection => @activities, :as => :activity
-  = render :partial => 'profiles', :collection => @profiles, :as => :profile
+  - @results.each do |result|
+    - case result
+    - when Group
+      = render :partial => 'groups', :locals => { :group => result }
+    - when Activity
+      = render :partial => 'activities', :locals => { :activity => result }
+    - when Profile
+      = render :partial => 'profiles', :locals => { :profile => result }

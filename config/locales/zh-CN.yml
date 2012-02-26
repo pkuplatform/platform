@@ -246,6 +246,8 @@
       action: "%{action}了"
 
   share:
+    toolbar:
+      friends: "在线好友(%{count})"
     recommend_activities:
       title: "推荐活动"
     hot_activities:
@@ -437,6 +439,11 @@
       like_cnt: "%{count}人关注"
       like: "关注"
       dislike: "取消关注"
+    info:
+      like: "关注(%{count})"
+      fans: "粉丝(%{count})"
+      groups: "社团(%{count})"
+      activities: "活动(%{count})"
     secondary:
       new_group: "新建社团"
     form:
@@ -460,6 +467,15 @@
     next_label: ">>"
 
   search:
+    groups:
+      activities: "活动(%{count})"
+      like: "关注(%{count})"
+      join: "参加(%{count})"
+      founded: "成立"
+    activities:
+      like: "关注(%{count})"
+      join: "参加(%{count})"
+      comment: "评论(%{count})"
     profiles:
       like: "关注(%{count})"
       fans: "粉丝(%{count})"
@@ -467,8 +483,6 @@
       activities: "活动(%{count})"
     index:
       empty: "抱歉，没有找到您所需要的信息~"
-    groups:
-      founded: "成立"
 
   mailboxes:
     new:

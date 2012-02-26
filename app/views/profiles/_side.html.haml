@@ -1,8 +1,6 @@
 .side
   .avatar
-    = image_tag user.avatar(:medium)
-  .like
-    = t '.like_cnt', :count => user.users_like_me.count
+    = image_tag @profile.medium
   .like
     - if can? :like, @profile
       = link_to (t '.like'), like_profile_path(@profile)

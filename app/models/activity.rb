@@ -1,6 +1,8 @@
 class Activity < ActiveRecord::Base
 
   validates_presence_of :group_id
+  validates_presence_of :location
+  validates_presence_of :title
 
   acts_as_taggable
   acts_as_commentable

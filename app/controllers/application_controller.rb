@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_location
+  after_filter :user_status
+
+  def user_status
+    current_user.try :touch
+  end
   
   def store_location
     session[:user_return_to]  = request.url unless params[:controller] == "devise/sessions" or params[:controller] == "site" and params[:view] == "newsfeeds"

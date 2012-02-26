@@ -18,6 +18,10 @@ class Profile < ActiveRecord::Base
     indexes :description
   end
 
+  def medium
+    avatar.url(:medium)
+  end
+
   def card
     avatar.url(:small)
   end
