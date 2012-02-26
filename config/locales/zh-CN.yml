@@ -669,3 +669,9 @@
       activities: "活动(%{count})"
 
   join: "参加"
+
+  circles:
+    index:
+      circle: "圈子"
+      circle-members: "圈子成员"
+      title: "%{owner}的圈子"
