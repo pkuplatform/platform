@@ -97,7 +97,7 @@ class CirclesController < ApplicationController
     @user = User.find(params[:user_id])
     @writable_circles = owner.circles.keep_if{|c| can? :write,c}
     @user.belonged_circles -= @writable_circles
-    @user.belonged_circles |= @writable_circles.find(params[:circles] unless params[:circles].nil?
+    @user.belonged_circles |= @writable_circles.find(params[:circles]) unless params[:circles].nil?
     respond_to do |format|
       if @user.save
         format.js

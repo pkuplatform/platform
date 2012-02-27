@@ -668,3 +668,11 @@ $.widget("ech.multiselect", {
 });
 
 })(jQuery);
+
+
+$.extend($.ech.multiselect.prototype.options, {
+	checkAllText: '全选',
+	uncheckAllText: '清空',
+	noneSelectedText: '未加入',
+	selectedText: '#个圈子'
+});

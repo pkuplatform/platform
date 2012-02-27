@@ -69,21 +69,21 @@ class Ability
     end
 
     can :read, Circle do |circle|
-      ((can? :admin, circle.owner)&&(circle.mode & 0400 == 0400))
-      ||((owner.persons.include?(user))&&(circle.mode & 040 == 040))
-      ||(circle.mode & 04 == 04)
+      ((can? :admin, circle.owner)&&(circle.mode & 0400 == 0400))||
+      ((owner.persons.include?(user))&&(circle.mode & 040 == 040))||
+      (circle.mode & 04 == 04)
     end
 
     can :write, Circle do |circle|
-      ((can? :admin, circle.owner)&&(circle.mode & 0200 == 0200))
-      ||((owner.persons.include?(user))&&(circle.mode & 020 == 020))
-      ||(circle.mode & 02 == 02)
+      ((can? :admin, circle.owner)&&(circle.mode & 0200 == 0200))||
+      ((owner.persons.include?(user))&&(circle.mode & 020 == 020))||
+      (circle.mode & 02 == 02)
     end
 
     can :delete, Circle do |circle|
-      ((can? :admin, circle.owner)&&(circle.mode & 0100 == 0100))
-      ||((owner.persons.include?(user))&&(circle.mode & 010 == 010))
-      ||(circle.mode & 01 == 01)
+      ((can? :admin, circle.owner)&&(circle.mode & 0100 == 0100))||
+      ((owner.persons.include?(user))&&(circle.mode & 010 == 010))||
+      (circle.mode & 01 == 01)
     end
 
     # Define abilities for the passed in user here. For example:

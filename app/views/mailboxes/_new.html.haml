@@ -3,7 +3,6 @@
   .mails
     = form_tag create_mailboxes_path, :method => :post do
       .hints
-        @用户以添加收件人，可以发给多个用户
       .input-wrapper
         = text_field_tag :user_nameid,params[:users_nameid],:class=>"user user-input", :placeholder=>(t :receiver), :class=>"autocompletable"
         = hidden_field_tag :user_tokens,params[:users_tokens]
