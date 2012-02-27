@@ -1,8 +1,20 @@
 class CirclesController < ApplicationController
   # GET /circles
   # GET /circles.json
-  helper_method :owner, :circle_path, :edit_circle_path, :edit_circle_url, :new_circle_path, :new_circle_url
+  helper_method :owner, :circle_path, :circle_url, :circles_path, :circles_url
+  helper_method :edit_circle_path, :edit_circle_url, :new_circle_path, :new_circle_url
   layout "form"
+  before_filter :build_owner
+
+  def build_owner
+    if owner.is_a?(Group)
+      @group = owner
+    elsif owner.is_a?(Activity)
+      @activity = owner
+    else
+      @user = owner
+    end
+  end
 
   def owner
     if params[:group_id]
@@ -14,6 +26,21 @@ class CirclesController < ApplicationController
     end
   end
 
+  def circles_path
+    if owner.is_a?(Group)
+      group_circles_path(owner)
+    elsif owner.is_a?(Activity)
+      activity_circles_path(owner)
+    else
+      root_path+"/circles"
+    end
+  end
+
+  def circles_url
+    circles_path
+  end
+
+
   def circle_path(circle)
     owner = circle.owner
     if owner.is_a?(Group)
@@ -24,6 +51,7 @@ class CirclesController < ApplicationController
       root_path+"/circles/#{circle.id}"
     end
   end
+
 
   def circle_url(circle)
     circle_path(circle)
@@ -60,7 +88,7 @@ class CirclesController < ApplicationController
 
   def index
 
-    @circles = owner.circles
+    @circles = owner.circles.readable(current_user)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -72,7 +100,8 @@ class CirclesController < ApplicationController
   # GET /circles/1.json
   def show
     @circle = owner.circles.find(params[:id])
-
+    @circles = owner.circles.readable(current_user)
+    @writable_circles = Hash[*(@circles.writable(current_user).collect{|c|[c.id,true]}.flatten)]
     unless can? :read, @circle
       redirect_to owner, :alert=>"no auth"
       return
@@ -89,15 +118,22 @@ class CirclesController < ApplicationController
       redirect_to owner, :alert=>"no auth"
       return
     end
-    @users = owner.users
-    @circles = owner.circles.keep_if{|c| can? :write,c}
+    @users = owner.persons
+    @circles = owner.circles.readable(current_user)
+    @writable_circles = Hash[*(@circles.writable(current_user).collect{|c|[c.id,true]}.flatten)]
   end
 
   def update_user
     @user = User.find(params[:user_id])
-    @writable_circles = owner.circles.keep_if{|c| can? :write,c}
+    @circles = owner.circles
+    @writable_circles = @circles.writable(current_user)
+    @update_circles = @circles.find(params[:circles]).writable(current_user) unless params[:circles].nil?
+    if @update_circles == @user.belonged_circles & @writable_circles 
+      render :inline=>""
+      return
+    end
     @user.belonged_circles -= @writable_circles
-    @user.belonged_circles |= @writable_circles.find(params[:circles]) unless params[:circles].nil?
+    @user.belonged_circles |= @update_circles
     respond_to do |format|
       if @user.save
         format.js
@@ -107,11 +143,15 @@ class CirclesController < ApplicationController
     end
   end
 
+
   # GET /circles/new
   # GET /circles/new.json
   def new
     @circle = owner.circles.new
-
+    unless can? :admin, owner
+      redirect_to owner, :alert=>"no auth"
+      return
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @circle }

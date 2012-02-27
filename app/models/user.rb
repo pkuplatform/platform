@@ -33,6 +33,11 @@ class User < ActiveRecord::Base
     circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
   end
 
+  def ability
+    @ability ||= Ability.new(self)
+  end
+  delegate :can?, :cannot?, :to => :ability
+
   def fans
     circles.fan.first.users
   end

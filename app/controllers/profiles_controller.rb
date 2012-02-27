@@ -23,8 +23,8 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     @groups = @profile.user.groups
     @activities = @profile.user.activities
-    @likes = @profile.user.users_i_like
-    @fans = @profile.user.users_like_me
+    @likes = @profile.user.follows
+    @fans = @profile.user.fans
 
     respond_to do |format|
       format.html # show.html.erb

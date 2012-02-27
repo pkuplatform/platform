@@ -39,7 +39,7 @@ $.widget("ech.multiselect", {
 		hide: '',
 		autoOpen: false,
 		multiple: true,
-		position: {}
+		position: {},
 	},
 
 	_create: function(){

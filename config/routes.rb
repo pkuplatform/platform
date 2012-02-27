@@ -5,7 +5,8 @@ Platform::Application.routes.draw do
   end
 
   get 'site/newsfeeds'
-  get "admin/index"
+  
+  get "admin" => "admin#index"
 
   post "search/index"
 

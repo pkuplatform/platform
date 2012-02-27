@@ -8,7 +8,14 @@ $(document).ready(function() {
       null,
     ]
   });
-  $('.multi-select').multiselect({
+ $('.multi-select').multiselect({
+    open:function(event, ui){
+      var writableCircles=JSON.parse($("#writable-circles").html())||[];
+      $('input[type=checkbox]').each(function(){
+        if (!writableCircles[this.value])
+          $(this).attr("disabled","disabled");
+    });
+    },
     beforeclose:function(){
       $(this).parent("form").submit();
     },

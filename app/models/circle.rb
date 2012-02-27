@@ -12,6 +12,13 @@ class Circle < ActiveRecord::Base
   scope :group,    where(:owner_type => 'Group')
   scope :activity, where(:owner_type => 'Activity')
 
+  after_initialize :get_mode_str
+  attr_accessor :mode_str
+
+  def get_mode_str
+    @mode_str = mode.to_s(8)
+  end
+
   def add(user)
     self.user_circles.create(:user => user)
   end
@@ -19,4 +26,15 @@ class Circle < ActiveRecord::Base
   def remove(user)
     self.user_circles.find_by_user_id(user).destroy
   end
+
+  def self.writable(user)
+    scoped.select{|c| user.can? :write, c}
+  end
+  def self.readable(user)
+    scoped.select{|c| user.can? :read, c}
+  end
+  def self.deletable(user)
+    scoped.select{|c| user.can? :delete,c}
+  end
+
 end

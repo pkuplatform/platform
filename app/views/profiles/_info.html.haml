@@ -3,9 +3,9 @@
   .nickname= @profile.nickname
   .description= @profile.description
   .meta
-    = t '.like', :count => @profile.user.users_i_like.count
+    = t '.like', :count => @profile.user.follows.count
     = "|"
-    = t '.fans', :count => @profile.user.users_like_me.count
+    = t '.fans', :count => @profile.user.fans.count
     = "|"
     = t '.groups', :count => @profile.user.groups.count
     = "|"

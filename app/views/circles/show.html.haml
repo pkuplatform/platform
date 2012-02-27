@@ -15,3 +15,9 @@
             %td.user-name= link_to user.profile.name, user
             %td.user-phone= link_to user.profile.phone
             %td
+              = form_tag "users/#{user.id}", :remote=>true do
+                = select_tag("circles[]", options_for_select(@circles.collect {|cc| [cc.name, cc.id]}, user.belonged_circles.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select",:id=>"multi-select-#{user.id}"})
+  .goback= link_to circles_path,circles_path
+  -if can? :write, @circle
+    .goedit= link_to edit_circle_path(@circle),edit_circle_path(@circle)
+#writable-circles= @writable_circles.to_json
