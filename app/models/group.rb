@@ -87,18 +87,14 @@ class Group < ActiveRecord::Base
     admins.first || User.first
   end
 
-  def persons
-    admins | members
-  end
-
   def role(user)
     r = ""
-    if members.include?(user)
-      r = I18n.t('member')
-    elsif admin == user
+    if admin == user
       r = I18n.t('group_boss')
     elsif admins.include?(user)
-      r = I18n.t('admin')
+      r = I18n.t('group_admin')
+    elsif members.include?(user)
+      r = I18n.t('group_members')
     end
     r
   end

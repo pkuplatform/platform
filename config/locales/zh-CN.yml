@@ -216,6 +216,8 @@
           nickname: "昵称"
           student_id: "学号"
           phone: "电话号码"
+      album:
+        title: "相册名"
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -401,7 +403,7 @@
       empty: "没有任何相册"
       back: "<<<"
     show:
-      title: "相册%{name}的图片"
+      title: "相册"
       empty: "相册是空的~"
       back: "<<<"
     title: "相册名"
@@ -715,6 +717,11 @@
       title: "%{owner}的%{name}圈子"
       actions: "操作"
       empty: "当前这个圈子里还一个人也没有~"
+      message: "群发站内信"
+      edit: "修改圈子"
+    edit:
+      title: "修改%{owner}的%{name}圈子"
+      update: "更改"
     unreadable: "%{owner}的%{name}圈子不允许查看"
     unwritable: "%{owner}的%{name}圈子不允许编辑"
     uncreatable: "你不能给%{owner}创建圈子"

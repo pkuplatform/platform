@@ -1,15 +1,14 @@
-= render "head"
 .mailbox
   .mails
     = form_tag create_mailboxes_path, :method => :post do
       %h3= @message.subject
-      .message.ui-widget-content.ui-corner-all
+      .message
         .infos
           = "#{t :from} "
           = link_to(@message.from.name,@message.from)
           = ", "
           = l @message.created_at,:format=>:long
-        .mail-body
+        .mail-body.ui-widget-content.ui-corner-all
           = sanitize(@message.body, :attributes => %w(id class style href _cke_saved_href title alt width height))  
       - unless params[:mailbox] == "outbox"
         .reply

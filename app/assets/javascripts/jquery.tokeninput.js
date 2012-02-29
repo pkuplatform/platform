@@ -21,9 +21,9 @@ var DEFAULT_SETTINGS = {
     jsonContainer: null,
 
     // Display settings
-    hintText: "Type in a search term",
-    noResultsText: "No results",
-    searchingText: "Searching...",
+    hintText: "输入搜索内容",
+    noResultsText: "无",
+    searchingText: "搜索中...",
     deleteText: "&times;",
     animateDropdown: true,
 
@@ -271,6 +271,8 @@ $.TokenList = function (input, url_or_data, settings) {
                     add_token($(selected_dropdown_item).data("tokeninput"));
                     hidden_input.change();
                     return false;
+                  } else if(event.keyCode==KEY.ENTER||event.keyCode==KEY.NUMPAD_ENTER) {
+                    hidden_input.parent("form").submit();
                   }
                   break;
 

@@ -13,7 +13,8 @@
 
 $.fn.scrollToAndActivate = function(options) {
   return this.each(function() {
-    $.scrollTo(this, 300, {over:-2 ,onAfter:function(obj) {
+    $.scrollTo(this, 0, {over:-2 ,onAfter:function(obj) {
+      $(".active").removeClass("active");
       $(obj).addClass("active");
     }});
   });
@@ -82,6 +83,6 @@ $(document).ready(function(){
     
   $('.devise_error').hide();
 
-  $('.need_hiade').hide();
+  $('.need_hide').hide();
 });
 

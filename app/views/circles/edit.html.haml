@@ -1,8 +1,7 @@
+.title= t '.title', :owner => owner.name, :name =>t("circles."+@circle.name)
 .circle-users.box
-  .title= t '.title'
   .select_users
     = form_for @circle,:url=>circle_path(@circle) do |f|
-      %h2= t '.change_name'
-      .input-wrapper= f.text_field :name
-      = select_tag("users[]", options_for_select(@circle.owner.users.collect {|cc| [cc.name, cc.id]}, @circle.users.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select-box",:id=>"multi-select-#{@circle.id}"})
-      = f.submit (t ".update")
+      = select_tag("users[]", options_for_select(@circle.owner.members.collect {|cc| [cc.name, cc.id]}.uniq, @circle.users.collect{|cs| cs.id}.uniq),{:multiple=>true, :class=> "multi-select-box",:id=>"multi-select-#{@circle.id}"})
+      .button-wrapper
+        = f.submit (t ".update")

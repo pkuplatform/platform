@@ -14,14 +14,12 @@ class BlogsController < ApplicationController
   
   public
   def show
-    @navi = :default
     @blog = Blog.find(params[:id])
     @activity = @blog.activity
   end
 
 
   def new
-    @navi = :default
     @activity = Activity.find(params[:activity_id])
     @blog = Blog.new
   end
@@ -42,7 +40,6 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @navi = :default
     @activity = Activity.find(params[:activity_id])
     @blogs = @activity.blogs
   end

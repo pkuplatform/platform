@@ -1,10 +1,9 @@
-= render "head"
 .mailbox
   .mails
     = form_tag create_mailboxes_path, :method => :post do
       .token-field
         = text_field_tag :user_tokens,"", :placeholder=>(t :receiver), :class=>"token-input"
-      .field
+      .title-field
         = text_field_tag :subject, "",:class=>"subject", :placeholder => (t ".topic")
       .clear
       .area-wrapper

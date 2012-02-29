@@ -1,6 +1,8 @@
 .activity-pictures
   .back= link_to t(".back"), activity_albums_path(@activity)
-  .title= t ".title", :name => @album.title
+  .title
+    = t ".title"
+    = (best_in_place_if (can? :admin, @activity), @album, :title, :type => :input, :nil => t("add title"))
 -if @pictures.empty?
   .box.no-content
     =t (".empty")
@@ -14,4 +16,6 @@
             .image-mani
               - if !pic.remark.empty?
                 .image-remark= pic.remark
+              - else 
+                .image-remark= t (".no-remark")
     .clear

@@ -7,7 +7,7 @@
     padding:5px;
     margin: 15px;
     font-size: 0.8em;
-    @include box-radius(8px);
+    @include box-radius(4px);
     &.current {
       background: #eee;
     }
@@ -47,27 +47,11 @@
   .box-header {
     @include orange-link;
   }
-  .token-field {
-    width: 100%;
 
-  }
 }
 
-.token-input-dropdown-facebook,.token-input-dropdown {
-  .avatar {
-    float:left;
 
-    img {
-      height:32px;
-      width:32px;
-    }
-  }
-  .name {
-    float:left;
-    font-size:15px;
-    padding-left:20px;
-  }
-}
+
 
 .mailbox .button-wrapper { text-align: right; margin-top: 20px; }
 
@@ -88,7 +72,6 @@
     padding: 15px;
     margin: 15px;
     background:#f3f3f3;
-    @include box-radius;
     min-height: 100px;
   }
   .reply {
@@ -97,5 +80,23 @@
   }
   .pagination {
     text-align:center;
+  }
+  .token-field {
+    width: 100%;
+  }
+  .title-field {
+    width: 100%;
+    border: 1px solid #8496BA;
+    margin-top:10px;
+    margin-bottom:10px;
+    height:31px;
+    input {
+      border:none;
+      outline:none;
+      margin:3px;
+      line-height:24px;
+      vertical-align:baseline;
+      width:98%;
+    }
   }
 }

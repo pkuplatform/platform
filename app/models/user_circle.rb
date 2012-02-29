@@ -13,6 +13,11 @@ class UserCircle < ActiveRecord::Base
   def check_member
     if circle.status==Constant::Member && circle.owner.admins.include?(user)
       return false
+    elsif circle.status==Constant::Member
+      circle.owner.circles.where('status != ?',Constant::Like).each do |c|
+        uc = c.user_circles.find_by_user_id(user)
+        uc.delete unless uc.nil?
+      end
     end
   end
 end

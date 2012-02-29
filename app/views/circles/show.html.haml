@@ -3,6 +3,9 @@
   %ul
     %li.back= link_to (t '.back'), circles_path
     %li= link_to (t '.message'), message_circle_path(@circle)
+    - if can? :write, @circle
+      %li= link_to (t '.edit'), edit_circle_path(@circle)
+
 .circle.box
   -if @circle.users.empty?
     =t ".empty"

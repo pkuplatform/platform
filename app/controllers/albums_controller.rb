@@ -5,7 +5,6 @@ class AlbumsController < ApplicationController
   def index
     @activity = Activity.find(params[:activity_id])
     @albums = @activity.albums
-    @navi = :default
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }
@@ -18,7 +17,6 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @activity = @album.imageable
     @pictures = @album.pictures
-    @navi = :default
 
     respond_to do |format|
       format.html # show.html.erb

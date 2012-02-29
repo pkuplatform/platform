@@ -35,6 +35,7 @@ class ActivitiesController < ApplicationController
 
     if params[:tags]
       @activities = Activity.tagged_with(params[:tags])
+      @tags = params[:tags].split(',').map(&:strip).reject(&:blank?).map{ |e| {:name => e} }
     else
       @activities = Activity
     end

@@ -4,8 +4,7 @@ class Activity < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :title
 
-  default_scope where("status != ?", Constant::Blocked)
-
+  default_scope where("activities.status != ?", Constant::Blocked)
 
   acts_as_taggable
   acts_as_commentable
@@ -87,7 +86,7 @@ class Activity < ActiveRecord::Base
   end
 
   def admin
-    admins.first
+    admins.first || User.first
   end
 
   def persons
@@ -138,12 +137,12 @@ class Activity < ActiveRecord::Base
 
   def role(user)
     r = ""
-    if members.include?(user)
-      r = I18n.t('activity_member')
-    elsif admin == user
+    if admin == user
       r = I18n.t('activity_boss')
     elsif admins.include?(user)
       r = I18n.t('activity_admin')
+    elsif members.include?(user)
+      r = I18n.t('activity_member')
     end
     r
   end

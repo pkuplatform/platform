@@ -1,1 +1,1 @@
-$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'notice', :body=>@ok ? (@user.name+'圈子变更成功') : '错误！不能在用户是管理员的时踢出协会！'})%>").purr();
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'notice', :body=>@ok ? (@user.name+'圈子变更成功') : '错误！不能在用户是管理员的时踢出！'})%>").purr();

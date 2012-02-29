@@ -13,14 +13,11 @@
   .textarea-wrapper
     =best_in_place_if (can? :admin, @picture), @picture, :remark, :type => :textarea, :nil => t("Click me to add remark!"), :display_with => :simple_format
     :javascript
-      $(".best_in_place").best_in_place();
+      $(function(){$(".best_in_place").best_in_place();});
   .navi
     = link_to (t ".prev"),load_picture_path(@picture.prev),:remote=>true
     = "/"
     = link_to (t ".next"),load_picture_path(@picture.next),:remote=>true
 .picture.comments
-  .header
-    %span= t :comment
-    = link_to (t :comments_more), '#'
   .list
     = render :partial => "share/comments", :locals => { :object => @picture }

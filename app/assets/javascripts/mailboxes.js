@@ -5,6 +5,7 @@ $(function() {
 	    $("input[type='checkbox']").attr('checked', $(this).is(':checked'));   
 	});
 	
+
 	// change current active tabs styles
 	$('.ui-state-default a').click(function(){
 		$('.ui-state-default').removeClass("ui-tabs-selected");
@@ -42,6 +43,8 @@ $(function() {
 		tokenFormatter: function(item){
 			return "<li><p>" + item["name"] + "</p></li>"
 		},
-		theme: "facebook"
+		theme: "facebook",
+		hintText: "请输入收件人"
+
 	});
 });

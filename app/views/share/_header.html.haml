@@ -16,6 +16,11 @@
             = link_to (t '.curgroup', :name=>@group.name.truncate(15)), group_path(@group)
             %ul.dropdown-menu
               %li
+                = link_to (t 'circles.index.title',:owner=>(t :group)), group_circles_path(@group)
+                %ul
+                  -@group.circles.readable(current_user).each do |circle|
+                    %li=link_to (t 'circles.'+circle.name), group_circle_path(@group,circle)
+              %li
                 = link_to (t '.groups.activities'), group_activities_path(@group)
                 -if can? :admin, @group
                   %ul
@@ -34,14 +39,17 @@
                     %li= link_to (t '.groups.edit'), edit_group_path(@group)
                     %li= link_to (t '.groups.forms'), forms_admin_group_path(@group)
                     %li= link_to (t '.groups.sms'), sms_group_path(@group)
-                    %li= link_to (t 'circles.index.title',:owner=>(t :group)), group_circles_path(@group)
 
         - if (@activity&&@activity.id)
           %li#navi-cur-activity
             = link_to (t '.curactivity', :name=>@activity.name.truncate(15)), activity_path(@activity)
             %ul.dropdown-menu
               %li= link_to (t '.activities.group'), group_path(@activity.group)
-              %li= link_to (t 'circles.index.title',:owner=>(t :activity)), activity_circles_path(@activity)
+              %li
+                = link_to (t 'circles.index.title',:owner=>(t :activity)), activity_circles_path(@activity)
+                %ul
+                  -@activity.circles.readable(current_user).each do |circle|
+                    %li=link_to (t 'circles.'+circle.name), activity_circle_path(@activity,circle)
               %li
                 = link_to (t '.activities.blogs'), activity_blogs_path(@activity)
                 -if can? :admin, @activity
