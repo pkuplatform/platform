@@ -34,7 +34,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to activity_path(@activity), notice: 'Blog was successfully created.' }
+        format.html { redirect_to activity_path(@activity), notice: 'blogs.create.successfully' }
       else
         format.html { render action: "new" }
       end
@@ -61,7 +61,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
-        format.html { redirect_to activity_blog_path(@activity, @blog), notice: 'Activity was successfully updated.' }
+        format.html { redirect_to activity_blog_path(@activity, @blog), notice: 'blogs.update.successfully' }
         format.json { head :ok }
         format.js { head :ok }
       else
@@ -79,7 +79,7 @@ class BlogsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to activities_url }
+      format.html { redirect_to activity_path(@activity), notice: 'blogs.delete.successfully' }
       format.json { head :ok }
     end
   end

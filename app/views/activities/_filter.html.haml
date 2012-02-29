@@ -1,4 +1,9 @@
+
 %ul.sort-filter{:class=> params[:filter]=='category' ? 'show-category' : ''}
+  - if @tag
+    %li
+      %span.tag= link_to @tag.name,"#"
+    .clear
   %li#filter-all= link_to (t '.all'), activities_path(:sort => params[:sort], :filter => 'all', :anchor => 'filter-all')
   %li.category
     = link_to (t '.category'), "javascript:$('.sort-filter').toggleClass('show-category');"

@@ -1,23 +1,54 @@
-%h1.title= t '.title'
+%h1.title= t '.title', :owner => owner.name
+
 .circle-users.box
+  .filters
+    #cnamef
+      .circle
+        -if @all
+          =check_box_tag :all,"",:checked => :checked
+        -else
+          =check_box_tag :all
+        =label_tag :all, (t '.all')
+      .clear
+      - @circles_all.each do |circle|
+        .circle
+          -if !@all&&@circles.include?(circle)
+            =check_box_tag circle.name,"",:checked => :checked
+          -else
+            =check_box_tag circle.name
+          =label_tag circle.name,t("circles."+circle.name)
+        =link_to (t ".goto"),circle, :class=>'ui-icon ui-icon-folder-open circle-link'
+        .clear
+    #cwayf
+      .apply
+        -if @int
+          =check_box_tag :int,"",:checked => :checked
+          =label_tag :int, (t '.cap')
+        -else
+          =check_box_tag :int,""
+          =label_tag :int, (t '.int')
   .users-table
     %table
       %thead
         %tr
           %th
-          %th=t '.user-name'
-          %th=t '.user-phone'
-          %th
+          %th=t '.username'
+          %th=t '.userphone'
+          %th=t '.userscore'
+          %th=t '.usercircle'
       %tbody
         - @users.each do |user|
           %tr
             %td.pic= link_to image_tag(user.url), user
-            %td.user-name= link_to user.profile.name, user
-            %td.user-phone= link_to user.profile.phone
+            %td.user-name
+              .hide= user.profile.pyname.split(' ').collect{|w|w[0]}.join
+              .hide= user.profile.pyname.delete ' '
+              = link_to user.profile.name, user
+            %td.user-phone= user.profile.phone
+            %td.user-score
             %td
-              = form_tag "users/#{user.id}", :remote=>true do
-                = select_tag("circles[]", options_for_select(@circles.collect {|cc| [cc.name, cc.id]}, user.belonged_circles.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select",:id=>"multi-select-#{user.id}"})
+              = form_tag circles_path+"/users/#{user.id}", :remote=>true do
+                = select_tag("circles[]", options_for_select(@circles_all.writable(current_user).collect {|cc| [cc.name, cc.id]}, user.belonged_circles.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select",:id=>"multi-select-#{user.id}"})
 
-
-  .goback= link_to circles_path,circles_path
+  .clear
 #writable-circles= @writable_circles.to_json

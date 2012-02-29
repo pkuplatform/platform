@@ -1,8 +1,8 @@
 class UserRecommend < ActiveRecord::Base
   belongs_to :user
 
-  scope :group,    where(:recommendable_type => 'Group')
-  scope :activity, where(:recommendable_type => 'Activity')
+  scope :groups,    where(:recommendable_type => 'Group')
+  scope :activities, where(:recommendable_type => 'Activity')
 
   def self.recommend(uid)
     user = User.find(uid)

@@ -215,6 +215,7 @@
           name: "姓名"
           nickname: "昵称"
           student_id: "学号"
+          phone: "电话号码"
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -381,6 +382,12 @@
       title: "%{name}的日志"
       empty: "没有发表日志"
       back: "<<<"
+    create:
+      successfully: "成功创建日志！"
+    update:
+      successfully: "成功修改日志！"
+    delete:
+      successfully: "成功删除日志！"
 
   albums:
     navi:
@@ -397,6 +404,7 @@
       title: "相册%{name}的图片"
       empty: "相册是空的~"
       back: "<<<"
+    title: "相册名"
 
   pictures:
     form:
@@ -689,3 +697,26 @@
       circle: "圈子"
       circle-members: "圈子成员"
       title: "%{owner}的圈子"
+    users:
+      title: "%{owner}的圈子管理"
+      all: "所有圈子"
+      int: "查询交集"
+      cap: "查询并集"
+      username: "姓名"
+      userphone: "电话"
+      userscore: "积分"
+      usercircle: "圈子"
+      goto: "》"
+    admin: "管理"
+    member: "成员"
+    fan: "关注者"
+    applicant: "申请加入"
+    show:
+      title: "%{owner}的%{name}圈子"
+      actions: "操作"
+      empty: "当前这个圈子里还一个人也没有~"
+    unreadable: "%{owner}的%{name}圈子不允许查看"
+    unwritable: "%{owner}的%{name}圈子不允许编辑"
+    uncreatable: "你不能给%{owner}创建圈子"
+    undeletable: "%{owner}的%{name}圈子不允许删除"
+

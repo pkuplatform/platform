@@ -1,7 +1,7 @@
 @import 'mixin';
 @import 'css3';
 .box.mailbox {
-  li {
+  ul.mail-panel li {
     display: inline-block;
     float:left;
     padding:5px;
@@ -47,15 +47,27 @@
   .box-header {
     @include orange-link;
   }
-  .input-wrapper {
-    width:95%;
-    input {
-      width:100%;
-    }
+  .token-field {
+    width: 100%;
+
   }
 }
 
+.token-input-dropdown-facebook,.token-input-dropdown {
+  .avatar {
+    float:left;
 
+    img {
+      height:32px;
+      width:32px;
+    }
+  }
+  .name {
+    float:left;
+    font-size:15px;
+    padding-left:20px;
+  }
+}
 
 .mailbox .button-wrapper { text-align: right; margin-top: 20px; }
 

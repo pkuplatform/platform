@@ -10,9 +10,7 @@
         = ", "
         = l @blog.created_at,:format=>:long
       .blog-content
-        =  sanitize(blog.content, :attributes => %w(id class style href _cke_saved_href title alt width height))          
+        =  sanitize(@blog.content, :attributes => %w(id class style href _cke_saved_href title alt width height))
   .comments
-    .header
-      %span= t :comment
     .list
       = render :partial => "share/comments", :locals => { :object => @blog }

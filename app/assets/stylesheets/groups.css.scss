@@ -63,7 +63,7 @@
   @include box-radius;
   padding: 20px;
   margin-bottom: 30px;
-  li.first { @include blue; }
+  li.first { @include blue; @include blue-link; }
   ul { overflow: hidden; }
   li { 
     float: left; 

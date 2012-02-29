@@ -31,13 +31,13 @@ class GroupsController < ApplicationController
     end
 
     if params[:filter] == "category"
-      @groups = Category.find(params[:id]).groups.order(sort)
+      @groups = Category.find(params[:id]).groups.readable.order(sort)
     elsif params[:filter] == "join"
-      @groups = current_user.join_groups.order(sort)
+      @groups = Group.readable.joined(current_user).order(sort)
     elsif params[:filter] == "like"
-      @groups = current_user.like_groups.order(sort)
+      @groups = Group.readable.liked(current_user).order(sort)
     else
-      @groups = Group.where(:status => Constant::Approved).order(sort)
+      @groups = Group.readable.order(sort).all
     end
 
     respond_to do |format|
@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
+    @group = Group.readable.find(params[:id])
     @more = @group.activities.count > 3
     @core = @group.comments.recent.count > 8
     @members = @group.persons

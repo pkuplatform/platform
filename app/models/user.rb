@@ -43,15 +43,15 @@ class User < ActiveRecord::Base
   end
 
   def follows
-    belonged_circles.user.collect { |c| User.find(c.owner_id) }
+    belonged_circles.users.fan.collect { |c| User.find(c.owner_id) }
   end
 
   def activities
-    belonged_circles.activity.collect { |c| Activity.find(c.owner_id) }
+    belonged_circles.activities.member.collect { |c| Activity.find(c.owner_id) }
   end
 
   def groups
-    belonged_circles.group.collect { |c| Group.find(c.owner_id) }
+    belonged_circles.groups.member.collect { |c| Group.find(c.owner_id) }
   end
 
   def subscribers
@@ -107,16 +107,20 @@ class User < ActiveRecord::Base
   end
 
   def recommend_groups
-    user_recommends.group.order('value DESC').collect do |r| 
+    user_recommends.groups.order('value DESC').collect do |r| 
       gid = r.recommendable_id
       Group.find(gid) if Group.exists?(gid)
     end
   end
 
   def recommend_activities
-    user_recommends.activity.order('value DESC').collect do |r|
+    user_recommends.activities.order('value DESC').collect do |r|
       aid = r.recommendable_id
       Activity.find(aid) if Activity.exists?(aid)
     end
+  end
+
+  def applicants
+    []
   end
 end

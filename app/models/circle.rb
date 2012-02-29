@@ -8,9 +8,10 @@ class Circle < ActiveRecord::Base
   scope :fan,       where(:status => Constant::Like)
   scope :applicant, where(:status => Constant::Approving)
 
-  scope :user,     where(:owner_type => 'User')
-  scope :group,    where(:owner_type => 'Group')
-  scope :activity, where(:owner_type => 'Activity')
+  scope :users,     where(:owner_type => 'User')
+  scope :groups,    where(:owner_type => 'Group')
+  scope :activities, where(:owner_type => 'Activity')
+
 
   after_initialize :get_mode_str
   attr_accessor :mode_str

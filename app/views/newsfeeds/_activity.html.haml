@@ -17,8 +17,8 @@
         = t 'newsfeeds.from'
         = link_to activity.group.name, activity.group
       %span.meta
-        = t '.like', :count => activity.followers.count
+        = t '.like', :count => activity.fans.count
         = "|"
-        = t '.join', :count => activity.person_cnt
+        = t '.join', :count => activity.members.count
         = "|"
         = t 'newsfeeds.comments', :count => activity.comments.count

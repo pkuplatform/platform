@@ -1,20 +1,57 @@
 @import 'css3';
 @import 'mixin';
-.circle-users.box{
+.circle-users{
+
+  padding: 30px;
+
+  .filters {
+    float:left;
+    #cnamef {
+      width: 150px;
+    }
+    .circle,.apply {
+      position: relative;
+      width:150px;
+      float:left;
+    }
+    a.circle-link {
+      display:block;
+      z-index:100;
+      position:absolute;
+      left:155px;
+      margin-top:17px;
+    }
+    label {
+      padding:5px;
+      font-weight:normal;
+      font-size: 0.8em;
+      width:130px;
+      margin:10px;
+      display:block;
+      text-align:center;
+    }
+  }
+
   .users-table {
-    padding:30px;
+    width: 700px;
+    padding:10px;
+    float:right;
+    .ui-toolbar {
+      padding:8px;
+    }
     table {
       th {
         text-align:center;
+        min-width:40px;
       }
       td {
         text-align:center;
-        @include black-link(0);
+        @include black-link(1px);
         &.pic {
           width: 64px;
           height: 64px;
-          padding:3px;
-
+          padding:5px;
+          background:#fff;
         }
         .infos {
           padding:30px;
@@ -40,4 +77,21 @@
   display:none;
   width:1px;
   height:1px;
+}
+.circle.box{
+  padding:31px;
+  ul { overflow: hidden; }
+  li.user {
+    list-style: none;
+    float: left;
+    margin: 15px 10px;
+    img { 
+      width: 128px; 
+    }
+  }
+
+  .name {
+   @include orange-link; 
+   text-align:center;
+ }
 }

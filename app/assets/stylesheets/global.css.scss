@@ -13,53 +13,16 @@ table {
   input { background-color: #DDD; }
 }
 
-.content.show, .container.profile {
-  .header {
-    span { 
-      @include orange; 
-      @include box-radius(10px);
-      @include box-shadow2;
-      background-color: white; 
-      display: inline-block;
-      width: 90px;
-      height: 40px;
-      text-align: center;
-      line-height: 40px;
-      font-size: 20px;
-      margin-left: -30px;
-      margin-right: 20px;
-    }
-    margin-bottom: 20px;
-    line-height: 40px;
-    @include gray-link;
-    a { font-size: 16px; margin-right: 10px; }
-  }
-} 
-
+/*
 .secondary {
   font-size: 15px;
   li { list-style: none; margin: 5px 0px; }
   @include blue-link;
   .first { @include blue; text-align: left; font-size: 20px; }
 }
+*/
 
 .orange-link { @include orange-link; }
-
-.box.form,.box.circle {
-  font-size: 14px;
-  form { width: 530px; margin: 0 auto; }
-  .field { margin: 10px 0px; }
-  label { 
-    @include orange; 
-    font-size: 16px;
-    width: 100px;
-    display: inline-block;
-  }
-  textarea { min-height: 100px; }
-  input[type=text], textarea { width: 400px; }
-  .submit { text-align: right; }
-  .actions { text-align: right; }
-}
 
 .search {
   float: right;
@@ -70,22 +33,6 @@ table {
     padding: 0;
     input { font-size: 12px; }
   }
-}
-
-
-
-body.form {
-  background: url('screen_background.gif') repeat-x;
-  background-color: #EEE;
-  .container { 
-    width: 750px;
-    margin: 100px auto 0px auto;
-  }
-  .title { 
-    @include white-shadow; 
-    span { font-size: 16px; }
-  }
-  .button-wrapper { margin-top: 20px; }
 }
 
 
@@ -304,4 +251,41 @@ span.cke_skin_kama { border: 0px !important; }
   font-size: 10px;
   text-align: center;
   @include link;
+}
+
+.box.form {
+  font-size: 14px;
+  form { width: 530px; margin: 0 auto; }
+  .field { margin: 10px 0px; }
+  label { 
+    @include orange; 
+    font-size: 16px;
+    width: 100px;
+    display: inline-block;
+  }
+  textarea { min-height: 100px; }
+  input[type=text], textarea { width: 400px; }
+  .submit { text-align: right; }
+  .actions { text-align: right; }
+}
+
+.back {
+  background-image:url(back-icon-24.png) no-repeat left top;
+  a {
+    background:url(back-icon-24.png) no-repeat left top;
+    display:block;
+    overflow:hidden;
+    text-indent:1000px;
+    width:24px;
+    height:24px;
+  }
+}
+
+.hide {
+  display:none;
+  width:1px;
+  visibility:hidden;
+  overflow:hidden;
+  padding:0;
+  margin:0;
 }

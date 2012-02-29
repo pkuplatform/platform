@@ -80,5 +80,8 @@ $(document).ready(function(){
     $(location.hash).scrollToAndActivate();
   });
     
+  $('.devise_error').hide();
+
+  $('.need_hiade').hide();
 });
 

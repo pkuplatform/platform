@@ -26,19 +26,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # GET /albums/new
-  # GET /albums/new.json
-  def new
-    @album = Album.new
-    @activity = Activity.find(params[:activity_id])
-    @navi = :default
-
-    respond_to do |format|
-      format.html { render "new",:layout=>false }
-      format.json { render json: @album }
-    end
-  end
-
   # GET /albums/1/edit
   def edit
     @album = Album.find(params[:id])

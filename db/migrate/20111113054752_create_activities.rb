@@ -9,7 +9,7 @@ class CreateActivities < ActiveRecord::Migration
       t.datetime :end_at
       t.string   :location, :default => ""
       t.boolean  :public, :default => true
-      t.integer  :status, :default => true
+      t.integer  :status, :default => Constant::Approved
       t.string   :poster_file_name
       t.string   :poster_content_type
       t.integer  :poster_file_size

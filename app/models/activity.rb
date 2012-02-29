@@ -4,12 +4,17 @@ class Activity < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :title
 
+  default_scope where("status != ?", Constant::Blocked)
+
+
   acts_as_taggable
   acts_as_commentable
 
   is_impressionable
 
   belongs_to :group
+
+  scope :category, lambda{|cat| joins(:group).where("groups.category_id = ?", cat.id)}
 
   has_many :albums, :as => :imageable
   has_many :pictures, :through => :albums
@@ -58,12 +63,12 @@ class Activity < ActiveRecord::Base
     circles.fan.first
   end
 
-  def application_circle
-    circles.application.first
+  def applicant_circle
+    circles.applicant.first
   end
 
   def subscribers
-    members | admins | followers
+    members | admins | fans
   end
 
   def get_py
@@ -103,8 +108,8 @@ class Activity < ActiveRecord::Base
 
   def self.update_points
     Activity.all.each do |activity|
-      activity.points = activity.pv + activity.person_cnt
-                        + activity.followers.count 
+      activity.points = activity.pv + activity.members.count
+                        + activity.fans.count 
                         + activity.blogs.count * 5 
                         + activity.pictures.count * 3
     end
@@ -116,6 +121,15 @@ class Activity < ActiveRecord::Base
 
   def self.hot
     Activity.order("points DESC").first(3)
+  end
+
+
+  def self.joined(user)
+    scoped.select{|a| a.members.include? user}
+  end
+
+  def self.liked(user)
+    scoped.select{|a| a.fans.include? user}
   end
 
   def pv

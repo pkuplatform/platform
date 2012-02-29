@@ -3,6 +3,9 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  scope :readable, where("status = ?", Constant::Approved)
+  scope :category, lambda{|cat| where("category_id = ?", cat.id)}
+
   acts_as_taggable
   acts_as_commentable
 
@@ -102,7 +105,7 @@ class Group < ActiveRecord::Base
 
   def self.update_points
     Group.all.each do |group|
-      group.points = group.pv + group.person_cnt
+      group.points = group.pv + group.members
       group.activities.each do |activity|
         group.points += activity.points
       end
@@ -116,6 +119,15 @@ class Group < ActiveRecord::Base
 
   def self.hot
     Group.order("points DESC").first(3)
+  end
+
+
+  def self.joined(user)
+    scoped.select{|a| a.members.include? user}
+  end
+
+  def self.liked(user)
+    scoped.select{|a| a.fans.include? user}
   end
 
   def card

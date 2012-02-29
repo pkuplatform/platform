@@ -38,6 +38,7 @@ module ApplicationHelper
     url_for(comment.commentable)+"#comment-#{comment.id}"
   end
 
+
   def destroy_comment_path(comment)
     url_for(:id => comment.id,:controller=>:comments, :action=>:destroy)
   end
