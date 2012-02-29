@@ -110,10 +110,6 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  def self.recommend
-    Activity.order("points DESC").first(3)
-  end
-
   def self.hot
     Activity.order("points DESC").first(3)
   end

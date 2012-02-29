@@ -16,6 +16,7 @@
   @include box-shadow2;
   background-color: white;
   padding: 20px;
+  min-height: 260px;
   overflow: hidden;
   .activeSlide img { border: 0px solid #999; }
   .banner { 

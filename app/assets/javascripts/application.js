@@ -30,10 +30,6 @@ $(document).ready(function(){
 
   update_newsfeeds();
 
-  $('.flashes').each(function(){
-      $(this).purr();
-  });
-
   $('.feedbacks').tabSlideOut({
     tabHandle: '.handle',                              //class of the element that will be your tab
     pathToTabImage: '/assets/contact.gif',          //path to the image for the tab *required*

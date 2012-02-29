@@ -45,6 +45,14 @@ $ ->
     'height': '50px'
     'width': '400px'
 
+  # jquery purr
+  $('.registration .flashes').each ->
+    $(this).purr
+      'isSticky': true
+
+  $('.flashes:not(.registration .flashes)').each ->
+    $(this).purr()
+
   $(".carousel-items").carouFredSel
     auto : false
     prev : ".prev,left"

@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.integer  "group_id"
     t.string   "title"
     t.string   "pyname"
-    t.text     "description",         :default => ""
+    t.text     "description"
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "location",            :default => ""
     t.boolean  "public",              :default => true
-    t.integer  "status",              :default => 0
+    t.integer  "status",              :default => 1
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -175,10 +175,10 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.string   "name"
     t.string   "pyname"
     t.string   "slogan",            :default => ""
-    t.text     "introduction",      :default => ""
-    t.text     "description",       :default => ""
-    t.text     "history",           :default => ""
-    t.text     "organization",      :default => ""
+    t.text     "introduction"
+    t.text     "description"
+    t.text     "history"
+    t.text     "organization"
     t.string   "email",             :default => ""
     t.date     "founded_at"
     t.integer  "status",            :default => 4
@@ -281,7 +281,7 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.string   "student_id"
     t.string   "phone"
     t.integer  "points",               :default => 0
-    t.text     "description",          :default => ""
+    t.text     "description"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -353,11 +353,20 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
 end

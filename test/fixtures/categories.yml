@@ -1,7 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: sports and fitness
 
 two:
-  name: MyString
+  name: culture and art
+
+three:
+  name: public interest and volunteer
+
+four:
+  name: academic and creation
+
+five:
+  name: practice and progress
+
+six:
+  name: cooperation and communication
+
+seven:
+  name: region culture
+
+eight:
+  name: political theory

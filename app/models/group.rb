@@ -110,10 +110,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def self.recommend
-    Group.order("points DESC").first(3)
-  end
-
   def self.hot
     Group.order("points DESC").first(3)
   end
