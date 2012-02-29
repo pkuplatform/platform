@@ -82,6 +82,10 @@ class User < ActiveRecord::Base
     profile.phone
   end
 
+  def admin
+    self
+  end
+
   def thumb
     profile.avatar.url(:thumb)
   end
@@ -94,7 +98,7 @@ class User < ActiveRecord::Base
     fans & follows
   end
 
-  def persons
+  def members
     fans | follows
   end
 

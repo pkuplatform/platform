@@ -16,6 +16,6 @@
       %span.meta
         = link_to (t '.like', :count => activity.fans.count), activity_circle_path(activity,activity.fan_circle)
         = "|"
-        = link_to (t '.join', :count => activity.persons.count), activity_circle_path(activity,activity.member_circle)
+        = link_to (t '.join', :count => activity.members.count), activity_circle_path(activity,activity.member_circle)
         = "|"
         = link_to (t '.comment', :count => activity.comments.count), activity.comments.first||activity_path(activity,:anchor=>'new-comment')

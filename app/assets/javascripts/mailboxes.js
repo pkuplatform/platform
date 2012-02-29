@@ -44,7 +44,8 @@ $(function() {
 			return "<li><p>" + item["name"] + "</p></li>"
 		},
 		theme: "facebook",
-		hintText: "请输入收件人"
+		hintText: "请输入收件人",
+    	prePopulate : JSON.parse($("#recipients-json").html())
 
 	});
 });

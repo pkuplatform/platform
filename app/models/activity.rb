@@ -34,6 +34,16 @@ class Activity < ActiveRecord::Base
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
 
+  def change_admin_to(user)
+    old_admin = admin
+    old_admin_circle = admin.user_circles.find_by_circle_id(admin_circle.id)
+    new_admin_circle = user.user_circles.find_by_circle_id(admin_circle.id)
+    old_admin_circle.user = user
+    new_admin_circle.user = old_admin
+    old_admin_circle.save
+    new_admin_circle.save
+  end
+
   def members
     member_circle.users
   end
@@ -87,10 +97,6 @@ class Activity < ActiveRecord::Base
 
   def admin
     admins.first || User.first
-  end
-
-  def persons
-    admins | members
   end
 
   def thumb

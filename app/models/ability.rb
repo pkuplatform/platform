@@ -21,11 +21,11 @@ class Ability
     end
 
     can :join, Group do |group|
-      not group.persons.include?(user) and not group.applicants.include?(user)
+      not group.members.include?(user) and not group.applicants.include?(user)
     end
 
     can :like, Group do |group|
-      not group.persons.include?(user) and not group.fans.include?(user)
+      not group.members.include?(user) and not group.fans.include?(user)
     end
 
     can :unlike, Group do |group|
@@ -41,11 +41,11 @@ class Ability
     end
 
     can :join, Activity do |activity|
-      not activity.persons.include?(user) and not activity.applicants.include?(user)
+      not activity.members.include?(user) and not activity.applicants.include?(user)
     end
 
     can :like, Activity do |activity|
-      not activity.persons.include?(user) and not activity.fans.include?(user)
+      not activity.members.include?(user) and not activity.fans.include?(user)
     end
 
     can :unlike, Activity do |activity|
@@ -69,20 +69,22 @@ class Ability
     end
 
     can :read, Circle do |circle|
+      (circle.owner.admin == user)||
       ((can? :admin, circle.owner)&&(circle.mode & 0400 == 0400))||
-      ((circle.owner.persons.include?(user))&&(circle.mode & 040 == 040))||
+      ((circle.owner.members.include?(user))&&(circle.mode & 040 == 040))||
       (circle.mode & 04 == 04)
     end
 
     can :write, Circle do |circle|
+      (circle.owner.admin == user)||
       ((can? :admin, circle.owner)&&(circle.mode & 0200 == 0200))||
-      ((circle.owner.persons.include?(user))&&(circle.mode & 020 == 020))||
+      ((circle.owner.members.include?(user))&&(circle.mode & 020 == 020))||
       (circle.mode & 02 == 02)
     end
 
     can :delete, Circle do |circle|
       ((can? :admin, circle.owner)&&(circle.mode & 0100 == 0100))||
-      ((circle.owner.persons.include?(user))&&(circle.mode & 010 == 010))||
+      ((circle.owner.members.include?(user))&&(circle.mode & 010 == 010))||
       (circle.mode & 01 == 01)
     end
 

@@ -214,11 +214,17 @@ class CirclesController < ApplicationController
       redirect_to owner, :alert=> t("circles.unwritable",:owner=>owner.name,:name=>@circle.name)
       return
     end
-    @circle.users = []
-    @circle.users = User.find(params[:users]) unless params[:users].nil?
+
+    @update_users = User.find(params[:users]) unless params[:users].nil?
+    @delete_users = []
+    @delete_users = @circle.users - @update_users unless @update_users.nil?
+    @circle.user_circles.each do |uc|
+      uc.destroy if @delete_users.include?(uc.user)
+    end
+    @circle.users |= @update_circles
 
     respond_to do |format|
-      if @circle.save&&@circle.update_attributes(params[:circle])
+      if @circle.save
         format.html { redirect_to @circle, notice: 'Circle was successfully updated.' }
         format.json { head :ok }
       else
@@ -246,5 +252,15 @@ class CirclesController < ApplicationController
 
 
   def message
+    @circle = Circle.find(params[:id])
+    @profiles = @circle.users.shift(20).collect{|p| {:id => p.id,:name=>p.name}}
+    unless can? :read, @circle
+      redirect_to @circle.owner, :alert=> t("circles.unreadable",:owner=>@circle.owner.name,:name=>@circle.name)
+      return
+    end
+    respond_to do |format|
+      format.html 
+      format.json { head :ok }
+    end
   end
 end
