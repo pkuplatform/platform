@@ -5,7 +5,6 @@ class AlbumsController < ApplicationController
   def index
     @activity = Activity.find(params[:activity_id])
     @albums = @activity.albums
-    @navi = :default
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }
@@ -18,23 +17,9 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @activity = @album.imageable
     @pictures = @album.pictures
-    @navi = :default
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @album }
-    end
-  end
-
-  # GET /albums/new
-  # GET /albums/new.json
-  def new
-    @album = Album.new
-    @activity = Activity.find(params[:activity_id])
-    @navi = :default
-
-    respond_to do |format|
-      format.html { render "new",:layout=>false }
       format.json { render json: @album }
     end
   end

@@ -11,7 +11,7 @@ class CreateGroups < ActiveRecord::Migration
       t.text     :organization, :default => ""
       t.string   :email, :default => ""
       t.date     :founded_at
-      t.integer  :status, :default => 4
+      t.integer  :status, :default => Constant::Approving
       t.string   :logo_file_name
       t.string   :logo_content_type
       t.integer  :logo_file_size

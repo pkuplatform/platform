@@ -4,11 +4,12 @@
   .wrapper
     .top
       = link_to subject.name, subject
-      = t '.action'
+      = t '.'+event.action
       = link_to activity.title, activity
     .center.small
       .thumb= image_tag activity.thumb
       .medium= image_tag activity.medium
+      .clear
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)
@@ -19,6 +20,6 @@
       %span.meta
         = t '.like', :count => activity.fans.count
         = "|"
-        = t '.join', :count => activity.persons.count
+        = t '.join', :count => activity.members.count
         = "|"
         = t 'newsfeeds.comments', :count => activity.comments.count

@@ -4,23 +4,13 @@
 @import 'mixin';
 @import 'css3';
 
-.new_album {
-  width: 320px;
-  height: 80px;
-  .new_form {
-    margin:0 auto;
-    margin-top: 20px;
-    .input-wrapper {
-      float:left;
-      margin: 0;
-      margin-right: 10px;
-      margin-top: 7px;
-    }
-    .button-wrapper {
-      float:left;
-      margin:0;
+.new-album {
 
-    }
+
+  .button-wrapper {
+    float:right;
+    margin:0;
+
   }
 }
 
@@ -76,6 +66,8 @@
     &:hover, &:focus{
       .image-remark {
         display:block;
+        height:20px;
+        overflow:hidden;
       }
     }
     .image-remark {
@@ -89,5 +81,15 @@
       z-index: 200;
       display:none;
     }
+  }
+}
+
+.title .best_in_place {
+  @include white-shadow;
+  input{
+    line-height:20px;
+    background:none;
+    font-size:24px;
+    width:150px;
   }
 }

@@ -4,12 +4,16 @@ class Activity < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :title
 
+  default_scope where("activities.status != ?", Constant::Blocked)
+
   acts_as_taggable
   acts_as_commentable
 
   is_impressionable
 
   belongs_to :group
+
+  scope :category, lambda{|cat| joins(:group).where("groups.category_id = ?", cat.id)}
 
   has_many :albums, :as => :imageable
   has_many :pictures, :through => :albums
@@ -24,10 +28,20 @@ class Activity < ActiveRecord::Base
   after_save :get_py
 
   def initialize_circles
-    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0644)
+    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0444)
     circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0644)
     circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
+  end
+
+  def change_admin_to(user)
+    old_admin = admin
+    old_admin_circle = admin.user_circles.find_by_circle_id(admin_circle.id)
+    new_admin_circle = user.user_circles.find_by_circle_id(admin_circle.id)
+    old_admin_circle.user = user
+    new_admin_circle.user = old_admin
+    old_admin_circle.save
+    new_admin_circle.save
   end
 
   def members
@@ -58,12 +72,12 @@ class Activity < ActiveRecord::Base
     circles.fan.first
   end
 
-  def application_circle
-    circles.application.first
+  def applicant_circle
+    circles.applicant.first
   end
 
   def subscribers
-    members | admins | followers
+    members | admins | fans
   end
 
   def get_py
@@ -82,11 +96,7 @@ class Activity < ActiveRecord::Base
   end
 
   def admin
-    admins.first
-  end
-
-  def persons
-    admins | members
+    admins.first || User.first
   end
 
   def thumb
@@ -103,8 +113,8 @@ class Activity < ActiveRecord::Base
 
   def self.update_points
     Activity.all.each do |activity|
-      activity.points = activity.pv + activity.person_cnt
-                        + activity.followers.count 
+      activity.points = activity.pv + activity.members.count
+                        + activity.fans.count 
                         + activity.blogs.count * 5 
                         + activity.pictures.count * 3
     end
@@ -114,18 +124,27 @@ class Activity < ActiveRecord::Base
     Activity.order("points DESC").first(3)
   end
 
+
+  def self.joined(user)
+    scoped.select{|a| a.members.include? user}
+  end
+
+  def self.liked(user)
+    scoped.select{|a| a.fans.include? user}
+  end
+
   def pv
     impressionist_count(:filter => :session_hash)
   end
 
   def role(user)
     r = ""
-    if members.include?(user)
-      r = I18n.t('activity_member')
-    elsif admin == user
+    if admin == user
       r = I18n.t('activity_boss')
     elsif admins.include?(user)
       r = I18n.t('activity_admin')
+    elsif members.include?(user)
+      r = I18n.t('activity_member')
     end
     r
   end

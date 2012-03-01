@@ -19,7 +19,7 @@
   margin-bottom: 0px;
 }
 
-.groups.profile, .activities.profile, .like.profile, .fans.profile {
+.groups.profile, .activities.profile, .friends.profile {
   margin-bottom: 50px;
   .list {
     @include box-radius;
@@ -32,6 +32,16 @@
     list-style: none;
     float: left;
     margin: 8px;
+  }
+}
+
+.friends.profile {
+  .list {
+    margin: 10px;
+  } 
+  h2 {
+    font-size:20px;
+    @include orange;
   }
 }
 

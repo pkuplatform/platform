@@ -1,0 +1,17 @@
+.newsfeed{:id => "event-#{event.id}"}
+  .avatar
+    = link_to (image_tag subject.url), subject
+  .wrapper
+    .top
+      = link_to subject.name, subject
+      = t('.'+event.action, :type => (t object.class.name))
+      = link_to object.name, object
+    .center.small
+      .thumb= image_tag object.thumb
+      .medium= image_tag object.medium
+      %blockquote.description= sanitize(truncate_html(object.description,:length=>250), :attributes => %w(id class style href _cke_saved_href title alt width height))
+      .clear
+    .bottom
+      %span.time
+        = distance_of_time_in_words_to_now(event.created_at)
+        = t 'newsfeeds.before'

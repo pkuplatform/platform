@@ -4,8 +4,29 @@
 .sidebar {
   width: 230px;
   float: left;
-  padding-left: 50px;
+  padding-left: 25px;
 }
+
+
+.gogo.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #005EAC;
+  @include link;
+  .avatar { 
+    float: left;
+    img { @include box-radius; width:96px; }
+  }
+  .info { 
+    float: left; 
+    margin-left: 16px;
+    width: 114px;
+  }
+  .name { font-size: 16px; }
+  div { margin-bottom: 5px; }
+}
+
 
 .recommend, .hot.groups {
   li { 
@@ -18,7 +39,7 @@
   @include link;
   font-size: 12px;
   border-bottom: 1px solid #BBB;
-  padding: 10px 0px;
+  padding: 10px 10px;
   .title { 
     font-size: 16px; 
     margin-bottom: 10px;

@@ -4,7 +4,7 @@
     .top
       %span.name= link_to activity.title, activity
     .center
-      = sanitize(activity.description, :attributes => %w(id class style href _cke_saved_href title alt width height))
+      =sanitize(truncate_html(activity.description,:length=>100), :attributes => %w(id class style href _cke_saved_href title alt width height))
     .bottom
       %span.time
         = l activity.start_at, :format => :short
@@ -14,8 +14,8 @@
         = t '.from'
         = link_to activity.group.name.truncate(20), activity.group
       %span.meta
-        = t '.like', :count => activity.fans.count
+        = link_to (t '.like', :count => activity.fans.count), activity_circle_path(activity,activity.fan_circle)
         = "|"
-        = t '.join', :count => activity.persons.count
+        = link_to (t '.join', :count => activity.members.count), activity_circle_path(activity,activity.member_circle)
         = "|"
-        = t '.comment', :count => activity.comments.count
+        = link_to (t '.comment', :count => activity.comments.count), activity.comments.first||activity_path(activity,:anchor=>'new-comment')

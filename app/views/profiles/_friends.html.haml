@@ -1,0 +1,27 @@
+.friends.profile
+  .header
+    %span= t '.title'
+  -unless @friends.empty?
+    .list
+      %h2= t '.friends'
+      %ul
+        - @friends.each do |user|
+          %li
+            .thumb= link_to (image_tag user.thumb), user
+            .name= link_to user.name.truncate(8), user
+  -unless @follows.empty?
+    .list
+      %h2= t '.follows'
+      %ul
+        - @follows.each do |user|
+          %li
+            .thumb= link_to (image_tag user.thumb), user
+            .name= link_to user.name.truncate(8), user
+  -unless @fans.empty?
+    .list
+      %h2= t '.fans'
+      %ul
+        - @fans.each do |user|
+          %li
+            .thumb= link_to (image_tag user.thumb), user
+            .name= link_to user.name.truncate(8), user

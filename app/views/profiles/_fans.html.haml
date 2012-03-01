@@ -1,9 +1,0 @@
-.fans.profile
-  .header
-    %span= t '.title'
-  .list
-    %ul
-      - @fans.each do |user|
-        %li
-          .thumb= link_to (image_tag user.thumb), user
-          .name= link_to user.name.truncate(8), user

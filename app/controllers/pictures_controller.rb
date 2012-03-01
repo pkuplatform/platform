@@ -54,6 +54,7 @@ class PicturesController < ApplicationController
   def new
     @activity = Activity.find(params[:activity_id])
     @picture = Picture.new
+    @album = Album.new
 
     respond_to do |format|
       format.html # new.html.erb

@@ -32,27 +32,36 @@ class User < ActiveRecord::Base
 
   def initialize_circles
     circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
+    circles.create(:name => 'follow',    :status => Constant::Liked,      :mode => 0444)
   end
 
   def ability
     @ability ||= Ability.new(self)
   end
   delegate :can?, :cannot?, :to => :ability
+  
+  def fan_circle
+    circles.fan.first
+  end
+
+  def follow_circle
+    circles.follow.first
+  end
 
   def fans
-    circles.fan.first.users
+    fan_circle.users
   end
 
   def follows
-    belonged_circles.user.collect { |c| User.find(c.owner_id) }
+    follow_circle.users
   end
 
   def activities
-    belonged_circles.activity.collect { |c| Activity.find(c.owner_id) }
+    belonged_circles.activities.member.collect { |c| Activity.find(c.owner_id) }
   end
 
   def groups
-    belonged_circles.group.collect { |c| Group.find(c.owner_id) }
+    belonged_circles.groups.member.collect { |c| Group.find(c.owner_id) }
   end
 
   def subscribers
@@ -83,8 +92,20 @@ class User < ActiveRecord::Base
     profile.phone
   end
 
+  def admin
+    self
+  end
+
   def thumb
     profile.avatar.url(:thumb)
+  end
+
+  def medium
+    profile.medium
+  end
+
+  def description
+    profile.description
   end
 
   def admin?
@@ -95,7 +116,7 @@ class User < ActiveRecord::Base
     fans & follows
   end
 
-  def persons
+  def members
     fans | follows
   end
 
@@ -108,16 +129,30 @@ class User < ActiveRecord::Base
   end
 
   def recommend_groups
-    user_recommends.group.order('value DESC').collect do |r| 
+    user_recommends.groups.order('value DESC').collect do |r| 
       gid = r.recommendable_id
       Group.find(gid) if Group.exists?(gid)
     end
   end
 
   def recommend_activities
-    user_recommends.activity.order('value DESC').collect do |r|
+    user_recommends.activities.order('value DESC').collect do |r|
       aid = r.recommendable_id
       Activity.find(aid) if Activity.exists?(aid)
+    end
+  end
+
+  def applicants
+    []
+  end
+
+  def relation(user)
+    if friends.include?(user)
+      'friend'
+    elsif follows.include?(user)
+      'follow'
+    else
+      'fan'
     end
   end
 end

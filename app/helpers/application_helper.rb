@@ -10,9 +10,6 @@ module ApplicationHelper
     end
   end
 
-  def anchorgen
-    
-  end
 
   def format_datetime(time)
     time.strftime('%y-%m-%d') + " " + time.strftime('%H:%M')
@@ -37,6 +34,7 @@ module ApplicationHelper
   def comment_path(comment)
     url_for(comment.commentable)+"#comment-#{comment.id}"
   end
+
 
   def destroy_comment_path(comment)
     url_for(:id => comment.id,:controller=>:comments, :action=>:destroy)

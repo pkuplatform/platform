@@ -17,11 +17,12 @@ class Constant
   Member   = 1 << 11 
 
   Like  = 1 << 16
+  Liked = 1 << 17
   
   Super = 1 << 30
 
   #for circle we do like unix 0777 mode. 
-  #first 7 for owner.admins, second one for owner.persons, and the last for anybody.
+  #first 7 for owner.admins, second one for owner.members, and the last for anybody.
 
   Read  = 1 << 2 
   Write = 1 << 1

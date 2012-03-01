@@ -1,23 +1,18 @@
-.circle-users.box
-  .title= t '.title'
-  .users-table
-    %table
-      %thead
-        %tr
-          %th
-          %th=t '.user-name'
-          %th=t '.user-phone'
-          %th
-      %tbody
-        - @circle.users.each do |user|
-          %tr
-            %td.pic= link_to image_tag(user.url), user
-            %td.user-name= link_to user.profile.name, user
-            %td.user-phone= link_to user.profile.phone
-            %td
-              = form_tag "users/#{user.id}", :remote=>true do
-                = select_tag("circles[]", options_for_select(@circles.collect {|cc| [cc.name, cc.id]}, user.belonged_circles.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select",:id=>"multi-select-#{user.id}"})
-  .goback= link_to circles_path,circles_path
-  -if can? :write, @circle
-    .goedit= link_to edit_circle_path(@circle),edit_circle_path(@circle)
-#writable-circles= @writable_circles.to_json
+.title= t '.title', :owner => owner.name, :name =>strip_tags(t("circles."+@circle.name))
+.slink
+  %ul
+    %li.back= link_to (t '.back'), circles_path
+    %li= link_to (t '.message'), message_circle_path(@circle)
+    - if can? :write, @circle
+      %li= link_to (t '.edit'), edit_circle_path(@circle)
+
+.circle.box
+  -if @circle.users.empty?
+    =t ".empty"
+  -else
+    %ul
+      - @circle.users.each do |user|
+        %li.user
+          .avatar= link_to (image_tag user.avatar), user.profile
+          .name= link_to user.name.truncate(12), user.profile
+      .clear

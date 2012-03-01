@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource_or_scope) || home_path
   end
 
+  def tags
+    @tags = ActsAsTaggableOn::Tag.select("name").where("name like ?", "#{params[:q]}%")
+    respond_to do |format|
+      format.json { render :json => @tags }
+    end
+  end
+
 end

@@ -33,17 +33,21 @@ class ActivitiesController < ApplicationController
       sort = "created_at DESC"
     end
 
-    @activities = []
-    if params[:filter] == "category"
-      Category.find(params[:id]).groups.each do |group|
-        @activities += group.activities
-      end
-    elsif params[:filter] == "join"
-      @activities = current_user.join_activities.order(sort)
-    elsif params[:filter] == "like"
-      @activities = current_user.like_activities.order(sort)
+    if params[:tags]
+      @activities = Activity.tagged_with(params[:tags])
+      @tags = params[:tags].split(',').map(&:strip).reject(&:blank?).map{ |e| {:name => e} }
     else
-      @activities = Activity.order(sort).limit(50)
+      @activities = Activity
+    end
+    
+    if params[:filter] == "category"
+      @activities = @activities.category(Category.find(params[:id])).order(sort)
+    elsif params[:filter] == "join"
+      @activities = @activities.order(sort).joined(current_user)
+    elsif params[:filter] == "like"
+      @activities = @activities.order(sort).liked(current_user)
+    else
+      @activities = @activities.order(sort).limit(50)
     end
 
     respond_to do |format|
@@ -165,16 +169,25 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     authorize! :join, @activity
 
-    @activity.applicant_circle.add(current_user)
-    head :ok
+    if @activity.public
+      @activity.member_circle.add(current_user)
+    else
+      @activity.applicant_circle.add(current_user)
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def exit
     @activity = Activity.find(params[:id])
     authorize! :exit, @activity
 
-    @activity.members.remove(current_user)
-    head :ok
+    @activity.member_circle.remove(current_user)
+    respond_to do |format|
+      format.js { render 'join' }
+    end
   end
 
   def show_members
@@ -186,37 +199,6 @@ class ActivitiesController < ApplicationController
 
   def tag_cloud
     @tags = Activity.tag_counts
-  end
-
-  def tag
-    if params[:sort] == "latest"
-      sort = "created_at DESC"
-    elsif params[:sort] == "pop"
-      sort = "points DESC"
-    else
-      sort = "created_at DESC"
-    end
-
-    @activities = []
-    if params[:filter] == "category"
-      Category.find(params[:id]).groups.each do |group|
-        @activities += group.activities
-      end
-    elsif params[:filter] == "join"
-      @activities = current_user.join_activities.order(sort)
-    elsif params[:filter] == "like"
-      @activities = current_user.like_activities.order(sort)
-    else
-      @activities = Activity.order(sort).limit(50)
-    end
-
-    @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag_name])
-    @activities = @activities.find_all {|a| a.tags.include?(@tag)}
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @activities }
-    end  
   end
 
   def wall
