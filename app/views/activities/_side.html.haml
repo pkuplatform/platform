@@ -7,7 +7,7 @@
     - unless activity.members.include?(current_user)
       = render :partial => 'activities/like', :locals => { :activity => activity }
       = "|"
-    - unless activity.admin == current_user
+    - unless activity.boss == current_user
       = render :partial => 'activities/join', :locals => { :activity => activity }
   .location
     %span.label= t '.location'

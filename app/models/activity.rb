@@ -13,6 +13,8 @@ class Activity < ActiveRecord::Base
 
   belongs_to :group
 
+  belongs_to :boss, :class_name => "User"
+
   scope :category, lambda{|cat| joins(:group).where("groups.category_id = ?", cat.id)}
 
   has_many :albums, :as => :imageable
@@ -25,23 +27,18 @@ class Activity < ActiveRecord::Base
   has_attached_file :banner, :styles => { :medium => "576x320#", :banner => "180x100#" }, :default_url => "missing_:style.jpg"
 
   after_create :initialize_circles
+  after_create :new_event
   after_save :get_py
 
   def initialize_circles
     circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0444)
     circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0644)
-    circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
+    circles.create(:name => 'fan',        :status => Constant::Fan,      :mode => 0444)
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
 
-  def change_admin_to(user)
-    old_admin = admin
-    old_admin_circle = admin.user_circles.find_by_circle_id(admin_circle.id)
-    new_admin_circle = user.user_circles.find_by_circle_id(admin_circle.id)
-    old_admin_circle.user = user
-    new_admin_circle.user = old_admin
-    old_admin_circle.save
-    new_admin_circle.save
+  def new_event
+    Event.create(:subject_type => "Group", :subject_id => group.id, :action => "create", :object_type => "Activity", :object_id => id)
   end
 
   def members
@@ -95,10 +92,6 @@ class Activity < ActiveRecord::Base
     title || ""
   end
 
-  def admin
-    admins.first || User.first
-  end
-
   def thumb
     poster.url(:thumb)
   end
@@ -139,7 +132,7 @@ class Activity < ActiveRecord::Base
 
   def role(user)
     r = ""
-    if admin == user
+    if boss == user
       r = I18n.t('activity_boss')
     elsif admins.include?(user)
       r = I18n.t('activity_admin')

@@ -1,5 +1,5 @@
 %ul#sort-filter
-  %li#filter-tag.hide
+  %li#filter-tag
     = form_tag "",:method=>:get do
       = text_field_tag :tags, "", :class => "tags-filter"
       #tags-json.hide= @tags.to_json

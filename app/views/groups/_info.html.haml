@@ -4,7 +4,7 @@
     %span.category= t group.category.name, :scope => :category
   .admin
     = t :group_admin
-    = link_to group.admin.name, group.admin.profile
+    = link_to group.boss.name, group.boss.profile
     = "/"
     = l group.founded_at, :format => :long
     = t '.founded'

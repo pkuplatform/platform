@@ -8,7 +8,7 @@
       - unless group.members.include?(current_user)
         = render :partial => 'groups/like', :object => group, :as => :group
         = "|"
-      - unless group.admin == current_user
+      - unless group.boss == current_user
         = render :partial => 'groups/join', :object => group, :as => :group
   .description
     = link_to (t '.des'), description_group_path

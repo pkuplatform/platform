@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   after_create :initialize_circles
 
   def initialize_circles
-    circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
-    circles.create(:name => 'follow',    :status => Constant::Liked,      :mode => 0444)
+    circles.create(:name => 'fan',        :status => Constant::Fan,      :mode => 0444)
+    circles.create(:name => 'follow',    :status => Constant::Follow,      :mode => 0444)
   end
 
   def ability
@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
 
   def follows
     follow_circle.users
+  end
+
+  def follow(user)
+    follow_circle.add(user)
   end
 
   def activities
@@ -92,7 +96,7 @@ class User < ActiveRecord::Base
     profile.phone
   end
 
-  def admin
+  def boss
     self
   end
 

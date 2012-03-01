@@ -290,8 +290,8 @@
         activities: "社团活动"
         new_activity: "+社团活动"
         infos: "社团信息"
-        change_admin: "变更会长"
-        change_admin_to: "变更会长为"
+        change_boss: "变更会长"
+        change_boss_to: "变更会长为"
       activities:
         new: "+新活动"
         admin: "活动管理"
@@ -301,8 +301,8 @@
         new_picture: "+新图片"
         edit: "修改活动"
         group: "承办社团"
-        change_admin: "变更负责人"
-        change_admin_to: "变更负责人为"
+        change_boss: "变更负责人"
+        change_boss_to: "变更负责人为"
       blogs:
         delete: "删除日志"
         edit: "编辑日志"
@@ -733,7 +733,7 @@
       title: "修改%{owner}的%{name}圈子"
       update: "更改"
 
-    change_admin:
+    change_boss:
       successfully: "成功变更{%owner}的管理员"
     unreadable: "%{owner}的%{name}圈子不允许查看"
     unwritable: "%{owner}的%{name}圈子不允许编辑"

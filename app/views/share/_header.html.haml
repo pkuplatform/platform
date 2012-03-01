@@ -42,11 +42,11 @@
                     %li= link_to (t '.groups.forms'), forms_admin_group_path(@group)
                     %li= link_to (t '.groups.sms'), sms_group_path(@group)
                     -if can? :write, @group.admin_circle
-                      %li= link_to (t '.groups.change_admin'), "javascript:$('#dialog-change-admin').dialog('open');"
-                      #dialog-change-admin{:title =>t(".groups.change_admin")}
-                        =form_tag group_circles_path(@group)+'/change_admin' do
+                      %li= link_to (t '.groups.change_boss'), "javascript:$('#dialog-change-boss').dialog('open');"
+                      #dialog-change-boss{:title =>t(".groups.change_boss")}
+                        =form_tag group_circles_path(@group)+'/change_boss' do
                           %fieldset
-                            = label_tag :id,t(".groups.change_admin_to")
+                            = label_tag :id,t(".groups.change_boss_to")
                             = select_tag :id, options_for_select(@group.admin_circle.users.collect{|u| [u.name,u.id]})
         - if (@activity&&@activity.id)
           %li#navi-cur-activity
@@ -74,11 +74,11 @@
                   %ul
                     %li= link_to (t '.activities.edit'), edit_group_activity_path(@activity.group, @activity)
                     -if can? :write, @activity.admin_circle
-                      %li= link_to (t '.activities.change_admin'), "javascript:$('#dialog-change-admin').dialog('open');"
-                      #dialog-change-admin{:title =>t(".activities.change_admin")}
-                        =form_tag activity_circles_path(@activity)+'/change_admin' do
+                      %li= link_to (t '.activities.change_boss'), "javascript:$('#dialog-change-boss').dialog('open');"
+                      #dialog-change-boss{:title =>t(".activities.change_boss")}
+                        =form_tag activity_circles_path(@activity)+'/change_boss' do
                           %fieldset
-                            = label_tag :id,t(".activities.change_admin_to")
+                            = label_tag :id,t(".activities.change_boss_to")
                             = select_tag :id, options_for_select(@activity.admin_circle.users.collect{|u| [u.name,u.id]})
         - if (can? :admin, @activity)&&@blog&&@blog.id
           %li#admin-blog

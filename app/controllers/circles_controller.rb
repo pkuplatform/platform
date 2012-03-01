@@ -269,13 +269,14 @@ class CirclesController < ApplicationController
     end
   end
 
-  def change_admin
+  def change_boss
     unless can? :write, owner.admin_circle
       redirect_to owner, :alert=> t("circles.unwritable",:owner=>@circle.owner.name,:name=>owner.admin_circle.name)
     end
-    owner.change_admin_to(owner.admins.find(params[:id]))
+    owner.boss = owner.admins.find(params[:id])
+    owner.save
     respond_to do |format|
-      format.html { redirect_to owner, :notice=> t("circles.change_admin.successfully",:owner=>owner.name) }
+      format.html { redirect_to owner, :notice=> t("circles.change_boss.successfully",:owner=>owner.name) }
       format.json { head :ok }
     end
   end
