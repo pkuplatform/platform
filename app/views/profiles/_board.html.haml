@@ -10,7 +10,7 @@
           = link_to (t '.dislike'), like_profile_path(@profile)
   .info.span5
     .name= @profile.name
-    .nickname= @profile.nickname
+    .realname= @profile.realname
     .description= @profile.description
     .meta
       = t '.like', :count => @profile.user.follows.count

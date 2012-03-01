@@ -46,7 +46,7 @@
 
   settings: "设置"
   name: "姓名"
-  nickname: "昵称"
+  realname: "昵称"
   gender: "性别"
   student: "年级"
   student_id: "学号"
@@ -178,7 +178,7 @@
   "profile-submit": "更新个人信息"
   "People who like ": "喜欢%{username}的人"
   "People liked by ": "%{username}喜欢的人"
-  nickname: "昵称:"
+  realname: "昵称:"
   gender: "性别:"
   description: "简介"
   avatar: "头像:"

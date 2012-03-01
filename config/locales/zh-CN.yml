@@ -213,7 +213,7 @@
         password: "密码"
         profile:
           name: "姓名"
-          nickname: "昵称"
+          realname: "昵称"
           student_id: "学号"
           phone: "电话号码"
       album:
@@ -466,7 +466,7 @@
     edit:
       title: "完善您的个人信息"
       name: "姓名"
-      nickname: "昵称"
+      realname: "昵称"
       gender: "性别"
       sid: "学号"
       phone: "电话"
@@ -580,7 +580,7 @@
         status: "状态"
         number: "学号"
         name: "姓名"
-        nickname: "昵称"
+        realname: "昵称"
         all: "全部"
         approving: "审核中"
         approved: "已批准"

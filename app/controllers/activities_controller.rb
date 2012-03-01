@@ -189,13 +189,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def show_members
-    @activity = Activity.find(params[:id])
-    @group = @activity.group
-    @tenders = @activity.tenders
-    @members = @activity.members
-  end
-
   def tag_cloud
     @tags = Activity.tag_counts
   end

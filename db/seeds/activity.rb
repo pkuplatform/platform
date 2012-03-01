@@ -8,7 +8,7 @@ Activity.delete_all
   activity.end_at = rand_range(2..99).hours.ago
   activity.location = Faker::Lorem.sentence(2)
   activity.public = rand_range(1..2).odd?
-  activity.poster = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
+  #activity.poster = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   #activity.banner = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   activity.points = rand_range(1..100)
   activity.boss_id = 1

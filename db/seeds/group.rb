@@ -11,7 +11,7 @@ Group.delete_all
   group.email = Faker::Internet.free_email
   group.points = rand_range(100..1000)
   group.founded_at = Time.now
-  group.logo = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
+  #group.logo = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   group.boss_id = 1
   group.save
 end

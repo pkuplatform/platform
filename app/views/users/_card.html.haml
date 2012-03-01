@@ -4,7 +4,7 @@
   .info
     .name
       = link_to current_user.name, current_user
-    .nickname
+    .realname
       = link_to current_user.realname.truncate(15), current_user unless current_user.realname.nil?
     .points
       = t :level, :points => current_user.profile.points

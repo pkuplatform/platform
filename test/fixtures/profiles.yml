@@ -3,7 +3,7 @@
 one:
   user_id: 1
   name: MyString
-  nickname: MyString
+  realname: MyString
   gender: 1
   student_id: MyString
   phone: MyString
@@ -17,7 +17,7 @@ one:
 two:
   user_id: 2
   name: MyString
-  nickname: MyString
+  realname: MyString
   gender: 1
   student_id: MyString
   phone: MyString
