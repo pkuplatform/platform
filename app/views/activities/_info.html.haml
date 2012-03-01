@@ -3,7 +3,7 @@
   .admin
     %span.group-name= link_to activity.group.name.truncate(20), activity.group
     %span= t :host
-    %span= link_to activity.admin.profile.name, activity.admin.profile
+    %span= link_to activity.boss.profile.name, activity.boss.profile
     %span= t :organize
   .tags
     = render :partial=>"share/tag_list", :locals => {:tags=>activity.tags, :controller=>:activities}

@@ -7,8 +7,8 @@ class Circle < ActiveRecord::Base
 
   scope :admin,     where(:status => Constant::Admin)
   scope :member,    where(:status => Constant::Member)
-  scope :fan,       where(:status => Constant::Like)
-  scope :follow,    where(:status => Constant::Liked)
+  scope :fan,       where(:status => Constant::Fan)
+  scope :follow,    where(:status => Constant::Follow)
   scope :applicant, where(:status => Constant::Approving)
 
   scope :users,     where(:owner_type => 'User')

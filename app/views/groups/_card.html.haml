@@ -11,8 +11,8 @@
         = l group.founded_at
         = t '.founded'
       %span.admin
-        = t :group_admin
-        = link_to group.admin.name, group.admin
+        = t :group_boss
+        = link_to group.boss.name, group.boss
       %span.meta
         = link_to (t '.like', :count => group.fans.count), group_circle_path(group,group.fan_circle)
         = "|"

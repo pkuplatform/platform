@@ -16,8 +16,8 @@ class Constant
   Planner  = 1 << 10
   Member   = 1 << 11 
 
-  Like  = 1 << 16
-  Liked = 1 << 17
+  Fan  = 1 << 16
+  Follow = 1 << 17
   
   Super = 1 << 30
 

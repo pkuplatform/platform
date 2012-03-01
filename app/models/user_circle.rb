@@ -3,6 +3,8 @@ class UserCircle < ActiveRecord::Base
   belongs_to :circle
   after_create :check_applicant
   after_create :check_new_event
+  after_create :check_follow_create
+  before_destroy :check_follow_delete
   before_destroy :check_member
 
   def check_applicant
@@ -14,7 +16,7 @@ class UserCircle < ActiveRecord::Base
 
   def check_new_event
     if circle.owner.class==User
-      Event.create(:subject_type=>"User",:subject_id=>user.id,:action=>:like,:object_type=>"User",:object_id=>circle.owner.id) if circle.status==Constant::Like
+      Event.create(:subject_type=>"User",:subject_id=>user.id,:action=>:like,:object_type=>"User",:object_id=>circle.owner.id) if circle.status==Constant::Fan
     elsif circle.owner.class==Group
       Event.create(:subject_type=>"User",:subject_id=>user.id,:action=>:join,:object_type=>"Group",:object_id=>circle.owner.id) if circle.status==Constant::Member
     elsif circle.owner.class==Activity
@@ -22,6 +24,17 @@ class UserCircle < ActiveRecord::Base
     end
   end
       
+  def check_follow_create
+    if circle.owner.class==User && circle.status==Constant::Follow
+      user.fan_circle.add(circle.owner) unless user.fans.include?(circle.owner)
+    end
+  end
+
+  def check_follow_delete
+    if circle.owner.class==User && circle.status==Constant::Follow
+      user.fan_circle.remove(circle.owner) if user.fans.include?(circle.owner)
+    end
+  end
 
   def check_member
     if circle.status==Constant::Member && circle.owner.admins.include?(user)

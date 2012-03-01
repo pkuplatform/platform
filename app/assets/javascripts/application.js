@@ -85,11 +85,11 @@ $(document).ready(function(){
 
   $('.need_hide').hide();
 
-  $('#dialog-change-admin').dialog({
+  $('#dialog-change-boss').dialog({
     autoOpen:false,
     buttons: {
       "确定(Sure)": function() {
-        $("#dialog-change-admin form").submit();
+        $("#dialog-change-boss form").submit();
       }
     }
   });

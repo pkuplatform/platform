@@ -128,15 +128,16 @@ class ProfilesController < ApplicationController
 
   def like
     @profile = Profile.find(params[:id])
-    uc = @profile.user.fan_circle.user_circles.find_by_user_id(current_user.id)
-    if uc.nil?
-      @profile.user.fan_circle.add(current_user)
+    if current_user.follows.include?(@profile.user)
       current_user.follow_circle.add(@profile.user)
     else
-      uc.destroy
-      current_user.follow_circle.user_circles.find_by_user_id(@profile.id).destroy
+      current_user.follow_circle.remove(@profile.user)
     end
     redirect_to @profile
+  end
+
+  def unlike
+
   end
 
 end

@@ -13,6 +13,8 @@ class Activity < ActiveRecord::Base
 
   belongs_to :group
 
+  belongs_to :boss, :class_name => "User"
+
   scope :category, lambda{|cat| joins(:group).where("groups.category_id = ?", cat.id)}
 
   has_many :albums, :as => :imageable
@@ -34,15 +36,6 @@ class Activity < ActiveRecord::Base
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
 
-  def change_admin_to(user)
-    old_admin = admin
-    old_admin_circle = admin.user_circles.find_by_circle_id(admin_circle.id)
-    new_admin_circle = user.user_circles.find_by_circle_id(admin_circle.id)
-    old_admin_circle.user = user
-    new_admin_circle.user = old_admin
-    old_admin_circle.save
-    new_admin_circle.save
-  end
 
   def members
     member_circle.users
@@ -95,10 +88,6 @@ class Activity < ActiveRecord::Base
     title || ""
   end
 
-  def admin
-    admins.first || User.first
-  end
-
   def thumb
     poster.url(:thumb)
   end
@@ -143,7 +132,7 @@ class Activity < ActiveRecord::Base
 
   def role(user)
     r = ""
-    if admin == user
+    if boss == user
       r = I18n.t('activity_boss')
     elsif admins.include?(user)
       r = I18n.t('activity_admin')

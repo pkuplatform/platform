@@ -20,6 +20,8 @@ class Group < ActiveRecord::Base
   has_many :circles,    :as => :owner
   has_many :users,      :through => :circles
 
+  belongs_to :boss, :class_name=>"User"
+
   has_attached_file :logo, :styles => { :medium => "300x300#", :card => "180x180#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
 
   after_create :initialize_circles
@@ -28,18 +30,8 @@ class Group < ActiveRecord::Base
   def initialize_circles
     circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0444)
     circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0644)
-    circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
+    circles.create(:name => 'fan',        :status => Constant::Fan,      :mode => 0444)
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
-  end
-
-  def change_admin_to(user)
-    old_admin = admin
-    old_admin_circle = admin.user_circles.find_by_circle_id(admin_circle.id)
-    new_admin_circle = user.user_circles.find_by_circle_id(admin_circle.id)
-    old_admin_circle.user = user
-    new_admin_circle.user = old_admin
-    old_admin_circle.save
-    new_admin_circle.save
   end
 
   def members
@@ -85,21 +77,9 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def default_circle
-    circles.first
-  end
-
-  def url
-    logo.url(:thumb)
-  end
-
-  def admin
-    admins.first || User.first
-  end
-
   def role(user)
     r = ""
-    if admin == user
+    if boss == user
       r = I18n.t('group_boss')
     elsif admins.include?(user)
       r = I18n.t('group_admin')

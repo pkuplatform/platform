@@ -16,8 +16,12 @@ class Ability
       not p.user.fans.include?(user)
     end
 
+    can :like, User do |u|
+      not u.fans.include?(user)
+    end
+
     can :exit, Group do |group|
-      group.members.include?(user) and not group.admin == user
+      group.members.include?(user) and not group.boss == user
     end
 
     can :join, Group do |group|
@@ -37,7 +41,7 @@ class Ability
     end
 
     can :exit, Activity do |activity|
-      not activity.admin == user and activity.members.include?(user)
+      not activity.boss == user and activity.members.include?(user)
     end
 
     can :join, Activity do |activity|
@@ -69,14 +73,14 @@ class Ability
     end
 
     can :read, Circle do |circle|
-      (circle.owner.admin == user)||
+      (circle.owner.boss == user)||
       ((can? :admin, circle.owner)&&(circle.mode & 0400 == 0400))||
       ((circle.owner.members.include?(user))&&(circle.mode & 040 == 040))||
       (circle.mode & 04 == 04)
     end
 
     can :write, Circle do |circle|
-      (circle.owner.admin == user && circle.status!=Constant::Like && circle.status!=Constant::Approving)||
+      (circle.owner.boss == user && circle.status!=Constant::Fan && circle.status!=Constant::Approving)||
       ((can? :admin, circle.owner)&&(circle.mode & 0200 == 0200))||
       ((circle.owner.members.include?(user))&&(circle.mode & 020 == 020))||
       (circle.mode & 02 == 02)
