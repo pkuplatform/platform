@@ -27,6 +27,7 @@ class Activity < ActiveRecord::Base
   has_attached_file :banner, :styles => { :medium => "576x320#", :banner => "180x100#" }, :default_url => "missing_:style.jpg"
 
   after_create :initialize_circles
+  after_create :new_event
   after_save :get_py
 
   def initialize_circles
@@ -36,6 +37,9 @@ class Activity < ActiveRecord::Base
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
 
+  def new_event
+    Event.create(:subject_type => "Group", :subject_id => group.id, :action => "create", :object_type => "Activity", :object_id => id)
+  end
 
   def members
     member_circle.users
