@@ -5,10 +5,11 @@
     %p
       %strong
         = link_to subject.name, subject
-        = t '.action'
+        = t '.' + event.action
         = link_to blog.bare_name, blog
     .center
-      = sanitize blog.content.truncate(50), :tags => %w(div)
+      .blog-content= sanitize truncate_html(blog.content,:length=>250)
+      .clear
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)

@@ -4,12 +4,18 @@ class Activity < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :title
 
+  default_scope where("activities.status != ?", Constant::Blocked)
+
   acts_as_taggable
   acts_as_commentable
 
   is_impressionable
 
   belongs_to :group
+
+  belongs_to :boss, :class_name => "User"
+
+  scope :category, lambda{|cat| joins(:group).where("groups.category_id = ?", cat.id)}
 
   has_many :albums, :as => :imageable
   has_many :pictures, :through => :albums
@@ -24,11 +30,12 @@ class Activity < ActiveRecord::Base
   after_save :get_py
 
   def initialize_circles
-    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0644)
+    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0444)
     circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0644)
     circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
+
 
   def members
     member_circle.users
@@ -63,7 +70,7 @@ class Activity < ActiveRecord::Base
   end
 
   def subscribers
-    members | admins | followers
+    members | admins | fans
   end
 
   def get_py
@@ -81,14 +88,6 @@ class Activity < ActiveRecord::Base
     title || ""
   end
 
-  def admin
-    admins.first || User.first
-  end
-
-  def persons
-    admins | members
-  end
-
   def thumb
     poster.url(:thumb)
   end
@@ -103,8 +102,8 @@ class Activity < ActiveRecord::Base
 
   def self.update_points
     Activity.all.each do |activity|
-      activity.points = activity.pv + activity.person_cnt
-                        + activity.followers.count 
+      activity.points = activity.pv + activity.members.count
+                        + activity.fans.count 
                         + activity.blogs.count * 5 
                         + activity.pictures.count * 3
     end
@@ -114,18 +113,27 @@ class Activity < ActiveRecord::Base
     Activity.order("points DESC")
   end
 
+
+  def self.joined(user)
+    scoped.select{|a| a.members.include? user}
+  end
+
+  def self.liked(user)
+    scoped.select{|a| a.fans.include? user}
+  end
+
   def pv
     impressionist_count(:filter => :session_hash)
   end
 
   def role(user)
     r = ""
-    if members.include?(user)
-      r = I18n.t('activity_member')
-    elsif admin == user
+    if boss == user
       r = I18n.t('activity_boss')
     elsif admins.include?(user)
       r = I18n.t('activity_admin')
+    elsif members.include?(user)
+      r = I18n.t('activity_member')
     end
     r
   end

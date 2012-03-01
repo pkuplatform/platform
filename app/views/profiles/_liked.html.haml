@@ -1,7 +1,0 @@
-.box.profile.liked
-  .box-header
-    = t("People who like ",:username=>@profile.name)
-  .box-body
-    %ul
-      = render :partial => 'users/thumb', :collection => @user.users_like_me
-      .clear

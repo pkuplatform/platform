@@ -14,11 +14,18 @@ class Newsfeed < ActiveRecord::Base
       if cl.nil? 
         return nil
       end
-      cl.find(event.subject_id).subscribers.each do |user|
-        Newsfeed.create(:user => user, :event => event)
+      if event.prevent_delivery
+        nil
+      else
+        cl.find(event.subject_id).subscribers.each do |user|
+          Newsfeed.create(:user => user, :event => event)
+        end
       end
       if event.object_type == "User" 
         Newsfeed.create(:user => User.find(event.object_id), :event => event)
+      end
+      if event.subject_type == "User" 
+        Newsfeed.create(:user => User.find(event.subject_id), :event => event)
       end
       event.processed = true
       event.save

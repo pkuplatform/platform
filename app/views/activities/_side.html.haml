@@ -2,12 +2,12 @@
   .poster
     = link_to (image_tag activity.card), activity
   .role
-    = activity.role(current_user) if activity.persons.include?(current_user)
+    = activity.role(current_user) if activity.members.include?(current_user)
   .like-join
-    - unless activity.persons.include?(current_user)
+    - unless activity.members.include?(current_user)
       = render :partial => 'activities/like', :locals => { :activity => activity }
       = "|"
-    - unless activity.admin == current_user
+    - unless activity.boss == current_user
       = render :partial => 'activities/join', :locals => { :activity => activity }
   .location
     %span= t '.location'

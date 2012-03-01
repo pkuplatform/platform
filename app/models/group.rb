@@ -3,12 +3,16 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  scope :readable, where("status = ?", Constant::Approved)
+  scope :category, lambda{|cat| where("category_id = ?", cat.id)}
+
   acts_as_taggable
   acts_as_commentable
 
   is_impressionable
 
   belongs_to :category
+  belongs_to :boss, :class_name=>"User"
 
   has_many :activities, :dependent => :destroy
   has_many :second_building_applications, :class_name => "Form::SecondBuildingApplication"
@@ -23,9 +27,9 @@ class Group < ActiveRecord::Base
   after_save :get_py
 
   def initialize_circles
-    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0644)
+    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0444)
     circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0644)
-    circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
+    circles.create(:name => 'fan',        :status => Constant::Fan,      :mode => 0444)
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
 
@@ -72,37 +76,21 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def default_circle
-    circles.first
-  end
-
-  def url
-    logo.url(:thumb)
-  end
-
-  def admin
-    admins.first || User.first
-  end
-
-  def persons
-    admins | members
-  end
-
   def role(user)
     r = ""
-    if members.include?(user)
-      r = I18n.t('member')
-    elsif admin == user
+    if boss == user
       r = I18n.t('group_boss')
     elsif admins.include?(user)
-      r = I18n.t('admin')
+      r = I18n.t('group_admin')
+    elsif members.include?(user)
+      r = I18n.t('group_members')
     end
     r
   end
 
   def self.update_points
     Group.all.each do |group|
-      group.points = group.pv + group.person_cnt
+      group.points = group.pv + group.members
       group.activities.each do |activity|
         group.points += activity.points
       end
@@ -112,6 +100,15 @@ class Group < ActiveRecord::Base
 
   def self.hot
     Group.order("points DESC")
+  end
+
+
+  def self.joined(user)
+    scoped.select{|a| a.members.include? user}
+  end
+
+  def self.liked(user)
+    scoped.select{|a| a.fans.include? user}
   end
 
   def card

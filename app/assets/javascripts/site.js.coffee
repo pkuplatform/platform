@@ -46,8 +46,9 @@ $ ->
   # used in tags
   $('.tags_input').tagsInput
     'defaultText': '添加标签'
-    'height': '50px'
-    'width': '400px'
+    'width' : '396px'
+    'height' : '40px'
+
 
   # jquery purr
   $('.registration .flashes').each ->
@@ -71,9 +72,13 @@ $ ->
     $(".groups form .first").show()
     $("#"+id).parent('li').show();
 
-  $('.show-category .category').children('a').css('color','rgb(226,136,26)');
-
   $('.submit-btn').click ->
     $('form').submit()
 
   $('ul.nav.nav-tabs a:first').tab 'show'
+
+  $('.tags-filter').tokenInput "tags.json"
+    "tokenValue" : "name"
+    "prePopulate" : JSON.parse($("#tags-json").html())
+    "theme" : "facebook"
+    "hintText" : "输入要搜索的标签"

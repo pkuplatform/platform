@@ -20,7 +20,7 @@
     - @groups.each do |group|
       %tr{:class => cycle('odd', 'even')}
         %td= link_to group.name, group
-        %td= group.admin.name
+        %td= group.boss.name
         %td= group.email
         %td
           = form_for group, :remote => true do |f|

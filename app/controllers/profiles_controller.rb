@@ -23,8 +23,9 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     @groups = @profile.user.groups
     @activities = @profile.user.activities
-    @follows = @profile.user.follows
-    @fans = @profile.user.fans
+    @friends = @profile.user.friends
+    @follows = @profile.user.follows - @friends
+    @fans = @profile.user.fans - @friends
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,9 +39,22 @@ class ProfilesController < ApplicationController
     @profiles = Profile.where("pyname like ?",qs).limit(100)
     qs = qs.gsub('%','#')
     @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
-    @hashed = @profiles.shift(20).collect {|p| {:label=>"<img src=\"#{p.thumb}\"></img><p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
+    @hashed = @profiles.shift(20).collect {|p| {:label=>"#{ApplicationController.helpers.image_tag(p.thumb)}<p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
     respond_to do |format|
       format.json { render json: @hashed }
+      format.html { render :nothing => true }
+    end
+  end
+
+  def token
+    qs = "%"
+    Hz2py.do(params[:q]).each_char{|c| qs+= c + '%'}
+    @profiles = Profile.where("pyname like ?",qs).limit(100)
+    qs = qs.gsub('%','#')
+    @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
+    @profiles = @profiles.shift(20).collect{|p| {:id => p.id, :avatar=>ApplicationController.helpers.image_tag(p.thumb),:search_name=>p.name+"(#{p.pyname})",:name=>p.name}}
+    respond_to do |format|
+      format.json { render json: @profiles }
       format.html { render :nothing => true }
     end
   end
@@ -111,15 +125,19 @@ class ProfilesController < ApplicationController
     end
   end
 
+
   def like
     @profile = Profile.find(params[:id])
-    ur = UserRelation.find_by_liking_id_and_liked_id(current_user.id, @profile.user.id)
-    if ur.nil?
-      UserRelation.create!(:liking_id => current_user.id, :liked_id => @profile.user.id)
+    if current_user.follows.include?(@profile.user)
+      current_user.follow_circle.add(@profile.user)
     else
-      ur.destroy
+      current_user.follow_circle.remove(@profile.user)
     end
     redirect_to @profile
+  end
+
+  def unlike
+
   end
 
 end

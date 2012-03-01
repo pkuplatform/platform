@@ -6,7 +6,7 @@ class UserActivity < ActiveRecord::Base
 
   def ifpublic
     if self.public
-      UserCircle.create(:user=>self.user,:circle=>self.activity.default_circle)
+      UserCircle.create(:user=>self.user,:circle=>activity.default_circle)
     end
   end
 

@@ -3,18 +3,18 @@
   .admin
     %span.group-name= link_to activity.group.name.truncate(20), activity.group
     %span= t :host
-    %span= link_to activity.admin.profile.name, activity.admin.profile
+    %span= link_to activity.boss.profile.name, activity.boss.profile
     %span= t :organize
   .tags
     = render :partial=>"share/tag_list", :locals => {:tags=>activity.tags, :controller=>:activities}
   .description
-    = activity.description
+    = sanitize(activity.description, :attributes => %w(id class style href _cke_saved_href title alt width height))
   .meta
     = t '.points', :count => activity.points
     = "|"
-    = t '.like', :count => activity.fans.count
+    = link_to (t '.like', :count => activity.fans.count), activity_circle_path(activity,activity.fan_circle)
     = "|"
-    = t '.join', :count => activity.persons.count
+    = link_to (t '.join', :count => activity.members.count), activity_circle_path(activity,activity.member_circle)
     = "|"
     = link_to (t '.blogs', :count => activity.blogs.count), activity_blogs_path(activity)
     = "|"

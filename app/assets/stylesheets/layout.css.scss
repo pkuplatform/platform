@@ -20,6 +20,92 @@ body.registration { background: url('husk.png'); }
   margin-right: 30px;
 }
 
+.content-footer { width: 680px; bottom:0; position:absolute; height:100%; background:white; z-index:-1;    @include box-shadow2(-100px);}
+
+
+
+body.form {
+  background: url('screen_background.gif') repeat-x;
+  background-color: #EEE;
+  .container { 
+    width: 730px;
+    margin: 100px auto 0px auto;
+  }
+  .title { 
+    @include white-shadow; 
+    span { font-size: 16px; }
+  }
+  .button-wrapper { margin-top: 20px; }
+}
+
+.content.show, .container.profile, .container.circle {
+  .header {
+    span { 
+      @include orange; 
+      @include box-radius(10px);
+      @include box-shadow2;
+      background-color: white; 
+      display: inline-block;
+      width: 90px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      margin-left: -30px;
+      margin-right: 20px;
+    }
+    margin-bottom: 20px;
+    line-height: 40px;
+    @include gray-link;
+    a { font-size: 16px; margin-right: 10px; }
+  }
+} 
+
+
+body.form {
+  .box.form {
+    font-size: 14px;
+    form { width: 530px; margin: 0 auto; }
+    .field { margin: 10px 0px; }
+    label { 
+      @include orange; 
+      font-size: 16px;
+      width: 100px;
+      display: inline-block;
+    }
+    textarea { min-height: 100px; }
+    input[type=text], textarea { width: 400px; }
+    .submit { text-align: right; }
+    .actions { text-align: right; }
+  }
+  background: url('screen_background.gif') repeat-x;
+  background-color: #EEE;
+  .container { 
+    width: 730px;
+    margin: 100px auto 0px auto;
+  }
+  .title { 
+    @include white-shadow; 
+    span { font-size: 16px; }
+  }
+  .button-wrapper { margin-top: 20px; }
+}
+
+
+body.circle {
+  background: url('screen_background.gif') repeat-x;
+  background-color: #EEE;
+  .container { 
+    width: 950px;
+    margin: 100px auto 0px auto;
+  }
+  .title { 
+    @include white-shadow; 
+    span { font-size: 26px; }
+  }
+}
+
+
 /**** Header Part ****/
 
 .icon {
@@ -130,7 +216,7 @@ ul.dropdown ul li {
 /* 
   LEVEL THREE
 */
-ul.dropdown ul ul           { left: 100%; top: 0; width:120px; }
+ul.dropdown ul ul           { left: 100%; top: 0; width:120px; border:1px solid #777;}
 ul.dropdown li:hover > ul       { visibility: visible; }
            
 ul.dropdown ul li a { border-right: none; width: 100%; display: inline-block; color: #333!important;  text-shadow: none!important;

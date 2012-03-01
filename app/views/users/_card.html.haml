@@ -10,9 +10,9 @@
       = t :level, :points => current_user.profile.points
     .meta
       %div
-        %span= t '.like', :count => current_user.follows.count
-        %span= t '.fans', :count => current_user.fans.count
+        %span=link_to (t '.like', :count => current_user.follows.count), '#'
+        %span=link_to (t '.fans', :count => current_user.fans.count), current_user.fan_circle
       %div
-        %span= t '.groups', :count => current_user.groups.count
-        %span= t '.activities', :count => current_user.activities.count
+        %span=link_to (t '.groups', :count => current_user.groups.count), groups_path(:filter =>:join,:anchor=>"filter-join")
+        %span=link_to (t '.activities', :count => current_user.activities.count), activities_path(:filter =>:join,:anchor=>"filter-join")
   .clear

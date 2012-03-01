@@ -3,14 +3,17 @@ class Circle < ActiveRecord::Base
   has_many :user_circles, :dependent => :destroy
   has_many :users, :through => :user_circles
 
+  validates_presence_of :name
+
   scope :admin,     where(:status => Constant::Admin)
   scope :member,    where(:status => Constant::Member)
-  scope :fan,       where(:status => Constant::Like)
+  scope :fan,       where(:status => Constant::Fan)
+  scope :follow,    where(:status => Constant::Follow)
   scope :applicant, where(:status => Constant::Approving)
 
-  scope :user,     where(:owner_type => 'User')
+  scope :users,     where(:owner_type => 'User')
   scope :groups,    where(:owner_type => 'Group')
-  scope :activity, where(:owner_type => 'Activity')
+  scope :activities, where(:owner_type => 'Activity')
 
   after_initialize :get_mode_str
   attr_accessor :mode_str

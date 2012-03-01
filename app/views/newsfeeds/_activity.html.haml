@@ -5,7 +5,7 @@
     %p
       %strong
         = link_to subject.name, subject
-        = t '.action'
+        = t ".#{event.action}"
     .center.small
       .thumb.row
         .span2.thumbnail
@@ -27,6 +27,6 @@
       %span.meta
         = t '.like', :count => activity.fans.count
         = "|"
-        = t '.join', :count => activity.persons.count
+        = t '.join', :count => activity.members.count
         = "|"
         = t 'newsfeeds.comments', :count => activity.comments.count

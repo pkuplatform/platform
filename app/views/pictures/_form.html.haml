@@ -1,21 +1,34 @@
-= form_for [@activity ,@picture], :html => { :multipart => true }do |f|
-  - if @picture.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@picture.errors.count, "error")
-        prohibited this picture from being saved:
-      %ul
-        - @picture.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :album, (t :album)
-    = collection_select(:picture, :album_id, @activity.albums, :id, :title, :selected => params[:album_id])
-    = link_to (t ".album"), new_activity_album_path(@activity),:class=>"pop_fancy_box fancybox.ajax"
-  .field.area
-    = f.label :remark,(t :remark)
-    = f.text_area :remark, :rows => 1
-  .field
-    = f.label :photo, (t '.photo')
-    = f.file_field :photo
-  .actions
-    = f.submit(t :upload)
+.need_hide.new-album
+  = form_for([@activity, @album]) do |f|
+    .field
+      = f.label :title,(t "albums.title")
+      = f.text_field :title, :placeholder=>(t "albums.title")
+      = hidden_field_tag :activity_id,@activity.id
+    .button-wrapper
+      = f.submit(t :new_album) 
+    .back= link_to (t ".photo"), "javascript:$('.new-album').toggle();$('.new-picture').toggle();"      
+
+  .clear
+.new-picture
+  = form_for [@activity ,@picture], :html => { :multipart => true }do |f|
+    - if @picture.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@picture.errors.count, "error")
+          prohibited this picture from being saved:
+        %ul
+          - @picture.errors.full_messages.each do |msg|
+            %li= msg
+    .field
+      = f.label :album, (t :album)
+      = collection_select(:picture, :album_id, @activity.albums, :id, :title, :selected => params[:album_id])
+      = link_to (t ".album"), "javascript:$('.new-album').toggle();$('.new-picture').toggle();"      
+    .field.area
+      = f.label :remark,(t :remark)
+      = f.text_area :remark, :rows => 1
+    .field
+      = f.label :photo, (t '.photo')
+      = f.file_field :photo
+    .actions
+      = f.submit(t :upload)
+

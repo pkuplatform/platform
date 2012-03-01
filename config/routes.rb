@@ -46,6 +46,9 @@ Platform::Application.routes.draw do
     member do
       get 'like'
     end
+    collection do 
+      get 'token'
+    end
   end
 
   resources :groups do
@@ -81,8 +84,8 @@ Platform::Application.routes.draw do
     resources :activities
     resources :circles do
       collection do
+        post 'change_boss' => 'circles#change_boss'
         post 'users/:user_id' => 'circles#update_user'
-        get 'users' => 'circles#users'
       end
     end
   end
@@ -90,7 +93,6 @@ Platform::Application.routes.draw do
   resources :activities do
     collection do
       get 'tag_cloud'
-      get 'tag'
       get 'wall'
     end
     member do
@@ -113,7 +115,7 @@ Platform::Application.routes.draw do
     resources :circles do
       collection do
         post 'users/:user_id' => 'circles#update_user'
-        get 'users' => 'circles#users'
+        post 'change_boss' => 'circles#change_boss'
       end
     end
   end
@@ -123,9 +125,13 @@ Platform::Application.routes.draw do
   resources :circles do
     collection do
       post 'users/:user_id' => 'circles#update_user'
-      get 'users' => 'circles#users'
+    end
+    member do
+      get 'message'
     end
   end
+
+  get 'tags' => 'application#tags'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

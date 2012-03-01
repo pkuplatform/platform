@@ -6,6 +6,8 @@ class Album < ActiveRecord::Base
   belongs_to :imageable, :polymorphic => true
   has_many :pictures, :dependent => :destroy
 
+  validates_presence_of :title
+
   def cover
     if pictures.first.nil?
       return nil

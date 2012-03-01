@@ -17,3 +17,9 @@
           %li
             = link_to category.translated_name, activities_path(:sort => params[:sort], :filter => 'category', :id => category.id)
   .clear
+%ul#sort-filter
+  %li#filter-tag
+    = form_tag "",:method=>:get do
+      = text_field_tag :tags, "", :class => "tags-filter"
+      #tags-json.hide= @tags.to_json
+  .clear

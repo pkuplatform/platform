@@ -19,7 +19,7 @@
       .span1
         = link_to (image_tag comment.user.thumb), comment.user
       .span6
-        = raw comment.body.truncate(100)
+        = sanitize truncate_html(comment.body,:length=>100),:tags=> %w(a)
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)

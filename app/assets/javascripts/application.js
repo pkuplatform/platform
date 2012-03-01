@@ -14,7 +14,8 @@
 
 $.fn.scrollToAndActivate = function(options) {
   return this.each(function() {
-    $.scrollTo(this, 300, {over:-2 ,onAfter:function(obj) {
+    $.scrollTo(this, 0, {over:-2 ,onAfter:function(obj) {
+      $(".active").removeClass("active");
       $(obj).addClass("active");
     }});
   });
@@ -77,5 +78,17 @@ $(document).ready(function(){
     $(location.hash).scrollToAndActivate();
   });
     
+  $('.devise_error').hide();
+
+  $('.need_hide').hide();
+
+  $('#dialog-change-boss').dialog({
+    autoOpen:false,
+    buttons: {
+      "确定(Sure)": function() {
+        $("#dialog-change-boss form").submit();
+      }
+    }
+  });
 });
 

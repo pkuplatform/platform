@@ -87,6 +87,7 @@
   }
   .meta {
     text-align: right;
+    @include link;
   }
   .side { 
     text-align: center; 

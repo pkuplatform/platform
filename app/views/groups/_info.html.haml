@@ -4,7 +4,7 @@
     %span.category= t group.category.name, :scope => :category
   .admin
     = t :group_admin
-    = link_to group.admin.name, group.admin.profile
+    = link_to group.boss.name, group.boss.profile
     = "/"
     = l group.founded_at, :format => :long
     = t '.founded'
@@ -13,8 +13,8 @@
   .meta
     = t '.points', :count => group.points
     = "|"
-    = t '.like', :count => group.fans.count
+    = link_to (t '.like', :count => group.fans.count), group_circle_path(group,group.fan_circle)
     = "|"
-    = t '.join', :count => group.persons.count
+    = link_to (t '.join', :count => group.members.count), group_circle_path(group,group.member_circle)
     = "|"
-    = t '.activities', :count => group.activities.count
+    = link_to (t '.activities', :count => group.activities.count), group_activities_path(group)

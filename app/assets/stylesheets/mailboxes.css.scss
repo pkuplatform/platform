@@ -1,13 +1,13 @@
 @import 'mixin';
 @import 'css3';
 .box.mailbox {
-  li {
+  ul.mail-panel li {
     display: inline-block;
     float:left;
     padding:5px;
     margin: 15px;
     font-size: 0.8em;
-    @include box-radius(8px);
+    @include box-radius(4px);
     &.current {
       background: #eee;
     }
@@ -47,13 +47,9 @@
   .box-header {
     @include orange-link;
   }
-  .input-wrapper {
-    width:95%;
-    input {
-      width:100%;
-    }
-  }
+
 }
+
 
 
 
@@ -76,7 +72,6 @@
     padding: 15px;
     margin: 15px;
     background:#f3f3f3;
-    @include box-radius;
     min-height: 100px;
   }
   .reply {
@@ -85,5 +80,23 @@
   }
   .pagination {
     text-align:center;
+  }
+  .token-field {
+    width: 100%;
+  }
+  .title-field {
+    width: 100%;
+    border: 1px solid #8496BA;
+    margin-top:10px;
+    margin-bottom:10px;
+    height:31px;
+    input {
+      border:none;
+      outline:none;
+      margin:3px;
+      line-height:24px;
+      vertical-align:baseline;
+      width:98%;
+    }
   }
 }
