@@ -33,7 +33,7 @@ class Activity < ActiveRecord::Base
   def initialize_circles
     circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0444)
     circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0644)
-    circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
+    circles.create(:name => 'fan',        :status => Constant::Fan,      :mode => 0444)
     circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
   end
 
