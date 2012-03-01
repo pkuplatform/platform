@@ -249,6 +249,10 @@
       action: "%{action}了"
 
   share:
+    users:
+      friends: "我的好友"
+      rec_user: "推荐用户"
+      hot_user: "热门用户"
     groups:
       hot_groups: "热门社团"
       rec_groups: "推荐社团"

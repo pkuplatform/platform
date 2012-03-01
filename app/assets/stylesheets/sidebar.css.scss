@@ -3,6 +3,7 @@
   margin-bottom: 10px;
 }
 
-.tabbable.groups, .tabbable.activities {
-  min-height: 300px;
+.tabbable.groups, .tabbable.activities, .tabbable.users {
+  min-height: 100px;
+  margin-bottom: 30px;
 }

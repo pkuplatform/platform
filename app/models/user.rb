@@ -107,6 +107,10 @@ class User < ActiveRecord::Base
     friends.delete_if { |f| not f.online? }
   end
 
+  def self.hot
+    Profile.order("points DESC")
+  end
+
   def recommend_groups
     user_recommends.group.order('value DESC').collect do |r| 
       gid = r.recommendable_id

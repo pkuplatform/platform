@@ -1,0 +1,29 @@
+.tabbable.users
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to (t '.friends'), '#friends', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.rec_user'), '#rec_users', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.hot_user'), '#hot_users', 'data-toggle' => 'tab'
+  .tab-content
+    #friends.tab-pane.active
+      .thumbnails
+        = current_user.friends.each do |user|
+          .span1
+            = link_to (image_tag user.thumb), user
+            = link_to user.name.truncate(20), user
+    #rec_users.tab-pane
+      .thumbnails
+        - UserRecommend.recommend(current_user.id)[0, 3].each do |h|
+          - p = User.find(h[0]).profile
+          .span1
+            = link_to (image_tag p.thumb), p
+            = link_to p.name, p
+            = t '.indirect', :count => h[1]
+    #hot_user.tab-pane
+      .thumbnails
+        = User.hot.first(6).each do |user|
+          .span1
+            = link_to (image_tag user.thumb), user
+            = link_to user.name.truncate(20), user
