@@ -1,26 +1,8 @@
-@import 'mixin';
-@import 'css3';
-
-.sidebar {
-  width: 230px;
-  float: left;
-  padding-left: 50px;
+.thumbnails .span1 { 
+  text-align: center; 
+  margin-bottom: 10px;
 }
 
-.recommend, .hot.groups {
-  li { 
-    list-style: none; 
-    overflow: hidden; 
-    margin: 5px 0px;
-  }
-  img { float: left; }
-  .meta { float: left; margin-left: 10px; }
-  @include link;
-  font-size: 12px;
-  border-bottom: 1px solid #BBB;
-  padding: 10px 0px;
-  .title { 
-    font-size: 16px; 
-    margin-bottom: 10px;
-  }
+.tabbable.groups, .tabbable.activities {
+  min-height: 300px;
 }

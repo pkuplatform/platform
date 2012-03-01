@@ -1,10 +1,19 @@
-.members
-  .header
-    %span= t '.members'
-    = link_to (t '.more'), members_group_path if @mere
-  .box
-    %ul
-      - @members.each do |member|
-        %li
-          .avatar= image_tag member.url
-          .name= link_to member.name.truncate(8), member.profile
+.tabbable.groups
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to (t '.members'), '#members', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.fans'), '#fans', 'data-toggle' => 'tab'
+  .tab-content
+    #members.tab-pane.active
+      .thumbnails
+        - @group.members.each do |member|
+          .span1
+            = link_to (image_tag member.thumb), member
+            = link_to member.name.truncate(8), member.profile
+    #fans.tab-pane
+      .thumbnails
+        - @group.fans.each do |member|
+          .span1
+            = link_to (image_tag member.thumb), member
+            = link_to member.name.truncate(8), member.profile

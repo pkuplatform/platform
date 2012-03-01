@@ -10,11 +10,11 @@ def rand_range(range)
   Random.rand(range.count)+range.first
 end
 
-require File.expand_path('../seeds/category', __FILE__)
+#require File.expand_path('../seeds/category', __FILE__)
 #require File.expand_path('../seeds/user', __FILE__)
 #require File.expand_path('../seeds/group', __FILE__)
 #require File.expand_path('../seeds/activity', __FILE__)
 #require File.expand_path('../seeds/profile', __FILE__)
 #require File.expand_path('../seeds/album', __FILE__)
 #require File.expand_path('../seeds/comment', __FILE__)
-#require File.expand_path('../seeds/blog', __FILE__)
+require File.expand_path('../seeds/blog', __FILE__)

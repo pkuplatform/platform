@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     @groups = @profile.user.groups
     @activities = @profile.user.activities
-    @likes = @profile.user.follows
+    @follows = @profile.user.follows
     @fans = @profile.user.fans
 
     respond_to do |format|

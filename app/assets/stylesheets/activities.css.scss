@@ -5,46 +5,16 @@
 @import 'mixin';
 @import 'css3';
 
-.activity .info .blog { @include blue; font-size: 16px; }
-.activity .info .additions { @include blue-link; font-size: 16px; }
-.activity .info .time { @include blue; }
-.activity .description { min-height: 160px; }
-
 .activity-blogs,.activity-albums,.activity-pictures {
   @include title;
   @include back;
 }
 
 .activity.board {
-  .poster { margin-top: -70px; margin-bottom: 10px; }
-  .like-join { 
-    text-align: center;
-    @include link;
-    margin-bottom: 10px;
-  }
-  .admin { 
-    margin-bottom: 20px; 
-    @include link;
-    @include blue;
-    font-size: 14px;
-  }
-  .role { text-align: center; color: #999; margin-bottom: 5px; }
-  .tags { margin-bottom: 10px; }
-  .location { text-align: center; margin-bottom: 10px; }
-  .begin, .end { text-align: center; margin-bottom: 5px; }
-  .label { color: #005EAC; }
-  .field { color: #7AA5B9; }
-  .description { 
-    margin-bottom: 10px; 
-    font-size: 14px;
-    min-height: 210px;
-  }
-  .meta {
-    font-size: 14px;
-    color: #005EAC;
-    text-align: right;
-    @include link;
-  }
+  padding: 20px 0px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-right: -30px;
 }
 
 
@@ -129,7 +99,6 @@ a.prev span, a.next span {
 }
 
 .activity.card {
-  overflow: hidden;
   border-bottom: 1px solid #BBB;
   padding: 20px 0px;
   font-size: 12px;
@@ -138,14 +107,4 @@ a.prev span, a.next span {
   .center { margin-bottom: 5px; min-height: 120px; }
   .bottom { color: #7AA5B9; }
   .meta { float: right; }
-  a { color: #005EAC; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  img { float: left; width: 120px; @include box-radius(10px); }
-  .info {
-    float: left;
-    margin-left: 20px;
-    width: 460px;
-  }
 }
-
-

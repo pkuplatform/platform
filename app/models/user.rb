@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, 
-         :validatable, :confirmable, :lockable
+         :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :blogs, :foreign_key=>"author_id"
   has_many :pictures, :dependent => :destroy
 
-  has_many :circles, :as => :owner
+  has_many :circles, :as => :owner, :dependent => :destroy
 
   has_many :user_circles
   has_many :belonged_circles, :through => :user_circles, :source => :circle
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def groups
-    belonged_circles.group.collect { |c| Group.find(c.owner_id) }
+    belonged_circles.groups.collect { |c| Group.find(c.owner_id) }
   end
 
   def subscribers

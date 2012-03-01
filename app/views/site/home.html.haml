@@ -1,2 +1,19 @@
-.content.site
-  = render :partial => 'newsfeeds/newsfeeds'
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to (t '.all'), '#all', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.activities'), '#activity', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.pictures'), '#picture', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.blogs'), '#blog', 'data-toggle' => 'tab'
+  .tab-content
+    #all.tab-pane.active
+      = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events }
+    #activity.tab-pane
+      = #render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.activity }
+    #picture.tab-pane
+      = #render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.picture }
+    #blog.tab-pane
+      = #render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.blog }

@@ -14,19 +14,23 @@ $ ->
       $("chat-box-#{msg.sid}").prepend(msg.content)
 
   # site index pictures cycle
-  $('.pics').cycle({
+  $('.pics').cycle
     fx: "fade",
     pager: '.pager',
     pagerAnchorBuilder: (idx, slide) ->
       "<li><a href='#'><img src='" + slide.src + "' width='150' /></a></li>"
-  })
+
+  $('.hot-cycle').cycle
+    fx: "scrollVert"
+    speed: 1000
+    timeout: 10000
 
   # search form validation
   $('.search form').submit ->
     $('.search input[type=text]').val().length > 0
   
   # newsfeeds picture zoom
-  $('.newsfeeds').on('click', '.center img', ->
+  $('.newsfeed').on('click', '.center img', ->
     $(this).parents('.center').toggleClass("small"))
 
   # backend ajax form submit
@@ -50,10 +54,12 @@ $ ->
     $(this).purr
       'isSticky': true
 
+  $('.carousel').carousel()
+
   $('.flashes:not(.registration .flashes)').each ->
     $(this).purr()
 
-  $(".carousel-items").carouFredSel
+  $(".carousel-items").carousel
     auto : false
     prev : ".prev,left"
     next : ".next,right"
@@ -70,3 +76,4 @@ $ ->
   $('.submit-btn').click ->
     $('form').submit()
 
+  $('ul.nav.nav-tabs a:first').tab 'show'

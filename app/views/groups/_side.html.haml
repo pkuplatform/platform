@@ -1,11 +1,11 @@
-.side
+.side.span2
   .logo
     = link_to (image_tag group.logo.url(:card)), group
   .role
     = group.role(current_user) if group.persons.include?(current_user)
   .like-join
     .action
-      - unless group.persons.include?(current_user)
+      - unless group.persons.include?(current_user) or group.admin == current_user
         = render :partial => 'groups/like', :object => group, :as => :group
         = "|"
       - unless group.admin == current_user

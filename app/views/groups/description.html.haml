@@ -1,7 +1,9 @@
-.group.info-wrapper
-  .back
-    = link_to (t '.back'), @group
-  .title
-    = t '.title'
-  .box
+.row
+  .span7.offset1
     = sanitize(@group.description, :attributes => %w(id class style href _cke_saved_href title alt width height))  
+  .span3.offset1
+    .sidebar
+      = render 'users/card'
+      = render 'announcement'
+      = render 'toolbar'
+      = render :partial => 'members'

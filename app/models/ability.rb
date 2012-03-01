@@ -33,7 +33,7 @@ class Ability
     end
 
     can :admin, Group do |group|
-      not group.nil? and not group.id.nil? and group.admins.include?(user)
+      user.admin? or (not group.nil? and not group.id.nil? and group.admins.include?(user))
     end
 
     can :exit, Activity do |activity|
@@ -53,7 +53,7 @@ class Ability
     end
 
     can :admin, Activity do |activity|
-      not activity.nil? and not activity.id.nil? and activity.admins.include?(user)
+      user.admin? or (not activity.nil? and not activity.id.nil? and activity.admins.include?(user))
     end
 
     can :delete, Comment do |comment|

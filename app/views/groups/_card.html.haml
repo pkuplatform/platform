@@ -1,6 +1,8 @@
-.group.card
-  = link_to (image_tag group.logo.url(:card)), group
-  .info
+.group.card.row
+  .span2
+    .thumbnail
+      = link_to (image_tag group.card), group
+  .span5
     .top
       %span.name= link_to group.name, group
       %span.category= t group.category.name, :scope => :category

@@ -1,0 +1,16 @@
+%ul.toolbar.nav.nav-list
+  %li.nav-header
+    = t '.admin'
+  %li
+    %a{:href => "#{edit_group_activity_path(@group, @activity)}"}
+      %i.icon-pencil
+      = t '.edit'
+  %li
+    %a{:href => "#{activity_blogs_path(@activity)}"}
+      %i.icon-file
+      = t '.blog'
+  %li
+    %a{:href => "#{activity_albums_path(@activity)}"}
+      %i.icon-picture
+      = t '.picture'
+      

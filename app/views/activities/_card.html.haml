@@ -1,6 +1,8 @@
-.activity.card
-  = link_to (image_tag activity.poster.url(:card)), activity
-  .info
+.activity.card.row
+  .span2
+    .thumbnail
+      = link_to (image_tag activity.card), activity
+  .span5
     .top
       %span.name= link_to activity.title, activity
     .center

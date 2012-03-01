@@ -1,4 +1,9 @@
 class Event < ActiveRecord::Base
+  scope :blog,     where(:object_type => 'Blog')
+  scope :picture,  where(:object_type => 'Picture')
+  scope :comment,  where(:object_type => 'Comment')
+  scope :activity, where(:object_type => 'Activity')
+
   def subject_link
     begin
       cl = class_eval(subject_type)

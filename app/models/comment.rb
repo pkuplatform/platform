@@ -12,9 +12,6 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
-
-  after_create :new_event
-
   def conv
     self.body = CGI::escapeHTML(self.body)
     self.body = body.gsub(/@([^\)@]*)\((\d+)\)/) do

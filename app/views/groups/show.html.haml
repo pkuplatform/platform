@@ -1,7 +1,11 @@
-.content.show
-  = render :partial => 'board', :object => @group, :as => :group
-  - if can? :admin, @group
-    = render :partial => 'admin_panel'
-  = render :partial => 'members'
-  = render :partial => 'activities'
-  = render :partial => 'comments'
+.row
+  .span7.offset1
+    = render :partial => 'board', :object => @group, :as => :group
+    = render :partial => 'activities'
+    = render :partial => 'comments'
+  .span3.offset1
+    .sidebar
+      = render 'users/card'
+      = render 'announcement'
+      = render 'toolbar'
+      = render :partial => 'members'

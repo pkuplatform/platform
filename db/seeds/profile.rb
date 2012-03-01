@@ -10,5 +10,5 @@ Profile.delete_all
   profile.points = rand_range(1..1000)
   profile.description = Faker::Lorem.paragraph(10)
   profile.avatar = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
-  profile.save!
+  profile.save
 end

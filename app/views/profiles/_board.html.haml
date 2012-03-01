@@ -1,3 +1,22 @@
-.user.board.box
-  = render :partial => 'profiles/side'
-  = render :partial => 'profiles/info'
+.user.board.row.alert-info
+  .side.span2
+    .avatar
+      = image_tag @profile.medium
+    - unless @profile.user == current_user
+      .like
+        - if can? :like, @profile
+          = link_to (t '.like'), like_profile_path(@profile)
+        - else
+          = link_to (t '.dislike'), like_profile_path(@profile)
+  .info.span5
+    .name= @profile.name
+    .nickname= @profile.nickname
+    .description= @profile.description
+    .meta
+      = t '.like', :count => @profile.user.follows.count
+      = "|"
+      = t '.fans', :count => @profile.user.fans.count
+      = "|"
+      = t '.groups', :count => @profile.user.groups.count
+      = "|"
+      = t '.activities', :count => @profile.user.activities.count

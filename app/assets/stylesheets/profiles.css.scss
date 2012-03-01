@@ -36,14 +36,22 @@
 }
 
 .user.board {
-  overflow: hidden;
-  .avatar { margin-bottom: 20px; }
-  .like { @include link; text-align: center; }
-  .nickname { @include blue; margin-bottom: 5px; }
-  .description { margin-bottom: 10px; }
+  padding: 20px 0px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-right: -30px;
+  @include box-shadow2;
+  .name { 
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .nickname {
+    margin-bottom: 10px;
+  }
+  .description {
+    min-height: 100px;
+  }
   .meta {
-    font-size: 14px;
-    color: #005EAC;
     text-align: right;
   }
 }

@@ -1,6 +1,6 @@
 class Circle < ActiveRecord::Base
   belongs_to :owner, :polymorphic => true
-  has_many :user_circles
+  has_many :user_circles, :dependent => :destroy
   has_many :users, :through => :user_circles
 
   scope :admin,     where(:status => Constant::Admin)
@@ -9,7 +9,7 @@ class Circle < ActiveRecord::Base
   scope :applicant, where(:status => Constant::Approving)
 
   scope :user,     where(:owner_type => 'User')
-  scope :group,    where(:owner_type => 'Group')
+  scope :groups,    where(:owner_type => 'Group')
   scope :activity, where(:owner_type => 'Activity')
 
   after_initialize :get_mode_str

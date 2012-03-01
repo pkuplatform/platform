@@ -14,10 +14,10 @@ class Activity < ActiveRecord::Base
   has_many :albums, :as => :imageable
   has_many :pictures, :through => :albums
   has_many :blogs, :dependent => :destroy
-  has_many :circles, :as => :owner
+  has_many :circles, :as => :owner, :dependent => :destroy
   has_many :users, :through => :circles
 
-  has_attached_file :poster, :styles => { :medium => "256x360#",:card => "180x250#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
+  has_attached_file :poster, :styles => { :medium => "360x268#",:card => "160x120#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
   has_attached_file :banner, :styles => { :medium => "576x320#", :banner => "180x100#" }, :default_url => "missing_:style.jpg"
 
   after_create :initialize_circles
@@ -58,8 +58,8 @@ class Activity < ActiveRecord::Base
     circles.fan.first
   end
 
-  def application_circle
-    circles.application.first
+  def applicant_circle
+    circles.applicant.first
   end
 
   def subscribers
@@ -82,7 +82,7 @@ class Activity < ActiveRecord::Base
   end
 
   def admin
-    admins.first
+    admins.first || User.first
   end
 
   def persons
@@ -111,7 +111,7 @@ class Activity < ActiveRecord::Base
   end
 
   def self.hot
-    Activity.order("points DESC").first(3)
+    Activity.order("points DESC")
   end
 
   def pv
