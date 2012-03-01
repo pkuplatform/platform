@@ -1,0 +1,27 @@
+.tabbable.groups
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to (t '.hot_groups'), '#hot_groups', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.rec_groups'), '#rec_groups', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.user_groups'), '#user_groups', 'data-toggle' => 'tab'
+  .tab-content
+    #hot_groups.tab-pane.active
+      .thumbnails
+        - Group.hot.first(6).each do |group|
+          .span1
+            = link_to (image_tag group.thumb), group
+            = link_to group.name.truncate(20), group
+    #rec_groups.tab-pane
+      .thumbnails
+        - current_user.recommend_groups.each do |group|
+          .span1
+            = link_to (image_tag group.thumb), group
+            = link_to group.name.truncate(20), group
+    #user_groups.tab-pane
+      .thumbnails
+        - current_user.groups.last(6).each do |group|
+          .span1
+            = link_to (image_tag group.thumb), group
+            = link_to group.name.truncate(20), group

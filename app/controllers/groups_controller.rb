@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
     when "new", "edit"
       "form"
     else
-      "application"
+      "groups_show"
     end
   end
   

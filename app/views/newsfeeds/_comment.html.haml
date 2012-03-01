@@ -1,8 +1,9 @@
-.newsfeed{:id => "event-#{event.id}"}
-  .avatar
+.row.newsfeed{:id => "event-#{event.id}"}
+  .span1
     = link_to (image_tag subject.url), subject
-  .wrapper
-    .top
+  .span7
+    %p
+      %strong
       = link_to subject.name, subject
       = t ".at"
       = link_to comment.commentable.name, comment.commentable
@@ -14,8 +15,10 @@
       - else       
         = t event.action
         = link_to (t :comment), comment
-    .center
-      %pre.comment-body
+    .row
+      .span1
+        = link_to (image_tag comment.user.thumb), comment.user
+      .span6
         = sanitize truncate_html(comment.body,:length=>100),:tags=> %w(a)
     .bottom
       %span.time

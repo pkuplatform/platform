@@ -1,15 +1,22 @@
-.newsfeed{:id => "event-#{event.id}"}
-  .avatar
+.row.newsfeed{:id => "event-#{event.id}"}
+  .span1
     = link_to (image_tag subject.url), subject
-  .wrapper
-    .top
-      = link_to subject.name, subject
-      = t '.'+event.action
-      = link_to activity.title, activity
+  .span6
+    %p
+      %strong
+        = link_to subject.name, subject
+        = t ".#{event.action}"
     .center.small
-      .thumb= image_tag activity.thumb
-      .medium= image_tag activity.medium
-      .clear
+      .thumb.row
+        .span2.thumbnail
+          = image_tag activity.medium
+        .span2
+          = link_to activity.title, activity
+          %br
+          = activity.description
+      .medium.row
+        .span4.thumbnail
+          = image_tag activity.medium
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)

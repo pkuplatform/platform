@@ -1,9 +1,0 @@
-.side
-  .avatar
-    = image_tag @profile.medium
-  - unless @profile.user == current_user
-    .like
-      - if can? :like, @profile
-        = link_to (t '.like'), like_profile_path(@profile)
-      - else
-        = link_to (t '.dislike'), like_profile_path(@profile)

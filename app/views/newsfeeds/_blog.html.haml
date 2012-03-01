@@ -1,11 +1,12 @@
-.newsfeed{ :id => "event-#{event.id}" }
-  .avatar
+.row.newsfeed{ :id => "event-#{event.id}" }
+  .span1
     = link_to (image_tag subject.url), subject
-  .wrapper
-    .top
-      = link_to subject.name, subject
-      = t '.'+event.action
-      = link_to blog.bare_name, blog
+  .span6
+    %p
+      %strong
+        = link_to subject.name, subject
+        = t '.' + event.action
+        = link_to blog.bare_name, blog
     .center
       .blog-content= sanitize truncate_html(blog.content,:length=>250)
       .clear

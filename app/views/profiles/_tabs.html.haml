@@ -1,0 +1,49 @@
+.tabbale.people
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to (t '.fans'), '#fans', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.follows'), '#follows', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.join_group'), '#join-group', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.follow_group'), '#follow-group', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.join_activity'), '#join-activity', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.follow_activity'), '#follow-activity', 'data-toggle' => 'tab'
+  .tab-content
+    #fans.tab-pane.active
+      .thumbnails
+        - @fans.each do |member|
+          = link_to (image_tag member.thumb), member
+          = link_to member.name, member
+    #follows.tab-pane
+      .thumbnails
+        - @follows.each do |member|
+          = link_to (image_tag member.thumb), member
+          = link_to member.name, member
+    #join-group.tab-pane
+      .thumbnails
+        - @groups.each do |group|
+          .span1
+            = link_to (image_tag group.thumb), group
+            = link_to group.name.truncate(20), group
+    #follow-group.tab-pane
+      .thumbnails
+        - @groups.each do |group|
+          .span1
+            = link_to (image_tag group.thumb), group
+            = link_to group.name.truncate(20), group
+    #join-activity.tab-pane
+      .thumbnails
+        - @activities.each do |activity|
+          .span1
+            = link_to (image_tag activity.thumb), activity
+            = link_to activity.title.truncate(20), activity
+    #follow-activity.tab-pane
+      .thumbnails
+        - @activities.each do |activity|
+          .span1
+            = link_to (image_tag activity.thumb), activity
+            = link_to activity.title.truncate(20), activity

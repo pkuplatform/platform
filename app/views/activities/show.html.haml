@@ -1,6 +1,10 @@
-.content.show
-  = render :partial => 'board', :object => @activity, :as => :activity
-  = render :partial => 'admin_panel' if can? :admin, @activity
-  = render :partial => 'blogs'
-  = render :partial => 'pictures'
-  = render :partial => 'comments'
+.row
+  .span7.offset1
+    = render :partial => 'board', :object => @activity, :as => :activity
+    = render :partial => 'blogs'
+    = render :partial => 'pictures'
+    = render :partial => 'comments'
+  .span3.offset1
+    .sidebar
+      = render 'users/card'
+      = render 'toolbar'

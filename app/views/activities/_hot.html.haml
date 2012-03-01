@@ -1,4 +1,8 @@
-.hot
-  .title= t '.hot'
-  - @hots.each do |activity|
-    = link_to (image_tag activity.card), activity
+.activity-hot
+  .title
+    = #t '.hot'
+  .hot-cycle
+    - Activity.hot.first(12).each_slice(4) do |activities|
+      .pic
+        - activities.each do |activity|
+          = link_to (image_tag activity.card), activity

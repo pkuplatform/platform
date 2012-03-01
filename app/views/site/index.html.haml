@@ -9,4 +9,4 @@
   .title
   .events
     .hidden= hidden_field_tag 'id', @id
-    = render :partial => 'newsfeeds/newsfeeds'
+    = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events }

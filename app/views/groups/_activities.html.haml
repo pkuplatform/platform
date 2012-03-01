@@ -1,7 +1,7 @@
 .activities
-  .header
-    %span= t :activity
-  .list
+  %span.label.label-info
+    = t :activity
+  %div
     - if @group.activities.empty?
       .warn= t '.warn'
     - else

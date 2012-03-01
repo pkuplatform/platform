@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, 
-         :validatable, :confirmable, :lockable
+         :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :blogs, :foreign_key=>"author_id"
   has_many :pictures, :dependent => :destroy
 
-  has_many :circles, :as => :owner
+  has_many :circles, :as => :owner, :dependent => :destroy
 
   has_many :user_circles
   has_many :belonged_circles, :through => :user_circles, :source => :circle
@@ -132,6 +132,10 @@ class User < ActiveRecord::Base
     friends.delete_if { |f| not f.online? }
   end
 
+  def self.hot
+    Profile.order("points DESC")
+  end
+
   def recommend_groups
     user_recommends.groups.order('value DESC').collect do |r| 
       gid = r.recommendable_id
@@ -148,6 +152,10 @@ class User < ActiveRecord::Base
 
   def applicants
     []
+  end
+
+  def realname
+    profile.realname
   end
 
   def relation(user)

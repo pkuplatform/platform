@@ -9,11 +9,4 @@
     = render 'share/flashes'
     = render 'share/header'
     .container.activities.show
-      .content-wrapper
-        = yield
-      .sidebar
-        = render 'users/card' 
-        = render 'share/recommend_activities'
-        = render 'share/hot_activities'
-        = render 'share/user_recommend'
-      .clear
+      = yield

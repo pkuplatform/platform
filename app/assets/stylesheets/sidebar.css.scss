@@ -1,47 +1,9 @@
-@import 'mixin';
-@import 'css3';
-
-.sidebar {
-  width: 230px;
-  float: left;
-  padding-left: 25px;
+.thumbnails .span1 { 
+  text-align: center; 
+  margin-bottom: 10px;
 }
 
-
-.gogo.card {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 12px;
-  color: #005EAC;
-  @include link;
-  .avatar { 
-    float: left;
-    img { @include box-radius; width:96px; }
-  }
-  .info { 
-    float: left; 
-    margin-left: 16px;
-    width: 114px;
-  }
-  .name { font-size: 16px; }
-  div { margin-bottom: 5px; }
-}
-
-
-.recommend, .hot.groups {
-  li { 
-    list-style: none; 
-    overflow: hidden; 
-    margin: 5px 0px;
-  }
-  img { float: left; }
-  .meta { float: left; margin-left: 10px; }
-  @include link;
-  font-size: 12px;
-  border-bottom: 1px solid #BBB;
-  padding: 10px 10px;
-  .title { 
-    font-size: 16px; 
-    margin-bottom: 10px;
-  }
+.tabbable.groups, .tabbable.activities, .tabbable.users {
+  min-height: 100px;
+  margin-bottom: 30px;
 }

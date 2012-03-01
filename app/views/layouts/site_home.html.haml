@@ -9,12 +9,11 @@
     = render 'share/flashes'
     = render 'share/header'
     .container.site.home
-      .content-wrapper
-        = yield
-      .content-footer
-      .sidebar
-        = render 'users/card' 
-        = render 'share/recommend_groups'
-        = render 'share/hot_groups'
-        = render 'share/user_recommend'
+      .row
+        .span7.offset1
+          = yield
+        .span3.offset1
+          .sidebar
+            = render 'users/card' 
+            = render 'share/sidebar'
     = render 'share/toolbar'

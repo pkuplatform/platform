@@ -240,7 +240,10 @@
       new: "最新"
       title: "Ta们正在"
     home:
-      newsfeed: "新鲜事"
+      activities: "活动"
+      pictures: "相片"
+      blogs: "日志"
+      all: "全部"
     newsfeeds:
       newsfeed: "动态"
     newsfeed:
@@ -249,19 +252,23 @@
       action: "%{action}了"
 
   share:
+    users:
+      friends: "我的好友"
+      rec_user: "推荐用户"
+      hot_user: "热门用户"
+    groups:
+      hot_groups: "热门社团"
+      rec_groups: "推荐社团"
+      user_groups: "我的社团"
+    activities:
+      rec_acts: "推荐活动"
+      hot_acts: "热门活动"
+      user_acts: "我的活动"
     toolbar:
       friends: "在线好友(%{count})"
-    recommend_activities:
-      title: "推荐活动"
-    hot_activities:
-      title: "热门活动"
     user_recommend:
       title: "可能感兴趣的人"
       indirect: "%{count}个间接关注人"
-    recommend_groups:
-      title: "推荐社团"
-    hot_groups:
-      title: "热门社团"
     comments:
       holder: "Ctrl+Enter直接发送"
       submit: "发表评论"
@@ -332,8 +339,8 @@
         title: "注册"
         male: "男生"
         female: "女生"
-        name: "姓名"
-        nickname: "昵称"
+        name: "用户名"
+        realname: "真实姓名"
         gender: "性别"
         sid: "学号"
         phone: "电话"
@@ -433,6 +440,20 @@
 
 
   profiles:
+    board:
+      like: "关注(%{count})"
+      fans: "粉丝(%{count})"
+      groups: "社团(%{count})"
+      activities: "活动(%{count})"
+      like: "关注"
+      dislike: "取消关注"
+    tabs:
+      fans: "粉丝"
+      follows: "关注"
+      join_group: "参加社团"
+      follow_group: "关注社团"
+      join_activity: "参加活动"
+      follow_activity: "关注活动"
     groups:
       title: "社团"
     activities:
@@ -451,15 +472,6 @@
       phone: "电话"
       avatar: "头像"
       holder: "添加您的个人简介吧~"
-    side:
-      like_cnt: "%{count}人关注"
-      like: "关注"
-      dislike: "取消关注"
-    info:
-      like: "关注(%{count})"
-      fans: "粉丝(%{count})"
-      groups: "社团(%{count})"
-      activities: "活动(%{count})"
     secondary:
       new_group: "新建社团"
     form:
@@ -505,6 +517,11 @@
       topic: "主题"
 
   activities:
+    toolbar:
+      admin: "管理"
+      edit: "信息管理"
+      blog: "日志管理"
+      picture: "相册管理"
     new:
       title: "新建活动"
     form:

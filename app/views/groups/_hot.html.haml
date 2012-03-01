@@ -1,4 +1,8 @@
-.hot
-  .title= t '.hot'
-  - Group.first(5).each do |group|
-    = link_to (image_tag group.card), group
+.group-hot
+  .title
+    = #t '.hot'
+  .hot-cycle
+    - Group.hot.first(12).each_slice(4) do |groups|
+      .pic
+        - groups.each do |group|
+          = link_to (image_tag group.card), group

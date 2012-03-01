@@ -1,0 +1,27 @@
+.tabbable.activities
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to (t '.hot_acts'), '#hot_acts', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.rec_acts'), '#rec_acts', 'data-toggle' => 'tab'
+    %li
+      = link_to (t '.user_acts'), '#user_acts', 'data-toggle' => 'tab'
+  .tab-content
+    #hot_acts.tab-pane.active
+      .thumbnails
+        - Activity.hot.first(6).each do |activity|
+          .span1
+            = link_to (image_tag activity.thumb), activity
+            = link_to activity.title.truncate(20), activity
+    #rec_acts.tab-pane
+      .thumbnails
+        - current_user.recommend_activities.each do |activity|
+          .span1
+            = link_to (image_tag activity.thumb), activity
+            = link_to activity.title.truncate(20), activity
+    #user_acts.tab-pane
+      .thumbnails
+        - current_user.activities.last(6).each do |activity|
+          .span1
+            = link_to (image_tag activity.thumb), activity
+            = link_to activity.title.truncate(20), activity

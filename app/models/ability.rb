@@ -37,7 +37,7 @@ class Ability
     end
 
     can :admin, Group do |group|
-      not group.nil? and not group.id.nil? and group.admins.include?(user)
+      user.admin? or (not group.nil? and not group.id.nil? and group.admins.include?(user))
     end
 
     can :exit, Activity do |activity|

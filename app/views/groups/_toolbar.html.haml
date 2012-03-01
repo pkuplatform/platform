@@ -1,0 +1,23 @@
+%ul.toolbar.nav.nav-list
+  %li.nav-header
+    = t '.admin'
+  %li
+    %a{:href => "#{edit_group_path}"}
+      %i.icon-pencil
+      = t '.edit'
+  %li
+    %a{:href => "#{new_group_activity_path(@group)}"}
+      %i.icon-heart
+      = t '.activity'
+  %li
+    %a{:href => "#{members_admin_group_path}"}
+      %i.icon-user
+      = t '.members'
+  %li
+    %a{:href => "#{forms_admin_group_path}"}
+      %i.icon-th-list
+      = t '.forms'
+  %li
+    %a{:href => "#{sms_group_path}"}
+      %i.icon-envelope
+      = t '.sms'

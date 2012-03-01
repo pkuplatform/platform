@@ -36,6 +36,40 @@ table {
   }
 }
 
+body.form {
+  background: url('screen_background.gif') repeat-x;
+  background-color: #EEE;
+  .container { 
+    width: 750px;
+    margin: 100px auto 0px auto;
+  }
+  .title { 
+    @include white-shadow; 
+    span { font-size: 16px; }
+  }
+  .button-wrapper { margin-top: 20px; }
+}
+
+
+.gogo.card {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 12px;
+  color: #005EAC;
+  @include link;
+  .avatar { 
+    float: left;
+    img { @include box-radius; }
+  }
+  .info { 
+    margin-left: 15px;
+    margin-top: 10px;
+    float: left; 
+  }
+  .name { font-size: 16px; }
+  div { margin-bottom: 5px; }
+}
+
 .highlight {
   color: #E00034;
   font-weight: normal;
@@ -188,20 +222,6 @@ span.cke_skin_kama { border: 0px !important; }
       img {width:28px; float:left; border:0;}
       p {font-size:20px; line-height:30px; margin-left: 50px; display:block;}
     }
-  }
-}
-
-.textarea-wrapper {
-  textarea {
-  padding-left:3px;
-  background-color:#fafafa;
-  border: 1px solid #ddd;
-  color: #888;
-  font-weight:300;
-  line-height:1.5;
-  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
   }
 }
 

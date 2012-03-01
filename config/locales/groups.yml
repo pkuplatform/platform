@@ -1,5 +1,7 @@
 "zh-CN":
   groups:
+    announcement:
+      title: "公告"
     wall:
       wall: "Logo Wall"
     hot:
@@ -30,6 +32,7 @@
       title: "%{name} 的评论"
     members:
       members: "成员"
+      fans: "粉丝"
       back: "<<<"
       title: "%{name} 的成员"
     description:
@@ -50,13 +53,12 @@
     like:
       like: "关注"
       unlike: "取消关注"
-    admin_panel:
+    toolbar:
       admin: "管理"
-      new: "新建社团"
-      edit: "社团信息管理"
+      edit: "信息管理"
       members: "成员管理"
       activity: "新建活动"
-      forms: "申请表管理"
+      forms: "表单管理"
       second: "新建教室申请表"
       sms: "短信管理"
       desc: "编辑社团介绍"

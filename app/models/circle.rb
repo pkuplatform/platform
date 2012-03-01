@@ -1,6 +1,6 @@
 class Circle < ActiveRecord::Base
   belongs_to :owner, :polymorphic => true
-  has_many :user_circles
+  has_many :user_circles, :dependent => :destroy
   has_many :users, :through => :user_circles
 
   validates_presence_of :name
@@ -14,7 +14,6 @@ class Circle < ActiveRecord::Base
   scope :users,     where(:owner_type => 'User')
   scope :groups,    where(:owner_type => 'Group')
   scope :activities, where(:owner_type => 'Activity')
-
 
   after_initialize :get_mode_str
   attr_accessor :mode_str

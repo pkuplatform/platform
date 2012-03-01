@@ -18,6 +18,8 @@ class CreateGroups < ActiveRecord::Migration
       t.datetime :logo_updated_at
       t.integer  :points, :default => 0
       t.boolean  :delta, :default => true, :null => false
+      t.text     :announcement
+      t.integer  :boss_id
 
       t.timestamps
     end

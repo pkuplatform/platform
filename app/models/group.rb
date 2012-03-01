@@ -12,17 +12,16 @@ class Group < ActiveRecord::Base
   is_impressionable
 
   belongs_to :category
+  belongs_to :boss, :class_name=>"User"
 
   has_many :activities, :dependent => :destroy
   has_many :second_building_applications, :class_name => "Form::SecondBuildingApplication"
   has_many :albums, :as => :imageable
   has_many :sms, :class_name => "Sms"
-  has_many :circles,    :as => :owner
+  has_many :circles,    :as => :owner, :dependent => :destroy
   has_many :users,      :through => :circles
 
-  belongs_to :boss, :class_name=>"User"
-
-  has_attached_file :logo, :styles => { :medium => "300x300#", :card => "180x180#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
+  has_attached_file :logo, :styles => { :medium => "360x268#", :card => "160x120#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
 
   after_create :initialize_circles
   after_save :get_py
@@ -100,7 +99,7 @@ class Group < ActiveRecord::Base
   end
 
   def self.hot
-    Group.order("points DESC").first(3)
+    Group.order("points DESC")
   end
 
 
@@ -120,8 +119,20 @@ class Group < ActiveRecord::Base
     logo.url(:thumb)
   end
 
+  def medium
+    logo.url(:medium)
+  end
+
+  def original
+    logo.url(:original)
+  end
+
   def pv
     impressionist_count(:filter => :session_hash)
+  end
+
+  def announce
+    announcement.nil? ? I18n.t('announce_empty') : announcement
   end
 
   define_index do
