@@ -6,7 +6,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string   :name
       t.integer  :unread_message_count
       t.string   :pyname
-      t.string   :nickname
+      t.string   :realname
       t.integer  :gender, :default => 1
       t.string   :student_id
       t.string   :phone

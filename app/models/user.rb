@@ -154,6 +154,10 @@ class User < ActiveRecord::Base
     []
   end
 
+  def realname
+    profile.realname
+  end
+
   def relation(user)
     if friends.include?(user)
       'friend'

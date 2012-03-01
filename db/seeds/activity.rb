@@ -11,5 +11,6 @@ Activity.delete_all
   activity.poster = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   #activity.banner = File.open(File.expand_path("../../pics/#{rand_range(1..52)}.jpg", __FILE__))
   activity.points = rand_range(1..100)
+  activity.boss_id = 1
   activity.save
 end

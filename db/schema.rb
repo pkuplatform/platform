@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301145201) do
+ActiveRecord::Schema.define(:version => 20120225172254) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120301145201) do
     t.datetime "end_at"
     t.string   "location",            :default => ""
     t.boolean  "public",              :default => true
-    t.integer  "status",              :default => 1
+    t.integer  "status",              :default => 8
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(:version => 20120301145201) do
     t.datetime "banner_updated_at"
     t.integer  "points",              :default => 0
     t.boolean  "delta",               :default => true, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.text     "announcement"
     t.integer  "boss_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "activities", ["group_id"], :name => "index_activities_on_group_id"
@@ -128,7 +128,8 @@ ActiveRecord::Schema.define(:version => 20120301145201) do
     t.string   "action"
     t.string   "object_type"
     t.integer  "object_id"
-    t.boolean  "processed",    :default => false
+    t.boolean  "processed",        :default => false
+    t.boolean  "prevent_delivery", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -190,10 +191,10 @@ ActiveRecord::Schema.define(:version => 20120301145201) do
     t.datetime "logo_updated_at"
     t.integer  "points",            :default => 0
     t.boolean  "delta",             :default => true, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.text     "announcement"
     t.integer  "boss_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
@@ -280,7 +281,7 @@ ActiveRecord::Schema.define(:version => 20120301145201) do
     t.string   "name"
     t.integer  "unread_message_count"
     t.string   "pyname"
-    t.string   "nickname"
+    t.string   "realname"
     t.integer  "gender",               :default => 1
     t.string   "student_id"
     t.string   "phone"
