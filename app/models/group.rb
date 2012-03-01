@@ -134,6 +134,10 @@ class Group < ActiveRecord::Base
     impressionist_count(:filter => :session_hash)
   end
 
+  def announce
+    announcement.nil? ? I18n.t('announce_empty') : announcement
+  end
+
   define_index do
     # fields
     indexes :name, :sortable => true

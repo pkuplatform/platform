@@ -1,14 +1,12 @@
-%li.comment{:id=>"comment-#{comment.id}", :class => "#{cycle('odd', 'even')}"}
-  -if can? :delete, comment
+.row.comment{:id=>"comment-#{comment.id}", :class => "#{cycle('odd', 'even')}"}
+  - if can? :delete, comment
     .delete= link_to "X", destroy_comment_path(comment), :method => :delete, :remote => true, :confirm => t(".sure_to_delete")
-  .comment-box
-    .avatar
-      = link_to (image_tag comment.user.url), "javascript:$('#comment-#{comment.id}').commentReply();"
-    .body
-      %span.name= link_to comment.user.name, comment.user
-      %span.gray= t :at
-      %span.time= distance_of_time_in_words_to_now(comment.created_at)
-      %span.gray= t :before
-      %span.gray= t :post_comment
-      %pre.comment-body=raw comment.body.truncate(140)
-    .clear
+  .span1
+    = image_tag comment.user.thumb
+  .span6
+    %span.name= link_to comment.user.name, comment.user
+    %span.gray= t :at
+    %span.time= distance_of_time_in_words_to_now(comment.created_at)
+    %span.gray= t :before
+    %span.gray= t :post_comment
+    .comment-body=raw comment.body.truncate(140)
