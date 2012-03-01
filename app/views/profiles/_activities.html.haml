@@ -1,9 +1,0 @@
-.activities.profile
-  .header
-    %span= t '.title'
-  .list
-    %ul
-      - @activities.each do |activity|
-        %li
-          .thumb= link_to (image_tag activity.thumb), activity
-          .name= link_to activity.title.truncate(8), activity
