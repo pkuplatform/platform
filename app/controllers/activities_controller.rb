@@ -174,15 +174,20 @@ class ActivitiesController < ApplicationController
     else
       @activity.applicant_circle.add(current_user)
     end
-    head :ok
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def exit
     @activity = Activity.find(params[:id])
     authorize! :exit, @activity
 
-    @activity.members.remove(current_user)
-    head :ok
+    @activity.member_circle.remove(current_user)
+    respond_to do |format|
+      format.js { render 'join' }
+    end
   end
 
   def show_members

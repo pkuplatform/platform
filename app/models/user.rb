@@ -31,19 +31,28 @@ class User < ActiveRecord::Base
 
   def initialize_circles
     circles.create(:name => 'fan',        :status => Constant::Like,      :mode => 0444)
+    circles.create(:name => 'follow',    :status => Constant::Liked,      :mode => 0444)
   end
 
   def ability
     @ability ||= Ability.new(self)
   end
   delegate :can?, :cannot?, :to => :ability
+  
+  def fan_circle
+    circles.fan.first
+  end
+
+  def follow_circle
+    circles.follow.first
+  end
 
   def fans
-    circles.fan.first.users
+    fan_circle.users
   end
 
   def follows
-    belonged_circles.users.fan.collect { |c| User.find(c.owner_id) }
+    follow_circle.users
   end
 
   def activities
@@ -90,6 +99,14 @@ class User < ActiveRecord::Base
     profile.avatar.url(:thumb)
   end
 
+  def medium
+    profile.medium
+  end
+
+  def description
+    profile.description
+  end
+
   def admin?
     profile.status | Constant::Super == profile.status
   end
@@ -126,5 +143,15 @@ class User < ActiveRecord::Base
 
   def applicants
     []
+  end
+
+  def relation(user)
+    if friends.include?(user)
+      'friend'
+    elsif follows.include?(user)
+      'follow'
+    else
+      'fan'
+    end
   end
 end

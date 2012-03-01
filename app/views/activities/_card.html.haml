@@ -4,7 +4,7 @@
     .top
       %span.name= link_to activity.title, activity
     .center
-      = sanitize(activity.description, :attributes => %w(id class style href _cke_saved_href title alt width height))
+      =sanitize(truncate_html(activity.description,:length=>100), :attributes => %w(id class style href _cke_saved_href title alt width height))
     .bottom
       %span.time
         = l activity.start_at, :format => :short

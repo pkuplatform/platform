@@ -42,6 +42,8 @@ $ ->
   # used in tags
   $('.tags_input').tagsInput
     'defaultText': '添加标签'
+    'width' : '396px'
+    'height' : '40px'
 
 
   $(".carousel-items").carouFredSel

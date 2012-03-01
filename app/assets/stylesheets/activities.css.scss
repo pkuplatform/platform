@@ -8,7 +8,14 @@
 .activity .info .blog { @include blue; font-size: 16px; }
 .activity .info .additions { @include blue-link; font-size: 16px; }
 .activity .info .time { @include blue; }
-.activity .description { min-height: 160px; }
+.activity .description { 
+  min-height: 160px; 
+}
+.activity .info {
+  white-space:normal;
+  word-wrap:break-word;
+  word-break:break-all;
+}
 
 .activity-blogs,.activity-albums,.activity-pictures {
   @include title;

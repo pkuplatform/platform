@@ -1,5 +1,5 @@
+.title= t '.title'
 .box.profile.form
-  .title= t '.title'
   = form_for @profile, :html => { :multipart => true } do |f|
     - if @profile.errors.any?
       #error_explanation
@@ -29,5 +29,5 @@
       = f.file_field :avatar
     .field
       = f.text_area :description, :size => "75x5", :placeholder => t(".holder")
-    .actions
+    .actions.button-wrapper.long
       = f.submit (t "profile-submit")

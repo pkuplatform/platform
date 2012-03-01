@@ -8,7 +8,7 @@
   .tags
     = render :partial=>"share/tag_list", :locals => {:tags=>activity.tags, :controller=>:activities}
   .description
-    = activity.description
+    = sanitize(activity.description, :attributes => %w(id class style href _cke_saved_href title alt width height))
   .meta
     = t '.points', :count => activity.points
     = "|"

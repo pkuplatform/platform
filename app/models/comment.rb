@@ -28,7 +28,7 @@ class Comment < ActiveRecord::Base
     Event.create(:subject_type=>"User",:subject_id=>user_id,:action=>:post,:object_type=>"Comment",:object_id=>id)
     body.scan(/@([^\)@]*)\((\d+)\)/).each do |ru|
       if ru[1].to_i>0
-        Event.create(:subject_type=>"User",:subject_id=>ru[1].to_i,:action=>:mentioned, :object_type=>"Comment", :object_id=>id)
+        e = Event.create(:subject_type=>"User",:subject_id=>ru[1].to_i,:action=>:mentioned, :object_type=>"Comment", :object_id=>id, :prevent_delivery=>true)
       end
     end
     conv

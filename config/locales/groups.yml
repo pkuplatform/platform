@@ -103,6 +103,7 @@
       activities: "活动(%{count})"
       like: "关注(%{count})"
       join: "参加(%{count})"
+      comments: "评论(%{count})"
     filter:
       category: "类别"
       sort: "排序"

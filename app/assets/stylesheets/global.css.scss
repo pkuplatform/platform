@@ -36,24 +36,6 @@ table {
   }
 }
 
-
-.gogo.card {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 12px;
-  color: #005EAC;
-  @include link;
-  .avatar { 
-    float: left;
-    img { @include box-radius; }
-  }
-  .info { 
-    float: left; 
-  }
-  .name { font-size: 16px; }
-  div { margin-bottom: 5px; }
-}
-
 .highlight {
   color: #E00034;
   font-weight: normal;
@@ -126,6 +108,11 @@ table {
   }
   &.sign-up {
     margin-bottom: 30px;
+  }
+  &.long {
+    input {
+    font-size:0.8em;
+    }
   }
   input {
     background: url("sprites.png");

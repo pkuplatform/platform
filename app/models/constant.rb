@@ -17,6 +17,7 @@ class Constant
   Member   = 1 << 11 
 
   Like  = 1 << 16
+  Liked = 1 << 17
   
   Super = 1 << 30
 

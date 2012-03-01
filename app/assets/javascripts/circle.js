@@ -23,6 +23,7 @@ $(document).ready(function() {
     close:function(){
       $(this).multiselect("refresh");
     },
+    noneSelectedText: $('#noneSelectText').html()
   });
   $('.multi-select-box').multiselect_box({close:function(){
   }});

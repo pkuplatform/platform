@@ -4,11 +4,12 @@
   .wrapper
     .top
       = link_to subject.name, subject
-      = t '.action'
+      = t '.'+event.action
       = link_to picture.bare_name, picture
     .center.small
       .thumb= image_tag picture.thumb
       .medium= image_tag picture.medium
+      .clear
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)

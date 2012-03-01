@@ -84,5 +84,14 @@ $(document).ready(function(){
   $('.devise_error').hide();
 
   $('.need_hide').hide();
+
+  $('#dialog-change-admin').dialog({
+    autoOpen:false,
+    buttons: {
+      "确定(Sure)": function() {
+        $("#dialog-change-admin form").submit();
+      }
+    }
+  });
 });
 

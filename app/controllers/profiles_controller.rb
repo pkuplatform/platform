@@ -23,8 +23,9 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     @groups = @profile.user.groups
     @activities = @profile.user.activities
-    @likes = @profile.user.follows
-    @fans = @profile.user.fans
+    @friends = @profile.user.friends
+    @follows = @profile.user.follows - @friends
+    @fans = @profile.user.fans - @friends
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +39,7 @@ class ProfilesController < ApplicationController
     @profiles = Profile.where("pyname like ?",qs).limit(100)
     qs = qs.gsub('%','#')
     @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
-    @hashed = @profiles.shift(20).collect {|p| {:label=>"<img src=\"#{p.thumb}\"></img><p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
+    @hashed = @profiles.shift(20).collect {|p| {:label=>"#{ApplicationController.helpers.image_tag(p.thumb)}<p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
     respond_to do |format|
       format.json { render json: @hashed }
       format.html { render :nothing => true }
@@ -124,13 +125,16 @@ class ProfilesController < ApplicationController
     end
   end
 
+
   def like
     @profile = Profile.find(params[:id])
-    ur = UserRelation.find_by_liking_id_and_liked_id(current_user.id, @profile.user.id)
-    if ur.nil?
-      UserRelation.create!(:liking_id => current_user.id, :liked_id => @profile.user.id)
+    uc = @profile.user.fan_circle.user_circles.find_by_user_id(current_user.id)
+    if uc.nil?
+      @profile.user.fan_circle.add(current_user)
+      current_user.follow_circle.add(@profile.user)
     else
-      ur.destroy
+      uc.destroy
+      current_user.follow_circle.user_circles.find_by_user_id(@profile.id).destroy
     end
     redirect_to @profile
   end

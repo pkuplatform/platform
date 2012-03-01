@@ -53,7 +53,7 @@ class Ability
     end
 
     can :admin, Activity do |activity|
-      not activity.nil? and not activity.id.nil? and activity.admins.include?(user)
+      not activity.nil? and not activity.id.nil? and (activity.admins.include?(user) or activity.group.admins.include?(user))
     end
 
     can :delete, Comment do |comment|
@@ -76,7 +76,7 @@ class Ability
     end
 
     can :write, Circle do |circle|
-      (circle.owner.admin == user)||
+      (circle.owner.admin == user && circle.status!=Constant::Like && circle.status!=Constant::Approving)||
       ((can? :admin, circle.owner)&&(circle.mode & 0200 == 0200))||
       ((circle.owner.members.include?(user))&&(circle.mode & 020 == 020))||
       (circle.mode & 02 == 02)

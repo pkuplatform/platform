@@ -16,7 +16,7 @@
         = link_to (t :comment), comment
     .center
       %pre.comment-body
-        = raw comment.body.truncate(100)
+        = sanitize truncate_html(comment.body,:length=>100),:tags=> %w(a)
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)

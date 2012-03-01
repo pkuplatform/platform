@@ -14,3 +14,6 @@
     comment:
       action: "发表评论"
       at: "在"
+    user_circle:
+      join: "参加了%{type}"
+      like: "关注了%{type}"

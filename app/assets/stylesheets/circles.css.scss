@@ -9,6 +9,12 @@
     #cnamef {
       width: 150px;
     }
+    #new {
+      .input-wrapper {
+        width:130px;
+        input { width:125px;}
+      }
+    }
     .circle,.apply {
       position: relative;
       width:150px;
@@ -59,6 +65,15 @@
       }
 
     }
+  }
+  .select-option {
+    vertical-align:center;
+    span {
+      margin-top:6px;
+    }
+    height: 32px;
+    img { width:32px; float:left; margin-right:20px}
+    p {height:32px; line-height:32px;}
   }
 }
 .css_right 

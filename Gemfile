@@ -19,7 +19,7 @@ gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
 gem 'savon'
 gem 'ckeditor', '3.7.0.rc2'
-
+gem 'truncate_html'
 gem 'annotate'
 gem 'mysql2'
 gem 'thinking-sphinx'

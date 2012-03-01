@@ -274,6 +274,7 @@
       logout: "离开"
       home: "个人首页"
       group: "社团中心"
+      mycircle: "我的圈子"
       curgroup: "社团: %{name}"
       activity: "活动中心"
       curactivity: "活动: %{name}"
@@ -289,6 +290,8 @@
         activities: "社团活动"
         new_activity: "+社团活动"
         infos: "社团信息"
+        change_admin: "变更会长"
+        change_admin_to: "变更会长为"
       activities:
         new: "+新活动"
         admin: "活动管理"
@@ -298,6 +301,8 @@
         new_picture: "+新图片"
         edit: "修改活动"
         group: "承办社团"
+        change_admin: "变更负责人"
+        change_admin_to: "变更负责人为"
       blogs:
         delete: "删除日志"
         edit: "编辑日志"
@@ -432,10 +437,11 @@
       title: "社团"
     activities:
       title: "活动"
-    like:
-      title: "关注"
-    fans:
-      title: "粉丝"
+    friends:
+      follows: "关注"
+      fans: "粉丝"
+      friends: "朋友"
+      title: "人"
     edit:
       title: "完善您的个人信息"
       name: "姓名"
@@ -707,11 +713,15 @@
       username: "姓名"
       userphone: "电话"
       userscore: "积分"
+      userrelation: "关系"
       usercircle: "圈子"
       goto: "》"
+      new: "新圈子"
     admin: "管理"
     member: "成员"
-    fan: "关注者"
+    fan: "粉丝"
+    follow: "关注"
+    friend: "朋友"
     applicant: "申请加入"
     show:
       title: "%{owner}的%{name}圈子"
@@ -722,6 +732,9 @@
     edit:
       title: "修改%{owner}的%{name}圈子"
       update: "更改"
+
+    change_admin:
+      successfully: "成功变更{%owner}的管理员"
     unreadable: "%{owner}的%{name}圈子不允许查看"
     unwritable: "%{owner}的%{name}圈子不允许编辑"
     uncreatable: "你不能给%{owner}创建圈子"

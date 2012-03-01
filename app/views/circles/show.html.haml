@@ -1,4 +1,4 @@
-.title= t '.title', :owner => owner.name, :name =>t("circles."+@circle.name)
+.title= t '.title', :owner => owner.name, :name =>strip_tags(t("circles."+@circle.name))
 .slink
   %ul
     %li.back= link_to (t '.back'), circles_path

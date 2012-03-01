@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :object_type
       t.integer :object_id
       t.boolean :processed, :default => false
+      t.boolean :prevent_delivery, :default => false
 
       t.timestamps
     end

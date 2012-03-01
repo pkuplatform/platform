@@ -11,6 +11,9 @@
               %li= link_to (t ".groups.new"), new_group_path
         %li#navi-activity-center
           = link_to (t '.activity'), activities_path
+        - if params[:controller]=='site'
+          %li#navi-user-circle
+            = link_to (t '.mycircle'),circles_path
         - if @group&&@group.id&&!(@activity&&@activity.id)
           %li#navi-cur-group
             = link_to (t '.curgroup', :name=>@group.name.truncate(15)), group_path(@group)
@@ -31,7 +34,6 @@
                   %li= link_to (t 'groups.description.title'), description_group_path(@group)
                   %li= link_to (t 'groups.history.title'), description_group_path(@group)
                   %li= link_to (t 'groups.organization.title'), organization_group_path(@group)
-                  %li= link_to (t '.groups.circles'), group_circles_path(@group)
               - if can? :admin, @group
                 %li
                   = link_to (t '.groups.admin'), "#"
@@ -39,7 +41,13 @@
                     %li= link_to (t '.groups.edit'), edit_group_path(@group)
                     %li= link_to (t '.groups.forms'), forms_admin_group_path(@group)
                     %li= link_to (t '.groups.sms'), sms_group_path(@group)
-
+                    -if can? :write, @group.admin_circle
+                      %li= link_to (t '.groups.change_admin'), "javascript:$('#dialog-change-admin').dialog('open');"
+                      #dialog-change-admin{:title =>t(".groups.change_admin")}
+                        =form_tag group_circles_path(@group)+'/change_admin' do
+                          %fieldset
+                            = label_tag :id,t(".groups.change_admin_to")
+                            = select_tag :id, options_for_select(@group.admin_circle.users.collect{|u| [u.name,u.id]})
         - if (@activity&&@activity.id)
           %li#navi-cur-activity
             = link_to (t '.curactivity', :name=>@activity.name.truncate(15)), activity_path(@activity)
@@ -65,6 +73,13 @@
                   = link_to (t '.activities.admin'), "#"
                   %ul
                     %li= link_to (t '.activities.edit'), edit_group_activity_path(@activity.group, @activity)
+                    -if can? :write, @activity.admin_circle
+                      %li= link_to (t '.activities.change_admin'), "javascript:$('#dialog-change-admin').dialog('open');"
+                      #dialog-change-admin{:title =>t(".activities.change_admin")}
+                        =form_tag activity_circles_path(@activity)+'/change_admin' do
+                          %fieldset
+                            = label_tag :id,t(".activities.change_admin_to")
+                            = select_tag :id, options_for_select(@activity.admin_circle.users.collect{|u| [u.name,u.id]})
         - if (can? :admin, @activity)&&@blog&&@blog.id
           %li#admin-blog
             = link_to (t ".admin_blog"), "#"

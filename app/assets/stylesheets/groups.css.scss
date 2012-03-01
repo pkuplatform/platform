@@ -21,6 +21,12 @@
   }
 }
 
+.group .info {
+  white-space:normal;
+  word-wrap:break-word;
+  word-break:break-all;
+}
+
 .group.form {
   form { text-align: right; }
 }
@@ -107,7 +113,7 @@
   .top, .center { margin-bottom: 5px; }
   .center { min-height: 75px; }
   .bottom { color: #7AA5B9; }
-  .meta { float: right; }
+  .meta { float: right; @include link; }
   a { color: #005EAC; text-decoration: none; }
   a:hover { text-decoration: underline; }
   img { float: left; width: 120px; @include box-radius(10px); }
@@ -151,5 +157,6 @@
     font-size: 14px; 
     color: #005EAC;
     text-align: right;
+    @include link;
   }
 }

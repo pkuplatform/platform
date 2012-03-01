@@ -3,9 +3,12 @@ class Circle < ActiveRecord::Base
   has_many :user_circles
   has_many :users, :through => :user_circles
 
+  validates_presence_of :name
+
   scope :admin,     where(:status => Constant::Admin)
   scope :member,    where(:status => Constant::Member)
   scope :fan,       where(:status => Constant::Like)
+  scope :follow,    where(:status => Constant::Liked)
   scope :applicant, where(:status => Constant::Approving)
 
   scope :users,     where(:owner_type => 'User')

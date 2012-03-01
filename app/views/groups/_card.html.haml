@@ -5,7 +5,7 @@
       %span.name= link_to group.name, group
       %span.category= t group.category.name, :scope => :category
     .center
-      = sanitize(group.introduction, :attributes => %w(id class style href _cke_saved_href title alt width height))   
+      = sanitize(group.introduction, :attributes => %w(id class style href _cke_saved_href title alt width height)) 
     .bottom
       %span.founded
         = l group.founded_at
@@ -14,8 +14,10 @@
         = t :group_admin
         = link_to group.admin.name, group.admin
       %span.meta
-        = t '.activities', :count => group.activities.count
+        = link_to (t '.like', :count => group.fans.count), group_circle_path(group,group.fan_circle)
         = "|"
-        = t '.like', :count => group.fans.count
+        = link_to (t '.join', :count => group.members.count), group_circle_path(group,group.member_circle)
         = "|"
-        = t '.join', :count => group.members.count
+        = link_to (t '.activities', :count => group.activities.count), group_activities_path(group)
+        = "|"
+        = link_to (t '.comments', :count => group.comments.count), group.comments.first ||group_path(group,:anchor=>'new-comment')

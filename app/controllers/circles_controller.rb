@@ -32,7 +32,7 @@ class CirclesController < ApplicationController
     elsif owner.is_a?(Activity)
       activity_circles_path(owner)
     else
-      root_path+"/circles"
+      root_path+"circles"
     end
   end
 
@@ -47,7 +47,7 @@ class CirclesController < ApplicationController
     elsif circle.owner.is_a?(Activity)
       activity_circle_path(circle.owner,circle)
     else
-      root_path+"/circles/#{circle.id}"
+      root_path+"circles/#{circle.id}"
     end
   end
 
@@ -63,7 +63,7 @@ class CirclesController < ApplicationController
     elsif owner.is_a?(Activity)
       edit_activity_circle_path(owner,circle)
     else
-      root_path+"/circles/#{circle.id}/edit"
+      root_path+"circles/#{circle.id}/edit"
     end
   end
 
@@ -77,7 +77,7 @@ class CirclesController < ApplicationController
     elsif owner.is_a?(Activity)
       new_activity_circle_path(owner)
     else
-      root_path+"/circles/new"
+      root_path+"circles/new"
     end
   end
 
@@ -88,6 +88,7 @@ class CirclesController < ApplicationController
   def index
     @circles_all = owner.circles.readable(current_user)
     @circles = @circles_all
+    @new_circle = Circle.new
     if params[:cnamef]
       @circles = @circles_all.select{|c|params[:cnamef].split(',').include?(c.name)}
       if @circles.empty?
@@ -106,6 +107,7 @@ class CirclesController < ApplicationController
         @users |= circle.users
       end
     end
+    puts @circles
     if can? :admin, owner
       @writable_circles = Hash[*(@circles_all.writable(current_user).collect{|c|[c.id,true]}.flatten)]
       respond_to do |format|
@@ -181,6 +183,8 @@ class CirclesController < ApplicationController
   # GET /circles/1/edit
   def edit
     @circle = owner.circles.find(params[:id])
+    @users = owner.members.collect{|p| ["#{ApplicationController.helpers.image_tag(p.thumb)}<p>#{p.name}</p>",p.id] }
+
     unless can? :write, @circle
       redirect_to owner, :alert=> t("circles.unwritable",:owner=>owner.name,:name=>@circle.name)
       return
@@ -191,13 +195,14 @@ class CirclesController < ApplicationController
   # POST /circles.json
   def create
     @circle = owner.circles.new(params[:circle])
+    @circle.name = params[:name]
     unless can? :admin, owner
       redirect_to owner, :alert=> t("circles.uncreatable",:owner=>owner.name)
       return
     end
     respond_to do |format|
       if @circle.save
-        format.html { redirect_to @circle, notice: 'Circle was successfully created.' }
+        format.html { redirect_to @circle, notice: 'circles.create.successfully' }
         format.json { render json: @circle, status: :created, location: @circle }
       else
         format.html { render action: "new" }
@@ -214,14 +219,14 @@ class CirclesController < ApplicationController
       redirect_to owner, :alert=> t("circles.unwritable",:owner=>owner.name,:name=>@circle.name)
       return
     end
-
+    @update_users = []
     @update_users = User.find(params[:users]) unless params[:users].nil?
     @delete_users = []
     @delete_users = @circle.users - @update_users unless @update_users.nil?
     @circle.user_circles.each do |uc|
       uc.destroy if @delete_users.include?(uc.user)
     end
-    @circle.users |= @update_circles
+    @circle.users |= @update_users
 
     respond_to do |format|
       if @circle.save
@@ -260,6 +265,17 @@ class CirclesController < ApplicationController
     end
     respond_to do |format|
       format.html 
+      format.json { head :ok }
+    end
+  end
+
+  def change_admin
+    unless can? :write, owner.admin_circle
+      redirect_to owner, :alert=> t("circles.unwritable",:owner=>@circle.owner.name,:name=>owner.admin_circle.name)
+    end
+    owner.change_admin_to(owner.admins.find(params[:id]))
+    respond_to do |format|
+      format.html { redirect_to owner, :notice=> t("circles.change_admin.successfully",:owner=>owner.name) }
       format.json { head :ok }
     end
   end

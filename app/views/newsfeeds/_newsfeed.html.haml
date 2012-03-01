@@ -1,10 +1,13 @@
 - unless event.subject.nil? or event.object.nil?
-  - case event.object_type
-  - when "Blog"
-    = render :partial => "newsfeeds/blog", :locals => { :subject => event.subject, :blog => event.object, :event => event }
-  - when "Picture"
-    = render :partial => "newsfeeds/picture", :locals => { :subject => event.subject, :picture => event.object, :event => event }
-  - when "Activity"
-    = render :partial => "newsfeeds/activity", :locals => { :subject => event.subject, :activity => event.object, :event => event }
-  - when "Comment"
-    = render :partial => "newsfeeds/comment", :locals => { :subject => event.subject, :comment => event.object, :event => event }
+  - if event.action=='join' || event.action=='like'
+    = render :partial => "newsfeeds/user_circle", :locals => { :subject => event.subject, :object => event.object, :event => event }
+  - else
+    - case event.object_type
+    - when "Blog"
+      = render :partial => "newsfeeds/blog", :locals => { :subject => event.subject, :blog => event.object, :event => event }
+    - when "Picture"
+      = render :partial => "newsfeeds/picture", :locals => { :subject => event.subject, :picture => event.object, :event => event }
+    - when "Activity"
+      = render :partial => "newsfeeds/activity", :locals => { :subject => event.subject, :activity => event.object, :event => event }
+    - when "Comment"
+      = render :partial => "newsfeeds/comment", :locals => { :subject => event.subject, :comment => event.object, :event => event }

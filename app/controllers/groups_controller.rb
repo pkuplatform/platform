@@ -33,9 +33,9 @@ class GroupsController < ApplicationController
     if params[:filter] == "category"
       @groups = Group.readable(current_user).category(Category.find(params[:id])).order(sort)
     elsif params[:filter] == "join"
-      @groups = Group.readable(current_user).joined(current_user).order(sort)
+      @groups = Group.readable(current_user).order(sort).joined(current_user)
     elsif params[:filter] == "like"
-      @groups = Group.readable(current_user).liked(current_user).order(sort)
+      @groups = Group.readable(current_user).order(sort).liked(current_user)
     else
       @groups = Group.readable(current_user).order(sort).all
     end
