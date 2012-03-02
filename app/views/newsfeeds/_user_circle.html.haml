@@ -1,16 +1,23 @@
-.newsfeed{:id => "event-#{event.id}"}
-  .avatar
+.row.newsfeed{:id => "event-#{event.id}"}
+  .span1
     = link_to (image_tag subject.url), subject
-  .wrapper
-    .top
-      = link_to subject.name, subject
-      = t('.'+event.action, :type => (t object.class.name))
-      = link_to object.name, object
+  .span6
+    %p
+      %strong
+        = link_to subject.name, subject
+        = t ".#{event.action}", :type=>t(event.object_type)
+        = link_to object.name, object
     .center.small
-      .thumb= image_tag object.thumb
-      .medium= image_tag object.medium
-      %blockquote.description= sanitize(truncate_html(object.description,:length=>250), :attributes => %w(id class style href _cke_saved_href title alt width height))
-      .clear
+      .thumb.row
+        .span1
+          = image_tag object.thumb
+        .span4
+          = sanitize(truncate_html(object.description,:length=>250), :attributes => %w(id class style href _cke_saved_href title alt width height))
+      .medium.row
+        .span3.thumbnail
+          = image_tag object.medium
+        .span2
+          = sanitize(truncate_html(object.description,:length=>250), :attributes => %w(id class style href _cke_saved_href title alt width height))          
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)
