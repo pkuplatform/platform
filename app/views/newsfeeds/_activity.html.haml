@@ -23,7 +23,7 @@
         = t 'newsfeeds.before'
       %span.from
         = t 'newsfeeds.from'
-        = link_to activity.group.name, activity.group
+        = link_to activity.group.name.truncate(40), activity.group
       %span.meta
         = t '.like', :count => activity.fans.count
         = "|"

@@ -128,7 +128,7 @@ class ProfilesController < ApplicationController
 
   def like
     @profile = Profile.find(params[:id])
-    if current_user.follows.include?(@profile.user)
+    unless current_user.follows.include?(@profile.user)
       current_user.follow_circle.add(@profile.user)
     else
       current_user.follow_circle.remove(@profile.user)

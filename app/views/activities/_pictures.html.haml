@@ -1,20 +1,22 @@
 .pictures
-  .header
-    %span= t "Picture"
-    = link_to (t :pictures_more), activity_pictures_path(@activity) if @pore
-  - if @activity.pictures.empty?
-    .box.no-content
-      = t '.empty'
-  - else
-    .box.image_carousel
-      .carousel-items
-        - @activity.pictures.each do |pic|
-          .image-wrap
-            = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br />"+pic.remark, :"data-fancybox-group" => "gallery"
-      .clear
-      = link_to "", "##", :class=>"prev"
-      = link_to "", "##", :class=>"next"
-      .inline-hide
-        - @activity.pictures.each do |pic|
-          %div{:id=>"picture-ori-#{pic.id}"}=link_to image_tag(pic.url(:big)), pic
-
+  %span.label.label-info
+    = t "Picture"
+  .picture-warpper
+    - if @activity.pictures.empty?
+      .warn
+        = t '.empty'
+    - else
+      .image_carousel
+        .carousel-items
+          - @activity.pictures.each do |pic|
+            .image-wrap
+              = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br />"+pic.remark, :"data-fancybox-group" => "gallery"
+        .clear
+        = link_to "", "##", :class=>"prev"
+        = link_to "", "##", :class=>"next"
+        .inline-hide
+          - @activity.pictures.each do |pic|
+            %div{:id=>"picture-ori-#{pic.id}"}=link_to image_tag(pic.url(:big)), pic
+  .more.row
+    - if @activity.pictures.count>5
+      = link_to (t '.more'), activities_albums_path, :class => 'btn btn-info span3 offset2'

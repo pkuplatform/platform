@@ -13,10 +13,10 @@
       - @circles_all.each do |circle|
         .circle
           -if !@all&&@circles.include?(circle)
-            =check_box_tag circle.name,"",:checked => :checked
+            =check_box_tag circle.id,"",:checked => :checked
           -else
-            =check_box_tag circle.name
-          =label_tag circle.name,t("circles."+circle.name)
+            =check_box_tag circle.id
+          =label_tag circle.id,t("circles."+circle.name)
           =link_to (t ".goto"),circle, :class=>'ui-icon ui-icon-folder-open circle-link'
         .clear
     #cwayf
