@@ -450,6 +450,7 @@
     tabs:
       fans: "粉丝"
       follows: "关注"
+      friends: "好友"
       join_group: "参加社团"
       follow_group: "关注社团"
       join_activity: "参加活动"

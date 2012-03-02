@@ -4,9 +4,9 @@
       .banner
         %ul.pager
       .medium.pics
-        - @banners.each do |activity|
+        - @posters.each do |activity|
           = image_tag activity.banner.url(:medium)
   .title
-  .events
+  %div
     .hidden= hidden_field_tag 'id', @id
     = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events }

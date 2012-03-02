@@ -5,6 +5,8 @@
     %li
       = link_to (t '.follows'), '#follows', 'data-toggle' => 'tab'
     %li
+      = link_to (t '.friends'), '#friends', 'data-toggle' => 'tab'
+    %li
       = link_to (t '.join_group'), '#join-group', 'data-toggle' => 'tab'
     %li
       = link_to (t '.follow_group'), '#follow-group', 'data-toggle' => 'tab'
@@ -21,6 +23,11 @@
     #follows.tab-pane
       .thumbnails
         - @follows.each do |member|
+          = link_to (image_tag member.thumb), member
+          = link_to member.name, member
+    #friends.tab-pane
+      .thumbnails
+        - @friends.each do |member|
           = link_to (image_tag member.thumb), member
           = link_to member.name, member
     #join-group.tab-pane
