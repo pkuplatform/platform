@@ -113,3 +113,14 @@
 .groups.show .comments {
   margin-bottom: 30px;
 }
+
+.page-header .add { 
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 2em;
+}
+
+.groups .page-header {
+  position: relative;
+}
