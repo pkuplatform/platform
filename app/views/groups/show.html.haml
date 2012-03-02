@@ -1,11 +1,3 @@
-.row
-  .span7.offset1
-    = render :partial => 'board', :object => @group, :as => :group
-    = render :partial => 'activities'
-    = render :partial => 'comments'
-  .span3.offset1
-    .sidebar
-      = render 'users/card'
-      = render 'announcement'
-      = render 'toolbar'
-      = render :partial => 'members'
+= render :partial => 'board', :object => @group, :as => :group
+= render :partial => 'activities'
+= render :partial => 'comments'

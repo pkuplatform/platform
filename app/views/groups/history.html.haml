@@ -1,7 +1,4 @@
-.group.info-wrapper
-  .back
-    = link_to (t '.back'), @group
-  .title
-    = t '.title'
-  .box
-    = sanitize( @group.history, :attributes => %w(id class style href _cke_saved_href title alt width height)) 
+.page-header
+  %h1= t '.header'
+.history
+  = sanitize( @group.history, :attributes => %w(id class style href _cke_saved_href title alt width height)) 

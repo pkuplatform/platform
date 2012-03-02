@@ -1,7 +1,7 @@
 .row.newsfeed{:id => "event-#{event.id}"}
   .span1
     = link_to (image_tag subject.url), subject
-  .span7
+  .span6
     %p
       %strong
       = link_to subject.name, subject
@@ -18,7 +18,7 @@
     .row
       .span1
         = link_to (image_tag comment.user.thumb), comment.user
-      .span6
+      .span5
         = sanitize truncate_html(comment.body,:length=>100),:tags=> %w(a)
     .bottom
       %span.time

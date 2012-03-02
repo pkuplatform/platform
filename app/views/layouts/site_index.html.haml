@@ -5,11 +5,13 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body.index
-    = render 'share/flashes'
-    = render 'share/header'
-    .container.site.index
-      .content
-        = yield
-      .sidebar
-        = render 'devise/sessions/new'
+  %body.site.index
+    = render 'share/navbar'
+    .container
+      .row
+        .span6.offset1
+          = yield
+        .span3
+          .sidebar
+            = render 'devise/sessions/new'
+            = render 'site/newsfeeds'

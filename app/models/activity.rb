@@ -23,7 +23,7 @@ class Activity < ActiveRecord::Base
   has_many :circles, :as => :owner, :dependent => :destroy
   has_many :users, :through => :circles
 
-  has_attached_file :poster, :styles => { :medium => "360x268#",:card => "160x120#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
+  has_attached_file :poster, :styles => { :medium => "570x330#",:card => "160x120#", :thumb => "64x64#" }, :default_url => "missing_:style.jpg"
   has_attached_file :banner, :styles => { :medium => "576x320#", :banner => "180x100#" }, :default_url => "missing_:style.jpg"
 
   after_create :initialize_circles

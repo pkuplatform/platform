@@ -250,8 +250,17 @@
       at: "在"
       before: "前"
       action: "%{action}了"
+      time: "%{holder}前"
+      type: "新%{holder}"
 
   share:
+    navbar:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "首页"
+      intro: "介绍"
     users:
       friends: "我的好友"
       rec_user: "推荐用户"
@@ -336,6 +345,9 @@
   devise:
     registrations:
       new:
+        sign_up: "注册"
+        cancel: "取消"
+        must: "(必填)"
         title: "注册"
         male: "男生"
         female: "女生"
@@ -450,6 +462,7 @@
     tabs:
       fans: "粉丝"
       follows: "关注"
+      friends: "好友"
       join_group: "参加社团"
       follow_group: "关注社团"
       join_activity: "参加活动"
@@ -523,7 +536,10 @@
       blog: "日志管理"
       picture: "相册管理"
     new:
-      title: "新建活动"
+      title: "创建新活动"
+      new: "创建"
+      cancel: "取消"
+      poster: "海报"
     form:
       save: "完成"
       poster: "海报"

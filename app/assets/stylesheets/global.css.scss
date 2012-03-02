@@ -1,6 +1,8 @@
 @import 'css3';
 @import 'mixin';
 
+.page-header h1 { font-weight: normal; }
+
 table { 
   width: 100%; 
   tr { margin: 5px 0px; }
@@ -78,44 +80,6 @@ body.form {
 .sign-in-form {
   margin-bottom: 35px;
 }
-.input-wrapper {
-  height: 25px;
-  width: 184px;
-  background: #fff;
-  margin: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 5px;
-  input {
-    border: none;
-    background: none;
-    line-height: 20px;
-    font-size: 15px;
-    margin-left:4px;
-    width: 180px;
-    float: right;
-  }
-  @include box-radius(5px);
-  background-image: -o-linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);
-  background-image: -moz-linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);
-  background-image: -webkit-linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);
-  background-image: -ms-linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);
-  background-image: linear-gradient(90deg , rgb(254,254,254) 0%, rgb(240,240,240) 100%);  @include box-inset(1px,0);
-  &.active.hovering, &.active {
-    @include box-shadow(5px,3px);
-    border: 1px solid #eee;
-  }
-  &.hovering {
-    @include box-shadow(10px,2px);
-  }
-  .sprite {
-    width: 16px;
-    height: 16px;
-    float:left;
-    margin-left: -35px;
-    margin-top: 8px;
-  }
-}
 
 .email {
   .sprite {
@@ -135,33 +99,7 @@ body.form {
   font-size: 18px;
   margin-top: 8px;
 }
-.button-wrapper {
-  &.sign-in {
-    float: right;
-    margin-right: 13px;
-  }
-  &.sign-up {
-    margin-bottom: 30px;
-  }
-  &.long {
-    input {
-    font-size:0.8em;
-    }
-  }
-  input {
-    background: url("sprites.png");
-    background-position: -21px -4px;
-    width: 96px;
-    height: 45px;
-    border: none;
-    font-size: 18px;
-  }
-  &.hovering {
-    input {background-position: -21px -49px;}
-  }
-}
 
-.submit.button-wrapper { text-align: right; margin-top: 30px; }
 .sign_up.box.form {
   margin-top: 80px;
   input[type=email], input[type=password] { width: 400px; }

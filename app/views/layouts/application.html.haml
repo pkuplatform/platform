@@ -9,15 +9,12 @@
     = render 'share/flashes'
     = render 'share/header'
     .container.application
-      .content
-        = yield
-      .sidebar
-        - if user_signed_in?
-          = render 'users/card' 
-          = render 'share/recommend_groups'
-          = render 'share/hot_groups'
-          = render 'share/user_recommend'
-        - else
-          = render 'devise/sessions/new'
-      .clear
-
+      .row
+        .span7.offset1
+          = yield
+        .span3.offset1
+          .sidebar
+            - if user_signed_in?
+              = render 'users/card' 
+            - else
+              = render 'devise/sessions/new'

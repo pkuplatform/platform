@@ -103,6 +103,7 @@ class ActivitiesController < ApplicationController
 
     @activity = Activity.new(params[:activity])
     @activity.status = Constant::Approving
+    @activity.boss = current_user
 
     respond_to do |format|
       if @activity.save
