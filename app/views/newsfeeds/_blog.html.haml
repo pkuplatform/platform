@@ -5,7 +5,7 @@
     %p
       %strong
         = link_to subject.name, subject
-        = t '.' + event.action
+        = t('.' + event.action)
         = link_to blog.bare_name, blog
     .center
       .blog-content= sanitize truncate_html(blog.content,:length=>250)

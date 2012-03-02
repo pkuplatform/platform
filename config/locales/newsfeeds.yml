@@ -4,13 +4,13 @@
     from: "来自"
     comments: "评论(%{count})"
     activity:
-      action: "发布活动"
+      create: "发布活动"
       like: "喜欢(%{count})"
       join: "参加(%{count})"
     blog:
-      action: "发表日志"
+      create: "发表日志"
     picture:
-      action: "上传图片"
+      upload: "上传图片"
     comment:
       action: "发表评论"
       at: "在"

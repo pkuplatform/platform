@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
   def index
     qs = "%"
     Hz2py.do(params[:q]).each_char{|c| qs+= c + '%'}
-    @profiles = Profile.where("pyname like ?",qs).limit(100)
+    @profiles = Profile.where("lower(pyname) like ?",qs.downcase).limit(100)
     qs = qs.gsub('%','#')
     @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
     @hashed = @profiles.shift(20).collect {|p| {:label=>"#{ApplicationController.helpers.image_tag(p.thumb)}<p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
   def token
     qs = "%"
     Hz2py.do(params[:q]).each_char{|c| qs+= c + '%'}
-    @profiles = Profile.where("pyname like ?",qs).limit(100)
+    @profiles = Profile.where("lower(pyname) like ?",qs.downcase).limit(100)
     qs = qs.gsub('%','#')
     @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
     @profiles = @profiles.shift(20).collect{|p| {:id => p.id, :avatar=>ApplicationController.helpers.image_tag(p.thumb),:search_name=>p.name+"(#{p.pyname})",:name=>p.name}}

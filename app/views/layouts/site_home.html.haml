@@ -8,7 +8,7 @@
   %body
     = render 'share/flashes'
     = render 'share/header'
-    .container.site.home.white
+    .container.site.home
       .row
         .span7.offset1
           = yield
@@ -16,4 +16,4 @@
           .sidebar
             = render 'users/card' 
             = render 'share/sidebar'
-    = render 'share/toolbar'
+      = render 'share/toolbar'

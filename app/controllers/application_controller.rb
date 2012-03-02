@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
   end
 
   def tags
-    @tags = ActsAsTaggableOn::Tag.select("name").where("name like ?", "#{params[:q]}%")
+    @tags = ActsAsTaggableOn::Tag.select("name").where("lower(name) like ?","#{params[:q]}%")
+    @tags |= ActsAsTaggableOn::Tag.select("name").all.select{|t|Hz2py.do(t.name).score(params[:q])>0.7} if @tags.count < 5
     respond_to do |format|
       format.json { render :json => @tags }
     end
