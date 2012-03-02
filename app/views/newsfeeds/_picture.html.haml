@@ -22,6 +22,6 @@
         = t 'newsfeeds.before'
       %span.from
         = t 'newsfeeds.from'
-        = link_to picture.imageable.name, picture.imageable
+        = link_to picture.imageable.name.truncate(40), picture.imageable
       %span.meta
         = t 'newsfeeds.comments', :count => picture.comments.count

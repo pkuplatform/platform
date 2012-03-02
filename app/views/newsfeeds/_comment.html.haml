@@ -15,15 +15,13 @@
       - else       
         = t event.action
         = link_to (t :comment), comment
-    .row
-      .span1
-        = link_to (image_tag comment.user.thumb), comment.user
-      .span5
-        = sanitize truncate_html(comment.body,:length=>100),:tags=> %w(a)
+    .center
+      %pre= sanitize truncate_html(comment.body,:length=>100),:tags=> %w(a)
+      .clear
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)
         = t 'newsfeeds.before'
       %span.from
         = t 'newsfeeds.from'
-        = link_to comment.commentable.name, comment.commentable
+        = link_to comment.commentable.name.truncate(40), comment.commentable

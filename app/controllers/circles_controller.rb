@@ -90,7 +90,7 @@ class CirclesController < ApplicationController
     @circles = @circles_all
     @new_circle = Circle.new
     if params[:cnamef]
-      @circles = @circles_all.select{|c|params[:cnamef].split(',').include?(c.name)}
+      @circles = @circles_all.select{|c|params[:cnamef].split(',').include?(c.id.to_s)}
       if @circles.empty?
         @circles = @circles_all
         @all = true

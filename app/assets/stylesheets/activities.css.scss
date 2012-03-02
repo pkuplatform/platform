@@ -11,10 +11,39 @@
 }
 
 .activity.board {
+
   padding: 20px 0px;
   margin-top: 30px;
   margin-bottom: 50px;
   margin-right: -30px;
+  .head { 
+    font-size: 16px; 
+    margin-bottom: 10px;
+  }
+  .category {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  .admin {
+    margin-bottom: 10px;
+  }
+  .description {
+    min-height: 110px;
+  }
+  .meta {
+    text-align: right;
+    @include link;
+  }
+  .side { 
+    text-align: center; 
+    margin-top: -50px;
+  }
+  .poster { margin-bottom: 10px; }
+  .role, .like-join, .description, .organization, .history {
+    margin-bottom: 5px;
+  }
+  @include box-shadow2;
+
 }
 
 

@@ -8,6 +8,9 @@
           = link_to (t '.like'), like_profile_path(@profile)
         - else
           = link_to (t '.dislike'), like_profile_path(@profile)
+    - else
+      .role
+        =t ".myself"
   .info.span5
     .name= @profile.name
     .realname= @profile.realname

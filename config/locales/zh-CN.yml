@@ -459,6 +459,7 @@
       activities: "活动(%{count})"
       like: "关注"
       dislike: "取消关注"
+      myself: "这是我自己"
     tabs:
       fans: "粉丝"
       follows: "关注"

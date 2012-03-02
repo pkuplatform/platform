@@ -1,9 +1,9 @@
 .row.comment{:id=>"comment-#{comment.id}", :class => "#{cycle('odd', 'even')}"}
   - if can? :delete, comment
     .delete= link_to "X", destroy_comment_path(comment), :method => :delete, :remote => true, :confirm => t(".sure_to_delete")
-  .span1
+  .span1.avatar
     = image_tag comment.user.thumb
-  .span6
+  .span6.body
     %span.name= link_to comment.user.name, comment.user
     %span.gray= t :at
     %span.time= distance_of_time_in_words_to_now(comment.created_at)

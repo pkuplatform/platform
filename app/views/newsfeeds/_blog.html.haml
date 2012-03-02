@@ -8,7 +8,7 @@
         = t('.' + event.action)
         = link_to blog.bare_name, blog
     .center
-      .blog-content= sanitize truncate_html(blog.content,:length=>250)
+      %pre= sanitize truncate_html(blog.content,:length=>250)
       .clear
     .bottom
       %span.time
@@ -16,6 +16,6 @@
         = t 'newsfeeds.before'
       %span.from
         = t 'newsfeeds.from'
-        = link_to blog.activity.name, blog.activity
+        = link_to blog.activity.name.truncate(40), blog.activity
       %span.meta
         = t 'newsfeeds.comments', :count => blog.comments.count

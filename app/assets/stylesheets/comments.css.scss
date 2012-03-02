@@ -23,11 +23,10 @@
   position: relative;
   .delete { position: absolute; right: 10px; top: 10px; }
   .comment-body { margin-top: 5px; }
+
 }
 
 .comment.active { 
-  margin-left: 0px;
-  .span1 { margin-left: 0px; }
+  .span1 { margin-left: 30px; }
   background-color: #DFF0D8; 
-  background-position: 30px 0px;
 }
