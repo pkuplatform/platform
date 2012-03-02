@@ -34,7 +34,7 @@ body.index.site {
   }
 }
 
-body.registration .container.main { background-color: white; }
+body.registration .container.main,.container.site { background-color: white; }
 
 .container.white { 
   @include box-shadow2;
@@ -43,9 +43,10 @@ body.registration .container.main { background-color: white; }
 .span7.offset1 { padding-top: 30px; }
 
 .sidebar { 
-  margin-left: -30px; 
-  margin-right: 30px;
+  margin-left: -40px; 
+  margin-right:20px;
 }
+
 
 .content-footer { width: 680px; bottom:0; position:absolute; height:100%; background:white; z-index:-1;    @include box-shadow2(-100px);}
 

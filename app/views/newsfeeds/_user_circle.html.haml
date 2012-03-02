@@ -11,13 +11,13 @@
       .thumb.row
         .span1
           = image_tag object.thumb
-        .span4
-          = sanitize(truncate_html(object.description,:length=>250), :attributes => %w(id class style href _cke_saved_href title alt width height))
+        .span5
+          = sanitize(truncate_html(object.description,:length=>500), :attributes => %w(id class style href _cke_saved_href title alt width height))
       .medium.row
-        .span3.thumbnail
+        .span3
           = image_tag object.medium
-        .span2
-          = sanitize(truncate_html(object.description,:length=>250), :attributes => %w(id class style href _cke_saved_href title alt width height))          
+        .span3
+          = sanitize(truncate_html(object.description,:length=>500), :attributes => %w(id class style href _cke_saved_href title alt width height))          
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)
