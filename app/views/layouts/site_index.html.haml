@@ -6,12 +6,12 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body.site.index
-    = render 'share/flashes'
-    = render 'share/header'
+    = render 'share/navbar'
     .container
       .row
-        .span7.offset1
+        .span6.offset1
           = yield
-        .span3.offset1
+        .span3
           .sidebar
             = render 'devise/sessions/new'
+            = render 'site/newsfeeds'

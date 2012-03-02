@@ -1,17 +1,42 @@
 @import 'css3';
 @import 'mixin';
 
+.white { background-color: white; }
+
 body { 
   padding-top: 80px; 
   background-color: #B0E0FA;
 }
 
-body.registration { background: url('husk.png'); }
-body.index.site .container { background-color: #B0E0FA; }
-body.index.site .newsfeeds { background-color: white; }
+.shadow.span8 { 
+  @include box-shadow2;
+  padding: 20px;
+}
 
-.container { 
-  background-color: white; 
+body.index.site { 
+  .news { 
+    margin-top: 10px; 
+    .time { float: right; }
+  }
+  .label { font-weight: normal; }
+  .sidebar { margin: 0px; }
+  .session { 
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+  .sidebar label { float: left; }
+  .sidebar button.btn { float: right; }
+  .sidebar .email input, .sidebar .password input { width: 100%; }
+  padding-top: 200px; 
+  img { 
+    @include box-radius(5px); 
+    @include box-shadow2;
+  }
+}
+
+body.registration .container.main { background-color: white; }
+
+.container.white { 
   @include box-shadow2;
 }
 
@@ -23,7 +48,6 @@ body.index.site .newsfeeds { background-color: white; }
 }
 
 .content-footer { width: 680px; bottom:0; position:absolute; height:100%; background:white; z-index:-1;    @include box-shadow2(-100px);}
-
 
 
 body.form {
@@ -201,7 +225,7 @@ ul.dropdown li:hover                { @include box-inset(30px,0px,rgba(0,123,205
 /* 
  LEVEL TWO
 */
-ul.dropdown ul { visibility: hidden; position: absolute; top: 100%; left: 0; right: 0; 
+ul.dropdown ul { visibility: hidden; position: absolute; top: 100%; left: 0; right: 0; margin:0;
 
 }
 ul.dropdown ul li { 

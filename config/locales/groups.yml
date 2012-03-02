@@ -26,7 +26,7 @@
       back: "<<<"
       title: "%{name} 的活动"
       warn: "还没有任何活动哦~"
-      more: "更多 >>"
+      more: "更多"
     comments:
       back: "<<<"
       title: "%{name} 的评论"
@@ -36,14 +36,11 @@
       back: "<<<"
       title: "%{name} 的成员"
     description:
-      title: "社团介绍"
-      back: "<<<"
+      header: "社团介绍"
     history:
-      title: "社团历史"
-      back: "<<<"
+      header: "社团历史"
     organization:
-      title: "组织构架"
-      back: "<<<"
+      header: "组织构架"
     introduction:
       title: "组织简介"
     join:

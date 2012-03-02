@@ -100,8 +100,6 @@ Platform::Application.routes.draw do
       get 'exit'
       get 'unlike'
       get 'like'
-      get 'show_members'
-      post 'members/edit' => 'activities#edit_members'
     end
     resources :blogs 
 

@@ -16,7 +16,7 @@ $ ->
   # site index pictures cycle
   $('.pics').cycle
     fx: "fade",
-    pager: '.pager',
+    pager: '.pagers',
     pagerAnchorBuilder: (idx, slide) ->
       "<li><a href='#'><img src='" + slide.src + "' width='150' /></a></li>"
 
@@ -82,3 +82,5 @@ $ ->
     "prePopulate" : JSON.parse($("#tags-json").html())
     "theme" : "facebook"
     "hintText" : "输入要搜索的标签"
+
+  $('select').addClass 'span1'

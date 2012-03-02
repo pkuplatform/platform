@@ -88,9 +88,6 @@ class User < ActiveRecord::Base
     profile.avatar.url(size)
   end
 
-  def nickname
-    profile.nickname
-  end
 
   def phone
     profile.phone

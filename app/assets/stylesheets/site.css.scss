@@ -19,10 +19,10 @@
   min-height: 260px;
   overflow: hidden;
   .activeSlide img { border: 0px solid #999; }
+  .pagers { margin: 0px; padding: 0px; }
   .banner { 
     ul { overflow: hidden; margin-bottom: -2px; }
     li { float: left; list-style: none; text-align: center; }
-    margin-right: 18px;
     width: 152px;    
     float: left;
     img { width:150px; }
@@ -59,4 +59,9 @@
   margin-bottom: 30px;  
   padding: 20px;
   @include box-shadow2;
+}
+
+.site.index .newsfeeds {
+  margin: 0px -30px;
+  padding: 0px 30px;
 }

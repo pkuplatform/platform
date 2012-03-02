@@ -6,5 +6,6 @@
       .warn= t '.warn'
     - else
       = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
-    .more
-      = link_to (t '.more'), activities_group_path if @more
+  .more.row
+    - if @more
+      = link_to (t '.more'), activities_group_path, :class => 'btn btn-info span3 offset2'

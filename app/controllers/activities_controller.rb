@@ -103,6 +103,7 @@ class ActivitiesController < ApplicationController
 
     @activity = Activity.new(params[:activity])
     @activity.status = Constant::Approving
+    @activity.boss = current_user
 
     respond_to do |format|
       if @activity.save
@@ -187,13 +188,6 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       format.js { render 'join' }
     end
-  end
-
-  def show_members
-    @activity = Activity.find(params[:id])
-    @group = @activity.group
-    @tenders = @activity.tenders
-    @members = @activity.members
   end
 
   def tag_cloud

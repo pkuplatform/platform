@@ -8,5 +8,13 @@
   %body
     = render 'share/flashes'
     = render 'share/header'
-    .container.groups.show
-      = yield
+    .container.groups.show.white
+      .row
+        .span7.offset1
+          = yield
+        .span3.offset1
+          .sidebar
+            = render 'users/card'
+            = render 'announcement'
+            = render 'toolbar'
+            = render :partial => 'members'

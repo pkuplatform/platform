@@ -14,7 +14,7 @@ class Profile < ActiveRecord::Base
 
   define_index do
     indexes :name, :sortable => true
-    indexes :nickname, :sortable => true
+    indexes :realname, :sortable => true
     indexes :description
   end
 

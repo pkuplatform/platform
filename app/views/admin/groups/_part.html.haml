@@ -1,7 +1,7 @@
 - members.each do |member|
   %tr{:class => cycle('odd', 'even')}
     %td= member.name
-    %td= member.nickname
+    %td= member.realname
     %td= member.profile.student_id
     %td
       = form_tag members_admin_group_path, :remote => true do

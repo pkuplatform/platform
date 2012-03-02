@@ -1,9 +1,4 @@
-.row
-  .span7.offset1
-    = sanitize(@group.description, :attributes => %w(id class style href _cke_saved_href title alt width height))  
-  .span3.offset1
-    .sidebar
-      = render 'users/card'
-      = render 'announcement'
-      = render 'toolbar'
-      = render :partial => 'members'
+.page-header
+  %h1= t '.header'
+.description
+  = sanitize(@group.description, :attributes => %w(id class style href _cke_saved_href title alt width height))  
