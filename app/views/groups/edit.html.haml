@@ -1,10 +1,44 @@
-.slink
-  %ul
-    %li.first= t '.other'
-    %li= link_to (t '.intr'), introduction_admin_group_path
-    %li= link_to (t '.desc'), description_admin_group_path
-    %li= link_to (t '.hist'), history_admin_group_path
-    %li= link_to (t '.orga'), organization_admin_group_path
-.groups.edit.box.form
-  .title= t ".title"
-  = render :partial => 'form', :locals => { :type => 'edit' }
+.btn-group
+  = link_to (t '.intr'), introduction_admin_group_path, :class => 'btn'
+  = link_to (t '.desc'), description_admin_group_path, :class => 'btn'
+  = link_to (t '.hist'), history_admin_group_path, :class => 'btn'
+  = link_to (t '.orga'), organization_admin_group_path, :class => 'btn'
+.edit-group
+  = form_for @group, :html => {:class => 'form-horizontal'} do |f|
+    %fieldset
+      %legend
+        = t '.title'
+      .control-group
+        = f.label :name, (t '.name'), :class => 'control-label'
+        .controls
+          = f.text_field :name
+      .control-group
+        = f.label :slogan, (t '.slogan'), :class => 'control-label'
+        .controls
+          = f.text_field :slogan
+      .control-group
+        = f.label :email, (t '.email'), :class => 'control-label'
+        .controls
+          = f.text_field :email
+      .control-group
+        = f.label :founded_at, (t '.founded'), :class => 'control-label'
+        .controls
+          = f.date_select :founded_at, :start_year => 1980
+      .control-group
+        = f.label :logo, (t '.logo'), :class => 'control-label'
+        .controls
+          = f.file_field :logo
+      .control-group
+        = f.label :category, (t '.category'), :class => 'control-label'
+        .controls
+          = f.collection_select :category_id, Category.all, :id, :translated_name
+      -if @group.errors.any?
+        #error_explanation
+          %ul
+            - @group.errors.full_messages.each do |msg|
+              %li= msg
+      .form-actions
+        %button.btn.btn-primary{:type => 'submit'}
+          = t '.new'
+        %button.btn
+          = t '.cancel'

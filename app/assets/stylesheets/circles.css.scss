@@ -2,6 +2,8 @@
 @import 'mixin';
 .circle-users{
 
+  label select, label input { display: inline; }
+
   padding: 30px;
 
   .filters {
@@ -11,8 +13,9 @@
     }
     #new {
       .input-wrapper {
-        width:130px;
-        input { width:125px;}
+        width:137px;
+        margin-left: 10px;
+        input { width:132px;}
       }
     }
     .circle,.apply {
@@ -24,8 +27,8 @@
       display:block;
       z-index:100;
       position:absolute;
-      left:155px;
-      margin-top:17px;
+      right:10px;
+      top:15px;
     }
     label {
       padding:5px;

@@ -1,23 +1,19 @@
-.sms.admin.app-form
-  .back
-    = link_to t('.back'), @group
-  .title
-    = t '.title'
-  .box
-    = form_tag sms_push_group_path(@group) do
-      = text_area_tag :content, nil, :placeholder => (t ".holder")
-      .button-wrapper
-        = submit_tag t '.send'
-  .list
-    .head
-      = t '.head'
-    %table
-      %tr
-        %th= t '.content'
-        %th= t '.time'
-        %th= t '.status'
-      - @sms.each do |sms|
-        %tr{:class => cycle('odd', 'even')}
-          %td= sms.content
-          %td= l sms.created_at
-          %td= sms.st
+.page-header
+  %h1= t '.title'
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t '.content'
+      %th= t '.time'
+      %th= t '.status'
+  %tbody
+    - @sms.each do |sms|
+      %tr{:class => cycle('odd', 'even')}
+        %td= sms.content
+        %td= l sms.created_at
+        %td= sms.st
+.send-sms
+  = form_tag sms_push_group_path(@group), :html => {:class => 'form-forizontal'} do
+    = text_area_tag :content, nil, :placeholder => (t ".holder"), :class => 'span5'
+    %button.btn.btn-primary.btn-large
+      = t '.send'

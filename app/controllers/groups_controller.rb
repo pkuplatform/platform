@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
       "groups_index"
     when "show"
       "groups_show"
-    when "new", "edit"
+    when "new"
       "form"
     else
       "groups_show"
@@ -158,7 +158,6 @@ class GroupsController < ApplicationController
     authorize! :like, @group
 
     @group.fan_circle.add(current_user)
-    head :ok
   end
 
   def unlike
@@ -166,7 +165,6 @@ class GroupsController < ApplicationController
     authorize! :unlike, @group
 
     @group.fan_circle.remove(current_user)
-    head :ok
   end
 
   def join
@@ -174,7 +172,6 @@ class GroupsController < ApplicationController
     authorize! :join, @group
 
     @group.applicant_circle.add(current_user)
-    head :ok
   end
 
   def exit
@@ -182,7 +179,7 @@ class GroupsController < ApplicationController
     authorize! :exit, @group
 
     @group.member_circle.remove(current_user)
-    head :ok
+    render :join
   end
 
   def description

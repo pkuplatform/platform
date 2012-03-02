@@ -1,6 +1,6 @@
 class SmsController < ApplicationController
   before_filter :authenticate_user!
-  layout "form"
+  layout "groups_show"
 
   def index
     @group = Group.find(params[:id])
