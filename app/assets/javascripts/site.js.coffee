@@ -84,3 +84,5 @@ $ ->
     "hintText" : "输入要搜索的标签"
 
   $('select').addClass 'span1'
+
+  $('select#group_category_id').addClass 'span2'

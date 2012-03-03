@@ -365,8 +365,14 @@
   form:
     second_building_applications:
       new:
-        back: "<<<"
         title: "申请二教教室"
+        new: "创建"
+        cancel: "取消"
+        name: "姓名"
+        fuzeren: "负责人"
+        zhujiangren: "主讲人"
+        info: "活动信息"
+        appr: "审批信息"
       form:
         submit: "提交"
       show:
@@ -392,6 +398,10 @@
         center: "指导中心意见"
         status: "状态"
         classroom: "教室"
+        fuzeren: "负责人"
+        zhujiangren: "主讲人"
+        info: "活动信息"
+        appr: "审批状态"
 
   blogs:
     new:
@@ -541,6 +551,7 @@
       new: "创建"
       cancel: "取消"
       poster: "海报"
+      desc: "介绍"
     form:
       save: "完成"
       poster: "海报"
@@ -751,12 +762,12 @@
       usercircle: "圈子"
       goto: "》"
       new: "新圈子"
-    admin: "管理"
-    member: "成员"
+    admin: "管理员"
+    member: "全体成员"
     fan: "粉丝"
     follow: "关注"
     friend: "朋友"
-    applicant: "申请加入"
+    applicant: "申请加入者"
     show:
       title: "%{owner}的%{name}圈子"
       actions: "操作"

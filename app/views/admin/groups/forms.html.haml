@@ -1,16 +1,14 @@
-.admin.app-form
-  .back
-    = link_to (t '.back'), @group
-  .title
-    = t '.title'
-    .new
-      = link_to (t '.new'), second_building_new_form_group_path
-  %table
+.page-header
+  %h1= t '.title'
+  .add= link_to (t '.new'), second_building_new_form_group_path
+%table.table.table-striped
+  %thead
     %tr
       %th= t '.id'
       %th= t '.datetime'
       %th= t '.status'
       %th= t '.classroom'
+  %tbody
     - @second_buildings.each do |f|
       %tr{:class => cycle('odd', 'even')}
         %td

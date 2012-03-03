@@ -5,11 +5,11 @@
     .control-group
       = f.label :title, (t :title), :class => 'control-label'
       .controls
-        = f.text_field :title
+        = f.text_field :title, :class => 'span4'
     .control-group
       = f.label :tag_list, (t :tags), :class => 'control-label'
       .controls
-        = f.text_field :tag_list, :class => "tags_input"
+        = f.text_field :tag_list, :class => "tags_input span4"
     .control-group
       = f.label :start_at, (t :start_at), :class => 'control-label'
       .controls
@@ -21,7 +21,7 @@
     .control-group
       = f.label :location, (t :location), :class => 'control-label'
       .controls
-        = f.text_field :location
+        = f.text_field :location, :class => 'span4'
     .control-group
       = f.label :public, (t :public), :class => 'control-label'
       .controls
@@ -31,8 +31,9 @@
       .controls
         = f.file_field :poster
     .control-group
+      = f.label :description, (t '.desc'), :class => 'control-label'
       .controls
-        = f.text_area :description
+        = f.text_area :description, :class => 'span4', :rows => 10
     -if @activity.errors.any?
       #error_explanation
         %h2= "#{pluralize(@activity.errors.count, "error")} prohibited this activity from being saved:"

@@ -1,6 +1,4 @@
 .comments
-  .header
-    %span= t :comment
-    = link_to (t :comments_more), '#' if @core
-  %div
-    = render :partial => "share/comments", :locals => { :object => @activity }
+  %span.label.label-info
+    = t :comment
+  = render :partial => "share/comments", :locals => { :object => @activity }

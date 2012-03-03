@@ -1,9 +1,8 @@
-.group.form.admin
-  .back
-    = link_to (t '.back'), edit_group_path
-  .title
+.page-header
+  %h1
     = t '.title'
-  = form_for @group do |f|
-    = f.cktext_area :organization, :height => 300
-    .button-wrapper
-      = f.submit (t '.save')
+= form_for @group do |f|
+  = f.cktext_area :organization
+  .button-wrapper.row
+    %button.btn.btn-info.span3.offset2
+      = t '.save'
