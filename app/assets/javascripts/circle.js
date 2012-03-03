@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $('.users-table table').dataTable({
-    "bJQueryUI": true,
     "aoColumns":[
       { "bSortable": false},
       null,

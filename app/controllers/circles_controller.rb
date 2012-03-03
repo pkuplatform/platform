@@ -3,7 +3,7 @@ class CirclesController < ApplicationController
   # GET /circles.json
   helper_method :owner, :circle_path, :circle_url, :circles_path, :circles_url
   helper_method :edit_circle_path, :edit_circle_url, :new_circle_path, :new_circle_url
-  layout "circle"
+  layout "groups_show"
   before_filter :build_owner
 
   def build_owner
