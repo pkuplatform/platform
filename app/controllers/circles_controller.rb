@@ -3,8 +3,20 @@ class CirclesController < ApplicationController
   # GET /circles.json
   helper_method :owner, :circle_path, :circle_url, :circles_path, :circles_url
   helper_method :edit_circle_path, :edit_circle_url, :new_circle_path, :new_circle_url
-  layout "groups_show"
+  layout :resolve_layout
+
   before_filter :build_owner
+
+  private
+  def resolve_layout
+    if owner.is_a?(Group)
+      "groups_show"
+    elsif owner.is_a?(Activity)
+      "activities_show"
+    else
+      "profile"
+    end
+  end
 
   def build_owner
     if owner.is_a?(Group)
