@@ -18,18 +18,21 @@
     #fans.tab-pane.active
       .thumbnails
         - @fans.each do |member|
-          = link_to (image_tag member.thumb), member
-          = link_to member.name, member
+          .span1
+            = link_to (image_tag member.thumb), member
+            = link_to member.name, member
     #follows.tab-pane
       .thumbnails
         - @follows.each do |member|
-          = link_to (image_tag member.thumb), member
-          = link_to member.name, member
+          .span1
+            = link_to (image_tag member.thumb), member
+            = link_to member.name, member
     #friends.tab-pane
       .thumbnails
         - @friends.each do |member|
-          = link_to (image_tag member.thumb), member
-          = link_to member.name, member
+          .span1
+            = link_to (image_tag member.thumb), member
+            = link_to member.name, member
     #join-group.tab-pane
       .thumbnails
         - @groups.each do |group|

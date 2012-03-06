@@ -4,8 +4,6 @@
 
   label select, label input { display: inline; }
 
-  padding: 30px;
-
   .filters {
     float:left;
     #cnamef {
@@ -42,7 +40,7 @@
   }
 
   .users-table {
-    width: 700px;
+    width: 650px;
     padding:10px;
     float:right;
     .ui-toolbar {

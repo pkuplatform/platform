@@ -9,7 +9,7 @@
   .tab-content
     #friends.tab-pane.active
       .thumbnails
-        = current_user.friends.each do |user|
+        - current_user.friends.each do |user|
           .span1
             = link_to (image_tag user.thumb), user
             = link_to user.name.truncate(20), user
