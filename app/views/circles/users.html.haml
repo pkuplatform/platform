@@ -1,6 +1,42 @@
 .page-header
   %h1= t '.title', :owner => owner.name
 .circle-users
+.back= link_to '.owner', owner 
+%h1.title= t '.title', :owner => owner.name
+.circle-users   
+  .filters
+    #cnamef
+      .circle
+        -if @all
+          =check_box_tag :all,"",:checked => :checked
+        -else
+          =check_box_tag :all
+        =label_tag :all, (t '.all')
+      .clear
+      - @circles_all.each do |circle|
+        .circle
+          -if !@all&&@circles.include?(circle)
+            =check_box_tag circle.id,"",:checked => :checked
+          -else
+            =check_box_tag circle.id
+          =label_tag circle.id,t("circles."+circle.name)
+          =link_to (t ".goto"),circle, :class=>'ui-icon ui-icon-folder-open circle-link'
+        .clear
+    #cwayf
+      .apply
+        -if @int
+          =check_box_tag :int,"",:checked => :checked
+          =label_tag :int, (t '.cap')
+        -else
+          =check_box_tag :int,""
+          =label_tag :int, (t '.int')
+      .clear
+    #new
+      #new-circle.input-wrapper.need_hide
+        = form_tag circles_path do
+          =text_field_tag :name
+          =submit_tag (t '.new'),:class=>"hide"
+      = link_to (t '.new'),"javascript:$('#new-circle').toggle()", :class=>'ui-icon ui-icon-plusthick'
   .users-table
     %table
       %thead
