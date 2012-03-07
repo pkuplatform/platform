@@ -1,0 +1,23 @@
+%ul.navbar.nav.nav-list
+  %li.nav-header
+    = t '.navbar'
+  %li
+    %a{:href => "#{group_path(@group)}"}
+      %i.icon-home
+      = t '.home'
+  %li
+    %a{:href => "#{description_group_path(@group)}"}
+      %i.icon-file
+      = t '.desc'
+  %li
+    %a{:href => "#{organization_group_path(@group)}"}
+      %i.icon-bookmark
+      = t '.org'
+  %li
+    %a{:href => "#{history_group_path(@group)}"}
+      %i.icon-flag
+      = t '.his'
+  %li
+    %a{:href => "#{activities_group_path(@group)}"}
+      %i.icon-heart
+      = t '.acts'

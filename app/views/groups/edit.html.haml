@@ -23,7 +23,7 @@
       .control-group
         = f.label :founded_at, (t '.founded'), :class => 'control-label'
         .controls
-          = f.date_select :founded_at, :start_year => 1980
+          = f.date_select :founded_at, { :start_year => 1980 }, { :class => 'span1' }
       .control-group
         = f.label :logo, (t '.logo'), :class => 'control-label'
         .controls

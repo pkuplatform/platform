@@ -1,27 +1,22 @@
-.admin.app-form
-  .back
-    = link_to (t '.back'), admin_path
-  .title
-    = t '.title'
-  .filter
-    %ul
-      %li= t '.filter'
-      %li= link_to t('.all'), admin_forms_path(:filter => "all")
-      %li= link_to t('.approving'), admin_forms_path(:filter => "approving")
-      %li= link_to t('.approved'), admin_forms_path(:filter => "approved")
-      %li= link_to t('.rejected'), admin_forms_path(:filter => "rejected")
-  %table
-    %tr
-      %th= t '.group'
-      %th= t '.apptime'
-      %th= t '.status'
-      %th= t '.detail'
-    - @forms.each do |f|
-      %tr{:class => cycle('odd', 'even')}
-        %td= f.group.name
-        %td
-          = l f.huodongshijian
-          = t '.time', :start => f.startclass, :end => f.endclass
-        %td= t(show_status f)
-        %td= link_to (t '.detail'), admin_form_path(f)
-  = will_paginate @forms
+.page-header
+  %h1= t '.title'
+.btn-group
+  = link_to t('.all'), admin_forms_path(:filter => "all"), :class => 'btn'
+  = link_to t('.approving'), admin_forms_path(:filter => "approving"), :class => 'btn'
+  = link_to t('.approved'), admin_forms_path(:filter => "approved"), :class => 'btn'
+  = link_to t('.rejected'), admin_forms_path(:filter => "rejected"), :class => 'btn'
+%table.table.table-striped
+  %tr
+    %th= t '.group'
+    %th= t '.apptime'
+    %th= t '.status'
+    %th= t '.detail'
+  - @forms.each do |f|
+    %tr{:class => cycle('odd', 'even')}
+      %td= f.group.name
+      %td
+        = l f.huodongshijian
+        = t '.time', :start => f.startclass, :end => f.endclass
+      %td= t(show_status f)
+      %td= link_to (t '.detail'), admin_form_path(f)
+= will_paginate @forms, :renderer => PaginationListLinkRenderer

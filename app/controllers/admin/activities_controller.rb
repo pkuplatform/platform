@@ -1,5 +1,5 @@
 class Admin::ActivitiesController < ApplicationController
-  layout "form"
+  layout "admin"
 
   def index
     authorize! :admin, :backend
@@ -17,9 +17,9 @@ class Admin::ActivitiesController < ApplicationController
     end
 
     if filter.nil?
-      @activities = Activity.paginate(:page => params[:page], :per_page => 10)
+      @activities = Activity.paginate(:page => params[:page], :per_page => 15)
     else
-      @activities = Activity.where(:status => filter).paginate(:page => params[:page], :per_page => 10)
+      @activities = Activity.where(:status => filter).paginate(:page => params[:page], :per_page => 15)
     end
   end
 

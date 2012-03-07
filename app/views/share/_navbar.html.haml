@@ -5,9 +5,11 @@
         = t '.brand'
       %ul.nav
         %li.active
-          = link_to t(".home"), '#'
+          = link_to t(".home"), home_path
         %li
-          = link_to t(".intro"), '#'
+          = link_to t('.groups'), groups_path
+        %li
+          = link_to t('.activities'), activities_path
       %ul.nav.pull-right
         %li.dropdown
           %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown'}

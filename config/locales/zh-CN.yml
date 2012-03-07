@@ -259,8 +259,9 @@
       lang: "语言"
       zh_cn: "中文"
       eng: "English"
-      home: "首页"
-      intro: "介绍"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"
     users:
       friends: "我的好友"
       rec_user: "推荐用户"
@@ -607,6 +608,12 @@
       empty: "还没有上传图片哦~"
 
   admin:
+    navbar:
+      navbar: "导航"
+      form: "表单管理"
+      members: "成员管理"
+      groups: "社团管理"
+      activities: "活动管理"
     members:
       index:
         back: "<<<"
@@ -791,3 +798,50 @@
     uncreatable: "你不能给%{owner}创建圈子"
     undeletable: "%{owner}的%{name}圈子不允许删除"
 
+  layouts:
+    site_home:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"
+    groups_index:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"
+    activities_index:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"
+    groups_show:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"
+      group: "社团主页"
+      acts: "活动列表"
+      info: "社团信息"
+      des: "社团介绍"
+      his: "社团历史"
+      org: "组织构架"
+    admin:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"

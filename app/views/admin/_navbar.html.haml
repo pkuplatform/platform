@@ -1,0 +1,19 @@
+%ul.navbar.nav.nav-list
+  %li.nav-header
+    = t '.navbar'
+  %li
+    %a{:href => "#{admin_forms_path}"}
+      %i.icon-home
+      = t '.form'
+  %li
+    %a{:href => "#{admin_members_index_path}"}
+      %i.icon-file
+      = t '.members'
+  %li
+    %a{:href => "#{admin_groups_index_path}"}
+      %i.icon-bookmark
+      = t '.groups'
+  %li
+    %a{:href => "#{admin_activities_index_path}"}
+      %i.icon-flag
+      = t '.activities'

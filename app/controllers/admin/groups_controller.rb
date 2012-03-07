@@ -1,5 +1,5 @@
 class Admin::GroupsController < ApplicationController
-  layout "groups_show"
+  layout "admin"
 
   def index
     authorize! :admin, :backend
@@ -17,9 +17,9 @@ class Admin::GroupsController < ApplicationController
     end
 
     if filter.nil?
-      @groups = Group.paginate(:page => params[:page], :per_page => 10)
+      @groups = Group.paginate(:page => params[:page], :per_page => 15)
     else
-      @groups = Group.where(:status => filter).paginate(:page => params[:page], :per_page => 10)
+      @groups = Group.where(:status => filter).paginate(:page => params[:page], :per_page => 15)
     end
   end
 

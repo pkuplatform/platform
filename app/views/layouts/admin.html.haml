@@ -15,7 +15,7 @@
           %ul.nav
             %li
               = link_to t(".home"), home_path
-            %li.active
+            %li
               = link_to t('.groups'), groups_path
             %li
               = link_to t('.activities'), activities_path
@@ -29,11 +29,11 @@
                   = link_to t('.zh_cn'), '#'
                 %li
                   = link_to t('.eng'), '#'
-    .container.groups.index.white
+    .container.site.home
       .row
         .span7.offset1
           = yield
         .span3.offset1
           .sidebar
             = render 'users/card' 
-            = render 'share/sidebar'
+            = render 'admin/navbar'
