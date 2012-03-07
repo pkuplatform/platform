@@ -1,3 +1,35 @@
-.title= t ".title"
-.box.form
-  = render 'form'
+= form_for [@activity ,@picture], :html => { :multipart => true, :class => "form-horizontal" } do |f|
+  %fieldset
+    %legend
+      = t '.title'
+    .control-group
+      = f.label :album, (t :album), :class => 'control-label'
+      .controls
+        = collection_select(:picture, :album_id, @activity.albums, :id, :title, :selected => params[:album_id])
+        = link_to (t ".album"), '#album-modal', :class => "btn", 'data-toggle' => 'modal'
+    .control-group
+      = f.label :remark,(t :remark), :class => 'control-label'
+      .controls
+        = f.text_area :remark, :rows => 1
+    .control-group
+      = f.label :photo, (t '.photo'), :class => 'control-label'
+      .controls
+        = f.file_field :photo
+    .form-actions
+      = f.submit t(:upload), :class => 'btn btn-primary'
+
+.modal.fade#album-modal
+  = form_for [@activity, @album], :html => { :class => "form-horizontal" } do |f|
+    .modal-header
+      = link_to 'x', '#', :class => 'close', 'data-dismiss' => 'modal'
+      %h3
+        = t '.album'
+    .modal-body
+      .control-group
+        = f.label :title, t('.name'), :class => 'control-label'
+        .controls
+          = f.text_field :title
+        = hidden_field_tag :activity_id, @activity.id
+    .modal-footer
+      = f.submit t('.save'), :class => 'btn btn-primary'
+      = link_to t('.close'), '#', :class => 'btn', 'data-dismiss' => 'modal'

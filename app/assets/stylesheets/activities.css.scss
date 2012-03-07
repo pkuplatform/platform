@@ -5,6 +5,11 @@
 @import 'mixin';
 @import 'css3';
 
+.activities .label {
+  font-size: 1.3em;
+  margin-left: -30px;
+}
+
 .activity-blogs,.activity-albums,.activity-pictures {
   @include title;
   @include back;
@@ -46,34 +51,14 @@
 
 }
 
-
-.box.image_carousel {
-  padding: 15px 0px 15px 15px;
+.carousel-items {
   position: relative;
-  height: 160px;
 }
 
-.image-wrap {
-  float: left;
-  margin: 10px;
-  .image-mask {
-    @include glossy(20px);
-    height: 138px;
-    width: 138px;
-    position: relative;
-    top: 1px;
-    left: 1px;
-    z-index: 122;
-  }
-  img {
-  @include box-radius(20px);
-  border: 1px solid #ccc;
-  display: block;
-  float: left;
-  height: 138px;
-  width: 138px;
-  }
+.image_carousel {
+  position: relative;
 }
+
 a.prev, a.next {
   width: 36px;
   height: 36px;
@@ -81,19 +66,8 @@ a.prev, a.next {
   position: absolute;
   top: 75px;
 }
-a.prev {      left: -22px;
-          background-position: 0 -36px; 
-          background-image: url('fancybox_sprite.png');
-        }
-a.next {      right: -22px;
-          background-position: 0 -72px; 
-          background-image: url('fancybox_sprite.png');
-
-        }
-
-a.prev span, a.next span {
-  display: none;
-}
+a.prev { left: -30px; }
+a.next { right: -30px; }
 .clearfix {
   float: none;
   clear: both;

@@ -1,5 +1,12 @@
-.box.mailbox
-  .box-header= render 'header'
-  .box-body
-    = render 'new'
-.clear
+.mailbox
+  = render 'header'
+  .mails.new
+    = form_tag create_mailboxes_path, :class => 'form-horizontal' do
+      .control-group
+        = text_field_tag :subject, "", :class => "span7", :placeholder => (t ".topic")
+      .control-group
+        = text_field_tag :user_tokens,"", :placeholder=>(t :receiver), :class=>"token-input"
+      .control-group
+        = cktext_area_tag :body, "", :toolbar => "Basic"
+      .control-group
+        = button_tag t("send"), :class => "btn btn-primary"

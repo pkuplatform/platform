@@ -1,9 +1,13 @@
 class AlbumsController < ApplicationController
+  before_filter :authenticate_user!
+  layout 'activities_show'
+
   # GET /albums
   # GET /albums.json
 
   def index
     @activity = Activity.find(params[:activity_id])
+    @group = @activity.group
     @albums = @activity.albums
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +20,7 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
     @activity = @album.imageable
+    @group = @activity.group
     @pictures = @album.pictures
 
     respond_to do |format|

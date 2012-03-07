@@ -60,12 +60,6 @@ $ ->
   $('.flashes:not(.registration .flashes)').each ->
     $(this).purr()
 
-  $(".carousel-items").carousel
-    auto : false
-    prev : ".prev,left"
-    next : ".next,right"
-    width: "98%"
-
   $(".groups form li label").click ->
     id = $(this).attr('for')
     $(".groups form li").hide()
@@ -83,6 +77,6 @@ $ ->
     "theme" : "facebook"
     "hintText" : "输入要搜索的标签"
 
-  $('select').addClass 'span1'
-
-  $('select#group_category_id').addClass 'span2'
+  # modal
+  $('.modal').modal
+    show: false

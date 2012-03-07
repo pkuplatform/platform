@@ -2,10 +2,8 @@
   %span.label.label-info
     = t "Blog"
   %div
-    - if @activity.blogs.empty?
-      .warn= t '.empty'
-    - else
-      = render :partial => 'blogs/blog', :collection => @activity.blogs, :as => :blog
+    = t '.empty' if @activity.blogs.empty?
+    = render :partial => 'blogs/blog', :collection => @activity.blogs
   .more.row
     - if @activity.blogs.count>3
       = link_to (t '.more'), activities_blog_path, :class => 'btn btn-info span3 offset2'

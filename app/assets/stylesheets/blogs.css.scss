@@ -6,73 +6,16 @@
 @import 'css3';
 @import 'mixin';
 
-.blogs {
-  margin-bottom: 50px;
-  .blog.odd  { 
-    .avatar { float: left; } 
-    .body { 
-      @include lbubble;
-      float: right; 
-      margin: 20px 0px 20px 2%;
-    }
-  }
-  .blog.even { 
-    .avatar { float: right; } 
-    .body { 
-      @include rbubble;
-      float: left; 
-      margin: 20px 2% 20px 0px;
-    }
-  }
-  li { 
-    list-style:none;
-    .avatar { 
-      @include box-radius; 
-      overflow: hidden; 
-      width: 100px;
-      height: 100px;
-      img { width: 100px; }
-      margin: 20px 0px;
-    }
-    .body {
-      min-height: 100px;
-      background-color: white;
-      width: 510px;
-      padding: 20px;
-      @include box-radius;
-      @include box-shadow2;
-      @include box-gradual-change;
-      font-size: 16px;
-      .name { @include orange-link; }
-      .gray { color: #BBB; } 
-      .time { @include green; }
-      .title {
-        @include orange-link;
-        margin: 5px;
-      }
-      .content {
-        color: #555;
-        margin: 10px; 
-        min-height:30px;
-        width: 100%;
-      }
-    }
-  }
-}
-.blog-content {
-  &,li,p,br,hr,div,span{
-    font-size: 0.8em;
-    line-height:1;
-  }
-  ol,ul {
-    *margin-right:0px;
-    padding:0 40px;
-  }
-  padding: 20px;
-}
+.blogs { margin-bottom: 50px; }
+.blogs > div { margin-top: 10px; }
 
-.new-blog {
-  .input-wrapper { width: auto; }
-  .input-wrapper input { width: 100%; }
-  .button-wrapper { text-align: right; }
+.blog-content { min-height: 150px; }
+.blog {
+  border-bottom: 1px solid #EEE;
+  padding: 10px 0px;
+  .content { 
+    min-height: 25px; 
+    margin: 5px 0px;
+  }
+  .time { text-align: right; }
 }

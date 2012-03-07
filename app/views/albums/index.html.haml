@@ -1,22 +1,10 @@
-.activity-albums
-  .back
-    = link_to (t '.back'), @activity
-  .title
-    = t '.title', :name => @activity.name
--if @albums.empty?
-  .box.no-content
-    =t ".empty"
--else
-  .box.detail
-    .box-content
-      %ul.album-covers
-        - @albums.each do |album|
-          %a{:href=>album_path(album)}
-            %li
-              %p.cover
-                -if album.cover
-                  =image_tag(album.cover.url(:small)) 
-                -else
-                  %span.empty-album=t :empty_album
-              %p.title=album.title.truncate(15)
-    .clear
+.page-header
+  %h1= t '.title', :name => @activity.name
+%ul.thumbnails
+  = t '.empty' if @albums.empty?
+  - @albums.each do |album|
+    %li.span2
+      .thumbnail
+        = link_to image_tag(album.small), album
+        .remark
+          = album.title

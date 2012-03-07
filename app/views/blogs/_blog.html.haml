@@ -1,11 +1,11 @@
-%li.blog{:id=>"blog-#{blog.id}", :class => "#{cycle('odd', 'even')}"}
-  .avatar
-    = image_tag blog.author.avatar
-  .body
-    %span.name= link_to blog.author.name, blog.author
-    %span.gray= t :at
-    %span.time= distance_of_time_in_words_to_now(blog.created_at)
-    %span.gray= t :post_blog
-    %span.title= link_to blog.title, [@activity,blog]
+.blog.row{:id=>"blog-#{blog.id}", :class => "#{cycle('odd', 'even')}"}
+  .span1
+    .thumbnail
+      = link_to (image_tag blog.author.avatar), blog.author
+  .span6
+    = link_to blog.author.name, blog.author
+    = ":"
+    = link_to blog.title, [@activity,blog]
     .content= sanitize(truncate_html(blog.content,:length=>100), :attributes => %w(id class style href _cke_saved_href title alt width height))  
-  .clear
+    .time
+      = l blog.created_at

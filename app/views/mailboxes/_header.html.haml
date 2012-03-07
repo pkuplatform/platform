@@ -1,7 +1,10 @@
-%ul.mail-panel
-  %li{:class => ("current" if @mailbox == "outbox" )}= link_to (t "outbox"), box_mailboxes_path(:outbox), :remote => true
-  %li{:class => ("current" if @mailbox == "inbox" )}= link_to (t "inbox"), box_mailboxes_path(:inbox), :remote => true
-  %li{:class => ("current" if @mailbox == "trash" )}= link_to (t "trash"), box_mailboxes_path(:trash), :remote => true
-  %li{:class => ("current" if params[:action]=="new" )}= link_to (t "compose_new_message"), new_mailboxes_path
-.clear
+%ul.nav.nav-pills
+  %li{:class => ("active" if @mailbox == "outbox" )}
+    = link_to (t "outbox"), box_mailboxes_path(:outbox)
+  %li{:class => ("active" if @mailbox == "inbox" )}
+    = link_to (t "inbox"), box_mailboxes_path(:inbox)
+  %li{:class => ("active" if @mailbox == "trash" )}
+    = link_to (t "trash"), box_mailboxes_path(:trash)
+  %li{:class => ("active" if params[:action]=="new" )}
+    = link_to (t "compose_new_message"), new_mailboxes_path
 - dismark_new_messages

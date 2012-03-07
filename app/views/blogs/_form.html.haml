@@ -9,5 +9,4 @@
     =f.text_field :title,:placeholder=>(t :title)
   .blog-content
     =f.cktext_area :content,:placeholder=>(t :content)
-  .button-wrapper
-    =f.submit (t '.submit')
+  = button_tag t('.submit'), :class => "btn btn-primary"
