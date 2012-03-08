@@ -1,11 +1,9 @@
-.filter-wrapper
-  %ul.nav.nav-pills
-    -@circles.each do |c|
-      %li{:id=>"cfilter-#{c.id}"}= link_to c.name, circle_path(c, :anchor=>"cfilter-#{c.id}")
-    -if can? :admin, @owner
-      %li#add-circle
-        %a{:href=>"#new-circle", "data-toggle"=>:modal} 
-          %i.icon-plus
-  .clear
+%ul.nav.nav-pills.pull-right
+  -@circles.each do |c|
+    %li{:id=>"cfilter-#{c.id}"}= link_to c.name, circle_path(c, :anchor=>"cfilter-#{c.id}")
+  -if can? :admin, @owner
+    %li#add-circle
+      %a{:href=>"#new-circle", "data-toggle"=>:modal} 
+        %i.icon-plus
 -if can? :admin, @owner
   = render 'new'

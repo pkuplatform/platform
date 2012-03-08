@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   after_create :initialize_circles
 
   def initialize_circles
-    circles.create(:name => I18n.t('circles.fan'),        :status => Constant::Fan)
+    circles.create(:name => 'fan',        :status => Constant::Fan)
   end
 
   def ability

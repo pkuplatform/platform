@@ -1,0 +1,8 @@
+%ul.nav.pull-right
+  %li
+    = link_to t('.profile'), current_user
+  %li
+    = link_to t('.mailbox'), mailboxes_path
+  %li
+    = link_to t('.logout'), destroy_user_session_path, { :method => :delete }
+
