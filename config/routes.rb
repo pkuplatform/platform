@@ -84,7 +84,6 @@ Platform::Application.routes.draw do
         get 'second_building/new' => 'second_building_applications#new'
       end
     end
-    resources :activities
     resources :circles do
       collection do
         post 'change_boss' => 'circles#change_boss'
@@ -94,6 +93,7 @@ Platform::Application.routes.draw do
         post 'kickout/:user_id' => 'circles#kickout'
       end
     end
+    resources :activities, :only => [:new, :create]
   end
 
   resources :activities do

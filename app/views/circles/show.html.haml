@@ -6,3 +6,12 @@
     =render 'members'
   -elsif
     =render 'read_only'
+
+.circles.toolbar
+  -if can? :write, @circle
+    %a{:href=>"#edit-circle", "data-toggle"=>:modal} 
+      %i.icon-plus
+  -if can? :delete, @circle
+    %a{:href=>circle_path(@circle), "data-type"=>:delete, "data-remote"=>true} 
+      %i.icon-remove
+=render 'edit'

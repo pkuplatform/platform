@@ -88,8 +88,9 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
-    @group = Group.find(params[:group_id])
     @activity = Activity.find(params[:id])
+    @group = @activity.group
+
     authorize! :admin, @activity
   end
 

@@ -1,2 +1,11 @@
+@import 'css3';
 .mailbox ul.nav { float: right; }
 .mails.new { clear: both; }
+.table-striped tbody tr.unread td{background-color:#D9EDF7;}
+.mails .message .mail-body {
+  background-color:whiteSmoke;
+  @include box-radius(4px);
+  margin:10px;
+  padding:20px;
+  min-height:100px;
+}

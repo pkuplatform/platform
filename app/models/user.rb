@@ -109,7 +109,7 @@ class User < ActiveRecord::Base
   end
 
   def related_users
-    fans | follows
+    (fans | follows) << self
   end
 
   def online?
