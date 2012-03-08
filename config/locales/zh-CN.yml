@@ -880,3 +880,11 @@
       profile: "个人信息"
       mailbox: "站内信"
       logout: "登出"
+    profile:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"

@@ -1,5 +1,5 @@
 class Form::SecondBuildingApplicationsController < ApplicationController
-  layout 'form'
+  layout 'groups_show'
   # GET /form/second_building_applications
   # GET /form/second_building_applications.json
   def index
