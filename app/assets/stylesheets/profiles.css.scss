@@ -73,3 +73,15 @@
     font-size:1.2em;
   }
 }
+
+.profile.card {
+  border-bottom: 1px solid #BBB;
+  padding: 20px 0px;
+  font-size: 12px;
+  .name { font-size: 16px; }
+  .top { margin-bottom: 5px; }
+  .center { margin-bottom: 5px; min-height: 100px; }
+  .bottom { color: #7AA5B9; }
+  .meta { float: right; }
+  .label {margin-left:10px;}
+}

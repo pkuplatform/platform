@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     case action_name
     when "new", "edit"
       "form"
-    when "show"
+    when "show", "users"
       "profile"
     else
       "application"
@@ -37,12 +37,12 @@ class ProfilesController < ApplicationController
     qs = "%"
     Hz2py.do(params[:q]).each_char{|c| qs+= c + '%'}
     @profiles = Profile.where("lower(pyname) like ?",qs.downcase).limit(100)
+    @profiles.keep_if{|p| current_user.related_users.include?(p.user)}
     qs = qs.gsub('%','#')
     @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
     @hashed = @profiles.shift(20).collect {|p| {:label=>"#{ApplicationController.helpers.image_tag(p.thumb)}<p>#{p.name}</p>", :value=>"#{p.name}(#{p.id})" } }
     respond_to do |format|
       format.json { render json: @hashed }
-      format.html { render :nothing => true }
     end
   end
 
@@ -50,6 +50,7 @@ class ProfilesController < ApplicationController
     qs = "%"
     Hz2py.do(params[:q]).each_char{|c| qs+= c + '%'}
     @profiles = Profile.where("lower(pyname) like ?",qs.downcase).limit(100)
+    @profiles.keep_if{|p| current_user.related_users.include?(p.user)}
     qs = qs.gsub('%','#')
     @profiles = @profiles.sort! { |x,y| x.pyname.score(qs)<=>y.pyname.score(qs) }
     @profiles = @profiles.shift(20).collect{|p| {:id => p.id, :avatar=>ApplicationController.helpers.image_tag(p.thumb),:search_name=>p.name+"(#{p.pyname})",:name=>p.name}}
@@ -128,16 +129,24 @@ class ProfilesController < ApplicationController
 
   def like
     @profile = Profile.find(params[:id])
-    unless current_user.follows.include?(@profile.user)
-      current_user.follow_circle.add(@profile.user)
-    else
-      current_user.follow_circle.remove(@profile.user)
-    end
+    authorize! :like, @profile
+
+    @profile.user.fan_circle.add(current_user)
     redirect_to @profile
   end
 
   def unlike
+    @profile = Profile.find(params[:id])
+    authorize! :unlike, @profile
 
+    @profile.user.fan_circle.remove(current_user)
+    redirect_to @profile
   end
 
+  def users
+    @profile = Profile.find(params[:id])
+    @friends = @profile.user.friends
+    @follows = @profile.user.follows - @friends
+    @fans = @profile.user.fans - @friends
+  end
 end

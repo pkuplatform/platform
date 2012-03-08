@@ -1,5 +1,5 @@
 User.delete_all
-UserNum = 100
+UserNum = 10
 UserNum.times do |i|
   user = User.new
   user.email = i.to_s+Faker::Internet.free_email

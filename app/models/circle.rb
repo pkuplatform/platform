@@ -10,17 +10,11 @@ class Circle < ActiveRecord::Base
   scope :fan,       where(:status => Constant::Fan)
   scope :follow,    where(:status => Constant::Follow)
   scope :applicant, where(:status => Constant::Approving)
+  scope :normal,    where('status|? == 0', Constant::Special)
 
   scope :users,     where(:owner_type => 'User')
   scope :groups,    where(:owner_type => 'Group')
   scope :activities, where(:owner_type => 'Activity')
-
-  after_initialize :get_mode_str
-  attr_accessor :mode_str
-
-  def get_mode_str
-    @mode_str = mode.to_s(8)
-  end
 
   def add(user)
     self.user_circles.create(:user => user)
@@ -39,5 +33,7 @@ class Circle < ActiveRecord::Base
   def self.deletable(user)
     scoped.select{|c| user.can? :delete,c}
   end
-
+  def self.selectable(user)
+    scoped.select{|c| user.can? :select,c}
+  end
 end

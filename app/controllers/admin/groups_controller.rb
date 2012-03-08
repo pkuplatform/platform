@@ -1,5 +1,5 @@
 class Admin::GroupsController < ApplicationController
-  layout "groups_show"
+  layout "form"
 
   def index
     authorize! :admin, :backend

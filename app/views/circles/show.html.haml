@@ -1,18 +1,8 @@
-.title= t '.title', :owner => owner.name, :name =>strip_tags(t("circles."+@circle.name))
-.slink
-  %ul
-    %li.back= link_to (t '.back'), circles_path
-    %li= link_to (t '.message'), message_circle_path(@circle)
-    - if can? :write, @circle
-      %li= link_to (t '.edit'), edit_circle_path(@circle)
-
-.circle.box
-  -if @circle.users.empty?
-    =t ".empty"
-  -else
-    %ul
-      - @circle.users.each do |user|
-        %li.user
-          .avatar= link_to (image_tag user.avatar), user.profile
-          .name= link_to user.name.truncate(12), user.profile
-      .clear
+.circles.content
+  =render 'filter'
+  -if @applicant
+    =render 'applicants'
+  -elsif can? :write, @circle || ((can? :admin, @owner) && @member)
+    =render 'members'
+  -elsif
+    =render 'read_only'

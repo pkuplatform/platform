@@ -30,6 +30,9 @@ class Array
   def writable(user)
     select{|c| user.can? :write, c}
   end
+  def selectable(user)
+    select{|c| user.can? :select, c}
+  end
   def readable(user)
     select{|c| user.can? :read, c}
   end

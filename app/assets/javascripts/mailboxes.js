@@ -45,7 +45,7 @@ $(function() {
 		},
 		theme: "facebook",
 		hintText: "请输入收件人",
-    	prePopulate : JSON.parse($("#recipients-json").html())
+    prePopulate : JSON.parse($("#recipients-json").html())
 
 	});
 });

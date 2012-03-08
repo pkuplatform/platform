@@ -1,16 +1,19 @@
-.user.card
-  = link_to (image_tag profile.card), profile
-  .info
+-user = profile.user
+.profile.card.row
+  .span1
+    .avatar
+      = link_to (image_tag profile.card), profile.card
+  .span6
     .top
-      .name= link_to (highlight profile.name, @q), profile
+      %span.name= (highlight profile.name, @q), profile
     .center
-      = highlight profile.description, @q
+      =sanitize(truncate_html(user.profile.description,:length=>100), :attributes => %w(id class style href _cke_saved_href title alt width height))
     .bottom
       %span.meta
-        = t '.like', :count => profile.user.follows.count
+        = link_to (t '.follows', :count => user.follows.count), users_profile_path(user)
         = "|"
-        = t '.fans', :count => profile.user.fans.count
+        = link_to (t '.fans', :count => user.fans.count), users_profile_path(user)
         = "|"
-        = t '.groups', :count => profile.user.groups.count
+        = link_to (t '.groups', :count => user.groups.count), profile_path(user)
         = "|"
-        = t '.activities', :count => profile.user.activities.count
+        = link_to (t '.activities', :count => user.activities.count), profile_path(user)
