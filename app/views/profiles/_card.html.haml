@@ -1,0 +1,19 @@
+.profile.card.row
+  .span2
+    .thumbnail
+      = link_to (image_tag user.avatar), user
+  .span5
+    .top
+      %span.name= link_to user.name, user
+      %span.label.label-info= label
+    .center
+      =sanitize(truncate_html(user.profile.description,:length=>100), :attributes => %w(id class style href _cke_saved_href title alt width height))
+    .bottom
+      %span.meta
+        = link_to (t '.follows', :count => user.follows.count), users_profile_path(user)
+        = "|"
+        = link_to (t '.fans', :count => user.fans.count), users_profile_path(user)
+        = "|"
+        = link_to (t '.groups', :count => user.groups.count), profile_path(user)
+        = "|"
+        = link_to (t '.activities', :count => user.activities.count), profile_path(user)

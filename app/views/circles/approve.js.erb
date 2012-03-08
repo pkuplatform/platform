@@ -1,0 +1,6 @@
+<% if @ok %>
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'notice', :body=>@user.name+'已经被批准加入'})%>").purr();
+$("#user-<%=@user.id%>").remove();
+<% else %>
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'alert', :body=>'错误！该用户没有申请加入'})%>").purr();
+<% end %>

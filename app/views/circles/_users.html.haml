@@ -1,0 +1,69 @@
+.back= link_to '.owner', owner 
+%h1.title= t '.title', :owner => owner.name
+.circle-users   
+  .filters
+    #cnamef
+      .circle
+        -if @all
+          =check_box_tag :all,"",:checked => :checked
+        -else
+          =check_box_tag :all
+        =label_tag :all, (t '.all')
+      .clear
+      - @circles_all.each do |circle|
+        .circle
+          -if !@all&&@circles.include?(circle)
+            =check_box_tag circle.id,"",:checked => :checked
+          -else
+            =check_box_tag circle.id
+          =label_tag circle.id,t("circles."+circle.name)
+          =link_to (t ".goto"),circle, :class=>'ui-icon ui-icon-folder-open circle-link'
+        .clear
+    #cwayf
+      .apply
+        -if @int
+          =check_box_tag :int,"",:checked => :checked
+          =label_tag :int, (t '.cap')
+        -else
+          =check_box_tag :int,""
+          =label_tag :int, (t '.int')
+      .clear
+    #new
+      #new-circle.input-wrapper.need_hide
+        = form_tag circles_path do
+          =text_field_tag :name
+          =submit_tag (t '.new'),:class=>"hide"
+      = link_to (t '.new'),"javascript:$('#new-circle').toggle()", :class=>'ui-icon ui-icon-plusthick'
+  .users-table
+    %table
+      %thead
+        %tr
+          %th
+          %th=t '.username'
+          %th=t '.userphone'
+          - if owner.class==User
+            %th=t '.userrelation'
+          - else
+            %th=t '.userscore'
+          %th=t '.usercircle'
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td.pic= link_to image_tag(user.url), user
+            %td.user-name
+              .hide= user.profile.pyname.split(' ').collect{|w|w[0]}.join
+              .hide= user.profile.pyname.delete ' '
+              = link_to user.profile.name, user
+            %td.user-phone= user.profile.phone
+            - if owner.class==User
+              %td.user-relation=t "circles."+current_user.relation(user)
+            - else
+              %td.user-score
+            %td
+              = form_tag circles_path+"/users/#{user.id}", :remote=>true do
+                = select_tag("circles[]", options_for_select(@circles_all.writable(current_user).collect {|cc| [(t "circles."+cc.name), cc.id]}, user.belonged_circles.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select",:id=>"multi-select-#{user.id}"})
+
+  .clear
+#writable-circles.hide= @writable_circles.to_json
+- if owner.class==User
+  #noneSelectText.hide= t "circles.fan"
