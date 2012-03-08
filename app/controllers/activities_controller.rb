@@ -8,12 +8,10 @@ class ActivitiesController < ApplicationController
     case action_name
     when "index", "wall"
       "activities_index"
-    when "show", "edit"
-      "activities_show"
     when "new"
-      "form"
+      "groups_show"
     else
-      "application"
+      "activities_show"
     end
   end
 

@@ -845,3 +845,13 @@
       home: "个人中心"
       groups: "社团中心"
       activities: "活动中心"
+    backend:
+      backend: "后台管理"
+      groups: "社团管理"
+      activities: "活动管理"
+      members: "成员管理"
+      form: "表单管理"
+    lang:
+      lang: "语言"
+      zh_cn: "简体中文"
+      eng: "English"

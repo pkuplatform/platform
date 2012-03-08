@@ -1,6 +1,17 @@
 class Admin::GroupsController < ApplicationController
-  layout "admin"
+  layout :resolve_layout
 
+  private
+  def resolve_layout
+    case action_name
+    when "index"
+      "admin"
+    else
+      "groups_show"
+    end
+  end
+
+  public
   def index
     authorize! :admin, :backend
 
