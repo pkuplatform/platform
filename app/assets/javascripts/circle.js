@@ -1,15 +1,4 @@
 $(document).ready(function() {
-  $('.members-table table').dataTable({
-    "bJQueryUI":true,
-    "aoColumns":[
-      { "bSortable": false},
-      null,
-      null,
-      null,
-      { "bSortable": false},
-      { "bSortable": false},
-    ]
-  });
   $('.applicasnts-table table').dataTable({
     "bJQueryUI":true,
     "aoColumns":[

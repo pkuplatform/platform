@@ -6,4 +6,4 @@
     = render :partial => 'blogs/blog', :collection => @activity.blogs
   .more.row
     - if @activity.blogs.count>3
-      = link_to (t '.more'), activities_blog_path, :class => 'btn btn-info span3 offset2'
+      = link_to (t '.more'), activity_blogs_path(@activity), :class => 'btn btn-info span3 offset2'

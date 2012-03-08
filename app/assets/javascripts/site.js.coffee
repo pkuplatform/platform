@@ -34,7 +34,7 @@ $ ->
     $(this).parents('.center').toggleClass("small"))
 
   # backend ajax form submit
-  $('.admin.app-form form select').change ->
+  $('table form select').change ->
     $(this).parent('form').submit()
 
   # fancy box - used in albums
@@ -80,3 +80,9 @@ $ ->
   # modal
   $('.modal').modal
     show: false
+
+  # Data Table
+  $('#circles-table').dataTable
+    sDom : "<'row'<'span4'l><'span3'f>r>t<'row'<'span3'i><'span4'p>>"
+    sPaginationType : "bootstrap"
+    aoColumns: [ null, null, null, {bSortable:false}, {bSortable:false} ]

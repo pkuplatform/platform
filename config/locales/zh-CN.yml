@@ -773,6 +773,17 @@
       circle: "圈子"
       circle-members: "圈子成员"
       title: "%{owner}的圈子"
+    members:
+      username: "用户名"
+      userrealname: "真实姓名"
+      usercircle: "圈子"
+      userrole: "角色"
+      kickout: "踢出"
+    filter:
+      member: "全体成员"
+      admin: "管理员"
+      applicant: "申请人"
+      fan: "粉丝"
     users:
       title: "%{owner}的圈子管理"
       all: "所有圈子"
@@ -865,3 +876,7 @@
       lang: "语言"
       zh_cn: "简体中文"
       eng: "English"
+    toolbar:
+      profile: "个人信息"
+      mailbox: "站内信"
+      logout: "登出"

@@ -10,7 +10,7 @@ class Circle < ActiveRecord::Base
   scope :fan,       where(:status => Constant::Fan)
   scope :follow,    where(:status => Constant::Follow)
   scope :applicant, where(:status => Constant::Approving)
-  scope :normal,    where('status|? == 0', Constant::Special)
+  scope :normal,    where('status|? = 0', Constant::Special)
 
   scope :users,     where(:owner_type => 'User')
   scope :groups,    where(:owner_type => 'Group')
