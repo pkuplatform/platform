@@ -58,5 +58,6 @@
             = render 'users/card'
             = render 'groups/announcement'
             = render 'groups/navbar'
-            = render 'groups/toolbar'
+            -if can? :admin, @group
+              = render 'groups/toolbar'
             = render 'groups/members'

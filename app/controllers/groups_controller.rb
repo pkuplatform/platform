@@ -17,9 +17,12 @@ class GroupsController < ApplicationController
     end
   end
   
+
   public
   # GET /groups
   # GET /groups.json
+
+
 
   def index
     if params[:sort] == "latest"
@@ -107,6 +110,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         @group.admin_circle.add(current_user)
+        @group.member_circle.add(current_user)
         @group.boss=current_user
         format.html { redirect_to :action => 'edit', :id => @group.id, :q => 1 }
         format.json { render json: @group, status: :created, location: @group }
@@ -185,30 +189,36 @@ class GroupsController < ApplicationController
 
   def description
     @group = Group.find(params[:id])
+    @crumbs.push({:name=>@group.name, :path=>group_path(@group)})
+    @crumbs.push({:name=>"groups.description.header", :path=>description_group_path(@group)})
+
   end
 
   def history
     @group = Group.find(params[:id])
+    @crumbs.push({:name=>@group.name, :path=>group_path(@group)})
+    @crumbs.push({:name=>"groups.history.header", :path=>organization_group_path(@group)})
+
   end
 
   def organization
     @group = Group.find(params[:id])
+    @crumbs.push({:name=>@group.name, :path=>group_path(@group)})
+    @crumbs.push({:name=>"groups.organization.header", :path=>organization_group_path(@group)})
+
   end
 
   def activities
     @navi = "activities/navi"
     @group = Group.find(params[:id])
     @activities = @group.activities
+    @crumbs.push({:name=>@group.name, :path=>group_path(@group)})
+    @crumbs.push({:name=>"groups.activities.title", :path=>group_activities_path(@group)})
   end
 
   def comments
     @group = Group.find(params[:id])
     @comments = @group.comments.recent
-  end
-
-  def members
-    @group = Group.find(params[:id])
-    @members = @group.members.order("updated_at DESC")
   end
 
   def wall

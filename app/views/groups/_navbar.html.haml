@@ -7,7 +7,7 @@
       = t '.home'
   %li
     %a{:href => "#{description_group_path(@group)}"}
-      %i.icon-file
+      %i.icon-info-sign
       = t '.desc'
   %li
     %a{:href => "#{organization_group_path(@group)}"}
@@ -19,5 +19,10 @@
       = t '.his'
   %li
     %a{:href => "#{activities_group_path(@group)}"}
-      %i.icon-heart
+      %i.icon-list-alt
       = t '.acts'
+  -if cannot? :admin, @group
+    %li
+      %a{:href => "#{group_circles_path(@group)}"}
+        %i.icon-user
+        = t '.mem'

@@ -7,6 +7,7 @@
       his: "社团历史"
       acts: "活动列表"
       home: "社团主页"
+      mem: "人员列表"
     announcement:
       title: "公告"
     wall:
@@ -30,8 +31,7 @@
       like: "关注(%{count})"
       join: "成员(%{count})"
     activities:
-      back: "<<<"
-      title: "%{name} 的活动"
+      title: "社团的活动"
       warn: "还没有任何活动哦~"
       more: "更多"
     comments:
@@ -60,7 +60,7 @@
     toolbar:
       admin: "管理"
       edit: "信息管理"
-      members: "成员管理"
+      members: "人员管理"
       activity: "新建活动"
       forms: "表单管理"
       second: "新建教室申请表"

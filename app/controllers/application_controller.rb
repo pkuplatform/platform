@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :store_location
   after_filter :user_status
+  before_filter :build_crumbs
+
+  def build_crumbs
+    @crumbs=[]
+  end
 
   def set_locale
     I18n.locale = "zh-CN"

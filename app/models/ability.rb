@@ -77,18 +77,19 @@ class Ability
     end
 
     can :write, Circle do |circle|
-      ((circle.status|Constant::Special == 0) && (user.can? :admin, circle.owner))||
+      ((circle.status&Constant::Special == 0) && (user.can? :admin, circle.owner))||
       ((circle.status == Constant::Admin) && circle.owner.boss==user)||
-      ((circle.status == Constant::Member) && (user.can? :admin, circle.owner))
+      ((circle.status == Constant::Member) && (user.can? :admin, circle.owner)) ||
+      (user.can? :admin, :site)
     end
 
     can :select, Circle do |circle|
-      ((circle.status|Constant::Special == 0) && (user.can? :admin, circle.owner))||
+      ((circle.status&Constant::Special == 0) && (user.can? :admin, circle.owner))||
       ((circle.status == Constant::Admin) && circle.owner.boss==user)
     end
 
     can :delete, Circle do |circle|
-      (circle.status|Constant::Special == 0) && (user.can? :admin, circle.owner)
+      (circle.status&Constant::Special == 0) && (user.can? :admin, circle.owner)
     end
 
     # Define abilities for the passed in user here. For example:
