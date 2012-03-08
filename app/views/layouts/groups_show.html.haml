@@ -7,7 +7,48 @@
     = csrf_meta_tags
   %body
     = render 'share/flashes'
-    = render 'share/header'
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand
+            = t '.brand'
+          %ul.nav
+            %li
+              = link_to t(".home"), home_path
+            %li
+              = link_to t('.groups'), groups_path
+            %li
+              = link_to t('.activities'), activities_path
+          %ul.nav  
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", 'data-toggle' => 'dropdown'}
+                = @group.name
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to t('.group'), @group
+                %li.divider
+                %li.nav-header
+                  = t '.info'
+                %li
+                  = link_to t('.des'), description_group_path(@group)
+                %li
+                  = link_to t('.org'), organization_group_path(@group)
+                %li
+                  = link_to t('.his'), history_group_path(@group)
+                %li.divider
+                %li
+                  = link_to t('.acts'), activities_group_path(@group)
+          %ul.nav.pull-right
+            %li.dropdown
+              %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown'}
+                = t '.lang'
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to t('.zh_cn'), '#'
+                %li
+                  = link_to t('.eng'), '#'
     .container.groups.show.white
       .row
         .span7.offset1
@@ -16,5 +57,6 @@
           .sidebar
             = render 'users/card'
             = render 'groups/announcement'
+            = render 'groups/navbar'
             = render 'groups/toolbar'
             = render 'groups/members'

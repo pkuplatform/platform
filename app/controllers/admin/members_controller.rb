@@ -1,5 +1,6 @@
 class Admin::MembersController < ApplicationController
-  layout "form"
+  layout "admin"
+
   def index
     authorize! :admin, :backend
 

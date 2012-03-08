@@ -7,7 +7,28 @@
     = csrf_meta_tags
   %body
     = render 'share/flashes'
-    = render 'share/header'
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand
+            = t '.brand'
+          %ul.nav
+            %li.active
+              = link_to t(".home"), home_path
+            %li
+              = link_to t('.groups'), groups_path
+            %li
+              = link_to t('.activities'), activities_path
+          %ul.nav.pull-right
+            %li.dropdown
+              %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown'}
+                = t '.lang'
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to t('.zh_cn'), '#'
+                %li
+                  = link_to t('.eng'), '#'
     .container.site.home
       .row
         .span7.offset1

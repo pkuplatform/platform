@@ -10,10 +10,14 @@ class Album < ActiveRecord::Base
 
   def cover
     if pictures.first.nil?
-      return nil
+      return Picture.first
     else
       return pictures.first
     end
+  end
+
+  def small
+    cover.url(:small)
   end
 
 end

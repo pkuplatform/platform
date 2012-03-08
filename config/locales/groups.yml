@@ -1,5 +1,12 @@
 "zh-CN":
   groups:
+    navbar:
+      navbar: "导航"
+      desc: "社团介绍"
+      org: "组织构架"
+      his: "社团历史"
+      acts: "活动列表"
+      home: "社团主页"
     announcement:
       title: "公告"
     wall:

@@ -1,26 +1,17 @@
 class BlogsController < ApplicationController
   before_filter :authenticate_user!
-  layout :resolve_layout
+  layout 'activities_show'
 
-  private
-  def resolve_layout
-    case action_name
-    when "new", "edit"
-      "form"
-    else
-      "application"
-    end
-  end
-  
-  public
   def show
     @blog = Blog.find(params[:id])
     @activity = @blog.activity
+    @group = @activity.group
   end
 
 
   def new
     @activity = Activity.find(params[:activity_id])
+    @group = @activity.group
     @blog = Blog.new
   end
 
@@ -42,6 +33,7 @@ class BlogsController < ApplicationController
   def index
     @activity = Activity.find(params[:activity_id])
     @blogs = @activity.blogs
+    @group = @activity.group
   end
 
   def edit

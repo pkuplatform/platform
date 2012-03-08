@@ -9,4 +9,10 @@
     = render 'share/flashes'
     = render 'share/header'
     .container.activities.show.white
-      = yield
+      .row
+        .span7.offset1
+          = yield
+        .span3.offset1
+          .sidebar
+            = render 'users/card'
+            = render 'activities/toolbar'

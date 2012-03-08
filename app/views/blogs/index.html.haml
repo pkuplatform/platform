@@ -1,8 +1,5 @@
-.activity-blogs
-  .back= link_to (t ".back"), @activity
-  .title= t ".title", :name => @activity.name
-- if @activity.blogs.empty?
-  .box.no-content
-    = t '.empty'
-- else
-  .blogs= render :partial => 'blog', :collection => @blogs
+.page-header
+  %h1= t '.title', :name => @activity.name
+.blogs
+  = t '.empty' if @activity.blogs.empty?
+  = render :partial => 'blog', :collection => @blogs

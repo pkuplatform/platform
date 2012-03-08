@@ -1,5 +1,39 @@
-.box.mailbox
-  .box-header= render 'header'
-  .box-body
-    = render 'index'
-.clear
+.mailbox
+  = render 'header'
+  .mails
+    = form_tag update_mailboxes_path do
+      %span.form-inline
+        = select_tag "option", options_for_select(chops(@options)||[]), { :class => 'span1' }
+        = button_tag t("apply_to_selected"), :class => "btn btn-primary"
+        = hidden_field_tag :mailbox, @mailbox
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+              = check_box_tag 'checkbox'
+            - unless @mailbox == "outbox"
+              %th
+                = t "from"
+            - else
+              %th
+                = t "to"
+            %th
+              = t '.time'
+            %th
+              = t "subject"
+        / check opened message first and then set alternate style
+        %tbody
+          - x = 0
+          - for msg in @messages
+            %tr{:class => ( (@mailbox != "outbox") ? ( msg.read? ? "" : "unread " ) : "" ) }
+              %td
+                = check_box_tag "[messages][]", msg.id
+              %td
+                - unless @mailbox == "outbox"
+                  = link_to msg.from.name, msg.from
+                - else
+                  = link_to msg.to.name, msg.to
+              %td
+                = l msg.created_at, :format => msg.created_at < 1.days.ago ? :only_time : :short
+              %td= link_to msg.subject, show_mailboxes_path(@mailbox,msg)
+    = will_paginate @messages, :class => "pagination"

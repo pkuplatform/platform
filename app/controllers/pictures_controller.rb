@@ -1,22 +1,12 @@
 class PicturesController < ApplicationController
   before_filter :authenticate_user!
-  layout :resolve_layout
+  layout 'activities_show'
 
-  private
-  def resolve_layout
-    case action_name
-    when "new", "edit"
-      "form"
-    else
-      "application"
-    end
-  end
-  
-  public
   # GET /pictures
   # GET /pictures.json
   def index
     @activity = Activity.find(params[:activity_id])
+    @group = @activity.group
     @pictures = @activity.pictures
 
     respond_to do |format|
@@ -28,9 +18,9 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
-
     @picture = Picture.find(params[:id])
     @activity = @picture.album.imageable
+    @group = @activity.group
 
     respond_to do |format|
       format.html { render 'show' }
@@ -39,9 +29,9 @@ class PicturesController < ApplicationController
   end
 
   def show_gallery
-
     @picture = Picture.find(params[:id])
     @activity = @picture.album.imageable
+    @group = @activity.group
 
     respond_to do |format|
       format.html { render 'show_gallery',:layout=>false }
@@ -53,6 +43,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new.json
   def new
     @activity = Activity.find(params[:activity_id])
+    @group = @activity.group
     @picture = Picture.new
     @album = Album.new
 

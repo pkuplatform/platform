@@ -1,2 +1,16 @@
-.main
-  =render :partial=>'picture'
+.page-header
+  %h1
+    = @picture.album.title
+.picture-wrapper
+  .picture
+    =link_to image_tag(@picture.url(:big)),@picture.url(:original), :target=>"_blank"
+  .remark
+    =best_in_place_if (can? :admin, @picture), @picture, :remark, :type => :textarea, :nil => t("Click me to add remark!"), :display_with => :simple_format
+    :javascript
+      $(function(){$(".best_in_place").best_in_place();});
+  .navi
+    = link_to (t ".prev"),load_picture_path(@picture.prev),:remote=>true
+    = "/"
+    = link_to (t ".next"),load_picture_path(@picture.next),:remote=>true
+.comments
+  = render :partial => "share/comments", :locals => { :object => @picture }

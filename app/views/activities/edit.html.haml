@@ -1,2 +1,42 @@
-.activity.edit.form.box
-  = render 'form'
+= form_for [@group, @activity], :html => {:class => 'form-horizontal'} do |f|
+  = f.hidden_field :group_id
+  %fieldset
+    %legend
+      = t '.title'
+    .control-group
+      = f.label :title, (t :title), :class => 'control-label'
+      .controls
+        = f.text_field :title, :class => 'span4'
+    .control-group
+      = f.label :tag_list, (t :tags), :class => 'control-label'
+      .controls
+        = f.text_field :tag_list, :class => "tags_input span4"
+    .control-group
+      = f.label :start_at, (t :start_at), :class => 'control-label'
+      .controls
+        = f.datetime_select :start_at, {}, { :class => 'span1' }
+    .control-group
+      = f.label :end_at, (t :end_at), :class => 'control-label'
+      .controls
+        = f.datetime_select :end_at, {}, { :class => 'span1' }
+    .control-group
+      = f.label :location, (t :location), :class => 'control-label'
+      .controls
+        = f.text_field :location, :class => 'span4'
+    .control-group
+      = f.label :public, (t :public), :class => 'control-label'
+      .controls
+        = f.check_box :public
+    .control-group
+      = f.label :poster, (t '.poster'), :class => 'control-label'
+      .controls
+        = f.file_field :poster
+    .control-group
+      = f.label :description, (t '.desc'), :class => 'control-label'
+      .controls
+        = f.text_area :description, :class => 'span4', :rows => 10
+    .form-actions
+      %button.btn.btn-primary{:type => 'submit'}
+        = t '.edit'
+      %button.btn
+        = t '.cancel'

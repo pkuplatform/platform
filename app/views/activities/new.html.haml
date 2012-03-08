@@ -1,4 +1,5 @@
 = form_for [@group, @activity], :html => {:class => 'form-horizontal'} do |f|
+  = f.hidden_field :group_id
   %fieldset
     %legend
       = t '.title'
@@ -13,11 +14,11 @@
     .control-group
       = f.label :start_at, (t :start_at), :class => 'control-label'
       .controls
-        = f.datetime_select :start_at
+        = f.datetime_select :start_at, {}, { :class => 'span1' }
     .control-group
       = f.label :end_at, (t :end_at), :class => 'control-label'
       .controls
-        = f.datetime_select :end_at
+        = f.datetime_select :end_at, {}, { :class => 'span1' }
     .control-group
       = f.label :location, (t :location), :class => 'control-label'
       .controls
@@ -34,13 +35,6 @@
       = f.label :description, (t '.desc'), :class => 'control-label'
       .controls
         = f.text_area :description, :class => 'span4', :rows => 10
-    -if @activity.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@activity.errors.count, "error")} prohibited this activity from being saved:"
-        %ul
-          - @activity.errors.full_messages.each do |msg|
-            %li= msg
-    = f.hidden_field :group_id
     .form-actions
       %button.btn.btn-primary{:type => 'submit'}
         = t '.new'
