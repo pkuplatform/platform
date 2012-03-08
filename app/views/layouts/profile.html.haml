@@ -7,7 +7,22 @@
     = csrf_meta_tags
   %body
     = render 'share/flashes'
-    = render 'share/header'
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand
+            = t '.brand'
+          %ul.nav
+            %li
+              = link_to t(".home"), home_path
+            %li
+              = link_to t('.groups'), groups_path
+            %li
+              = link_to t('.activities'), activities_path
+            = render 'layouts/backend'
+          = render 'layouts/lang'
+          = render 'layouts/toolbar'
+          = render 'layouts/search'
     .container.profile.white
       .row
         .span7.offset1
@@ -16,3 +31,4 @@
           .sidebar
             = render 'users/card' 
             = render 'share/sidebar'
+      = render 'share/toolbar'

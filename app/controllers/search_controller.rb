@@ -1,9 +1,11 @@
 class SearchController < ApplicationController
   before_filter :authenticate_user!
-  layout "groups_index"
+  layout "profile"
 
   def index
-    @results = ThinkingSphinx.search params[:q]
+    @results = Array.new
+    # @results = ThinkingSphinx.search params[:q]
+    @results = Activity.search(params[:q])
     @q = params[:q]
   end
 

@@ -738,7 +738,7 @@
         id: "学号"
         status: "状态"
       index:
-        back: "<<<"
+        new: "新建社团"
         title: "全站社团管理"
         name: "社团名称"
         status: "状态"

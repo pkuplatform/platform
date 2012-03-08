@@ -147,6 +147,7 @@ class Activity < ActiveRecord::Base
     indexed :description
 
     has :start_at, :end_at
+    set_property :delta => true
   end
 
 end

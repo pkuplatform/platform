@@ -9,8 +9,6 @@ Platform::Application.routes.draw do
   
   get "admin" => "admin#index"
 
-  post "search/index"
-
   mailboxes_for :users
   
   get "home" => "site#home"
