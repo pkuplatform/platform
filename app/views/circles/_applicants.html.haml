@@ -1,39 +1,26 @@
 .applicants-table
-  %table
+  %table.table.table-striped.table-bordered
     %thead
       %tr
-        %th
         %th
           =t 'profiles.edit.name'
         %th
           =t 'profiles.edit.realname'
         %th
-          =t 'profiles.edit.phone'
-        %th
-          =t 'profiles.edit.email'
-        %th
           =t '.approve'
     %tbody
       - @circle.users.each do |user|
         %tr{:id=>"user-#{user.id}"}
-          %td.pic= link_to image_tag(user.url), user
-          %td.user-name
+          %td
             .hide= user.profile.pyname.split(' ').collect{|w|w[0]}.join
             .hide= user.profile.pyname.delete ' '
             = link_to user.profile.name, user
-          %td.user-realname
+          %td
             = user.profile.realname
             .hide= Hz2py.do(user.profile.realname)
-          %td.user-phone= user.profile.phone
-          %td.user-phone= user.profile.phone
-          %td.user-approve
+          %td
             .btn-group
               %a{:href=>circles_path+"/approve/#{user.id}", "data-method"=>:post, :class=>'btn btn-primary', "data-remote"=>true} 
                 %i.icon-ok
               %a{:href=>circles_path+"/reject/#{user.id}", "data-method"=>:post, :class=>'btn btn-danger', "data-remote"=>true} 
                 %i.icon-remove
-
-
-.clear
-
-.clear

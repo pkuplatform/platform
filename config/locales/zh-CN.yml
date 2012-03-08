@@ -647,7 +647,6 @@
       title: "后台管理入口"
     forms:
       show:
-        back: "<<<"
         group: "申请社团"
         host: "主办单位"
         charge: "负责人"
@@ -669,6 +668,11 @@
         center: "指导中心意见"
         status: "状态"
         submit: "提交修改"
+        fuzeren: "负责人信息"
+        zhujiangren: "主讲人信息"
+        info: "活动信息"
+        appr: "审批信息"
+        classroom: "教室"
       index:
         back: "<<<"
         title: "申请表管理"
