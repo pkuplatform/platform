@@ -86,3 +86,5 @@ $ ->
     sDom : "<'row'<'span4'l><'span3'f>r>t<'row'<'span3'i><'span4'p>>"
     sPaginationType : "bootstrap"
     aoColumns: [ null, null, null, {bSortable:false}, {bSortable:false} ]
+
+  CKEDITOR.config.skin = 'BootstrapCK-Skin'

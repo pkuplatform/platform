@@ -18,7 +18,7 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'acts_as_commentable'
 gem 'savon'
-gem 'ckeditor', '3.7.0.rc2'
+gem 'ckeditor'
 gem 'truncate_html'
 gem 'annotate'
 gem 'mysql2'
@@ -29,6 +29,7 @@ gem 'best_in_place'
 gem 'impressionist'
 gem "twitter-bootstrap-rails"
 gem 'fancybox-rails', :git => 'https://github.com/sverigemeny/fancybox-rails'
+gem 'simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
