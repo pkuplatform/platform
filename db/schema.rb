@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.integer  "group_id"
     t.string   "title"
     t.string   "pyname"
-    t.text     "description"
+    t.text     "description",         :default => ""
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "location",            :default => ""
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.integer  "owner_id"
     t.string   "owner_type"
     t.integer  "status",     :default => 0
-    t.integer  "mode",       :default => 480
+    t.boolean  "public",     :default => true
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -178,10 +178,10 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.string   "name"
     t.string   "pyname"
     t.string   "slogan",            :default => ""
-    t.text     "introduction"
-    t.text     "description"
-    t.text     "history"
-    t.text     "organization"
+    t.text     "introduction",      :default => ""
+    t.text     "description",       :default => ""
+    t.text     "history",           :default => ""
+    t.text     "organization",      :default => ""
     t.string   "email",             :default => ""
     t.date     "founded_at"
     t.integer  "status",            :default => 4
@@ -286,7 +286,7 @@ ActiveRecord::Schema.define(:version => 20120225172254) do
     t.string   "student_id"
     t.string   "phone"
     t.integer  "points",               :default => 0
-    t.text     "description"
+    t.text     "description",          :default => ""
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

@@ -7,7 +7,7 @@
         - if can? :like, @profile
           = link_to (t '.like'), like_profile_path(@profile)
         - else
-          = link_to (t '.dislike'), like_profile_path(@profile)
+          = link_to (t '.dislike'), unlike_profile_path(@profile)
     - else
       .role
         =t ".myself"

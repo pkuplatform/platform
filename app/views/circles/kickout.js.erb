@@ -1,0 +1,6 @@
+<% if @ok %>
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'notice', :body=>@user.name+'已经被请离'})%>").purr();
+$("#user-<%=@user.id%>").remove();
+<% else %>
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'alert', :body=>'错误!'+@reason})%>").purr();
+<% end %>

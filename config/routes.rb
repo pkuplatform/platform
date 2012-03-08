@@ -2,6 +2,7 @@ Platform::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" } do
    get 'users/sign_out' => "devise/sessions#destroy"
+   get 'users/sign_in' => "site#index"
   end
 
   get 'site/newsfeeds'
@@ -45,6 +46,8 @@ Platform::Application.routes.draw do
   resources :profiles do
     member do
       get 'like'
+      get 'unlike'
+      get 'users'
     end
     collection do 
       get 'token'
@@ -85,7 +88,10 @@ Platform::Application.routes.draw do
     resources :circles do
       collection do
         post 'change_boss' => 'circles#change_boss'
-        post 'users/:user_id' => 'circles#update_user'
+        post 'update/:user_id' => 'circles#update_user'
+        post 'approve/:user_id' => 'circles#approve'
+        post 'reject/:user_id' => 'circles#reject'
+        post 'kickout/:user_id' => 'circles#kickout'
       end
     end
   end
@@ -112,22 +118,18 @@ Platform::Application.routes.draw do
     resources :albums 
     resources :circles do
       collection do
-        post 'users/:user_id' => 'circles#update_user'
+        post 'update/:user_id' => 'circles#update_user'
         post 'change_boss' => 'circles#change_boss'
+        post 'approve/:user_id' => 'circles#approve'
+        post 'reject/:user_id' => 'circles#reject'
+        post 'kickout/:user_id' => 'circles#kickout'
       end
     end
   end
 
   resources :comments, :only => [:create, :destroy]
 
-  resources :circles do
-    collection do
-      post 'users/:user_id' => 'circles#update_user'
-    end
-    member do
-      get 'message'
-    end
-  end
+  get 'circles/:id/message' => 'circles#message', :as=>'message_circle'
 
   get 'tags' => 'application#tags'
 

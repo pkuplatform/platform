@@ -31,8 +31,7 @@ class User < ActiveRecord::Base
   after_create :initialize_circles
 
   def initialize_circles
-    circles.create(:name => 'fan',        :status => Constant::Fan,      :mode => 0444)
-    circles.create(:name => 'follow',    :status => Constant::Follow,      :mode => 0444)
+    circles.create(:name => I18n.t('circles.fan'),        :status => Constant::Fan)
   end
 
   def ability
@@ -44,20 +43,12 @@ class User < ActiveRecord::Base
     circles.fan.first
   end
 
-  def follow_circle
-    circles.follow.first
-  end
-
   def fans
     fan_circle.users
   end
 
   def follows
-    follow_circle.users
-  end
-
-  def follow(user)
-    follow_circle.add(user)
+    belonged_circles.fan.collect { |c| User.find(c.owner_id) }
   end
 
   def activities
@@ -117,7 +108,7 @@ class User < ActiveRecord::Base
     fans & follows
   end
 
-  def members
+  def related_users
     fans | follows
   end
 
@@ -145,10 +136,6 @@ class User < ActiveRecord::Base
       aid = r.recommendable_id
       Activity.find(aid) if Activity.exists?(aid)
     end
-  end
-
-  def applicants
-    []
   end
 
   def realname

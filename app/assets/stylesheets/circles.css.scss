@@ -1,51 +1,10 @@
 @import 'css3';
 @import 'mixin';
-.circle-users{
+.circles.content{
 
-  label select, label input { display: inline; }
+  label select, label input { display: inline-block; }
 
-  .filters {
-    float:left;
-    #cnamef {
-      width: 150px;
-    }
-    #new {
-      .input-wrapper {
-        width:137px;
-        margin-left: 10px;
-        input { width:132px;}
-      }
-    }
-    .circle,.apply {
-      position: relative;
-      width:150px;
-      float:left;
-    }
-    a.circle-link {
-      display:block;
-      z-index:100;
-      position:absolute;
-      right:10px;
-      top:15px;
-    }
-    label {
-      padding:5px;
-      font-weight:normal;
-      font-size: 0.8em;
-      width:130px;
-      margin:10px;
-      display:block;
-      text-align:center;
-    }
-  }
-
-  .users-table {
-    width: 650px;
-    padding:10px;
-    float:right;
-    .ui-toolbar {
-      padding:8px;
-    }
+  .members-table {
     table {
       th {
         text-align:center;
@@ -58,10 +17,6 @@
           width: 64px;
           height: 64px;
           padding:5px;
-          background:#fff;
-        }
-        .infos {
-          padding:30px;
         }
       }
 
@@ -89,12 +44,8 @@
   width:93%;
   height:400px;
 }
-#writable-circles {
-  display:none;
-  width:1px;
-  height:1px;
-}
-.circle.box{
+
+.circle{
   padding:31px;
   ul { overflow: hidden; }
   li.user {

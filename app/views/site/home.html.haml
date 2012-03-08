@@ -10,10 +10,10 @@
       = link_to (t '.blogs'), '#blog', 'data-toggle' => 'tab'
   .tab-content
     #all.tab-pane.active
-      = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events }
+      = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.first(5) }
     #activity.tab-pane
-      = #render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.activity }
+      = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.activity.first(5) }
     #picture.tab-pane
-      = #render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.picture }
+      = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.picture.first(5) }
     #blog.tab-pane
-      = #render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.blog }
+      = render :partial => 'newsfeeds/newsfeeds', :locals => { :events => @events.blog.first(5) }

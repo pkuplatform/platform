@@ -21,10 +21,7 @@ class Constant
   
   Super = 1 << 30
 
-  #for circle we do like unix 0777 mode. 
-  #first 7 for owner.admins, second one for owner.members, and the last for anybody.
+  Special = Admin+Member+Approving+Fan
 
-  Read  = 1 << 2 
-  Write = 1 << 1
-  Delete = 1 << 0
+
 end

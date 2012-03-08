@@ -107,6 +107,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         @group.admin_circle.add(current_user)
+        @group.boss=current_user
         format.html { redirect_to :action => 'edit', :id => @group.id, :q => 1 }
         format.json { render json: @group, status: :created, location: @group }
       else

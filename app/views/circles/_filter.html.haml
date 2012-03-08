@@ -1,0 +1,13 @@
+.filter-wrapper
+  %ul.nav.nav-pills
+    %li#filter-members.active= link_to (@owner.member_circle.name), circle_path(@owner.member_circle, :anchor=>"filter-members")
+    %li#filter-admins= link_to (@owner.admin_circle.name), circle_path(@owner.admin_circle, :anchor=>"filter-admins")
+    %li#filter-applicants= link_to (@owner.applicant_circle.name), circle_path(@owner.applicant_circle, :anchor=>"filter-applicants")
+    %li#filter-fans= link_to (@owner.fan_circle.name), circle_path(@owner.fan_circle, :anchor=>"filter-fans")
+    -@normal_circles.each do |c|
+      %li{:id=>"filter-#{c.id}"}= link_to (t '.fans'), circle_path(@owner.fan_circle, :anchor=>"filter-#{c.id}")
+    %li#add-circle
+      %a{:href=>"#new-circle", "data-toggle"=>:modal} 
+        %i.icon-plus
+  .clear
+= render 'new'

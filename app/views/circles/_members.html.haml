@@ -1,0 +1,36 @@
+.members-table
+  %table
+    %thead
+      %tr
+        %th
+        %th
+          %b=t '.username'
+        %th
+          =t '.userrealname'
+        %th
+          =t '.userrole'
+        %th
+          =t '.usercircle'
+        %th
+          =t '.kickout'
+    %tbody
+      - @circle.users.each do |user|
+        %tr{:id=>"user-#{user.id}"}
+          %td.pic= link_to image_tag(user.url), user
+          %td.user-name
+            .hide= user.profile.pyname.split(' ').collect{|w|w[0]}.join
+            .hide= user.profile.pyname.delete ' '
+            = link_to user.profile.name, user
+          %td.user-realname
+            = user.profile.realname
+            .hide= Hz2py.do(user.profile.realname)
+          %td.user-role= @owner.role(user)
+          %td
+            = form_tag circles_path+"/update/#{user.id}", :remote=>true do
+              = select_tag("circles[]", options_for_select(@circles.selectable(current_user).collect {|cc| [(t "circles."+cc.name), cc.id]}, user.belonged_circles.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select",:id=>"multi-select-#{user.id}"})
+          %td
+            -unless @owner.admins.include?(user)
+              %a{:href=>circles_path+"/kickout/#{user.id}", "data-method"=>:post, :class=>'btn', "data-remote"=>true} 
+                %i.icon-remove
+
+.clear

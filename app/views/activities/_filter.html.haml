@@ -13,12 +13,12 @@
       = link_to (t '.join'), activities_path(:sort => params[:sort], :filter => 'join', :anchor=>"filter-join")
     %li#to-wall
       = link_to (t '.wall'), wall_activities_path(:anchor=>"to-wall")
-    %li.dropdown
+    %li.dropdown#filter-category
       %a{ :class => 'dropdown-toggle', :href => '#', 'data-toggle' => 'dropdown' }
         = t '.category'
         %b.caret
       %ul.dropdown-menu
         - Category.all.each do |category|
           %li
-            = link_to category.translated_name, activities_path(:sort => params[:sort], :filter => 'category', :id => category.id)
+            = link_to category.translated_name, activities_path(:sort => params[:sort], :filter => 'category', :id => category.id, :anchor=>"filter-category")
   .clear

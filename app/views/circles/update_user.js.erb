@@ -1,1 +1,5 @@
-$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'notice', :body=>@ok ? (@user.name+'圈子修改成功') : '错误！不能在用户是管理员的时踢出！'})%>").purr();
+<% if @ok %>
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'notice', :body=>@user.name+'更改圈子成功'})%>").purr();
+<% else %>
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'alert', :body=>'因为'+@reason+',更改失败'})%>").purr();
+<% end %>

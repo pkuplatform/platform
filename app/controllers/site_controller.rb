@@ -26,7 +26,7 @@ class SiteController < ApplicationController
     @newsfeeds = current_user.newsfeeds.order("id DESC")
 
     if @newsfeeds.empty?
-      @events = Event.order('updated_at DESC').first(10)
+      @events = Event.order('updated_at DESC')
     else
       @events = []
       @newsfeeds.each do |newsfeed|

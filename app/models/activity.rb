@@ -31,10 +31,10 @@ class Activity < ActiveRecord::Base
   after_save :get_py
 
   def initialize_circles
-    circles.create(:name => 'admin',      :status => Constant::Admin,     :mode => 0444)
-    circles.create(:name => 'member',     :status => Constant::Member,    :mode => 0644)
-    circles.create(:name => 'fan',        :status => Constant::Fan,      :mode => 0444)
-    circles.create(:name => 'applicant',  :status => Constant::Approving, :mode => 0440)
+    circles.create(:name => I18n.t('circles.admin'),      :status => Constant::Admin)
+    circles.create(:name => I18n.t('circles.member'),     :status => Constant::Member)
+    circles.create(:name => I18n.t('circles.fan'),        :status => Constant::Fan)
+    circles.create(:name => I18n.t('circles.applicant'),  :status => Constant::Approving, :public=>false)
   end
 
   def new_event

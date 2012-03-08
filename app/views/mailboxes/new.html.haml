@@ -10,3 +10,4 @@
         = cktext_area_tag :body, "", :toolbar => "Basic"
       .control-group
         = button_tag t("send"), :class => "btn btn-primary"
+#recipients-json.hide= params[:recipients].to_json

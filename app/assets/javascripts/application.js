@@ -14,7 +14,7 @@
 
 $.fn.scrollToAndActivate = function(options) {
   return this.each(function() {
-    $.scrollTo(this, 0, {over:-2 ,onAfter:function(obj) {
+    $.scrollTo(this, 200, {over:-3 ,onAfter:function(obj) {
       $(".active").removeClass("active");
       $(obj).addClass("active");
     }});

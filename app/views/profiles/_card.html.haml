@@ -1,11 +1,11 @@
--user = profile.user
 .profile.card.row
-  .span1
-    .avatar
-      = link_to (image_tag profile.card), profile.card
-  .span6
+  .span2
+    .thumbnail
+      = link_to (image_tag user.avatar), user
+  .span5
     .top
-      %span.name= (highlight profile.name, @q), profile
+      %span.name= link_to user.name, user
+      %span.label.label-info= label
     .center
       =sanitize(truncate_html(user.profile.description,:length=>100), :attributes => %w(id class style href _cke_saved_href title alt width height))
     .bottom

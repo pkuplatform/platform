@@ -2598,7 +2598,7 @@
 			
 			/* This can be overruled by not using the _MENU_ var/macro in the language variable */
 			var sName = 'name="'+oSettings.sTableId+'_length"';
-			var sStdMenu = '<select size="1" '+sName+'>';
+			var sStdMenu = '<select size="1" '+sName+' style="display:inline-block">';
 			var i, iLen;
 			var aLengthMenu = oSettings.aLengthMenu;
 			
@@ -9023,7 +9023,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "显示 _MENU_ 条记录",
+			"sLengthMenu": "<span class='left'>显示</span> _MENU_",
 		
 		
 			/**

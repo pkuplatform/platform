@@ -1,0 +1,6 @@
+.friends
+  = render :partial => 'card', :collection => @friends, :as => :user, :locals=>{:label=>(t '.friends')}
+.follows
+  = render :partial => 'card', :collection => @follows, :as => :user, :locals=>{:label=>(t '.follows')}
+.fans
+  = render :partial => 'card', :collection => @fans, :as => :user, :locals=>{:label=>(t '.fans')}

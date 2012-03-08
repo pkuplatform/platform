@@ -106,6 +106,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
         @activity.admin_circle.add(current_user)
+        @activity.boss=current_user
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else
@@ -150,16 +151,16 @@ class ActivitiesController < ApplicationController
   def like
     @activity = Activity.find(params[:id])
     authorize! :like, @activity
-
     @activity.fan_circle.add(current_user)
+
     head :ok
   end
 
   def unlike
     @activity = Activity.find(params[:id])
     authorize! :unlike, @activity
-
     @activity.fan_circle.remove(current_user)
+    
     head :ok
   end
 

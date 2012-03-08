@@ -288,6 +288,7 @@
     header:
       mailbox: "站内信"
       setting: "设置"
+      users: "相关用户"
       logout: "离开"
       home: "个人首页"
       group: "社团中心"
@@ -476,6 +477,15 @@
       like: "关注"
       dislike: "取消关注"
       myself: "这是我自己"
+    card:
+      follows: "关注(%{count})"
+      fans: "粉丝(%{count})"
+      activities: "活动(%{count})"
+      groups: "社团(%{count})"
+    users:
+      follows: "关注"
+      fans: "粉丝"
+      friends: "朋友"
     tabs:
       fans: "粉丝"
       follows: "关注"
