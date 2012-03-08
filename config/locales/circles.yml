@@ -1,0 +1,41 @@
+"zh-CN":
+ circles:
+    index:
+      circle: "圈子"
+      circle-members: "圈子成员"
+      title: "%{owner}的圈子"
+
+    admin: "管理员"
+    member: "全体成员"
+    fan: "粉丝"
+    follow: "关注"
+    friend: "朋友"
+    applicant: "申请加入者"
+    show:
+      title: "%{owner}的%{name}圈子"
+      actions: "操作"
+      empty: "当前这个圈子里还一个人也没有~"
+      message: "群发站内信"
+      edit: "修改圈子"
+    edit:
+      title: "修改%{owner}的%{name}圈子"
+      update: "更改"
+    new: 
+      title: "新圈子"
+      name: "圈子名"
+      public: "是否公开"
+      public_help: "不公开的圈子只有管理员可以看见"
+      submit: "创建"
+    members:
+      userrole: "身份"
+      usercircle: "圈子"
+      kickout: "请出"
+    applicants:
+      approve: "批准"
+    change_boss:
+      successfully: "成功变更{%owner}的管理员"
+    unreadable: "%{owner}的%{name}圈子不允许查看"
+    unwritable: "%{owner}的%{name}圈子不允许编辑"
+    uncreatable: "你不能给%{owner}创建圈子"
+    undeletable: "%{owner}的%{name}圈子不允许删除"
+    cannot_remove_boss: "不能将负责人移出管理员圈子"

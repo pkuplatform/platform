@@ -165,22 +165,39 @@ span.cke_skin_kama { border: 0px !important; }
 
 #purr-container {
   position: fixed;
-  bottom: 30px;
-  right: 0;
+  bottom: 20px;
+  right: 15px;
   z-index: 100;
 
   .flashes {
     position: relative;
-    width: 326px;
+    width: 256px;
+    border:1px solid #FBEED5;
+    background-color:#FCF8E3;
+    border-radius:10px;
+    margin-top:10px;
   }
-  .flashes .close  {position: absolute; top: 12px; right: 12px; display: block; width: 18px; height: 17px; text-indent: -9999px; background: url(purrClose.png) no-repeat 0 10px;}
+
+  #flash_notice {
+    background-color: #D9EDF7;
+    border-color:#BCE8F1;
+    .flash-body {
+      color:#3A87AD;
+    }
+  }
+  #flash_alert {
+    background-color: #F2DEDE;
+    border-color:#EED3D7;
+    .flash-body {
+      color:#B94A48;
+    }
+  }
+  .flashes .close  {position: absolute; top: 8px; right: 5px; display: block; width: 18px; height: 17px;}
   
   .flash-body {
-    min-height: 50px;
+    min-height: 30px;
     padding: 22px 22px 0 22px;
-    background: url(purrTop.png) repeat-x;
-    background-size: 100%;
-    color: #f9f9f9;
+    color: #C09853;
     img  {width: 50px; margin: 0 10px 0 0; float: left;}
     h3 {margin: 0; font-size: 1.1em;}
     li {list-style:none;}
@@ -188,7 +205,6 @@ span.cke_skin_kama { border: 0px !important; }
   
   .flash-bottom {
     height: 22px;
-    background: url(purrBottom.png) no-repeat left top;
     background-size: 100%;
   }
 }

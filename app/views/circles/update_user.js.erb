@@ -1,5 +1,5 @@
 <% if @ok %>
 $("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'notice', :body=>@user.name+'更改圈子成功'})%>").purr();
 <% else %>
-$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'alert', :body=>'因为'+@reason+',更改失败'})%>").purr();
+$("<%= escape_javascript(render :partial=>'share/flash', :locals=>{:name=>'alert', :body=>t(@reason)+',更改失败'})%>").purr();
 <% end %>

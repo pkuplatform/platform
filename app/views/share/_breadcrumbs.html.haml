@@ -1,0 +1,9 @@
+%ul.breadcrumb
+  -@crumbs.each do |crumb|
+    -if crumb != @crumbs.last
+      %li
+        =link_to (t crumb[:name]), crumb[:path]
+        %span.divider /
+    -else
+      %li.active
+        =link_to (t crumb[:name]), crumb[:path]

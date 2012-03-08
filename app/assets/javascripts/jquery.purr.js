@@ -59,9 +59,9 @@
 				{
 					class: 'close',
 					href: '#close',
-					innerHTML: 'Close',
 				}
 			)
+			.html('<i class="icon-remove"></i>')
 				.appendTo( notice )
 					.click( function ()
 						{
@@ -164,9 +164,9 @@
 	$.fn.purr = function ( options )
 	{
 		options = options || {};
-		options.fadeInSpeed = options.fadeInSpeed || 500;
-		options.fadeOutSpeed = options.fadeOutSpeed || 500;
-		options.removeTimer = options.removeTimer || 3500;
+		options.fadeInSpeed = options.fadeInSpeed || 1000;
+		options.fadeOutSpeed = options.fadeOutSpeed || 1000;
+		options.removeTimer = options.removeTimer || 10000;
 		options.isSticky = options.isSticky || false;
 		options.usingTransparentPNG = options.usingTransparentPNG || false;
 		

@@ -6,6 +6,10 @@
       %i.icon-pencil
       = t '.edit'
   %li
+    %a{:href => "#{activity_circles_path(@activity)}"}
+      %i.icon-user
+      = t '.members'
+  %li
     %a{:href => "#{activity_blogs_path(@activity)}"}
       %i.icon-file
       = t '.blog'

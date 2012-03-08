@@ -33,6 +33,7 @@ class CirclesController < ApplicationController
       @group = owner
     elsif owner.is_a?(Activity)
       @activity = owner
+      @group = @activity.group
     else
       @user = owner
     end
@@ -74,14 +75,15 @@ public
 
   def index
     @circles = @owner.circles.readable(current_user)
-    @normal_circles = @owner.circles.normal
     @circle = @owner.member_circle
+    @new_circle= Circle.new
   end
 
   def show
     @circles = @owner.circles.readable(current_user)
-    @normal_circles = @owner.circles.normal
     @circle = @owner.circles.find(params[:id])
+    @new_circle= Circle.new
+    authorize! :read, @circle
     @applicant = @circle.status == Constant::Approving
   end
 
@@ -117,21 +119,6 @@ public
     end
   end
 
-
-  # GET /circles/new
-  # GET /circles/new.json
-  def new
-    @circle = @owner.circles.new
-    unless can? :admin, @owner
-      redirect_to owner, :alert=> t("circles.uncreatable",:owner=>owner.name)
-      return
-    end
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @circle }
-    end
-  end
-
   # GET /circles/1/edit
   def edit
     @circle = @owner.circles.find(params[:id])
@@ -147,7 +134,6 @@ public
   # POST /circles.json
   def create
     @circle = @owner.circles.new(params[:circle])
-    @circle.name = params[:name]
     unless can? :admin, @owner
       redirect_to @owner, :alert=> t("circles.uncreatable",:owner=>@owner.name)
       return
@@ -157,7 +143,7 @@ public
         format.html { redirect_to @circle, notice: 'circles.create.successfully' }
         format.json { render json: @circle, status: :created, location: @circle }
       else
-        format.html { render action: "new" }
+        format.html { render inline: "new" }
         format.json { render json: @circle.errors, status: :unprocessable_entity }
       end
     end

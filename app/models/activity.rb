@@ -28,6 +28,7 @@ class Activity < ActiveRecord::Base
 
   after_create :initialize_circles
   after_create :new_event
+  after_create :new_album
   after_save :get_py
 
   def initialize_circles
@@ -39,6 +40,9 @@ class Activity < ActiveRecord::Base
 
   def new_event
     Event.create(:subject_type => "Group", :subject_id => group.id, :action => "create", :object_type => "Activity", :object_id => id)
+  end
+
+  def new_album
   end
 
   def members

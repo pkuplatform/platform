@@ -564,6 +564,7 @@
       edit: "信息管理"
       blog: "日志管理"
       picture: "相册管理"
+      members: "人员管理"
     new:
       title: "创建新活动"
       new: "创建"
@@ -767,58 +768,6 @@
       activities: "活动(%{count})"
 
   join: "参加"
-
-  circles:
-    index:
-      circle: "圈子"
-      circle-members: "圈子成员"
-      title: "%{owner}的圈子"
-    members:
-      username: "用户名"
-      userrealname: "真实姓名"
-      usercircle: "圈子"
-      userrole: "角色"
-      kickout: "踢出"
-    filter:
-      member: "全体成员"
-      admin: "管理员"
-      applicant: "申请人"
-      fan: "粉丝"
-    users:
-      title: "%{owner}的圈子管理"
-      all: "所有圈子"
-      int: "查询交集"
-      cap: "查询并集"
-      username: "用户名"
-      userphone: "电话"
-      userscore: "积分"
-      userrelation: "关系"
-      usercircle: "圈子"
-      goto: "》"
-      new: "新圈子"
-    admin: "管理员"
-    member: "全体成员"
-    fan: "粉丝"
-    follow: "关注"
-    friend: "朋友"
-    applicant: "申请加入者"
-    show:
-      title: "%{owner}的%{name}圈子"
-      actions: "操作"
-      empty: "当前这个圈子里还一个人也没有~"
-      message: "群发站内信"
-      edit: "修改圈子"
-    edit:
-      title: "修改%{owner}的%{name}圈子"
-      update: "更改"
-
-    change_boss:
-      successfully: "成功变更{%owner}的管理员"
-    unreadable: "%{owner}的%{name}圈子不允许查看"
-    unwritable: "%{owner}的%{name}圈子不允许编辑"
-    uncreatable: "你不能给%{owner}创建圈子"
-    undeletable: "%{owner}的%{name}圈子不允许删除"
-
   layouts:
     site_home:
       brand: "北大社团"

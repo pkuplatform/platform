@@ -1,8 +1,19 @@
-#new-circle.modal.fade
-  .modal-header
-    %a.close{"data-dismiss" => "modal"}
-      %i.icon-remove
-    %h3=t 'circles.new.title'
-  .modal-body
-  .modal-footer
-    %button.btn.btn-primary{:href=>circles_path}
+= form_for [@owner, @new_circle], :html => { :class => "form-horizontal" } do |f|
+  #new-circle.modal.fade
+    .modal-header
+      %a.close{"data-dismiss" => "modal"}
+        %i.icon-remove
+      %h3=t 'circles.new.title'
+    .modal-body
+      .control-group
+        = f.label :name, t('.name'), :class => 'control-label'
+        .controls
+          = f.text_field :name
+      .control-group
+        = f.label :public, t('.public'), :class => 'control-label'
+        .controls
+          = f.check_box :public
+          %span.help-inline= t('.public_help')
+
+    .modal-footer
+      %button.btn.btn-primary{:type=>:submit}= t '.submit'

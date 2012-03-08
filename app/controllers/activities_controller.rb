@@ -106,6 +106,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
         @activity.admin_circle.add(current_user)
+        @activity.member_circle.add(current_user)
         @activity.boss=current_user
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
