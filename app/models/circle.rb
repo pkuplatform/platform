@@ -7,11 +7,11 @@ class Circle < ActiveRecord::Base
   
   validates_presence_of :name
 
-  scope :admin,     where(:name => 'admin')
-  scope :member,    where(:name => 'member')
-  scope :fan,       where(:fan => 'fan')
+  scope :admin,     where(:status => Constant::Admin)
+  scope :member,    where(:status => Constant::Member)
+  scope :fan,       where(:status => Constant::Fan)
   scope :follow,    where(:status => Constant::Follow)
-  scope :applicant, where(:name => 'applicant')
+  scope :applicant, where(:status => Constant::Approving)
   scope :normal,    where('status|? = 0', Constant::Special)
 
   scope :users,     where(:owner_type => 'User')
