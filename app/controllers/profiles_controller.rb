@@ -149,4 +149,12 @@ class ProfilesController < ApplicationController
     @follows = @profile.user.follows - @friends
     @fans = @profile.user.fans - @friends
   end
+
+  def update_status
+    authorize! :admin, :site
+    @profile = Profile.find(params[:id])
+    @profile.status = params[:profile][:status]
+    @profile.save
+    head :ok
+  end
 end

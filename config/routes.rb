@@ -46,6 +46,7 @@ Platform::Application.routes.draw do
       get 'like'
       get 'unlike'
       get 'users'
+      put 'update_status'
     end
     collection do 
       get 'token'
