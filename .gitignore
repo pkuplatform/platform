@@ -15,6 +15,7 @@ task_scheduler.rb
 public/*.zip
 public/ckeditor_assets
 config/database.yml
+config/development.*
 db/sphinx
 public/assets
 platform.war
