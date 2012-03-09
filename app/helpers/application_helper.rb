@@ -10,6 +10,13 @@ module ApplicationHelper
     end
   end
 
+  def group_activities_path(*params)
+    activities_group_path(params)
+  end
+
+  def group_activities_url(*params)
+    activities_group_url(params)
+  end
 
   def format_datetime(time)
     time.strftime('%y-%m-%d') + " " + time.strftime('%H:%M')

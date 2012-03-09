@@ -1,10 +1,11 @@
 %ul.nav.nav-pills
-  %li{:class => ("active" if @mailbox == "outbox" )}
+  %li{:class => ("active" if params[:mailbox] == "outbox" )}
     = link_to (t "outbox"), box_mailboxes_path(:outbox)
-  %li{:class => ("active" if @mailbox == "inbox" )}
+  %li{:class => ("active" if params[:mailbox] == "inbox" )}
     = link_to (t "inbox"), box_mailboxes_path(:inbox)
-  %li{:class => ("active" if @mailbox == "trash" )}
+  %li{:class => ("active" if params[:mailbox] == "trash" )}
     = link_to (t "trash"), box_mailboxes_path(:trash)
   %li{:class => ("active" if params[:action]=="new" )}
     = link_to (t "compose_new_message"), new_mailboxes_path
 - dismark_new_messages
+.clear

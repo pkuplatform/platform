@@ -218,6 +218,18 @@
           phone: "电话号码"
       album:
         title: "相册名"
+      activity:
+        title: "活动名"
+        tags: "标签"
+        tag_list: "标签"
+        start_at: "开始时间"
+        end_at: "结束时间"
+        location: "地点"
+        public: "公开"
+        poster: "海报"
+        description: "介绍"
+      circle:
+        name: "圈子名"
     errors:
       full_messages:
         format: "%{attribute} %{message}"

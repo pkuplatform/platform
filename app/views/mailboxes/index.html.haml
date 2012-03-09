@@ -10,7 +10,7 @@
         %thead
           %tr
             %th
-              = check_box_tag 'checkbox'
+              %input#checkbox.checkall{:name => "checkbox", :type => "checkbox"}
             - unless @mailbox == "outbox"
               %th
                 = t "from"

@@ -2,11 +2,6 @@
   = select_tag "option", options_for_select(chops(@options)||[]), :class => "jselectmenu"
   = submit_tag (t "apply_to_selected"), :class => "submit jbutton"
   = hidden_field_tag :mailbox, @mailbox
-  :javascript
-    $(function(){
-      $('.jbutton').button();
-      $('.jselectmenu').selectmenu();
-    });
   %table.mail-list{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
     %thead
       %tr
