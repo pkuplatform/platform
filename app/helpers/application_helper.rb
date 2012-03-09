@@ -77,8 +77,8 @@ module ApplicationHelper
     activity_blog_path(blog.activity, blog)
   end
 
-  def load_picture_path(picture)
-    load_activity_picture_path(picture.imageable, picture)
+  def picture_path(picture)
+    activity_picture_path(picture.imageable, picture)
   end
 
   def album_path(album)

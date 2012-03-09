@@ -9,8 +9,8 @@
     :javascript
       $(function(){$(".best_in_place").best_in_place();});
   .navi
-    = link_to (t ".prev"),load_picture_path(@picture.prev),:remote=>true
+    = link_to (t ".prev"),picture_path(@picture.prev)
     = "/"
-    = link_to (t ".next"),load_picture_path(@picture.next),:remote=>true
+    = link_to (t ".next"),picture_path(@picture.next)
 .comments
   = render :partial => "share/comments", :locals => { :object => @picture }
