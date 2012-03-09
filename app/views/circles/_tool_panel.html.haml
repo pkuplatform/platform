@@ -4,7 +4,10 @@
       %i.icon-pencil
       =t ".edit"
   -if can? :delete, @circle
-    %a{:href=>circle_path(@circle),"data-remote"=>true, "data-method"=>:delete, "confirm"=>t(".sure"), :class=>"btn"}
+    %a{:href=>circle_path(@circle),"data-remote"=>true, "data-method"=>:delete, "data-confirm"=>t(".sure"), :class=>"btn"}
       %i.icon-remove
       =t ".delete"
+  %a{:href=>message_circle_path(@circle), :class=>"btn"}
+    %i.icon-envelope
+    =t ".message"
 =render 'edit'

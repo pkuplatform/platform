@@ -27,6 +27,7 @@
     tool_panel:
       edit: "编辑"
       delete: "删除"
+      message: "站内信"
     edit:
       public_help: "不公开的圈子只有管理员可以看见"
       submit: "修改"

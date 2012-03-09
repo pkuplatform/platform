@@ -184,7 +184,7 @@ public
 
   def message
     @circle = Circle.find(params[:id])
-    @profiles = @circle.users.shift(20).collect{|p| {:id => p.id,:name=>p.name}}
+    @profiles = @circle.users.collect{|p| {:id => p.id,:name=>p.name}}
     unless can? :read, @circle
       redirect_to @circle.owner, :alert=> t("circles.unreadable",:owner=>@circle.owner.name,:name=>@circle.name)
       return
