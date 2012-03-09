@@ -2,7 +2,7 @@
   =render 'filter'
   -if @applicant
     =render 'applicants'
-  -elsif can? :write, @circle || ((can? :admin, @owner) && @member)
+  -elsif (can? :write, @circle) || @member
     =render 'members'
   -elsif
     =render 'read_only'

@@ -1,0 +1,16 @@
+%ul.navbar.nav.nav-list
+  %li.nav-header
+    = t '.navi'
+  %li
+    %a{:href => "#{activity_circles_path(@activity)}"}
+      %i.icon-user
+      = t '.members'
+  %li
+    %a{:href => "#{activity_blogs_path(@activity)}"}
+      %i.icon-file
+      = t '.blog'
+  %li
+    %a{:href => "#{activity_albums_path(@activity)}"}
+      %i.icon-picture
+      = t '.picture'
+      

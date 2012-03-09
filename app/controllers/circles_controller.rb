@@ -84,7 +84,9 @@ public
     @circle = @owner.circles.find(params[:id])
     @new_circle= Circle.new
     authorize! :read, @circle
-    @applicant = @circle.status == Constant::Approving
+    @applicant = (@circle.status == Constant::Approving) && (can? :admin, @owner)
+    @member = (@circle.status == Constant::Member) && (can? :admin, @owner)
+
   end
 
   def update_user

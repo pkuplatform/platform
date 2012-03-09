@@ -579,6 +579,11 @@
       blog: "日志管理"
       picture: "相册管理"
       members: "人员管理"
+    navbar:
+      navi: "导航"
+      blog: "日志列表"
+      picture: "相册列表"
+      members: "活动人员"
     new:
       title: "创建新活动"
       new: "创建"

@@ -19,6 +19,25 @@
               = link_to t('.groups'), groups_path
             %li
               = link_to t('.activities'), activities_path
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", 'data-toggle' => 'dropdown'}
+                = @activity.name
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to t('.activity'), @activity
+                %li.divider
+                %li.nav-header
+                  = t '.info'
+                %li
+                  = link_to t('.users'), activity_circles_path(@activity)
+                %li
+                  = link_to t('.blogs'), activity_blogs_path(@activity)
+                %li
+                  = link_to t('.albums'), activity_albums_path(@activity)
+                %li.divider
+                %li
+                  = link_to t('.group'), group_path(@activity.group)
           = render 'layouts/lang'
           = render 'layouts/toolbar'
           = render 'layouts/search'
@@ -29,4 +48,8 @@
         .span3.offset1
           .sidebar
             = render 'users/card'
-            = render 'activities/toolbar'
+            - if can? :admin, @activities
+              = render 'activities/toolbar'
+            - else
+              = render 'activities/navbar'
+
