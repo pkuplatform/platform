@@ -217,7 +217,7 @@ public
         @owner.member_circle.add(@user)
         @owner.applicant_circle.remove(@user)
         @ok = true
-        current_user.send_message(t("circles.kickout.subject", :owner=>@owner.name),render_to_string(:partial=>'reminder', :layout=>false,:locals=>{:remind_type=>:approve,:user=>current_user,:owner=>@owner}) , @user)
+        current_user.send_message(t("circles.approve.subject", :owner=>@owner.name),render_to_string(:partial=>'reminder', :layout=>false,:locals=>{:remind_type=>:approve,:user=>current_user,:owner=>@owner}) , @user)
       else
         @reason = t("circles.not_applicant")
       end
@@ -232,7 +232,7 @@ public
       if @owner.applicants.include?(@user)
         @owner.applicant_circle.remove(@user)
         @ok = true
-        current_user.send_message(t("circles.kickout.subject", :owner=>@owner.name),render_to_string(:partial=>'reminder', :layout=>false,:locals=>{:remind_type=>:reject,:user=>current_user,:owner=>@owner}) , @user)
+        current_user.send_message(t("circles.reject.subject", :owner=>@owner.name),render_to_string(:partial=>'reminder', :layout=>false,:locals=>{:remind_type=>:reject,:user=>current_user,:owner=>@owner}) , @user)
       else
         @reason = t("circles.not_applicant")
       end
