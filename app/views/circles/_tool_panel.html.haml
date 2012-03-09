@@ -1,0 +1,10 @@
+.circles.toolpanel.btn-group
+  -if can? :write, @circle
+    %a{:href=>"#edit-circle", "data-toggle"=>:modal, :class=>"btn"} 
+      %i.icon-pencil
+      =t ".edit"
+  -if can? :delete, @circle
+    %a{:href=>circle_path(@circle),"data-remote"=>true, "data-method"=>:delete, "confirm"=>t(".sure"), :class=>"btn"}
+      %i.icon-remove
+      =t ".delete"
+=render 'edit'
