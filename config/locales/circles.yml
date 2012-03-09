@@ -46,3 +46,12 @@
     uncreatable: "你不能给%{owner}创建圈子"
     undeletable: "%{owner}的%{name}圈子不允许删除"
     cannot_remove_boss: "不能将负责人移出管理员圈子"
+    kickout:
+      subject: "[系统消息]你已经被请离%{owner}"
+      body: "[系统消息]你已经被管理员%{admin}请离了%{owner_type}%{owner}。如有疑问，请回复此消息"
+    approve:
+      subject: "[系统消息]你被批准加入%{owner}"
+      body: "[系统消息]你已经被管理员%{admin}批准了加入%{owner_type}%{owner}。"
+    reject:
+      subject: "[系统消息]你被拒绝加入%{owner}"
+      body: "[系统消息]你已经被管理员%{admin}拒绝了加入%{owner_type}%{owner}的请求。如有疑问，请回复此消息"
