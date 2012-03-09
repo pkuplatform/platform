@@ -6,11 +6,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require jquery-ui
-//= require_tree .
-//= require ckeditor/ckeditor
+//= require twitter/bootstrap
+//= require ckeditor/init
 //= require fancybox
+//= require_tree .
 
 $.fn.scrollToAndActivate = function(options) {
   return this.each(function() {

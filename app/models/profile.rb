@@ -16,6 +16,9 @@ class Profile < ActiveRecord::Base
     indexes :name, :sortable => true
     indexes :realname, :sortable => true
     indexes :description
+
+    has :created_at, :updated_at
+    set_property :delta => true
   end
 
   def medium

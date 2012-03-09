@@ -1,4 +1,5 @@
 = form_for @form_second_building_application, :html => {:class => 'form-horizontal'} do |f|
+  = f.hidden_field :group_id
   %fieldset
     %legend
       = t '.title'
@@ -54,7 +55,7 @@
       .control-group
         = f.label :huodongshijian, t("huodongshijian"), :class => 'control-label'
         .controls
-          = f.date_select :huodongshijian
+          = f.date_select :huodongshijian, {}, { :class => 'span1' }
       .control-group
         = f.label :startclass, t("startclass"), :class => 'control-label'
         .controls
@@ -71,15 +72,6 @@
         = f.label :beizhu, t("beizhu"), :class => 'control-label'
         .controls
           = f.text_field :beizhu, :class => 'span4'
-    = f.hidden_field :group_id
-    - if @form_second_building_application.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@form_second_building_application.errors.count, "error")
-          prohibited this form_second_building_application from being saved:
-        %ul
-          - @form_second_building_application.errors.full_messages.each do |msg|
-            %li= msg
     .form-actions
       %button.btn.btn-primary{:type => 'submit'}
         = t '.new'

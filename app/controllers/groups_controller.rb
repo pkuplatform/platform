@@ -8,10 +8,8 @@ class GroupsController < ApplicationController
     case action_name
     when "index", "wall"
       "groups_index"
-    when "show"
-      "groups_show"
     when "new"
-      "form"
+      "admin"
     else
       "groups_show"
     end

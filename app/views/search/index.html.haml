@@ -1,6 +1,4 @@
 .content.index
-  - if @results.empty?
-    .empty= t '.empty'
   - @results.each do |result|
     - case result
     - when Group

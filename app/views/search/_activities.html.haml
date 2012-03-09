@@ -1,21 +1,23 @@
-.activity.card
-  = link_to (image_tag activity.poster.url(:card)), activity
-  .info
+.activity.card.row
+  .span2
+    .thumbnail
+      = link_to (image_tag activity.card), activity
+  .span5
     .top
-      %span.name= link_to (highlight activity.title, @q), activity
+      %span.name= link_to highlight(activity.title, @q), activity
     .center
-      = sanitize(highlight(activity.description, @q), :attributes => %w(id class style href _cke_saved_href title alt width height)) unless activity.description.nil?
+      =sanitize(highlight(truncate_html(activity.description,:length=>100), @q), :attributes => %w(id class style href _cke_saved_href title alt width height))
     .bottom
       %span.time
         = l activity.start_at, :format => :short
       %span.location
-        = activity.location
+        = activity.location.truncate(20)
       %span.group
         = t '.from'
-        = link_to activity.group.name, activity.group
+        = link_to activity.group.name.truncate(20), activity.group
       %span.meta
-        = t '.like', :count => activity.fans.count
+        = link_to (t '.like', :count => activity.fans.count), activity_circle_path(activity,activity.fan_circle)
         = "|"
-        = t '.join', :count => activity.members.count
+        = link_to (t '.join', :count => activity.members.count), activity_circle_path(activity,activity.member_circle)
         = "|"
-        = t '.comment', :count => activity.comments.count
+        = link_to (t '.comment', :count => activity.comments.count), activity.comments.first||activity_path(activity,:anchor=>'new-comment')

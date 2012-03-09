@@ -1,5 +1,8 @@
 .page-header
-  %h1= t '.title'
+  %h1
+    = t '.title'
+    %small
+      = link_to t('.new'), new_group_path, :class => 'btn btn-mini btn-info'
 .btn-group
   = link_to t('.all'), admin_groups_index_path(:filter => "all"), :class => 'btn'
   = link_to t('.approving'), admin_groups_index_path(:filter => "approving"), :class => 'btn'

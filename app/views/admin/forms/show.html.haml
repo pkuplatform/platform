@@ -1,63 +1,94 @@
-.admin.app-form.box.form
-  .back
-    = link_to (t '.back'), admin_forms_path
-  .title
-    = t '.title'
-  = form_for @form do |f|
-    .field
-      = f.label :group, t('.group')
-      = @form.group.name
-    .field
-      = f.label :zhubandanwei, t('.host')
-      = @form.zhubandanwei
-    .field
-      = f.label :fuzeren, t('.charge')
-      = @form.fuzeren
-    .field
-      = f.label :xingming, t('.name')
-      = @form.xingming
-    .field
-      = f.label :yuanxi, t('.school')
-      = @form.yuanxi
-    .field
-      = f.label :lianxifangshi, t('.contact')
-      = @form.lianxifangshi
-    .field
-      = f.label :zhujiangren, t('.speaker')
-      = @form.zhujiangren
-    .field
-      = f.label :gongzuodanwei, t('.department')
-      = @form.gongzuodanwei
-    .field
-      = f.label :zhicheng, t('.tit')
-      = @form.zhicheng
-    .field
-      = f.label :yanjiangtimu, t('.topic')
-      = @form.yanjiangtimu
-    .field
-      = f.label :fangyingneirong, t('.display')
-      = @form.fangyingneirong
-    .field
-      = f.label :huodongxingshi, t('.form')
-      = @form.huodongxingshi
-    .field
-      = f.label :huodongshijian, t('.datetime')
-      = l @form.huodongshijian
-      = t '.time', :start => @form.startclass, :end => @form.endclass
-    .field
-      = f.label :huodongrenshu, t('.count')
-      = @form.huodongrenshu
-    .field
-      = f.label :beizhu, t('.notes')
-      = @form.beizhu
-    .field
-      = f.label :jiaowuzhang, t('.chief')
-      = f.text_field 'jiaowuzhang'
-    .field
-      = f.label :zhidaozhongxin, t('.center')
-      = f.text_field 'zhidaozhongxin'
-    .field
-      = f.label :status, t('.status')
-      = f.select :status, { (t "approving") => Constant::Approving,  (t "approved") => Constant::Approved, (t "reject") => Constant::Rejected, (t "delete") => Constant::Destroy }
+= form_for @form, :html => {:class => 'form-horizontal'} do |f|
+  %fieldset
+    %legend
+      = t '.title'
+    .control-group
+      = f.label :zhubandanwei, t("zhubandanwei"), :class => 'control-label'
+      .controls.value
+        = @form.zhubandanwei
+    %fieldset
+      %legend
+        = t '.fuzeren'
+      .control-group
+        = f.label :xingming, t(".name"), :class => 'control-label'
+        .controls.value
+          = @form.xingming
+      .control-group
+        = f.label :yuanxi, t("yuanxi"), :class => 'control-label'
+        .controls.value
+          = @form.yuanxi
+      .control-group
+        = f.label :lianxifangshi, t("lianxifangshi"), :class => 'control-label'
+        .controls.value
+          = @form.lianxifangshi
+    %fieldset
+      %legend
+        = t '.zhujiangren'
+      .control-group
+        = f.label :zhujiangren, t(".name"), :class => 'control-label'
+        .controls.value
+          = @form.zhujiangren
+      .control-group
+        = f.label :gongzuodanwei, t("gongzuodanwei"), :class => 'control-label'
+        .controls.value
+          = @form.gongzuodanwei
+      .control-group
+        = f.label :zhicheng, t("zhicheng"), :class => 'control-label'
+        .controls.value
+          = @form.zhicheng
+    %fieldset
+      %legend
+        = t '.info'
+      .control-group
+        = f.label :yanjiangtimu, t("yanjiangtimu"), :class => 'control-label'
+        .controls.value
+          = @form.yanjiangtimu
+      .control-group
+        = f.label :fangyingneirong, t("fangyingneirong"), :class => 'control-label'
+        .controls.value
+          = @form.fangyingneirong
+      .control-group
+        = f.label :huodongxingshi, t("huodongxingshi"), :class => 'control-label'
+        .controls.value
+          = @form.huodongxingshi
+      .control-group
+        = f.label :huodongshijian, t("huodongshijian"), :class => 'control-label'
+        .controls.value
+          = @form.huodongshijian
+      .control-group
+        = f.label :startclass, t("startclass"), :class => 'control-label'
+        .controls.value
+          = @form.startclass
+      .control-group
+        = f.label :endclass, t("endclass"), :class => 'control-label'
+        .controls.value
+          = @form.endclass
+      .control-group
+        = f.label :huodongrenshu, t("huodongrenshu"), :class => 'control-label'
+        .controls.value
+          = @form.huodongrenshu
+      .control-group
+        = f.label :beizhu, t("beizhu"), :class => 'control-label'
+        .controls.value
+          = @form.beizhu
+    %fieldset
+      %legend
+        = t '.appr'
+      .control-group
+        = f.label :jiaowuzhang, t('.chief'), :class => 'control-label'
+        .controls.value
+          = f.text_field 'jiaowuzhang'
+      .control-group
+        = f.label :zhidaozhongxin, t('.center'), :class => 'control-label'
+        .controls.value
+          = f.text_field 'zhidaozhongxin'
+      .control-group
+        = f.label :classroom, t('.classroom'), :class => 'control-label'
+        .controls.value
+          = f.text_field 'classroom'
+      .control-group
+        = f.label :status, t('.status'), :class => 'control-label'
+        .controls.value
+          = f.select :status, { (t "approving") => Constant::Approving,  (t "approved") => Constant::Approved, (t "reject") => Constant::Rejected, (t "delete") => Constant::Destroy }
     .submit
-      = f.submit t ".submit"
+      = f.submit t(".submit"), { :class => 'btn btn-primary'}
