@@ -190,7 +190,7 @@ public
       return
     end
     respond_to do |format|
-      format.html 
+      format.html { render 'mailboxes/new'}
       format.json { head :ok }
     end
   end
