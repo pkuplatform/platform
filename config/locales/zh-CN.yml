@@ -853,6 +853,14 @@
       home: "个人中心"
       groups: "社团中心"
       activities: "活动中心"
+    activities_show:
+      brand: "北大社团"
+      lang: "语言"
+      zh_cn: "中文"
+      eng: "English"
+      home: "个人中心"
+      groups: "社团中心"
+      activities: "活动中心"
 
   simple_form:
     labels:
