@@ -1,0 +1,6 @@
+%p
+  =t ".#{@remind_type}.greetings" 
+%p
+  =t ".admin",:name => current_user.name
+  =t ".#{@remind_type}.action"
+  =link_to (t ".owner",:name => @owner.name, :type => t(@owner.class.name)), @owner
