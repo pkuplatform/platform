@@ -1,9 +1,10 @@
-.group.form
-  .title
+.page-header
+  %h1
     = t '.title'
-    %span= t '.remark'
-  = form_for @group do |f|
-    = hidden_field_tag 'q', '2'
-    = f.cktext_area :introduction
-    .button-wrapper
-      = f.submit (t '.save')
+    %small
+      = t '.remark'
+= form_for @group do |f|
+  = hidden_field_tag 'q', '2'
+  = f.cktext_area :introduction
+  .button-wrapper
+    = f.submit (t '.save'), { :class => 'btn btn-primary' }
