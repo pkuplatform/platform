@@ -1,14 +1,11 @@
 = simple_form_for [@owner, @new_circle], :html => { :class => "form-horizontal" } do |f|
-  #edit-circle.modal.fade
+  #new-circle.modal.fade
     .modal-header
       %a.close{"data-dismiss" => "modal"}
         %i.icon-remove
       %h3=t '.title'
     .modal-body
-
       = f.input :name
-      = f.input :public
-      %span.help-inline= t('.public_help')
-
+      = f.input :public, :hint => t('.public_help')
     .modal-footer
       %button.btn.btn-primary{:type=>:submit}= t '.submit'

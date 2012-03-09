@@ -3,6 +3,8 @@ class Circle < ActiveRecord::Base
   has_many :user_circles, :dependent => :destroy
   has_many :users, :through => :user_circles
 
+  attr_accessible :name, :public
+  
   validates_presence_of :name
 
   scope :admin,     where(:status => Constant::Admin)

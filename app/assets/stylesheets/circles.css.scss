@@ -22,6 +22,14 @@
 
     }
   }
+
+  .applicants-table{
+    table {
+      td.approve {
+        width:80px;
+      }
+    }
+  }
   .select-option {
     vertical-align:center;
     span {
@@ -43,6 +51,13 @@
 .multi-select-box {
   width:93%;
   height:400px;
+}
+
+.circles.toolpanel{
+  background-color:whiteSmoke;
+  border-top:1px solid #DDD;
+  margin-top:20px;
+  padding:10px;
 }
 
 .circle{

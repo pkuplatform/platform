@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   after_filter :user_status
   before_filter :build_crumbs
 
+  helper_method :picture_path, :picture_url
+
+  def picture_path(picture,params={})
+    url_for([picture.imageable, picture])
+  end
+
   def build_crumbs
     @crumbs=[]
   end

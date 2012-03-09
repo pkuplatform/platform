@@ -153,21 +153,9 @@ public
   # PUT /circles/1.json
   def update
     @circle = @owner.circles.find(params[:id])
-    unless can? :write, @circle
-      redirect_to @owner, :alert=> t("circles.unwritable",:owner=>@owner.name,:name=>@circle.name)
-      return
-    end
-    @update_users = []
-    @update_users = User.find(params[:users]) unless params[:users].nil?
-    @delete_users = []
-    @delete_users = @circle.users - @update_users unless @update_users.nil?
-    @circle.user_circles.each do |uc|
-      uc.destroy if @delete_users.include?(uc.user)
-    end
-    @circle.users |= @update_users
 
     respond_to do |format|
-      if @circle.save
+      if @circle.update_attributes(params[:circle])
         format.html { redirect_to @circle, notice: 'Circle was successfully updated.' }
         format.json { head :ok }
       else
@@ -211,10 +199,10 @@ public
     unless can? :write, @owner.admin_circle
       redirect_to @owner, :alert=> t("circles.unwritable",:owner=>@owner.name,:name=>@owner.admin_circle.name)
     end
-    @owner.boss = @owner.admins.find(params[:id])
+    @owner.boss = @owner.admins.find(params[:user_id])
     @owner.save
     respond_to do |format|
-      format.html { redirect_to @owner, :notice=> t("circles.change_boss.successfully",:owner=>@owner.name) }
+      format.html { redirect_to circle_path(@owner.admin_circle), :notice=> t("circles.change_boss.successfully",:owner=>@owner.name) }
       format.json { head :ok }
     end
   end
@@ -257,6 +245,7 @@ public
       elsif @owner.members.include?(@user)
         @ok = true
         @owner.member_circle.remove(@user)
+        @owner.circles.each{|c| c.remove(@user) if c.users.include?(@user)}
       else
         @reason = t("circles.not_member")
       end

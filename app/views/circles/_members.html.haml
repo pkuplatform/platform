@@ -10,7 +10,7 @@
       %th
         =t '.usercircle'
       %th
-        =t '.kickout'
+        =t '.options'
   %tbody
     - @circle.users.each do |user|
       %tr{:id=>"user-#{user.id}"}
@@ -26,6 +26,11 @@
           = form_tag circles_path+"/update/#{user.id}", :remote=>true do
             = select_tag("circles[]", options_for_select(@circles.selectable(current_user).collect {|cc| [(t "circles."+cc.name), cc.id]}, user.belonged_circles.collect{|cs| cs.id}),{:multiple=>true, :class=> "multi-select",:id=>"multi-select-#{user.id}"})
         %td
-          -unless @owner.admins.include?(user)
-            %a{:href=>circles_path+"/kickout/#{user.id}", "data-method"=>:post, :class=>'btn', "data-remote"=>true} 
+          -if (not @owner.admins.include?(user))
+            %a{:href=>circles_path+"/kickout/#{user.id}", "data-method"=>:post, :class=>'btn btn-danger', "data-remote"=>true} 
               %i.icon-remove
+              =t '.kickout'
+          -elsif @owner.boss==current_user&&user!=current_user
+            %a{:href=>circles_path+"/change_boss/#{user.id}", "data-method"=>:post, :class=>'btn btn-primary'} 
+              %i.icon-arrow-up
+              =t '.change_boss'

@@ -84,7 +84,7 @@ Platform::Application.routes.draw do
     end
     resources :circles do
       collection do
-        post 'change_boss' => 'circles#change_boss'
+        post 'change_boss/:user_id' => 'circles#change_boss'
         post 'update/:user_id' => 'circles#update_user'
         post 'approve/:user_id' => 'circles#approve'
         post 'reject/:user_id' => 'circles#reject'
@@ -117,7 +117,7 @@ Platform::Application.routes.draw do
     resources :circles do
       collection do
         post 'update/:user_id' => 'circles#update_user'
-        post 'change_boss' => 'circles#change_boss'
+        post 'change_boss/:user_id' => 'circles#change_boss'
         post 'approve/:user_id' => 'circles#approve'
         post 'reject/:user_id' => 'circles#reject'
         post 'kickout/:user_id' => 'circles#kickout'

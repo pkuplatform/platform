@@ -18,7 +18,7 @@
           %td
             = user.profile.realname
             .hide= Hz2py.do(user.profile.realname)
-          %td
+          %td.approve
             .btn-group
               %a{:href=>circles_path+"/approve/#{user.id}", "data-method"=>:post, :class=>'btn btn-primary', "data-remote"=>true} 
                 %i.icon-ok
