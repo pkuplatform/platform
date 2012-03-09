@@ -865,8 +865,18 @@
 
   simple_form:
     labels:
+      user:
+        password_confirmation: "确认密码"
       group:
         category_id: "类别"
         slogan: "标语"
         email: "E-mail"
         founded_at: "成立时间"
+      profile:
+        name: "用户名"
+        realname: "真实姓名"
+        gender: "性别"
+        student_id: "学号"
+        phone: "手机号"
+        avatar: "头像"
+        description: "个人简介"

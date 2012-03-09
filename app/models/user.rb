@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   delegate :can?, :cannot?, :to => :ability
   
   def fan_circle
-    circles.fan.first
+    circles.first
   end
 
   def fans

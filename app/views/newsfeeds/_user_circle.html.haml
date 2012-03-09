@@ -12,12 +12,12 @@
         .span1
           = image_tag object.thumb
         .span5
-          = sanitize(truncate_html(object.description,:length=>500), :attributes => %w(id class style href _cke_saved_href title alt width height))
+          = sanitize(truncate_html(object.description,:length=>500), :attributes => %w(id class style src href _cke_saved_href title alt width height))
       .medium.row
         .span3
           = image_tag object.medium
         .span3
-          = sanitize(truncate_html(object.description,:length=>500), :attributes => %w(id class style href _cke_saved_href title alt width height))          
+          = sanitize(truncate_html(object.description,:length=>500), :attributes => %w(id class style src href _cke_saved_href title alt width height))          
     .bottom
       %span.time
         = distance_of_time_in_words_to_now(event.created_at)
