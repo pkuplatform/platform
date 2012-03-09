@@ -1,0 +1,25 @@
+.page-header
+  %h1= t '.title'
+.btn-group
+  = link_to t('.all'), admin_members_index_path(:filter => "all"), :class => 'btn'
+  = link_to t('.approving'), admin_members_index_path(:filter => "approving"), :class => 'btn'
+  = link_to t('.approved'), admin_members_index_path(:filter => "approved"), :class => 'btn'
+  = link_to t('.rejected'), admin_members_index_path(:filter => "rejected"), :class => 'btn'
+  = link_to t('.blocked'), admin_members_index_path(:filter => "blocked"), :class => 'btn'
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t '.name'
+      %th= t '.realname'
+      %th= t '.sid'
+      %th= t '.status'
+  %tbody
+    - @profiles.each do |profile|
+      %tr
+        %td= link_to profile.name, profile
+        %td= profile.realname
+        %td= profile.student_id
+        %td
+          = form_for profile, :url => update_status_profile_path(profile), :remote => true do |f|
+            = f.select :status, { (t 'approving') => Constant::Approving, (t 'blocked') => Constant::Blocked, (t 'approved') => Constant::Approved, (t 'rejected') => Constant::Rejected }
+= will_paginate @profiles, :renderer => PaginationListLinkRenderer

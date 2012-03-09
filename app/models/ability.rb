@@ -65,7 +65,7 @@ class Ability
     end
 
     can :edit, Profile do |profile|
-      user.id == profile.user.id
+      user.id == profile.user.id || (can? :admin, :site)
     end
 
     can :admin, Picture do |picture|
