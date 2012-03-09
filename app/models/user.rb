@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   has_many :circles, :as => :owner, :dependent => :destroy
 
-  has_many :user_circles
+  has_many :user_circles, :dependent => :destroy
   has_many :belonged_circles, :through => :user_circles, :source => :circle
 
   has_many :user_recommends

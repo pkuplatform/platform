@@ -12,6 +12,8 @@ class Profile < ActiveRecord::Base
   validates_uniqueness_of :phone
   after_save :get_py
 
+  attr_accessible :name, :realname, :student_id, :name, :phone, :gender, :description, :avatar
+
   define_index do
     indexes :name, :sortable => true
     indexes :realname, :sortable => true

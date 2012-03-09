@@ -230,6 +230,7 @@
         description: "介绍"
       circle:
         name: "圈子名"
+        public: "是否公开"
     errors:
       full_messages:
         format: "%{attribute} %{message}"
