@@ -11,7 +11,7 @@ table {
   tr { margin: 5px 0px; }
 }
 
-.clear { clear: both; }
+.clear { float:none; clear: both; }
 
 .field_with_errors { 
   display: inline; 

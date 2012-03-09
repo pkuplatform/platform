@@ -10,9 +10,8 @@
       .image_carousel
         .carousel-items
           - @activity.pictures.each do |pic|
-            .span1
-              = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br />"+pic.remark, :"data-fancybox-group" => "gallery"
-        .clearfix
+            = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br />"+pic.remark, :"data-fancybox-group" => "gallery"
+        .clear
         %a.prev{:href => '#'}
           %i.icon-arrow-left
         %a.next{:href => '#'}
