@@ -48,7 +48,7 @@
         .span3.offset1
           .sidebar
             = render 'users/card'
-            - if can? :admin, @activities
+            - if can? :admin, @activity
               = render 'activities/toolbar'
             - else
               = render 'activities/navbar'

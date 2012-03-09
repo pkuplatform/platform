@@ -1,9 +1,10 @@
 %ul.nav.nav-pills.pull-right
   -@circles.each do |c|
     %li{:id=>"cfilter-#{c.id}", :class=>(c == @circle ? "active" : "")}
-      = link_to c.name, circle_path(c)
+      = link_to strip_tags(t("circles."+c.name)), circle_path(c)
   -if can? :admin, @owner
     %li#add-circle
       %a{:href=>"#new-circle", "data-toggle"=>"modal"} 
         %i.icon-plus
     = render 'new'
+.clear

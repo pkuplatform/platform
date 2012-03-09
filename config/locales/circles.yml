@@ -19,18 +19,16 @@
       edit: "修改圈子"
     edit:
       title: "修改圈子"
-      update: "更改"
+      public_help: "不公开的圈子只有管理员可以看见"
+      submit: "修改"
     new: 
       public_help: "不公开的圈子只有管理员可以看见"
       submit: "创建"
-      title: "修改圈子"
+      title: "新圈子"
     tool_panel:
       edit: "编辑"
       delete: "删除"
       message: "站内信"
-    edit:
-      public_help: "不公开的圈子只有管理员可以看见"
-      submit: "修改"
     members:
       userrole: "身份"
       usercircle: "圈子"

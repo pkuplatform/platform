@@ -868,6 +868,12 @@
       home: "个人中心"
       groups: "社团中心"
       activities: "活动中心"
+      activity: "活动页面"
+      info: "活动信息"
+      users: "活动人员"
+      blogs: "活动日志"
+      albums: "活动相册"
+      group: "承办社团"
 
   simple_form:
     labels:

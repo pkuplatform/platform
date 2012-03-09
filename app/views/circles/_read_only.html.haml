@@ -1,10 +1,9 @@
-.circles.content
-  -if @circle.users.empty?
-    =t ".empty"
-  -else
-    %ul
-      - @circle.users.each do |user|
-        %li.user
-          .avatar= link_to (image_tag user.avatar), user.profile
-          .name= link_to user.name.truncate(12), user.profile
-      .clear
+-if @circle.users.empty?
+  =t ".empty"
+-else
+  %ul
+    - @circle.users.each do |user|
+      %li.user
+        .avatar= link_to (image_tag user.avatar), user.profile
+        .name= link_to user.name.truncate(12), user.profile
+    .clear
