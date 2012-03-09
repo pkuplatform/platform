@@ -217,7 +217,7 @@ public
         @owner.member_circle.add(@user)
         @owner.applicant_circle.remove(@user)
         @ok = true
-        current_user.send_message(t("circles.approve.subject", :owner=>@owner.name), t("circles.approve.body", :owner=>ApplicationController.helpers.link_to(@owner.name,@owner), :owner_type=>t(@owner.class.name), :admin=>current_user.name), @user)
+        current_user.send_message(t("circles.kickout.subject", :owner=>@owner.name),render_to_string(:partial=>'reminder', :layout=>false,:locals=>{:remind_type=>:approve,:user=>current_user,:owner=>@owner}) , @user)
       else
         @reason = t("circles.not_applicant")
       end
@@ -232,7 +232,7 @@ public
       if @owner.applicants.include?(@user)
         @owner.applicant_circle.remove(@user)
         @ok = true
-        current_user.send_message(t("circles.reject.subject", :owner=>@owner.name), t("circles.reject.body", :owner=>ApplicationController.helpers.link_to(@owner.name,@owner), :owner_type=>t(@owner.class.name), :admin=>current_user.name), @user)
+        current_user.send_message(t("circles.kickout.subject", :owner=>@owner.name),render_to_string(:partial=>'reminder', :layout=>false,:locals=>{:remind_type=>:reject,:user=>current_user,:owner=>@owner}) , @user)
       else
         @reason = t("circles.not_applicant")
       end
@@ -250,7 +250,7 @@ public
         @ok = true
         @owner.member_circle.remove(@user)
         @owner.circles.each{|c| c.remove(@user) if c.users.include?(@user)}
-        current_user.send_message(t("circles.kickout.subject", :owner=>@owner.name), t("circles.kickout.body", :owner=>ApplicationController.helpers.link_to(@owner.name,@owner), :owner_type=>t(@owner.class.name), :admin=>current_user.name), @user)
+        current_user.send_message(t("circles.kickout.subject", :owner=>@owner.name),render_to_string(:partial=>'reminder', :layout=>false,:locals=>{:remind_type=>:kickout,:user=>current_user,:owner=>@owner}) , @user)
       else
         @reason = t("circles.not_member")
       end
