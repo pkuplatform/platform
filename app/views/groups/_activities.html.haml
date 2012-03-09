@@ -3,7 +3,9 @@
     = t :activity
   %div
     - if @group.activities.empty?
-      .warn= t '.warn'
+      .alert.alert-info
+        = link_to 'x', '', :class => 'close', 'data-dismiss' => 'alert'
+        = t '.warn'
     - else
       = render :partial => 'activities/card', :collection => @group.activities.last(3), :as => :activity
   .more.row

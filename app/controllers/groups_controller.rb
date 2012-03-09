@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     case action_name
     when "index", "wall"
       "groups_index"
-    when "new"
+    when "new", "create"
       "admin"
     else
       "groups_show"
@@ -50,7 +50,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.readable.find(params[:id])
+    @group = Group.find(params[:id])
     @more = @group.activities.count > 3
     @core = @group.comments.recent.count > 8
     @members = @group.members
@@ -109,11 +109,11 @@ class GroupsController < ApplicationController
       if @group.save
         @group.admin_circle.add(current_user)
         @group.member_circle.add(current_user)
-        @group.boss=current_user
+        @group.boss_id = current_user.id
         format.html { redirect_to :action => 'edit', :id => @group.id, :q => 1 }
         format.json { render json: @group, status: :created, location: @group }
       else
-        format.html { render action: "new", layout: "form" }
+        format.html { render action: "new" }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end

@@ -2,7 +2,10 @@
   %span.label.label-info
     = t "Blog"
   %div
-    = t '.empty' if @activity.blogs.empty?
+    - if @activity.blogs.empty?
+      .alert.alert-info
+        = link_to 'x', '', :class => 'close', 'data-dismiss' => 'alert'
+        = t '.empty'
     = render :partial => 'blogs/blog', :collection => @activity.blogs
   .more.row
     - if @activity.blogs.count>3

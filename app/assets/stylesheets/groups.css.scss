@@ -37,11 +37,6 @@
 
 .group.form.admin { @include back; }
 
-.activities .warn { 
-  text-align: center;
-  @include orange;
-}
-
 .content.wall .hot {
   .title { 
     font-size: 30px; 
@@ -106,6 +101,7 @@
 }
 
 .groups.show .activities {
+  .alert { margin-top: 20px; }
   margin-bottom: 50px;
   .more { margin-top: 20px; text-align: center; }
 }

@@ -1,8 +1,8 @@
-.group.form
-  .title
+.page-header
+  %h1
     = t '.title'
-  = form_for @group do |f|
-    = hidden_field_tag 'q', '4'
-    = f.cktext_area :history, :height => 300
-    .button-wrapper
-      = f.submit (t '.save')
+= form_for @group do |f|
+  = hidden_field_tag 'q', '4'
+  = f.cktext_area :history, :height => 300
+  .button-wrapper
+    = f.submit (t '.save'), { :class => 'btn btn-primary' }

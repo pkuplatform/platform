@@ -1,9 +1,14 @@
-.content.index
-  - @results.each do |result|
-    - case result
-    - when Group
-      = render :partial => 'groups', :locals => { :group => result }
-    - when Activity
-      = render :partial => 'activities', :locals => { :activity => result }
-    - when Profile
-      = render :partial => 'profiles', :locals => { :profile => result }
+- if @results.empty?
+  .alert.alert-info
+    = link_to 'x', '', :class => 'close', 'data-dismiss' => 'alert'
+    = t '.empty'
+- else
+  .content.index
+    - @results.each do |result|
+      - case result
+      - when Group
+        = render :partial => 'groups', :locals => { :group => result }
+      - when Activity
+        = render :partial => 'activities', :locals => { :activity => result }
+      - when Profile
+        = render :partial => 'profiles', :locals => { :profile => result }

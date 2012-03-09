@@ -76,9 +76,10 @@ a.next { right: -30px; }
   display:none;
 }
 
-.activities.show .admin-panel, .activities.show .pictures {
+.activities.show .pictures {
   .header { margin-bottom: 20px; }
   margin-bottom: 50px;
+  .alert { margin-top: 20px; }
 }
 
 .activities.wall .hot {
