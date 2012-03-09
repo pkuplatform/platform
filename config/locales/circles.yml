@@ -50,12 +50,15 @@
       kickout:
         greetings: "很遗憾通知你:"
         action: "将你请离了"
+        addon: "如有疑问，请回复此消息"
       reject:
         greetings: "很遗憾通知你:"
         action: "拒绝你加入"
+        addon: "如有疑问，请回复此消息"
       approve:
         greetings: "很高兴通知你:"
         action: "同意你加入"
+        addon: "欢迎！"
       admin: "管理员%{name}"
       owner: "%{type}%{name}"
     kickout:
