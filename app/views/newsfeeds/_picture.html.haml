@@ -5,14 +5,14 @@
     %p
       %strong
         = link_to subject.name, subject
-        = t '.action'
         = t ('.' + event.action)
+        = link_to picture.bare_name, picture
     .center.small
       .thumb.row
         .span2.thumbnail
           = image_tag picture.medium
         .span2
-          = link_to picture.bare_name, picture
+          = picture.remark
       .medium.row
         .span4.thumbnail
           = image_tag picture.big

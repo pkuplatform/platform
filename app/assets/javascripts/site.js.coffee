@@ -94,4 +94,11 @@ $ ->
 
   CKEDITOR.config.skin = 'BootstrapCK-Skin'
 
-  $('.carousel-items').carouFredSel()
+  $('.carousel-items').carouFredSel
+    auto : false
+    prev : 
+      button : ".prev"
+    next :
+      button : ".next"
+    pagination : false
+
