@@ -10,16 +10,15 @@
       .image_carousel
         .carousel-items
           - @activity.pictures.each do |pic|
-            = link_to (image_tag pic.url(:medium))+raw("<div class='image-mask'></div>"), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br />"+pic.remark, :"data-fancybox-group" => "gallery"
+            = link_to (image_tag pic.url(:small)), "#picture-ori-#{pic.id}", :class => "gallery_pics fancybox.inline", :title => "<div class=\"pic-title\">#{link_to pic.album.title,pic.album}<br />by:#{link_to pic.user.name,pic.user}<br /></div>"+pic.remark, :"data-fancybox-group" => "gallery"
         .clear
         %a.prev{:href => '#'}
           %i.icon-arrow-left
         %a.next{:href => '#'}
           %i.icon-arrow-right
-        .pagination
       .inline-hide
         - @activity.pictures.each do |pic|
           %div{:id=>"picture-ori-#{pic.id}"}=link_to image_tag(pic.url(:big)), pic
       .more.row
         - if @activity.pictures.count>5
-          = link_to (t '.more'), activities_albums_path, :class => 'btn btn-info span3 offset2'
+          = link_to (t '.more'), activity_albums_path(@activity), :class => 'btn btn-info span3 offset2'

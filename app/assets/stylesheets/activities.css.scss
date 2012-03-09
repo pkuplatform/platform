@@ -53,10 +53,24 @@
 
 .carousel-items {
   position: relative;
+  a {
+   display:block;
+   float:left;
+   margin: 5px;
+   background-color: whiteSmoke;
+   border:1px solid #ccc;
+   padding: 5px;
+  }
 }
 
 .image_carousel {
+  padding: 35px 0 15px 40px;
   position: relative;
+  img {
+    display:block;
+    width: 100px;
+    height: 80px;
+ }
 }
 
 a.prev, a.next {
@@ -66,7 +80,7 @@ a.prev, a.next {
   position: absolute;
   top: 75px;
 }
-a.prev { left: -30px; }
+a.prev { left: 0px; }
 a.next { right: -30px; }
 .inline-hide {
   display:none;
