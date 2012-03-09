@@ -16,12 +16,11 @@ $(document).ready(function() {
     });
     },
     beforeclose:function(){
-      $(this).parent("form").submit();
     },
     close:function(){
-      $(this).multiselect("refresh");
+      $(this).parent("form").submit();
+      //$(this).multiselect("refresh");
     },
-    noneSelectedText: $('#noneSelectText').html()
   });
   $('.multi-select-box').multiselect_box({close:function(){
   }});
