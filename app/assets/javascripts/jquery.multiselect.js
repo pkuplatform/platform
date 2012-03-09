@@ -673,6 +673,6 @@ $.widget("ech.multiselect", {
 $.extend($.ech.multiselect.prototype.options, {
 	checkAllText: '全选',
 	uncheckAllText: '清空',
-	noneSelectedText: '未加入',
+	noneSelectedText: '未加入任何圈子',
 	selectedText: '#个圈子'
 });
