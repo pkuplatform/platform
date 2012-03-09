@@ -77,9 +77,14 @@ $ ->
     "theme" : "facebook"
     "hintText" : "输入要搜索的标签"
 
-  # modal
+  # bootstrap modal
   $('.modal').modal
     show: false
+  # bootstrap
+  $("a[rel=popover]").popover()
+  $(".tooltip").tooltip()
+  $("a[rel=tooltip]").tooltip()
+
 
   # Data Table
   $('#circles-table').dataTable
@@ -88,3 +93,5 @@ $ ->
     aoColumns: [ null, null, null, {bSortable:false}, {bSortable:false} ]
 
   CKEDITOR.config.skin = 'BootstrapCK-Skin'
+
+  $('.carousel-items').carouFredSel()

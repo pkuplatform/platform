@@ -177,14 +177,5 @@ $(document).ready(function(){
   $('.devise_error').hide();
 
   $('.need_hide').hide();
-
-  $('#dialog-change-boss').dialog({
-    autoOpen:false,
-    buttons: {
-      "确定(Sure)": function() {
-        $("#dialog-change-boss form").submit();
-      }
-    }
-  });
 });
 
