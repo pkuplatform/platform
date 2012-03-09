@@ -57,7 +57,7 @@ class Ability
     end
 
     can :admin, Activity do |activity|
-      not activity.nil? and not activity.id.nil? and (activity.admins.include?(user) or activity.group.admins.include?(user))
+      not activity.nil? and not activity.id.nil? and (activity.admins.include?(user) or (user.can? :admin, activity.group))
     end
 
     can :delete, Comment do |comment|

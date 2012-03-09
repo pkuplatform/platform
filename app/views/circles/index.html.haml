@@ -1,6 +1,6 @@
 .circles.content
   =render 'filter'
-  -if can? :admin,@owner
+  -if can? :admin, @owner
     =render 'members'
   -else
     =render 'read_only'
