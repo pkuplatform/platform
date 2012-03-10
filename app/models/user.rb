@@ -52,11 +52,11 @@ class User < ActiveRecord::Base
   end
 
   def activities
-    belonged_circles.activities.member.collect { |c| Activity.find(c.owner_id) }
+    Activity.joined(self)
   end
 
   def groups
-    belonged_circles.groups.member.collect { |c| Group.find(c.owner_id) }
+    Group.joined(self)
   end
 
   def subscribers

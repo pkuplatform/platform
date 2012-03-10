@@ -2,7 +2,7 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.references :user
-      t.integer  :status, :default => 4
+      t.integer  :status, :default => Constant::Approved
       t.string   :name
       t.integer  :unread_message_count
       t.string   :pyname

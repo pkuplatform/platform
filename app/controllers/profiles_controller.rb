@@ -21,8 +21,10 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @user = @profile.user
-    @groups = @profile.user.groups
-    @activities = @profile.user.activities
+    @join_groups = Group.joined(@profile.user)
+    @like_groups = Group.liked(@profile.user)
+    @join_activities = Activity.joined(@profile.user)
+    @like_activities = Activity.liked(@profile.user)
     @friends = @profile.user.friends
     @follows = @profile.user.follows - @friends
     @fans = @profile.user.fans - @friends

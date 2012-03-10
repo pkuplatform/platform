@@ -4,8 +4,8 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  scope :readable, where("status = ?", Constant::Approved)
   scope :category, lambda{|cat| where("category_id = ?", cat.id)}
+  default_scope where("groups.status != ?", Constant::Blocked)
 
   acts_as_taggable
   acts_as_commentable

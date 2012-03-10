@@ -28,14 +28,14 @@ class Admin::GroupsController < ApplicationController
     end
 
     if filter.nil?
-      @groups = Group.paginate(:page => params[:page], :per_page => 15)
+      @groups = Group.unscoped.paginate(:page => params[:page], :per_page => 15)
     else
-      @groups = Group.where(:status => filter).paginate(:page => params[:page], :per_page => 15)
+      @groups = Group.unscoped.where(:status => filter).paginate(:page => params[:page], :per_page => 15)
     end
   end
 
   def members
-    @group = Group.find(params[:id])
+    @group = Group.unscoped.find(params[:id])
     authorize! :admin, @group
 
     @tenders = @group.tenders
@@ -44,39 +44,39 @@ class Admin::GroupsController < ApplicationController
   end
 
   def forms
-    @group = Group.find(params[:id])
+    @group = Group.unscoped.find(params[:id])
     authorize! :admin, @group
 
     @second_buildings = @group.second_building_applications
   end
 
   def edit_members
-    @group = Group.find(params[:id])
+    @group = Group.unscoped.find(params[:id])
     authorize! :admin, @group
 
     member = params[:member_id]
-    relation = UserGroup.f(params[:id], member)
+    relation = UserGroup.unscoped.f(params[:id], member)
     relation.set(params[:status][member])
     render :nothing => true
   end
 
   def description
-    @group = Group.find(params[:id])
+    @group = Group.unscoped.find(params[:id])
     authorize! :admin, @group
   end
 
   def introduction
-    @group = Group.find(params[:id])
+    @group = Group.unscoped.find(params[:id])
     authorize! :admin, @group
   end
 
   def history
-    @group = Group.find(params[:id])
+    @group = Group.unscoped.find(params[:id])
     authorize! :admin, @group
   end
 
   def organization
-    @group = Group.find(params[:id])
+    @group = Group.unscoped.find(params[:id])
     authorize! :admin, @group
   end
 end

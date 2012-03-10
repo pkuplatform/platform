@@ -17,9 +17,9 @@ class Admin::ActivitiesController < ApplicationController
     end
 
     if filter.nil?
-      @activities = Activity.paginate(:page => params[:page], :per_page => 15)
+      @activities = Activity.unscoped.paginate(:page => params[:page], :per_page => 15)
     else
-      @activities = Activity.where(:status => filter).paginate(:page => params[:page], :per_page => 15)
+      @activities = Activity.unscoped.where(:status => filter).paginate(:page => params[:page], :per_page => 15)
     end
   end
 
