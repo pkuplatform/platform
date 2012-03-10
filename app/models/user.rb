@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def follows
-    belonged_circles.fan.collect { |c| User.find(c.owner_id) }
+    belonged_circles.users.fan.collect { |c| User.find(c.owner_id) }
   end
 
   def activities
