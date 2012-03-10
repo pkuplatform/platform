@@ -79,8 +79,7 @@ class Ability
     can :write, Circle do |circle|
       ((circle.status&Constant::Special == 0) && (user.can? :admin, circle.owner))||
       ((circle.status == Constant::Admin) && (circle.owner.boss==user||user.can?(:admin, :site)))||
-      ((circle.status == Constant::Member) && (user.can? :admin, circle.owner)) ||
-      (user.can? :admin, :site)
+      ((circle.status == Constant::Member) && (user.can? :admin, circle.owner))
     end
 
     can :select, Circle do |circle|
